@@ -1,1 +1,342 @@
-<h1>salut</h1>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flexarion | Studio de jeux vidéo SF indépendant à Aix-en-Provence</title>
+<meta name="description" content="Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence depuis 2022, créateur de Below Zero.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://flexarion-officiel.github.io/">
+<meta name="author" content="Flexarion">
+<meta name="theme-color" content="#071421">
+<meta name="geo.region" content="FR-13">
+<meta name="geo.placename" content="Aix-en-Provence">
+<meta name="geo.position" content="43.5297;5.4474">
+<meta name="ICBM" content="43.5297, 5.4474">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
+<style>:root{--noir:#071421;--nuit:#123A58;--cyan:#19B9D4;--glacier:#B7DDE8;--blanc:#E8EDF0;--max:72rem;--txt:42rem}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--noir);color:var(--blanc);font:1.0625rem/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--cyan);text-underline-offset:.18em}
+a:hover{color:var(--glacier)}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0;background:var(--cyan);color:var(--noir);padding:.6rem 1rem;font-weight:700;z-index:10}
+.skip:focus{left:.5rem;top:.5rem}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{line-height:1.2;letter-spacing:.01em;color:#fff}
+h1{font-size:clamp(2rem,5vw,3.2rem);margin:.4em 0 .4em}
+h2{font-size:clamp(1.45rem,3vw,2rem);margin:2em 0 .6em}
+h3{font-size:1.2rem;margin:1.6em 0 .4em;color:var(--glacier)}
+p,ul,ol{margin:0 0 1.1em}
+.site-head{border-bottom:1px solid var(--nuit);background:rgba(7,20,33,.96)}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-top:.75rem;padding-bottom:.75rem}
+.brand{display:flex;align-items:center;gap:.6rem;color:var(--blanc);text-decoration:none;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.brand svg{width:36px;height:36px}
+.nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.25rem 1.1rem;margin:0;padding:0}
+.nav a{color:var(--blanc);text-decoration:none;padding:.35rem 0;border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current=page]{border-color:var(--cyan);color:#fff}
+.crumbs{font-size:.9rem;color:var(--glacier);margin-top:1.25rem}
+.crumbs ol{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.3rem}
+.crumbs li+li::before{content:"›";margin-right:.3rem;color:var(--cyan)}
+.crumbs a{color:var(--glacier)}
+.hero{position:relative;background:var(--noir)}
+.hero img{width:100%;aspect-ratio:16/9;object-fit:cover;max-height:78vh}
+.hero-txt{max-width:var(--max);margin:0 auto;padding:1.5rem 1.25rem 0}
+.kicker{display:inline-block;color:var(--cyan);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem}
+.lead{font-size:1.2rem;color:var(--glacier);max-width:var(--txt)}
+.prose{max-width:var(--txt)}
+.prose li{margin-bottom:.4em}
+.btn{display:inline-block;background:var(--cyan);color:var(--noir);font-weight:700;text-decoration:none;padding:.75rem 1.3rem;border-radius:.4rem;margin:.3rem .6rem .3rem 0}
+.btn:hover{background:var(--glacier);color:var(--noir)}
+.btn.ghost{background:transparent;color:var(--cyan);border:2px solid var(--cyan)}
+.btn.ghost:hover{color:var(--noir);background:var(--glacier);border-color:var(--glacier)}
+.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));margin:1.5rem 0}
+.card{background:var(--nuit);border-radius:.6rem;padding:1.25rem 1.25rem .4rem;border:1px solid rgba(183,221,232,.15)}
+.card h3{margin-top:.2em}
+.card img{border-radius:.4rem;margin-bottom:.9rem}
+.card a.more{font-weight:700}
+.facts{background:var(--nuit);border-left:4px solid var(--cyan);padding:1rem 1.25rem;border-radius:0 .5rem .5rem 0;max-width:var(--txt)}
+.facts dl{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;margin:0}
+.facts dt{font-weight:700;color:var(--glacier)}.facts dd{margin:0}
+figure{margin:1.75rem 0}
+figcaption{font-size:.9rem;color:var(--glacier);margin-top:.5rem}
+figure img{border-radius:.5rem}
+blockquote{margin:1.5rem 0;padding:.5rem 1.25rem;border-left:4px solid var(--cyan);color:var(--glacier);font-style:italic}
+.faq details{background:var(--nuit);border-radius:.5rem;padding:.8rem 1.1rem;margin-bottom:.7rem;max-width:var(--txt)}
+.faq summary{cursor:pointer;font-weight:700;color:#fff}
+.faq details p{margin:.7rem 0 .3rem}
+.meta{color:var(--glacier);font-size:.92rem}
+.note{font-size:.9rem;color:var(--glacier);border:1px dashed rgba(183,221,232,.4);padding:.8rem 1rem;border-radius:.5rem;max-width:var(--txt)}
+.team{list-style:none;padding:0}
+.toc{background:var(--nuit);padding:1rem 1.25rem;border-radius:.5rem;max-width:var(--txt)}
+.toc ol{margin:0}
+.site-foot{margin-top:4rem;border-top:1px solid var(--nuit);padding:2rem 0;font-size:.92rem;color:var(--glacier)}
+.site-foot ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}
+.site-foot a{color:var(--glacier)}
+main{padding-bottom:1rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:40rem){body{font-size:1rem}.brand span{letter-spacing:.12em}}</style>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Flexarion">
+<meta property="og:title" content="Flexarion, studio de jeux vidéo de science-fiction à Aix-en-Provence">
+<meta property="og:description" content="Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence depuis 2022, créateur de Below Zero.">
+<meta property="og:url" content="https://flexarion-officiel.github.io/">
+<meta property="og:image" content="https://flexarion-officiel.github.io/assets/img/flexarion-og-1200x630.jpg">
+<meta property="og:image:alt" content="Flexarion, studio de jeux vidéo de science-fiction à Aix-en-Provence">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Flexarion, studio de jeux vidéo de science-fiction à Aix-en-Provence">
+<meta name="twitter:description" content="Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence depuis 2022, créateur de Below Zero.">
+<meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/flexarion-og-1200x630.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "Organization",
+    "LocalBusiness"
+   ],
+   "@id": "https://flexarion-officiel.github.io/#organization",
+   "name": "Flexarion",
+   "alternateName": "Studio Flexarion",
+   "description": "Flexarion est un studio indépendant (fictif) de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence, fondé en 2022, auteur du jeu Below Zero.",
+   "url": "https://flexarion-officiel.github.io/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://flexarion-officiel.github.io/icon-512.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": "https://flexarion-officiel.github.io/assets/img/flexarion-og-1200x630.jpg",
+   "foundingDate": "2022",
+   "foundingLocation": {
+    "@type": "Place",
+    "name": "Aix-en-Provence"
+   },
+   "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 8
+   },
+   "knowsAbout": [
+    "jeu vidéo narratif",
+    "science-fiction",
+    "game design",
+    "énigmes temporelles",
+    "sound design"
+   ],
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Aix-en-Provence",
+    "postalCode": "13100",
+    "addressRegion": "Provence-Alpes-Côte d'Azur",
+    "addressCountry": "FR"
+   },
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.5297,
+    "longitude": 5.4474
+   },
+   "areaServed": "FR",
+   "email": "contact@flexarion-officiel.github.io",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "presse",
+    "email": "contact@flexarion-officiel.github.io",
+    "availableLanguage": "fr",
+    "areaServed": "FR"
+   },
+   "sameAs": [
+    "https://github.com/flexarion-officiel"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://flexarion-officiel.github.io/#website",
+   "url": "https://flexarion-officiel.github.io/",
+   "name": "Flexarion",
+   "inLanguage": "fr-FR",
+   "publisher": {
+    "@id": "https://flexarion-officiel.github.io/#organization"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://flexarion-officiel.github.io/#webpage",
+   "url": "https://flexarion-officiel.github.io/",
+   "name": "Flexarion | Studio de jeux vidéo SF indépendant à Aix-en-Provence",
+   "description": "Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence depuis 2022, créateur de Below Zero.",
+   "isPartOf": {
+    "@id": "https://flexarion-officiel.github.io/#website"
+   },
+   "about": {
+    "@id": "https://flexarion-officiel.github.io/#organization"
+   },
+   "inLanguage": "fr-FR",
+   "dateModified": "2026-11-17",
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://flexarion-officiel.github.io/assets/img/flexarion-og-1200x630.jpg"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Qu'est-ce que Flexarion ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Flexarion est un studio indépendant de jeux vidéo de science-fiction basé à Aix-en-Provence. Fondé en 2022, il réunit huit personnes et conçoit des jeux narratifs où les décisions du joueur modifient directement l'univers du jeu. Il s'agit d'un studio fictif créé pour un projet étudiant."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Où se trouve le studio Flexarion ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Le studio est installé à Aix-en-Provence, dans les Bouches-du-Rhône (région Provence-Alpes-Côte d'Azur, France). La ville est aussi le décor de son jeu phare, Below Zero."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Quel est le jeu phare de Flexarion ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Son jeu phare s'appelle Below Zero. En 2156, une seconde ville identique à Aix-en-Provence est découverte sous la surface ; elle semble appartenir à l'année 2306. Le joueur incarne un jeune technicien que les habitants du futur connaissent déjà."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Quel genre de jeu développe Flexarion ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Le studio développe des jeux vidéo de science-fiction narratifs : aventure, exploration et énigmes de causalité, sans combat. Chaque action dans le présent peut modifier le futur."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Quand Flexarion a-t-il été créé ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Le studio a été créé en 2022 à Aix-en-Provence, à la suite d'une game jam."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Combien de personnes travaillent chez Flexarion ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "L'équipe fictive compte huit personnes : un directeur créatif, deux développeurs, un game designer, une artiste 3D, un character designer, une sound designer et un responsable communication."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Flexarion est-il un vrai studio ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Non. Flexarion est un studio fictif imaginé par quatre étudiants du BUT Informatique de l'IUT d'Aix-Marseille dans le cadre d'un concours pédagogique de référencement. L'équipe et le jeu n'existent pas ; les détails sont dans les mentions légales."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-head">
+<div class="wrap">
+<a class="brand" href="/" aria-label="Flexarion, retour à l’accueil"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="12" fill="#071421"/><path d="M9 29 32 7l23 22" fill="none" stroke="#19B9D4" stroke-width="3.5" stroke-linejoin="round"/><path d="M9 35l23 22 23-22" fill="none" stroke="#B7DDE8" stroke-width="3.5" stroke-linejoin="round"/><path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/><path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/><path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg><span>Flexarion</span></a>
+<nav class="nav" aria-label="Navigation principale"><ul><li><a href="/" aria-current="page">Accueil</a></li><li><a href="/studio/">Le studio</a></li><li><a href="/below-zero/">Below Zero</a></li><li><a href="/devlogs/">Devlogs</a></li><li><a href="/contact/">Contact &amp; presse</a></li></ul></nav>
+</div>
+</header>
+
+<main id="contenu">
+
+<section class="hero" aria-labelledby="titre">
+<img src="/assets/img/flexarion-hero-deux-villes-aix-1280.webp" srcset="/assets/img/flexarion-hero-deux-villes-aix-480.webp 480w, /assets/img/flexarion-hero-deux-villes-aix-960.webp 960w, /assets/img/flexarion-hero-deux-villes-aix-1280.webp 1280w" sizes="100vw" width="1280" height="720" alt="Aix-en-Provence au crépuscule et, sous la roche, sa ville jumelle de 2306 illuminée de cyan : l&#x27;univers du studio Flexarion" fetchpriority="high" decoding="async">
+<div class="hero-txt">
+<p class="kicker">Studio de jeux vidéo · Aix-en-Provence</p>
+<h1 id="titre">Flexarion, le studio de science-fiction qui creuse sous la réalité</h1>
+<p class="lead">Flexarion est un studio indépendant de jeux vidéo de science-fiction fondé en 2022 à Aix-en-Provence. Nous créons des expériences narratives immersives où chacune de vos décisions transforme l'univers du jeu. Et si la ville que vous connaissez par cœur avait une jumelle, deux siècles plus tard, juste sous vos pieds ?</p>
+<p><a class="btn" href="/below-zero/">Découvrir Below Zero</a><a class="btn ghost" href="/studio/">Rencontrer le studio</a></p>
+</div>
+</section>
+<div class="wrap">
+<section aria-labelledby="positionnement">
+<h2 id="positionnement">Ce qui rend Flexarion différent</h2>
+<div class="prose">
+<p>La plupart des jeux de science-fiction parlent de vaisseaux, de combats et de planètes lointaines. Nous avons choisi une autre voie : <strong>des récits de SF à hauteur humaine, où le joueur ne sauve pas la galaxie mais découvre une vérité</strong>. Nos jeux reposent sur trois piliers.</p>
+</div>
+<div class="grid">
+<div class="card"><h3>Vos choix ont des conséquences</h3><p>Une porte laissée ouverte, une réparation bâclée, une promesse tenue : dans nos jeux, le moindre geste peut se propager et changer le monde. Pas de choix cosmétiques.</p></div>
+<div class="card"><h3>Le mystère avant l'action</h3><p>Aucun combat, mais des énigmes, des indices et des personnages qui en savent plus que vous. Nous voulons éveiller la curiosité et faire douter de ce que l'on croit voir.</p></div>
+<div class="card"><h3>Une SF ancrée en Provence</h3><p>Nos univers partent de lieux réels : les fontaines, les places et les sources chaudes d'Aix-en-Provence deviennent le décor d'une science-fiction inattendue.</p></div>
+</div>
+</section>
+<section aria-labelledby="jeu">
+<h2 id="jeu">Notre jeu phare : Below Zero</h2>
+<div class="prose">
+<p>En 2156, des travaux sous Aix-en-Provence mettent au jour une seconde ville, identique à celle de la surface, mais qui semble appartenir à l'année 2306. Vous incarnez Sacha Morel, un jeune technicien. Problème : les habitants de cette ville du futur vous connaissent déjà. En explorant les deux époques, vous comprenez qu'elles sont liées et que chaque action dans le présent modifie le futur.</p>
+<p><a href="/below-zero/">Explorer l'univers, les mécaniques et les visuels de Below Zero</a></p>
+</div>
+</section>
+<section aria-labelledby="chiffres">
+<h2 id="chiffres">Le studio en bref</h2>
+<div class="facts"><dl>
+<dt>Activité</dt><dd>Studio indépendant de jeux vidéo de science-fiction narratifs</dd>
+<dt>Localisation</dt><dd>Aix-en-Provence (13), Provence-Alpes-Côte d'Azur, France</dd>
+<dt>Création</dt><dd>2022</dd>
+<dt>Équipe</dt><dd>8 personnes</dd>
+<dt>Jeu phare</dt><dd><a href="/below-zero/">Below Zero</a> (en développement, PC)</dd>
+<dt>Statut</dt><dd>Studio fictif, projet pédagogique du BUT Informatique</dd>
+</dl></div>
+</section>
+<section aria-labelledby="devlogs">
+<h2 id="devlogs">Derniers devlogs</h2>
+<p class="prose">Notre journal de développement raconte les coulisses de Below Zero, du level design au sound design.</p>
+<div class="grid"><article class="card">
+<img src="/assets/img/devlog-deux-villes-1280.webp" srcset="/assets/img/devlog-deux-villes-480.webp 480w, /assets/img/devlog-deux-villes-960.webp 960w, /assets/img/devlog-deux-villes-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Deux plans superposés de la même ville, l&#x27;un à l&#x27;encre sépia, l&#x27;autre en hologramme cyan, sur la table de travail de Flexarion" loading="lazy" decoding="async">
+<h3><a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">Concevoir deux villes jumelles</a></h3>
+<p class="meta">Devlog n°1 · Margaux Delorme, artiste 3d environnements</p>
+<p>Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.</p>
+</article><article class="card">
+<img src="/assets/img/devlog-causalite-1280.webp" srcset="/assets/img/devlog-causalite-480.webp 480w, /assets/img/devlog-causalite-960.webp 960w, /assets/img/devlog-causalite-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Graphe lumineux reliant une clé, une graine, une lanterne et une porte entre deux lignes temporelles" loading="lazy" decoding="async">
+<h3><a href="/devlogs/enigmes-causalite-temporelle/">Les énigmes de causalité temporelle</a></h3>
+<p class="meta">Devlog n°2 · Lucas Arnaud, game designer</p>
+<p>Le game designer de Flexarion explique comment une action dans l'Aix de 2156 transforme la ville de 2306 dans Below Zero, et comment on évite le chaos.</p>
+</article><article class="card">
+<img src="/assets/img/devlog-son-1280.webp" srcset="/assets/img/devlog-son-480.webp 480w, /assets/img/devlog-son-960.webp 960w, /assets/img/devlog-son-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Micro et casque posés dans un tunnel de pierre où des ondes sonores cyan se propagent vers une ville lointaine" loading="lazy" decoding="async">
+<h3><a href="/devlogs/sound-design-ville-souterraine/">Le sound design de la ville souterraine</a></h3>
+<p class="meta">Devlog n°3 · Élise Fabre, sound designer</p>
+<p>Réverbérations, eau thermale et cigales mutées : la sound designer de Flexarion raconte comment elle fait sonner la ville souterraine de Below Zero.</p>
+</article></div>
+<p><a class="btn ghost" href="/devlogs/">Lire tous les devlogs</a></p>
+</section>
+<section class="faq" aria-labelledby="faq"><h2 id="faq">Questions fréquentes</h2><details><summary>Qu'est-ce que Flexarion ?</summary><p>Flexarion est un studio indépendant de jeux vidéo de science-fiction basé à Aix-en-Provence. Fondé en 2022, il réunit huit personnes et conçoit des jeux narratifs où les décisions du joueur modifient directement l'univers du jeu. Il s'agit d'un studio fictif créé pour un projet étudiant.</p></details><details><summary>Où se trouve le studio Flexarion ?</summary><p>Le studio est installé à Aix-en-Provence, dans les Bouches-du-Rhône (région Provence-Alpes-Côte d'Azur, France). La ville est aussi le décor de son jeu phare, Below Zero.</p></details><details><summary>Quel est le jeu phare de Flexarion ?</summary><p>Son jeu phare s'appelle Below Zero. En 2156, une seconde ville identique à Aix-en-Provence est découverte sous la surface ; elle semble appartenir à l'année 2306. Le joueur incarne un jeune technicien que les habitants du futur connaissent déjà.</p></details><details><summary>Quel genre de jeu développe Flexarion ?</summary><p>Le studio développe des jeux vidéo de science-fiction narratifs : aventure, exploration et énigmes de causalité, sans combat. Chaque action dans le présent peut modifier le futur.</p></details><details><summary>Quand Flexarion a-t-il été créé ?</summary><p>Le studio a été créé en 2022 à Aix-en-Provence, à la suite d'une game jam.</p></details><details><summary>Combien de personnes travaillent chez Flexarion ?</summary><p>L'équipe fictive compte huit personnes : un directeur créatif, deux développeurs, un game designer, une artiste 3D, un character designer, une sound designer et un responsable communication.</p></details><details><summary>Flexarion est-il un vrai studio ?</summary><p>Non. Flexarion est un studio fictif imaginé par quatre étudiants du BUT Informatique de l'IUT d'Aix-Marseille dans le cadre d'un concours pédagogique de référencement. L'équipe et le jeu n'existent pas ; les détails sont dans les mentions légales.</p></details></section>
+</div>
+
+</main>
+<footer class="site-foot">
+<div class="wrap">
+<p><strong>Flexarion</strong> — studio indépendant de jeux vidéo de science-fiction, Aix-en-Provence (Bouches-du-Rhône, Provence-Alpes-Côte d’Azur, France). Créateur de <a href="/below-zero/">Below Zero</a>.</p>
+<ul>
+<li><a href="/studio/">Le studio</a></li>
+<li><a href="/below-zero/">Below Zero</a></li>
+<li><a href="/devlogs/">Devlogs</a></li>
+<li><a href="/contact/">Contact &amp; presse</a></li>
+<li><a href="/mentions-legales/">Mentions légales</a></li>
+</ul>
+<p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA. <a href="/mentions-legales/">En savoir plus</a>.</p>
+</div>
+</footer>
+</body>
+</html>
