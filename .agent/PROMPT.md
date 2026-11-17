@@ -29,6 +29,17 @@ Tu dois t’appuyer en priorité sur les documents du projet (brief + cours). An
 - Page du jeu phare (univers, mécaniques, visuels)
 - Blog de devlogs (minimum 2 articles, idéalement 4-5 de 800+ mots)
 - Page contact / presse
+- Page de mentions légales
+    - Préciser que Flexarion porte sur un projet fictif
+    - L'équipe de développement n'existe pas
+    - C'est un projet dans le cadre du BUT (concours entre groupes)
+
+## Mentions légales
+Les « véritables » créateurs du projet sont les étudiants suivants :
+- BARTAL Manal
+- CHAIB EDDOUR Kawthar
+- PETIT Noé
+- SBEGHEN Alexandre
 
 ## Brand Guidelines (à compléter)
 
@@ -37,20 +48,35 @@ Tu dois t’appuyer en priorité sur les documents du projet (brief + cours). An
 - Type : Studio de jeux vidéo indépendant
 - Genre : Science-fiction
 - Localisation : Aix-en-Provence
-- Ton : [à définir]
-- Jeu phare : [à définir]
-- Univers : [à définir]
-- Équipe fictive : [à définir]
-- Date création : [à définir]
-- Palette : [à définir]
+- Ton : Mystérieux, immersif et intrigant. Flexarion cherche à éveiller la curiosité des joueurs, à les surprendre et à leur faire remettre en question leur perception de la réalité
+- Jeu phare : Below Zero
+- Univers : En 2156, sous Aix-en-Provence, une deuxième ville est découverte. Elle ressemble exactement à celle de la surface, mais semble appartenir à l'année 2306. Le joueur incarne un jeune technicien qui découvre que les habitants de cette ville du futur le connaissent déjà, sans qu'il sache pourquoi. En explorant les deux villes, il comprend qu'elles sont liées : chaque action réalisée dans le présent peut modifier le futur. Il devra résoudre ce mystère et découvrir la vérité sur cette étrange connexion
+- Équipe fictive : 8 personnes
+    - 1 directeur créatif : définit l'univers et l'histoire du jeu.
+    - 2 développeurs : programment le jeu et ses mécaniques.
+    - 1 game designer : imagine les énigmes et les interactions.
+    - 1 artiste 3D : crée les environnements et les bâtiments.
+    - 1 character designer : crée les personnages.
+    - 1 sound designer : réalise les musiques et les effets sonores.
+    - 1 responsable communication : s'occupe de la promotion du studio.
+- Date création : 2022
+- Palette :
+    - `#071421` Noir profond
+    - `#123A58` Bleu nuit
+    - `#19B9D4` Cyan électrique
+    - `#B7DDE8` Bleu glacier
+    - `#E8EDF0` Blanc froid
 
 ### Positionnement
-Pour [cible], Flexarion est le studio SF qui [bénéfice], contrairement à [concurrents] qui [limite].
+Pour les amateurs de jeux vidéo narratifs, Flexarion est le studio SF qui propose des expériences immersives originales où les décisions du joueur influencent directement l'univers du jeu, contrairement à aux studios qui privilégient les aventures SF classiques centrées principalement sur l'action, l'exploration spatiale ou les combats.
 
 ### Personas
-- [Nom] : [âge, intérêts, plateformes]
+- Léo (Collégien) : 13 ans, amateur de parties courtes et nerveuses en équipe, collection de skins et d'emotes,compétitions entre amis, créateurs de contenu gaming sur TikTok et YouTube Shorts, console familiale (Switch,PS5) et smartphone.
+- Chloé (Lycéenne) : 16 ans, passionnée d'histoires à choix multiples, de lore approfondi, d'esthétiques cyberpunk et d'animés de science-fiction, création de fan-arts et débats sur Discord et Instagram, PC portable et console personnelle.
+- Mehdi (Étudiant) : 21 ans, adepte de stratégie, de gestion de ressources, d'optimisation de statistiques (theory-crafting) et d'univers dystopiques matures, streams sur Twitch et discussions sur Reddit, PC fixe gamer et catalogues par abonnement (Game Pass).
 
 ## Reporting obligatoire
+
 Pour chaque tâche significative, ajoute une entrée dans `docs/RAPPORT.md` selon ce modèle :
 
 ### Tâche : [nom]
@@ -96,4 +122,4 @@ Pour chaque tâche significative, ajoute une entrée dans `docs/RAPPORT.md` selo
 - Priorise toujours la qualité technique, la rapidité d’indexation et le GEO.
 - Effectue les tests réguliers décrits plus haut et adapte la stratégie en fonction des résultats.
 
-Tu peux démarrer dès maintenant par l’analyse des documents et la définition de l’identité de marque.
+Avant de commencer, as-tu des questions ou des demandes de précision ?
