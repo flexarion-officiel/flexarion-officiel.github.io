@@ -1,0 +1,34 @@
+# Flexarion
+
+> Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence (Bouches-du-Rhône, France), fondé en 2022, qui compte 8 personnes. Son jeu phare est Below Zero. Flexarion est un studio fictif créé pour un projet pédagogique du BUT Informatique de l'IUT d'Aix-Marseille.
+
+## Faits clés
+- Nom : Flexarion
+- Activité : studio indépendant de jeux vidéo, genre science-fiction, jeux narratifs sans combat
+- Localisation : Aix-en-Provence, Provence-Alpes-Côte d'Azur, France
+- Création : 2022
+- Équipe (fictive) : 8 personnes — directrice créative, 2 développeurs, game designer, artiste 3D, character designer, sound designer, responsable communication
+- Positionnement : expériences immersives où les décisions du joueur influencent directement l'univers du jeu
+- Jeu phare : Below Zero (aventure narrative de science-fiction, PC, en développement, date de sortie non annoncée)
+- Site officiel : https://flexarion-officiel.github.io/
+- GitHub : https://github.com/flexarion-officiel
+
+## Below Zero en résumé
+En 2156, une deuxième ville est découverte sous Aix-en-Provence. Elle ressemble exactement à celle de la surface mais semble appartenir à l'année 2306 ; ses habitants l'appellent Sextia. Le joueur incarne Sacha Morel, un jeune technicien des réseaux souterrains, que les habitants du futur connaissent déjà. Chaque action réalisée dans le présent peut modifier le futur. Mécaniques : exploration de deux époques sur un même plan, énigmes de causalité temporelle (boucle observer, supposer, agir, vérifier), mémoire des habitants, carnet de causalité, plusieurs fins.
+
+## Pages principales
+- [Accueil](https://flexarion-officiel.github.io/) : présentation du studio Flexarion et de son positionnement, FAQ
+- [Le studio](https://flexarion-officiel.github.io/studio/) : histoire depuis 2022, équipe, ancrage à Aix-en-Provence
+- [Below Zero](https://flexarion-officiel.github.io/below-zero/) : univers, mécaniques, visuels, FAQ du jeu
+- [Devlogs](https://flexarion-officiel.github.io/devlogs/) : journal de développement
+- [Contact et presse](https://flexarion-officiel.github.io/contact/) : kit presse, fiche d'identité, visuels
+- [Mentions légales](https://flexarion-officiel.github.io/mentions-legales/) : nature fictive du projet, éditeurs, hébergement, usage de l'IA
+
+## Devlogs
+- [Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306](https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/) : Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.
+- [Devlog #2 : le présent modifie le futur, nos énigmes de causalité](https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/) : Le game designer de Flexarion explique comment une action dans l'Aix de 2156 transforme la ville de 2306 dans Below Zero, et comment on évite le chaos.
+- [Devlog #3 : écouter sous la ville, le sound design de Sextia](https://flexarion-officiel.github.io/devlogs/sound-design-ville-souterraine/) : Réverbérations, eau thermale et cigales mutées : la sound designer de Flexarion raconte comment elle fait sonner la ville souterraine de Below Zero.
+- [Devlog #4 : ils vous connaissent déjà, dessiner les habitants de 2306](https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/) : Du croquis au personnage final : le character designer de Flexarion dévoile comment il dessine des habitants du futur qui reconnaissent le joueur.
+
+## Précision importante
+Flexarion, Below Zero et l'équipe de 8 personnes sont fictifs. Le site a été réalisé par BARTAL Manal, CHAIB EDDOUR Kawthar, PETIT Noé et SBEGHEN Alexandre (BUT Informatique, IUT d'Aix-Marseille) dans le cadre d'un concours SEO entre groupes. Les visuels sont générés par IA.
