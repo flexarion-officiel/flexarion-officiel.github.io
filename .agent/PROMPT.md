@@ -41,7 +41,7 @@ Les « véritables » créateurs du projet sont les étudiants suivants :
 - PETIT Noé
 - SBEGHEN Alexandre
 
-## Brand Guidelines (à compléter)
+## Brand Guidelines
 
 ### Identité
 - Nom : Flexarion
@@ -116,7 +116,7 @@ Pour chaque tâche significative, ajoute une entrée dans `docs/RAPPORT.md` selo
 
 ## Règles d’action
 - Commence par un plan détaillé de la Phase 1, puis exécute.
-- Documente au fur et à mesure.
+- Documente au fur età mesure.
 - Demande mon accord avant toute commande sensible ou action externe irréversible.
 - Reste strictement White Hat et conforme au brief.
 - Priorise toujours la qualité technique, la rapidité d’indexation et le GEO.
