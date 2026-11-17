@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Devlogs Flexarion</title>
+  <link>https://flexarion-officiel.github.io/devlogs/</link>
+  <atom:link href="https://flexarion-officiel.github.io/devlogs/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Le journal de développement de Below Zero par le studio Flexarion (Aix-en-Provence).</description>
+  <language>fr-fr</language>
+  <lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0100</lastBuildDate>
+  <item>
+    <title>Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306</title>
+    <link>https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/</link>
+    <guid isPermaLink="true">https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/</guid>
+    <pubDate>Tue, 17 Nov 2026 09:00:00 +0100</pubDate>
+    <description>Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.</description>
+  </item>
+  <item>
+    <title>Devlog #2 : le présent modifie le futur, nos énigmes de causalité</title>
+    <link>https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/</link>
+    <guid isPermaLink="true">https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/</guid>
+    <pubDate>Tue, 17 Nov 2026 09:00:00 +0100</pubDate>
+    <description>Le game designer de Flexarion explique comment une action dans l'Aix de 2156 transforme la ville de 2306 dans Below Zero, et comment on évite le chaos.</description>
+  </item>
+  <item>
+    <title>Devlog #3 : écouter sous la ville, le sound design de Sextia</title>
+    <link>https://flexarion-officiel.github.io/devlogs/sound-design-ville-souterraine/</link>
+    <guid isPermaLink="true">https://flexarion-officiel.github.io/devlogs/sound-design-ville-souterraine/</guid>
+    <pubDate>Tue, 17 Nov 2026 09:00:00 +0100</pubDate>
+    <description>Réverbérations, eau thermale et cigales mutées : la sound designer de Flexarion raconte comment elle fait sonner la ville souterraine de Below Zero.</description>
+  </item>
+  <item>
+    <title>Devlog #4 : ils vous connaissent déjà, dessiner les habitants de 2306</title>
+    <link>https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/</link>
+    <guid isPermaLink="true">https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/</guid>
+    <pubDate>Tue, 17 Nov 2026 09:00:00 +0100</pubDate>
+    <description>Du croquis au personnage final : le character designer de Flexarion dévoile comment il dessine des habitants du futur qui reconnaissent le joueur.</description>
+  </item>
+</channel>
+</rss>
