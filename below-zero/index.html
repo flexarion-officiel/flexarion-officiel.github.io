@@ -1,392 +1,404 @@
 <!doctype html>
 <html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Below Zero, le jeu de SF narratif du studio Flexarion</title>
-<meta name="description" content="Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://flexarion-officiel.github.io/below-zero/">
-<meta name="author" content="Flexarion">
-<meta name="theme-color" content="#071421">
-<meta name="geo.region" content="FR-13">
-<meta name="geo.placename" content="Aix-en-Provence">
-<meta name="geo.position" content="43.5297;5.4474">
-<meta name="ICBM" content="43.5297, 5.4474">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
-<style>:root{--noir:#071421;--nuit:#123A58;--cyan:#19B9D4;--glacier:#B7DDE8;--blanc:#E8EDF0;--max:72rem;--txt:42rem}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--noir);color:var(--blanc);font:1.0625rem/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-img{max-width:100%;height:auto;display:block}
-a{color:var(--cyan);text-underline-offset:.18em}
-a:hover{color:var(--glacier)}
-:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
-.skip{position:absolute;left:-999px;top:0;background:var(--cyan);color:var(--noir);padding:.6rem 1rem;font-weight:700;z-index:10}
-.skip:focus{left:.5rem;top:.5rem}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
-h1,h2,h3{line-height:1.2;letter-spacing:.01em;color:#fff}
-h1{font-size:clamp(2rem,5vw,3.2rem);margin:.4em 0 .4em}
-h2{font-size:clamp(1.45rem,3vw,2rem);margin:2em 0 .6em}
-h3{font-size:1.2rem;margin:1.6em 0 .4em;color:var(--glacier)}
-p,ul,ol{margin:0 0 1.1em}
-.site-head{border-bottom:1px solid var(--nuit);background:rgba(7,20,33,.96)}
-.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-top:.75rem;padding-bottom:.75rem}
-.brand{display:flex;align-items:center;gap:.6rem;color:var(--blanc);text-decoration:none;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
-.brand svg{width:36px;height:36px}
-.nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.25rem 1.1rem;margin:0;padding:0}
-.nav a{color:var(--blanc);text-decoration:none;padding:.35rem 0;border-bottom:2px solid transparent}
-.nav a:hover,.nav a[aria-current=page]{border-color:var(--cyan);color:#fff}
-.crumbs{font-size:.9rem;color:var(--glacier);margin-top:1.25rem}
-.crumbs ol{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.3rem}
-.crumbs li+li::before{content:"›";margin-right:.3rem;color:var(--cyan)}
-.crumbs a{color:var(--glacier)}
-.hero{position:relative;background:var(--noir)}
-.hero img{width:100%;aspect-ratio:16/9;object-fit:cover;max-height:78vh}
-.hero-txt{max-width:var(--max);margin:0 auto;padding:1.5rem 1.25rem 0}
-.kicker{display:inline-block;color:var(--cyan);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem}
-.lead{font-size:1.2rem;color:var(--glacier);max-width:var(--txt)}
-.prose{max-width:var(--txt)}
-.prose li{margin-bottom:.4em}
-.btn{display:inline-block;background:var(--cyan);color:var(--noir);font-weight:700;text-decoration:none;padding:.75rem 1.3rem;border-radius:.4rem;margin:.3rem .6rem .3rem 0}
-.btn:hover{background:var(--glacier);color:var(--noir)}
-.btn.ghost{background:transparent;color:var(--cyan);border:2px solid var(--cyan)}
-.btn.ghost:hover{color:var(--noir);background:var(--glacier);border-color:var(--glacier)}
-.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));margin:1.5rem 0}
-.card{background:var(--nuit);border-radius:.6rem;padding:1.25rem 1.25rem .4rem;border:1px solid rgba(183,221,232,.15)}
-.card h3{margin-top:.2em}
-.card img{border-radius:.4rem;margin-bottom:.9rem}
-.card a.more{font-weight:700}
-.facts{background:var(--nuit);border-left:4px solid var(--cyan);padding:1rem 1.25rem;border-radius:0 .5rem .5rem 0;max-width:var(--txt)}
-.facts dl{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;margin:0}
-.facts dt{font-weight:700;color:var(--glacier)}.facts dd{margin:0}
-figure{margin:1.75rem 0}
-figcaption{font-size:.9rem;color:var(--glacier);margin-top:.5rem}
-figure img{border-radius:.5rem}
-blockquote{margin:1.5rem 0;padding:.5rem 1.25rem;border-left:4px solid var(--cyan);color:var(--glacier);font-style:italic}
-.faq details{background:var(--nuit);border-radius:.5rem;padding:.8rem 1.1rem;margin-bottom:.7rem;max-width:var(--txt)}
-.faq summary{cursor:pointer;font-weight:700;color:#fff}
-.faq details p{margin:.7rem 0 .3rem}
-.meta{color:var(--glacier);font-size:.92rem}
-.note{font-size:.9rem;color:var(--glacier);border:1px dashed rgba(183,221,232,.4);padding:.8rem 1rem;border-radius:.5rem;max-width:var(--txt)}
-.team{list-style:none;padding:0}
-.toc{background:var(--nuit);padding:1rem 1.25rem;border-radius:.5rem;max-width:var(--txt)}
-.toc ol{margin:0}
-.site-foot{margin-top:4rem;border-top:1px solid var(--nuit);padding:2rem 0;font-size:.92rem;color:var(--glacier)}
-.site-foot ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}
-.site-foot a{color:var(--glacier)}
-main{padding-bottom:1rem}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-@media (max-width:40rem){body{font-size:1rem}.brand span{letter-spacing:.12em}}</style>
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Flexarion">
-<meta property="og:title" content="Below Zero, le jeu de SF narratif du studio Flexarion">
-<meta property="og:description" content="Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.">
-<meta property="og:url" content="https://flexarion-officiel.github.io/below-zero/">
-<meta property="og:image" content="https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp">
-<meta property="og:image:alt" content="Key art de Below Zero, jeu du studio Flexarion">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Below Zero, le jeu de SF narratif du studio Flexarion">
-<meta name="twitter:description" content="Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.">
-<meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp">
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@graph": [
-  {
-   "@type": [
-    "Organization",
-    "LocalBusiness"
-   ],
-   "@id": "https://flexarion-officiel.github.io/#organization",
-   "name": "Flexarion",
-   "alternateName": "Studio Flexarion",
-   "description": "Flexarion est un studio indépendant (fictif) de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence, fondé en 2022, auteur du jeu Below Zero.",
-   "url": "https://flexarion-officiel.github.io/",
-   "logo": {
-    "@type": "ImageObject",
-    "url": "https://flexarion-officiel.github.io/icon-512.png",
-    "width": 512,
-    "height": 512
-   },
-   "image": "https://flexarion-officiel.github.io/assets/img/flexarion-og-1200x630.jpg",
-   "foundingDate": "2022",
-   "foundingLocation": {
-    "@type": "Place",
-    "name": "Aix-en-Provence"
-   },
-   "numberOfEmployees": {
-    "@type": "QuantitativeValue",
-    "value": 8
-   },
-   "knowsAbout": [
-    "jeu vidéo narratif",
-    "science-fiction",
-    "game design",
-    "énigmes temporelles",
-    "sound design"
-   ],
-   "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Aix-en-Provence",
-    "postalCode": "13100",
-    "addressRegion": "Provence-Alpes-Côte d'Azur",
-    "addressCountry": "FR"
-   },
-   "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 43.5297,
-    "longitude": 5.4474
-   },
-   "areaServed": "FR",
-   "email": "contact@flexarion-officiel.github.io",
-   "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "presse",
-    "email": "contact@flexarion-officiel.github.io",
-    "availableLanguage": "fr",
-    "areaServed": "FR"
-   },
-   "sameAs": [
-    "https://github.com/flexarion-officiel"
-   ]
-  },
-  {
-   "@type": "WebSite",
-   "@id": "https://flexarion-officiel.github.io/#website",
-   "url": "https://flexarion-officiel.github.io/",
-   "name": "Flexarion",
-   "inLanguage": "fr-FR",
-   "publisher": {
-    "@id": "https://flexarion-officiel.github.io/#organization"
-   }
-  },
-  {
-   "@type": "BreadcrumbList",
-   "@id": "https://flexarion-officiel.github.io/below-zero/#breadcrumb",
-   "itemListElement": [
-    {
-     "@type": "ListItem",
-     "position": 1,
-     "name": "Accueil",
-     "item": "https://flexarion-officiel.github.io/"
-    },
-    {
-     "@type": "ListItem",
-     "position": 2,
-     "name": "Below Zero",
-     "item": "https://flexarion-officiel.github.io/below-zero/"
-    }
-   ]
-  },
-  {
-   "@type": "WebPage",
-   "@id": "https://flexarion-officiel.github.io/below-zero/#webpage",
-   "url": "https://flexarion-officiel.github.io/below-zero/",
-   "name": "Below Zero, le jeu de SF narratif du studio Flexarion",
-   "description": "Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.",
-   "isPartOf": {
-    "@id": "https://flexarion-officiel.github.io/#website"
-   },
-   "about": {
-    "@id": "https://flexarion-officiel.github.io/#organization"
-   },
-   "inLanguage": "fr-FR",
-   "dateModified": "2026-11-17",
-   "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp"
-   },
-   "breadcrumb": {
-    "@id": "https://flexarion-officiel.github.io/below-zero/#breadcrumb"
-   }
-  },
-  {
-   "@type": "VideoGame",
-   "@id": "https://flexarion-officiel.github.io/below-zero/#videogame",
-   "name": "Below Zero",
-   "url": "https://flexarion-officiel.github.io/below-zero/",
-   "description": "Aventure narrative de science-fiction : en 2156, une ville identique à Aix-en-Provence mais datant de 2306 est découverte sous la surface. Le joueur incarne un jeune technicien que les habitants du futur connaissent déjà ; chaque action dans le présent modifie le futur.",
-   "image": [
-    "https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp",
-    "https://flexarion-officiel.github.io/assets/img/below-zero-capture-causalite-1280.webp",
-    "https://flexarion-officiel.github.io/assets/img/below-zero-concept-place-2306-1280.webp"
-   ],
-   "genre": [
-    "Science-fiction",
-    "Aventure narrative",
-    "Énigmes"
-   ],
-   "gamePlatform": "PC",
-   "applicationCategory": "Game",
-   "playMode": "SinglePlayer",
-   "inLanguage": "fr",
-   "creativeWorkStatus": "En développement",
-   "author": {
-    "@id": "https://flexarion-officiel.github.io/#organization"
-   },
-   "publisher": {
-    "@id": "https://flexarion-officiel.github.io/#organization"
-   },
-   "creator": {
-    "@id": "https://flexarion-officiel.github.io/#organization"
-   },
-   "gameLocation": [
-    {
-     "@type": "Place",
-     "name": "Aix-en-Provence (2156)"
-    },
-    {
-     "@type": "Place",
-     "name": "Sextia, ville souterraine (2306)"
-    }
-   ],
-   "character": [
-    {
-     "@type": "Person",
-     "name": "Sacha Morel",
-     "description": "Jeune technicien des réseaux souterrains, personnage joueur (fictif)"
-    }
-   ],
-   "keywords": "Below Zero, Flexarion, jeu narratif, science-fiction, Aix-en-Provence, causalité temporelle"
-  },
-  {
-   "@type": "FAQPage",
-   "mainEntity": [
-    {
-     "@type": "Question",
-     "name": "Quelle est l'histoire de Below Zero ?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "En 2156, une deuxième ville est découverte sous Aix-en-Provence. Identique à celle de la surface, elle semble appartenir à l'année 2306. Le joueur incarne Sacha Morel, un jeune technicien que les habitants de cette ville du futur connaissent déjà, et doit comprendre le lien entre les deux villes."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Below Zero est-il un jeu de combat ?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Non. Below Zero est un jeu d'aventure narratif sans combat, fondé sur l'exploration de deux époques et des énigmes de causalité : chaque action dans le présent peut modifier le futur."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Sur quelles plateformes sortira Below Zero ?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Below Zero est développé en priorité pour PC. Les versions consoles sont à l'étude. Aucune date de sortie n'est annoncée."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Below Zero a-t-il plusieurs fins ?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Oui. Les actions dites « pivots » modifient durablement la ville de 2306 et orientent l'histoire vers plusieurs fins différentes."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Qui développe Below Zero ?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Below Zero est développé par Flexarion, un studio indépendant (fictif) basé à Aix-en-Provence et fondé en 2022."
-     }
-    }
-   ]
-  }
- ]
-}
-</script>
-</head>
-<body>
-<a class="skip" href="#contenu">Aller au contenu</a>
-<header class="site-head">
-<div class="wrap">
-<a class="brand" href="/" aria-label="Flexarion, retour à l’accueil"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="12" fill="#071421"/><path d="M9 29 32 7l23 22" fill="none" stroke="#19B9D4" stroke-width="3.5" stroke-linejoin="round"/><path d="M9 35l23 22 23-22" fill="none" stroke="#B7DDE8" stroke-width="3.5" stroke-linejoin="round"/><path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/><path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/><path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg><span>Flexarion</span></a>
-<nav class="nav" aria-label="Navigation principale"><ul><li><a href="/">Accueil</a></li><li><a href="/studio/">Le studio</a></li><li><a href="/below-zero/" aria-current="page">Below Zero</a></li><li><a href="/devlogs/">Devlogs</a></li><li><a href="/contact/">Contact &amp; presse</a></li></ul></nav>
-</div>
-</header>
-<nav class="crumbs wrap" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">Below Zero</li></ol></nav>
-<main id="contenu">
-
-<div class="wrap">
-<p class="kicker">Le jeu phare de Flexarion</p>
-<h1>Below Zero : la ville d'en dessous vous attendait</h1>
-<figure>
-<img src="/assets/img/below-zero-key-art-1280.webp" srcset="/assets/img/below-zero-key-art-480.webp 480w, /assets/img/below-zero-key-art-960.webp 960w, /assets/img/below-zero-key-art-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Key art de Below Zero par Flexarion : Sacha, technicien à la lampe frontale, découvre la ville souterraine de 2306 dont les habitants l&#x27;observent" fetchpriority="high" decoding="async">
-<figcaption>Key art de Below Zero (visuel généré par IA, retravail prévu).</figcaption>
-</figure>
-<div class="prose">
-<p class="lead">Below Zero est le premier jeu de Flexarion : une aventure narrative de science-fiction où l'on explore deux versions d'Aix-en-Provence, séparées par cent cinquante ans et quelques dizaines de mètres de roche. Ici, il n'y a pas d'ennemis à abattre. Seulement une question : pourquoi le futur vous connaît-il déjà ?</p>
-</div>
-<div class="facts"><dl>
-<dt>Genre</dt><dd>Aventure narrative de science-fiction, énigmes</dd>
-<dt>Studio</dt><dd>Flexarion (Aix-en-Provence)</dd>
-<dt>Mode</dt><dd>Solo</dd>
-<dt>Plateforme</dt><dd>PC (consoles à l'étude)</dd>
-<dt>Statut</dt><dd>En développement, sortie non annoncée</dd>
-<dt>Langue</dt><dd>Français</dd>
-</dl></div>
-<section class="prose" aria-labelledby="univers">
-<h2 id="univers">L'univers : deux Aix, deux siècles</h2>
-<p>Nous sommes en 2156. Sous le centre historique d'Aix-en-Provence, des travaux de maintenance sur le réseau des eaux thermales révèlent une cavité immense. À l'intérieur, une ville entière. Mêmes rues, mêmes places, mêmes fontaines que la surface. Mais tout y est différent : les bâtiments sont faits de verre minéral, les platanes sont devenus des colonnes végétales, et les calendriers affichent l'année 2306.</p>
-<p>Ses habitants l'appellent Sextia. Ils vivent là, paisiblement, sous un ciel artificiel bleu glacier. Et lorsque Sacha Morel, jeune technicien des réseaux souterrains, y pose le pied pour la première fois, ils le saluent par son prénom.</p>
-<blockquote>« Te revoilà, Sacha. Tu as encore oublié la vanne, n'est-ce pas ? »</blockquote>
-<p>Sacha n'a jamais vu ces gens. Pourtant, ils se souviennent de lui, de ses gestes, de ses erreurs. En faisant la navette entre les deux villes, il découvre qu'elles sont liées : ce qu'il fait à la surface en 2156 change ce qu'il trouve sous terre en 2306. Résoudre ce mystère, c'est comprendre la vérité sur cette étrange connexion, et sur lui-même.</p>
-</section>
-<section aria-labelledby="mecaniques">
-<h2 id="mecaniques">Les mécaniques de jeu</h2>
-<div class="grid">
-<div class="card"><h3>Exploration de deux époques</h3><p>Parcourez l'Aix de 2156 et Sextia en 2306, deux villes bâties sur le même plan. Ce que vous apprenez à la surface vous aide à vous orienter sous terre.</p></div>
-<div class="card"><h3>Causalité temporelle</h3><p>Réparer, déplacer, donner, laisser faire : vos actions dans le présent transforment la ville du futur. Le Diapason de Sacha vibre près des objets qui « résonnent » entre les époques.</p></div>
-<div class="card"><h3>Mémoire des habitants</h3><p>Les habitants de 2306 se souviennent de choses que vous n'avez pas encore faites. Leurs souvenirs sont des indices… ou des pièges.</p></div>
-<div class="card"><h3>Carnet de causalité</h3><p>Notez les liens découverts entre les deux villes, testez vos hypothèses et remontez chaque conséquence jusqu'à sa cause.</p></div>
-</div>
-<div class="prose">
-<p>Toutes les énigmes suivent une même boucle : <strong>observer</strong> le futur, <strong>supposer</strong> un lien, <strong>agir</strong> dans le présent, puis <strong>vérifier</strong> la conséquence. Aucune erreur ne bloque la partie : elle rend seulement le chemin plus long, plus étrange ou plus triste. Les actions les plus importantes, dites « pivots », mènent à plusieurs fins. Notre game designer détaille ce système dans le <a href="/devlogs/enigmes-causalite-temporelle/">devlog sur les énigmes de causalité temporelle</a>.</p>
-</div>
-</section>
-<section aria-labelledby="visuels">
-<h2 id="visuels">Visuels et concept arts</h2>
-<p class="prose">Premières images de recherche de Below Zero. Ces visuels ont été générés avec l'aide d'une IA et seront retravaillés par l'équipe.</p>
-<div class="grid">
-<figure><img src="/assets/img/below-zero-capture-causalite-1280.webp" srcset="/assets/img/below-zero-capture-causalite-480.webp 480w, /assets/img/below-zero-capture-causalite-960.webp 960w, /assets/img/below-zero-capture-causalite-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Capture de travail de Below Zero : la même fontaine dans l&#x27;Aix de 2156 et dans Sextia en 2306, reliées par un fil lumineux" loading="lazy" decoding="async"><figcaption>Une même fontaine, deux époques, un fil de causalité.</figcaption></figure>
-<figure><img src="/assets/img/below-zero-concept-place-2306-1280.webp" srcset="/assets/img/below-zero-concept-place-2306-480.webp 480w, /assets/img/below-zero-concept-place-2306-960.webp 960w, /assets/img/below-zero-concept-place-2306-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Concept art de la grande place souterraine de Sextia en 2306, sous un ciel artificiel bleu glacier" loading="lazy" decoding="async"><figcaption>La grande place de Sextia et son ciel artificiel.</figcaption></figure>
-<figure><img src="/assets/img/below-zero-habitants-2306-1280.webp" srcset="/assets/img/below-zero-habitants-2306-480.webp 480w, /assets/img/below-zero-habitants-2306-960.webp 960w, /assets/img/below-zero-habitants-2306-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Concept art de trois habitants de Sextia en 2306 qui reconnaissent le héros de Below Zero" loading="lazy" decoding="async"><figcaption>Mémé Lune, Iléa et Aurèle, habitants de 2306.</figcaption></figure>
-<figure><img src="/assets/img/flexarion-hero-deux-villes-aix-1280.webp" srcset="/assets/img/flexarion-hero-deux-villes-aix-480.webp 480w, /assets/img/flexarion-hero-deux-villes-aix-960.webp 960w, /assets/img/flexarion-hero-deux-villes-aix-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Vue en coupe d&#x27;Aix-en-Provence et de sa ville jumelle souterraine de 2306 dans Below Zero" loading="lazy" decoding="async"><figcaption>Aix en surface, Sextia en dessous.</figcaption></figure>
-</div>
-</section>
-<section class="prose" aria-labelledby="coulisses">
-<h2 id="coulisses">Dans les coulisses du développement</h2>
-<ul>
-<li><a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">Comment nous concevons deux villes jumelles à partir d'un seul plan</a></li>
-<li><a href="/devlogs/enigmes-causalite-temporelle/">Comment une action dans le présent modifie le futur</a></li>
-<li><a href="/devlogs/sound-design-ville-souterraine/">Comment sonne une ville creusée autour de sources chaudes</a></li>
-<li><a href="/devlogs/character-design-habitants-futur/">Comment dessiner des personnages qui vous connaissent déjà</a></li>
-</ul>
-</section>
-<section class="faq" aria-labelledby="faq"><h2 id="faq">Below Zero en questions</h2><details><summary>Quelle est l'histoire de Below Zero ?</summary><p>En 2156, une deuxième ville est découverte sous Aix-en-Provence. Identique à celle de la surface, elle semble appartenir à l'année 2306. Le joueur incarne Sacha Morel, un jeune technicien que les habitants de cette ville du futur connaissent déjà, et doit comprendre le lien entre les deux villes.</p></details><details><summary>Below Zero est-il un jeu de combat ?</summary><p>Non. Below Zero est un jeu d'aventure narratif sans combat, fondé sur l'exploration de deux époques et des énigmes de causalité : chaque action dans le présent peut modifier le futur.</p></details><details><summary>Sur quelles plateformes sortira Below Zero ?</summary><p>Below Zero est développé en priorité pour PC. Les versions consoles sont à l'étude. Aucune date de sortie n'est annoncée.</p></details><details><summary>Below Zero a-t-il plusieurs fins ?</summary><p>Oui. Les actions dites « pivots » modifient durablement la ville de 2306 et orientent l'histoire vers plusieurs fins différentes.</p></details><details><summary>Qui développe Below Zero ?</summary><p>Below Zero est développé par Flexarion, un studio indépendant (fictif) basé à Aix-en-Provence et fondé en 2022.</p></details></section>
-</div>
-
-</main>
-<footer class="site-foot">
-<div class="wrap">
-<p><strong>Flexarion</strong> — studio indépendant de jeux vidéo de science-fiction, Aix-en-Provence (Bouches-du-Rhône, Provence-Alpes-Côte d’Azur, France). Créateur de <a href="/below-zero/">Below Zero</a>.</p>
-<ul>
-<li><a href="/studio/">Le studio</a></li>
-<li><a href="/below-zero/">Below Zero</a></li>
-<li><a href="/devlogs/">Devlogs</a></li>
-<li><a href="/contact/">Contact &amp; presse</a></li>
-<li><a href="/mentions-legales/">Mentions légales</a></li>
-</ul>
-<p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA. <a href="/mentions-legales/">En savoir plus</a>.</p>
-</div>
-</footer>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Below Zero, le jeu de SF narratif du studio Flexarion</title>
+    <meta name="description" content="Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://flexarion-officiel.github.io/below-zero/">
+    <meta name="author" content="Flexarion">
+    <meta name="theme-color" content="#071421">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Flexarion">
+    <meta property="og:title" content="Below Zero, le jeu de SF narratif du studio Flexarion">
+    <meta property="og:description" content="Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.">
+    <meta property="og:url" content="https://flexarion-officiel.github.io/below-zero/">
+    <meta property="og:image" content="https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp">
+    <meta property="og:image:alt" content="Key art de Below Zero, jeu du studio Flexarion">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Below Zero, le jeu de SF narratif du studio Flexarion">
+    <meta name="twitter:description" content="Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.">
+    <meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://flexarion-officiel.github.io/#organization",
+            "name": "Flexarion",
+            "alternateName": [
+              "Flexarion Studio",
+              "Studio Flexarion"
+            ],
+            "description": "Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs, fondé en 2022 à Aix-en-Provence et créateur du jeu Below Zero.",
+            "url": "https://flexarion-officiel.github.io/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://flexarion-officiel.github.io/#logo",
+              "url": "https://flexarion-officiel.github.io/icon-512.png",
+              "contentUrl": "https://flexarion-officiel.github.io/icon-512.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Logo Flexarion"
+            },
+            "image": {
+              "@id": "https://flexarion-officiel.github.io/#logo"
+            },
+            "foundingDate": "2022",
+            "knowsAbout": [
+              "jeu vidéo narratif",
+              "science-fiction",
+              "game design",
+              "énigmes temporelles",
+              "sound design"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "presse",
+              "url": "https://flexarion-officiel.github.io/contact/",
+              "availableLanguage": "fr"
+            },
+            "sameAs": [
+              "https://github.com/flexarion-officiel",
+              "https://www.linkedin.com/in/flexarion-officiel/",
+              "https://flexarionofficiel.itch.io/",
+              "https://x.com/flexarion_off",
+              "https://www.instagram.com/flexarion.off/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://flexarion-officiel.github.io/#website",
+            "url": "https://flexarion-officiel.github.io/",
+            "name": "Flexarion",
+            "alternateName": "Studio Flexarion",
+            "inLanguage": "fr-FR",
+            "publisher": {
+              "@id": "https://flexarion-officiel.github.io/#organization"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://flexarion-officiel.github.io/below-zero/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Accueil",
+                "item": "https://flexarion-officiel.github.io/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Below Zero",
+                "item": "https://flexarion-officiel.github.io/below-zero/"
+              }
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://flexarion-officiel.github.io/below-zero/#webpage",
+            "url": "https://flexarion-officiel.github.io/below-zero/",
+            "name": "Below Zero, le jeu de SF narratif du studio Flexarion",
+            "description": "Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.",
+            "isPartOf": {
+              "@id": "https://flexarion-officiel.github.io/#website"
+            },
+            "about": {
+              "@id": "https://flexarion-officiel.github.io/#organization"
+            },
+            "inLanguage": "fr-FR",
+            "dateModified": "2026-11-18",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp"
+            },
+            "breadcrumb": {
+              "@id": "https://flexarion-officiel.github.io/below-zero/#breadcrumb"
+            }
+          },
+          {
+            "@type": "VideoGame",
+            "@id": "https://flexarion-officiel.github.io/below-zero/#videogame",
+            "name": "Below Zero",
+            "url": "https://flexarion-officiel.github.io/below-zero/",
+            "description": "Aventure narrative de science-fiction : en 2156, une ville identique à Aix-en-Provence mais datant de 2306 est découverte sous la surface. Le joueur incarne un jeune technicien que les habitants du futur connaissent déjà ; chaque action dans le présent modifie le futur.",
+            "image": [
+              "https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp",
+              "https://flexarion-officiel.github.io/assets/img/below-zero-capture-causalite-1280.webp",
+              "https://flexarion-officiel.github.io/assets/img/below-zero-concept-place-2306-1280.webp"
+            ],
+            "genre": [
+              "Science-fiction",
+              "Aventure narrative",
+              "Énigmes"
+            ],
+            "gamePlatform": "PC",
+            "applicationCategory": "Game",
+            "playMode": "SinglePlayer",
+            "inLanguage": "fr",
+            "creativeWorkStatus": "En développement",
+            "author": {
+              "@id": "https://flexarion-officiel.github.io/#organization"
+            },
+            "publisher": {
+              "@id": "https://flexarion-officiel.github.io/#organization"
+            },
+            "creator": {
+              "@id": "https://flexarion-officiel.github.io/#organization"
+            },
+            "gameLocation": [
+              {
+                "@type": "Place",
+                "name": "Aix-en-Provence (2156)"
+              },
+              {
+                "@type": "Place",
+                "name": "Sextia, ville souterraine (2306)"
+              }
+            ],
+            "character": [
+              {
+                "@type": "Person",
+                "name": "Sacha Morel",
+                "description": "Jeune technicien des réseaux souterrains, personnage joueur"
+              }
+            ],
+            "keywords": "Below Zero, Flexarion, jeu narratif, science-fiction, Aix-en-Provence, causalité temporelle"
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quelle est l'histoire de Below Zero ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "En 2156, une deuxième ville est découverte sous Aix-en-Provence. Identique à celle de la surface, elle semble appartenir à l'année 2306. Le joueur incarne Sacha Morel, un jeune technicien que les habitants de cette ville du futur connaissent déjà, et doit comprendre le lien entre les deux villes."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Below Zero est-il un jeu de combat ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Non. Below Zero est un jeu d'aventure narratif sans combat, fondé sur l'exploration de deux époques et des énigmes de causalité : chaque action dans le présent peut modifier le futur."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Sur quelles plateformes sortira Below Zero ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Below Zero est développé en priorité pour PC. Les versions consoles sont à l'étude. Aucune date de sortie n'est annoncée."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Below Zero a-t-il plusieurs fins ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Oui. Les actions dites « pivots » modifient durablement la ville de 2306 et orientent l'histoire vers plusieurs fins différentes."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Qui développe Below Zero ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Below Zero est développé par Flexarion, un studio indépendant basé à Aix-en-Provence et fondé en 2022."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body id="haut">
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <header class="site-head">
+      <div class="wrap head-in">
+        <a class="brand" href="/" aria-label="Flexarion, retour à l’accueil"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="12" fill="#071421"/><path d="M9 29 32 7l23 22" fill="none" stroke="#19B9D4" stroke-width="3.5" stroke-linejoin="round"/><path d="M9 35l23 22 23-22" fill="none" stroke="#B7DDE8" stroke-width="3.5" stroke-linejoin="round"/><path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/><path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/><path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg><span>Flexarion</span></a>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu"><span class="burger-bar"></span></button>
+        <nav class="nav" id="menu-principal" aria-label="Navigation principale">
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/studio/">Le studio</a></li>
+            <li><a href="/below-zero/" aria-current="page">Below Zero</a></li>
+            <li><a href="/devlogs/">Devlogs</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <nav class="crumbs wrap" aria-label="Fil d’Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li aria-current="page">Below Zero</li>
+      </ol>
+    </nav>
+    <main id="contenu">
+      <div class="wrap">
+        <p class="kicker">Le jeu phare de Flexarion</p>
+        <h1>Below Zero : la ville d'en dessous vous attendait</h1>
+        <figure>
+          <img src="/assets/img/below-zero-key-art-1280.webp" srcset="/assets/img/below-zero-key-art-480.webp 480w, /assets/img/below-zero-key-art-960.webp 960w, /assets/img/below-zero-key-art-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Key art de Below Zero par Flexarion : Sacha, technicien à la lampe frontale, découvre la ville souterraine de 2306 dont les habitants l&#x27;observent" fetchpriority="high" decoding="async">
+          <figcaption>Key art de Below Zero (visuel généré par IA, retravail prévu).</figcaption>
+        </figure>
+        <div class="prose">
+          <p class="lead">Below Zero est le premier jeu de Flexarion : une aventure narrative de science-fiction où l'on explore deux versions d'Aix-en-Provence, séparées par cent cinquante ans et quelques dizaines de mètres de roche. Ici, il n'y a pas d'ennemis à abattre. Seulement une question : pourquoi le futur vous connaît-il déjà ?</p>
+        </div>
+        <div class="facts">
+          <dl>
+            <dt>Genre</dt>
+            <dd>Aventure narrative de science-fiction, énigmes</dd>
+            <dt>Studio</dt>
+            <dd>Flexarion (Aix-en-Provence)</dd>
+            <dt>Mode</dt>
+            <dd>Solo</dd>
+            <dt>Plateforme</dt>
+            <dd>PC (consoles à l'étude)</dd>
+            <dt>Statut</dt>
+            <dd>En développement, sortie non annoncée</dd>
+            <dt>Langue</dt>
+            <dd>Français</dd>
+          </dl>
+        </div>
+        <section class="prose" aria-labelledby="univers">
+          <h2 id="univers">L'univers : deux Aix, deux siècles</h2>
+          <p>Nous sommes en 2156. Sous le centre historique d'Aix-en-Provence, des travaux de maintenance sur le réseau des eaux thermales révèlent une cavité immense. À l'intérieur, une ville entière. Mêmes rues, mêmes places, mêmes fontaines que la surface. Mais tout y est différent : les bâtiments sont faits de verre minéral, les platanes sont devenus des colonnes végétales, et les calendriers affichent l'année 2306.</p>
+          <p>Ses habitants l'appellent <a href="#origine-sextia">Sextia</a>. Ils vivent là, paisiblement, sous un ciel artificiel bleu glacier. Et lorsque Sacha Morel, jeune technicien des réseaux souterrains, y pose le pied pour la première fois, ils le saluent par son prénom.</p>
+          <blockquote>« Te revoilà, Sacha. Tu as encore oublié la vanne, n'est-ce pas ? »</blockquote>
+          <p>Sacha n'a jamais vu ces gens. Pourtant, ils se souviennent de lui, de ses gestes, de ses erreurs. En faisant la navette entre les deux villes, il découvre qu'elles sont liées : ce qu'il fait à la surface en 2156 change ce qu'il trouve sous terre en 2306. Résoudre ce mystère, c'est comprendre la vérité sur cette étrange connexion, et sur lui-même.</p>
+        </section>
+        <section class="origin prose" id="origine-sextia" aria-labelledby="titre-sextia">
+          <h2 id="titre-sextia">D'où vient le nom « Sextia » ?</h2>
+          <p>Le nom de la ville souterraine n'a pas été choisi au hasard : il renvoie à la naissance même d'Aix-en-Provence.</p>
+          <ul>
+            <li><strong>122 av. J.-C.</strong> : le consul romain Caius Sextius Calvinus fonde un poste militaire près de sources d'eau chaude, après sa victoire sur les Salyens, peuple celto-ligure dont l'oppidum d'Entremont dominait la plaine.</li>
+            <li><strong>Aquae Sextiae</strong> : la ville prend le nom latin d'Aquae Sextiae, « les eaux de Sextius ». Le mot <em>Aquae</em> a donné, au fil des siècles, le nom actuel d'« Aix ».</li>
+            <li><strong>Les sources thermales</strong> : ces eaux chaudes coulent toujours sous la ville ; les thermes Sextius, établissement thermal moderne bâti près des vestiges romains, en portent encore le nom.</li>
+          </ul>
+          <p>Dans Below Zero, les habitants de 2306 ont repris la seconde moitié de ce nom antique. La cavité qui abrite leur ville est creusée autour de ces mêmes sources : là où Rome avait trouvé de l'eau chaude, le futur a bâti une ville entière. Appeler leur cité « Sextia », c'est revendiquer une filiation directe avec la fondation d'Aix… et suggérer que les deux villes partagent bien plus qu'une histoire.</p>
+        </section>
+        <section aria-labelledby="mecaniques">
+          <h2 id="mecaniques">Les mécaniques de jeu</h2>
+          <div class="grid">
+            <div class="card">
+              <h3>Exploration de deux époques</h3>
+              <p>Parcourez l'Aix de 2156 et <a href="#origine-sextia">Sextia</a> en 2306, deux villes bâties sur le même plan. Ce que vous apprenez à la surface vous aide à vous orienter sous terre.</p>
+            </div>
+            <div class="card">
+              <h3>Causalité temporelle</h3>
+              <p>Réparer, déplacer, donner, laisser faire : vos actions dans le présent transforment la ville du futur. Le Diapason de Sacha vibre près des objets qui « résonnent » entre les époques.</p>
+            </div>
+            <div class="card">
+              <h3>Mémoire des habitants</h3>
+              <p>Les habitants de 2306 se souviennent de choses que vous n'avez pas encore faites. Leurs souvenirs sont des indices… ou des pièges.</p>
+            </div>
+            <div class="card">
+              <h3>Carnet de causalité</h3>
+              <p>Notez les liens découverts entre les deux villes, testez vos hypothèses et remontez chaque conséquence jusqu'à sa cause.</p>
+            </div>
+          </div>
+          <div class="prose">
+            <p>Toutes les énigmes suivent une même boucle : <strong>observer</strong> le futur, <strong>supposer</strong> un lien, <strong>agir</strong> dans le présent, puis <strong>vérifier</strong> la conséquence. Aucune erreur ne bloque la partie : elle rend seulement le chemin plus long, plus étrange ou plus triste. Les actions les plus importantes, dites « pivots », mènent à plusieurs fins. Notre game designer détaille ce système dans le <a href="/devlogs/enigmes-causalite-temporelle/">devlog sur les énigmes de causalité temporelle</a>.</p>
+          </div>
+        </section>
+        <section aria-labelledby="visuels">
+          <h2 id="visuels">Visuels et concept arts</h2>
+          <p class="prose">Premières images de recherche de Below Zero. Ces visuels ont été générés avec l'aide d'une IA et seront retravaillés par l'équipe.</p>
+          <div class="grid">
+            <figure>
+              <img src="/assets/img/below-zero-capture-causalite-1280.webp" srcset="/assets/img/below-zero-capture-causalite-480.webp 480w, /assets/img/below-zero-capture-causalite-960.webp 960w, /assets/img/below-zero-capture-causalite-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Capture de travail de Below Zero : la même fontaine dans l&#x27;Aix de 2156 et dans Sextia en 2306, reliées par un fil lumineux" loading="lazy" decoding="async">
+              <figcaption>Une même fontaine, deux époques, un fil de causalité.</figcaption>
+            </figure>
+            <figure>
+              <img src="/assets/img/below-zero-concept-place-2306-1280.webp" srcset="/assets/img/below-zero-concept-place-2306-480.webp 480w, /assets/img/below-zero-concept-place-2306-960.webp 960w, /assets/img/below-zero-concept-place-2306-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Concept art de la grande place souterraine de Sextia en 2306, sous un ciel artificiel bleu glacier" loading="lazy" decoding="async">
+              <figcaption>La grande place de <a href="#origine-sextia">Sextia</a> et son ciel artificiel.</figcaption>
+            </figure>
+            <figure>
+              <img src="/assets/img/below-zero-habitants-2306-1280.webp" srcset="/assets/img/below-zero-habitants-2306-480.webp 480w, /assets/img/below-zero-habitants-2306-960.webp 960w, /assets/img/below-zero-habitants-2306-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Concept art de trois habitants de Sextia en 2306 qui reconnaissent le héros de Below Zero" loading="lazy" decoding="async">
+              <figcaption>Mémé Lune, Iléa et Aurèle, habitants de 2306.</figcaption>
+            </figure>
+            <figure>
+              <img src="/assets/img/flexarion-hero-deux-villes-aix-1280.webp" srcset="/assets/img/flexarion-hero-deux-villes-aix-480.webp 480w, /assets/img/flexarion-hero-deux-villes-aix-960.webp 960w, /assets/img/flexarion-hero-deux-villes-aix-1280.webp 1280w" sizes="(max-width: 40rem) 92vw, 24rem" width="1280" height="720" alt="Vue en coupe d&#x27;Aix-en-Provence et de sa ville jumelle souterraine de 2306 dans Below Zero" loading="lazy" decoding="async">
+              <figcaption>Aix en surface, <a href="#origine-sextia">Sextia</a> en dessous.</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="prose" aria-labelledby="coulisses">
+          <h2 id="coulisses">Dans les coulisses du développement</h2>
+          <ul>
+            <li><a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">Comment nous concevons deux villes jumelles à partir d'un seul plan</a></li>
+            <li><a href="/devlogs/enigmes-causalite-temporelle/">Comment une action dans le présent modifie le futur</a></li>
+            <li><a href="/devlogs/sound-design-ville-souterraine/">Comment sonne une ville creusée autour de sources chaudes</a></li>
+            <li><a href="/devlogs/character-design-habitants-futur/">Comment dessiner des personnages qui vous connaissent déjà</a></li>
+          </ul>
+        </section>
+        <section class="faq" aria-labelledby="faq">
+          <h2 id="faq">Below Zero en questions</h2>
+          <details>
+            <summary>Quelle est l'histoire de Below Zero ?</summary>
+            <p>En 2156, une deuxième ville est découverte sous Aix-en-Provence. Identique à celle de la surface, elle semble appartenir à l'année 2306. Le joueur incarne Sacha Morel, un jeune technicien que les habitants de cette ville du futur connaissent déjà, et doit comprendre le lien entre les deux villes.</p>
+          </details>
+          <details>
+            <summary>Below Zero est-il un jeu de combat ?</summary>
+            <p>Non. Below Zero est un jeu d'aventure narratif sans combat, fondé sur l'exploration de deux époques et des énigmes de causalité : chaque action dans le présent peut modifier le futur.</p>
+          </details>
+          <details>
+            <summary>Sur quelles plateformes sortira Below Zero ?</summary>
+            <p>Below Zero est développé en priorité pour PC. Les versions consoles sont à l'étude. Aucune date de sortie n'est annoncée.</p>
+          </details>
+          <details>
+            <summary>Below Zero a-t-il plusieurs fins ?</summary>
+            <p>Oui. Les actions dites « pivots » modifient durablement la ville de 2306 et orientent l'histoire vers plusieurs fins différentes.</p>
+          </details>
+          <details>
+            <summary>Qui développe Below Zero ?</summary>
+            <p>Below Zero est développé par Flexarion, un studio indépendant basé à Aix-en-Provence et fondé en 2022.</p>
+          </details>
+        </section>
+      </div>
+    </main>
+    <footer class="site-foot">
+      <div class="wrap">
+        <p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/favicon.svg" width="56" height="56" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
+        <p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence. Créateur de <a href="/below-zero/">Below Zero</a>.</p>
+        <nav aria-label="Plan du site">
+          <ul class="foot-links">
+            <li><a href="/studio/">Le studio</a></li>
+            <li><a href="/below-zero/">Below Zero</a></li>
+            <li><a href="/devlogs/">Devlogs</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+          </ul>
+        </nav>
+        <ul class="foot-links socials" aria-label="Flexarion sur les réseaux sociaux">
+          <li><a href="https://github.com/flexarion-officiel" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/flexarion-officiel/" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://flexarionofficiel.itch.io/" rel="me noopener" target="_blank">itch.io</a></li>
+          <li><a href="https://x.com/flexarion_off" rel="me noopener" target="_blank">X</a></li>
+          <li><a href="https://www.instagram.com/flexarion.off/" rel="me noopener" target="_blank">Instagram</a></li>
+        </ul>
+        <ul class="foot-links foot-ext">
+          <li><a href="https://github.com/flexarion-officiel" rel="noopener" target="_blank">Organisation GitHub Flexarion</a></li>
+          <li><a href="https://iut.univ-amu.fr/fr" rel="noopener" target="_blank">IUT d’Aix-Marseille (amU)</a></li>
+        </ul>
+        <p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA.</p>
+      </div>
+    </footer>
+    <a class="to-top" href="#haut" aria-label="Retour en haut de la page"><span aria-hidden="true">↑</span></a>
+    <script src="/assets/js/main.js" defer></script>
+  </body>
 </html>
