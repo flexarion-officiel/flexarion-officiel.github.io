@@ -1,37 +1,60 @@
-# Compte rendu de la v1.1.0 du site
+# Compte rendu de la première version
 
 ## Appréciation sur la forme
 
-## Commun à toutes les pages
-- Dans la mesure du possible, mettre les icônes des réseaux sociaux
-    - Renseigne toi sur une manière légale de le faire en fonction du site/réseau social
-    - Si tu as le droit d'enregistrer les icônes sur le site, fais le dans un nouveau répertoire pour que cela reste propre
+### Commun à toutes les pages
+- Lorsque le scroll n'est pas tout en haut de la page, proposer un bouton pour retourner tout en haut, de manière smooth
+- Remplacer l'email de contact par flexarion.officiel@gmail.com (en gardant l'obfuscation js)
+- Proposer une meilleure indentation du code HTML
+- J'ai remarqué que pas mal de CSS se trouve directement dans les page, si c'est possible, n'hésite pas à créer les fichiers CSS puis mettre la balise pour les utiliser (sauf si cela provoque un moins bon score SEO ou performances)
+- Mettre des liens vers les différents réseaux sociaux
 
-## Header
+### Header
+- (Mobile) : Ajouter un menu burger pour afficher les différentes sections du menu
 
-## Footer
-- enlever les liens (Le studio, Below Zero, Devlogs), mettre le lien Accueil au début
-- Remplacer le logo par celui du fichier /icon-512.png
-- Retire « Créateur de Below Zero. »
+### Footer
+- Aligner les textes au centre
+- Supprimer le lien « En savoir plus »
+- Ajouter le logo de flexarion
+- Ajouter les liens **externes** suivants :
+    - Organisation GitHub : https://github.com/flexarion-officiel
+    - amU IUT : https://iut.univ-amu.fr/fr
+- Meilleur responsive pour mobile (surtout pour le texte)
 
-## Page Le Studio
-Pour la séction de présentation de l'équipe nous voudrions qu'elle soit plus vivante. Pour cela crée des avatars dans le style de bitmoji correspondant au profile de l'utilisateur que tu as crée.
+### Page d'accueil
+- L'image est beaucoup trop grande et ne laisse pas apparaitre le titre, les boutons et autre
 
-## Page Below Zero
-- Changer l'image par une image de gameplay ou concept art (tu peux la générer), pour que le visiteur du site ce face une image mentale de "à quoi peut resembler le jeu quand on y joue"
+### Page studio
+- Supprimer la mention « Flexarion est un studio fictif... »
 
-## Page Contact & Presse
-- Faire en sorte que sur PC les liens vers les réseaux soient présentés sous forme de liste verticale
-- Remplacer le nom du réseau social par son logo, et séparer le logo du texte par •
+### Page Below Zero
+- Créer une section pour expliquer l'origine du nom Sextia, et faire un lien vers cette section dès que le mot Sextia est mentionné dans la page. Bien choisir l'emplacement de la section
 
-## Page des devlogs
-- Mettre les devlogs dans l'ordre du plus récent au plus ancien.
-- Quand on est sur une page de devlog, proposer deux nouveaux boutons :
-    - Devlog suivant : permet de visiter le devlog plus récent (pas présent si c'est déjà le dernier)
-    - Devlog précédent : permet de visiter le devlog plus ancien (pas présent si c'est déjà le premier)
+### Page Contact & Presse
+- Supprimer la mention « Cette adresse fait partie de la fiction... »
+- Supprimer la mention « fictif » pour le responsable communication
+- Supprimer la section de la charte graphique
+
+### Page Mentions légales
+- Supprimer cette page de l'indexation (donc du sitemap.xml et autres)
+
+### Code source 
+- Indentation du code : respecter une indentation propre et cohérente dans tous les fichiers.
+- Un seul fichier CSS pour tout le site : tous les styles de toutes les pages doivent être regroupés dans un unique fichier CSS global. 
 
 ## Appréciation globale
 
-## Divers
+Mentionner que le projet est fictif ne te pénalise pas en soi : Google ne baisse pas le classement d'une page parce qu'elle contient « fictif ». Ce qui compte, c'est l'endroit où tu le dis. Garde-le dans les mentions légales et en pied de page, et sors-le du titre, de la meta description et du début du balisage Organization, là où ces mots prennent la place de tes mots-clés. En ce moment, la description de ton balisage commence par « studio indépendant (fictif) ». Mets la mention à la fin de la phrase, ou retire-la du JSON-LD (les données structurées que lisent les moteurs) et garde-la dans le texte visible du pied de page.
 
-Quand tu auras d'autres commandes bash à me demander, je veux que tu m'expliques ce qu'elles font pour que ce soit plus facile pour moi d'accepter ou non.
+Ton balisage déclare un LocalBusiness avec une adresse, des coordonnées GPS et 8 salariés, alors que le studio n'existe pas. Google considère des données structurées trompeuses comme du spam et peut les ignorer, voire sanctionner le site. Passe plutôt en simple Organization, sans adresse ni géolocalisation. C'est là que les concurrents qui ne disent rien prennent un vrai risque, et pas toi.
+
+La page d'accueil centrée sur le nom. Ton titre commence déjà par « Flexarion », c'est parfait. Ajoute alternateName (« Flexarion Studio », « Studio Flexarion ») dans le balisage Organization, et un logo déclaré dans logo.
+De la fraîcheur.
+
+## Informations additionnelles
+- Réseaux :
+    - Organisation GitHub : https://github.com/flexarion-officiel
+    - LinkedIn : https://www.linkedin.com/in/flexarion-officiel/
+    - Itch.io : https://flexarionofficiel.itch.io/
+    - X : https://x.com/flexarion_off
+    - Instagram : https://www.instagram.com/flexarion.off/
