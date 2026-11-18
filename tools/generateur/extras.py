@@ -15,7 +15,7 @@ def run(pages):
     <title>{escape(a["h1"])}</title>
     <link>{BASE}{url(a)}</link>
     <guid isPermaLink="true">{BASE}{url(a)}</guid>
-    <pubDate>Tue, 17 Nov 2026 09:00:00 +0100</pubDate>
+    <pubDate>{a["rss"]}</pubDate>
     <description>{escape(a["desc"])}</description>
   </item>
 ''' for a in ARTICLES)

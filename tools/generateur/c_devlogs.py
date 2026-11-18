@@ -8,33 +8,36 @@ AUTHORS = {
 }
 
 ARTICLES = [
- dict(slug="concevoir-deux-villes-aix-2156-2306", num=1, img="devlog-deux-villes", author="margaux",
+ dict(slug="concevoir-deux-villes-aix-2156-2306", num=1, date="2026-11-17T09:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 09:00:00 +0100", img="devlog-deux-villes", author="margaux",
   title="Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion",
   h1="Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306",
   short="Concevoir deux villes jumelles",
   desc="Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.",
   alt="Deux plans superposés de la même ville, l'un à l'encre sépia, l'autre en hologramme cyan, sur la table de travail de Flexarion"),
- dict(slug="enigmes-causalite-temporelle", num=2, img="devlog-causalite", author="lucas",
+ dict(slug="enigmes-causalite-temporelle", num=2, date="2026-11-17T10:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 10:00:00 +0100", img="devlog-causalite", author="lucas",
   title="Devlog #2 : les énigmes de causalité de Below Zero | Flexarion",
   h1="Devlog #2 : le présent modifie le futur, nos énigmes de causalité",
   short="Les énigmes de causalité temporelle",
   desc="Le game designer de Flexarion explique comment une action dans l'Aix de 2156 transforme la ville de 2306 dans Below Zero, et comment on évite le chaos.",
   alt="Graphe lumineux reliant une clé, une graine, une lanterne et une porte entre deux lignes temporelles"),
- dict(slug="sound-design-ville-souterraine", num=3, img="devlog-son", author="elise",
+ dict(slug="sound-design-ville-souterraine", num=3, date="2026-11-17T11:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 11:00:00 +0100", img="devlog-son", author="elise",
   title="Devlog #3 : le sound design de la ville souterraine | Flexarion",
   h1="Devlog #3 : écouter sous la ville, le sound design de Sextia",
   short="Le sound design de la ville souterraine",
   desc="Réverbérations, eau thermale et cigales mutées : la sound designer de Flexarion raconte comment elle fait sonner la ville souterraine de Below Zero.",
   alt="Micro et casque posés dans un tunnel de pierre où des ondes sonores cyan se propagent vers une ville lointaine"),
- dict(slug="character-design-habitants-futur", num=4, img="devlog-personnages", author="yanis",
+ dict(slug="character-design-habitants-futur", num=4, date="2026-11-17T12:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 12:00:00 +0100", img="devlog-personnages", author="yanis",
   title="Devlog #4 : le character design des habitants de 2306 | Flexarion",
   h1="Devlog #4 : ils vous connaissent déjà, dessiner les habitants de 2306",
   short="Le character design des habitants de 2306",
   desc="Du croquis au personnage final : le character designer de Flexarion dévoile comment il dessine des habitants du futur qui reconnaissent le joueur.",
   alt="Carnet de croquis ouvert montrant l'évolution d'un visage futuriste jusqu'à un portrait aux marques cyan"),
 ]
-DATE = "2026-11-17"
-DATE_FR = "17 novembre 2026"
+# Les 4 devlogs ont été publiés le 17/11/2026 : l'heure de publication (réelle, échelonnée)
+# départage l'ordre. Affichage : du plus récent au plus ancien
+ARTICLES.sort(key=lambda a: a["date"], reverse=True)
+DATE = ARTICLES[0]["date"]  # date du devlog le plus récent
+DATE_FR = ARTICLES[0]["date_fr"]
 MOD = "2026-11-18"
 MOD_FR = "18 novembre 2026"
 
@@ -236,12 +239,22 @@ PAGES = []
 for a in ARTICLES:
     n, role = AUTHORS[a["author"]]
     others = [b for b in ARTICLES if b is not a]
+    chrono = sorted(ARTICLES, key=lambda b: b["date"])
+    i = chrono.index(a)
+    newer = chrono[i + 1] if i + 1 < len(chrono) else None
+    older = chrono[i - 1] if i > 0 else None
+    pn = ""
+    if older:
+        pn += f'<a class="pn prev" href="{url(older)}" rel="prev"><span class="pn-dir"><span aria-hidden="true">← </span>Devlog précédent</span><span class="pn-title">{older["short"]}</span></a>'
+    if newer:
+        pn += f'<a class="pn next" href="{url(newer)}" rel="next"><span class="pn-dir">Devlog suivant<span aria-hidden="true"> →</span></span><span class="pn-title">{newer["short"]}</span></a>'
+    pn = f'<nav class="pager" aria-label="Navigation entre les devlogs">{pn}</nav>'
     rel = "".join(f'<li><a href="{url(b)}">{b["short"]}</a></li>' for b in others)
     body = f"""<article class="wrap">
 <header>
 <p class="kicker">Devlog n°{a['num']} · Below Zero</p>
 <h1>{a['h1']}</h1>
-<p class="meta">Par {n}, {role.lower()} chez Flexarion · Publié le <time datetime="{DATE}">{DATE_FR}</time> · Mis à jour le <time datetime="{MOD}">{MOD_FR}</time></p>
+<p class="meta">Par {n}, {role.lower()} chez Flexarion · Publié le <time datetime="{a['date']}">{a['date_fr']}</time> · Mis à jour le <time datetime="{MOD}">{MOD_FR}</time></p>
 </header>
 <figure>
 {pic(a['img'], a['alt'], lcp=True)}
@@ -253,17 +266,18 @@ for a in ARTICLES:
 <ul>{rel}</ul>
 <p><a class="btn ghost" href="/devlogs/">Tous les devlogs</a> <a class="btn" href="/below-zero/">Découvrir Below Zero</a></p>
 </div>
+{pn}
 </article>"""
     words = len(__import__("re").sub("<[^>]+>", " ", BODIES[a["num"]]).split())
     a["words"] = words
     ld = [{
       "@type": "BlogPosting", "@id": BASE + url(a) + "#article", "headline": a["h1"], "description": a["desc"],
       "image": {"@type": "ImageObject", "url": f"{BASE}/assets/img/{a['img']}-1280.webp", "width": 1280, "height": 720},
-      "datePublished": DATE, "dateModified": LASTMOD, "inLanguage": "fr-FR", "wordCount": words,
+      "datePublished": a["date"], "dateModified": LASTMOD, "inLanguage": "fr-FR", "wordCount": words,
       "author": {"@type": "Person", "name": n, "jobTitle": role, "worksFor": {"@id": ORG}},
       "publisher": {"@id": ORG}, "mainEntityOfPage": {"@id": BASE + url(a) + "#webpage"},
       "isPartOf": {"@id": BASE + "/devlogs/#blog"}, "about": {"@id": BASE + "/below-zero/#videogame"},
       "articleSection": "Devlog"}]
     PAGES.append(dict(path=url(a), title=a["title"], desc=a["desc"], body=body, jsonld=ld, ogtype="article",
-        date=DATE, author=n, image=f"/assets/img/{a['img']}-1280.webp", imgalt=a["alt"],
+        date=a["date"], author=n, image=f"/assets/img/{a['img']}-1280.webp", imgalt=a["alt"],
         crumbs=[("/devlogs/", "Devlogs"), (url(a), a["short"])]))
