@@ -1,351 +1,297 @@
 <!doctype html>
 <html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion</title>
-<meta name="description" content="Comment l&#x27;équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/">
-<meta name="author" content="Flexarion">
-<meta name="theme-color" content="#071421">
-<meta name="geo.region" content="FR-13">
-<meta name="geo.placename" content="Aix-en-Provence">
-<meta name="geo.position" content="43.5297;5.4474">
-<meta name="ICBM" content="43.5297, 5.4474">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
-<style>:root{--noir:#071421;--nuit:#123A58;--cyan:#19B9D4;--glacier:#B7DDE8;--blanc:#E8EDF0;--max:72rem;--txt:42rem}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--noir);color:var(--blanc);font:1.0625rem/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-img{max-width:100%;height:auto;display:block}
-a{color:var(--cyan);text-underline-offset:.18em}
-a:hover{color:var(--glacier)}
-:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
-.skip{position:absolute;left:-999px;top:0;background:var(--cyan);color:var(--noir);padding:.6rem 1rem;font-weight:700;z-index:10}
-.skip:focus{left:.5rem;top:.5rem}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
-h1,h2,h3{line-height:1.2;letter-spacing:.01em;color:#fff}
-h1{font-size:clamp(2rem,5vw,3.2rem);margin:.4em 0 .4em}
-h2{font-size:clamp(1.45rem,3vw,2rem);margin:2em 0 .6em}
-h3{font-size:1.2rem;margin:1.6em 0 .4em;color:var(--glacier)}
-p,ul,ol{margin:0 0 1.1em}
-.site-head{border-bottom:1px solid var(--nuit);background:rgba(7,20,33,.96)}
-.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-top:.75rem;padding-bottom:.75rem}
-.brand{display:flex;align-items:center;gap:.6rem;color:var(--blanc);text-decoration:none;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
-.brand svg{width:36px;height:36px}
-.nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.25rem 1.1rem;margin:0;padding:0}
-.nav a{color:var(--blanc);text-decoration:none;padding:.35rem 0;border-bottom:2px solid transparent}
-.nav a:hover,.nav a[aria-current=page]{border-color:var(--cyan);color:#fff}
-.crumbs{font-size:.9rem;color:var(--glacier);margin-top:1.25rem}
-.crumbs ol{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.3rem}
-.crumbs li+li::before{content:"›";margin-right:.3rem;color:var(--cyan)}
-.crumbs a{color:var(--glacier)}
-.hero{position:relative;background:var(--noir)}
-.hero img{width:100%;aspect-ratio:16/9;object-fit:cover;max-height:78vh}
-.hero-txt{max-width:var(--max);margin:0 auto;padding:1.5rem 1.25rem 0}
-.kicker{display:inline-block;color:var(--cyan);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem}
-.lead{font-size:1.2rem;color:var(--glacier);max-width:var(--txt)}
-.prose{max-width:var(--txt)}
-.prose li{margin-bottom:.4em}
-.btn{display:inline-block;background:var(--cyan);color:var(--noir);font-weight:700;text-decoration:none;padding:.75rem 1.3rem;border-radius:.4rem;margin:.3rem .6rem .3rem 0}
-.btn:hover{background:var(--glacier);color:var(--noir)}
-.btn.ghost{background:transparent;color:var(--cyan);border:2px solid var(--cyan)}
-.btn.ghost:hover{color:var(--noir);background:var(--glacier);border-color:var(--glacier)}
-.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));margin:1.5rem 0}
-.card{background:var(--nuit);border-radius:.6rem;padding:1.25rem 1.25rem .4rem;border:1px solid rgba(183,221,232,.15)}
-.card h3{margin-top:.2em}
-.card img{border-radius:.4rem;margin-bottom:.9rem}
-.card a.more{font-weight:700}
-.facts{background:var(--nuit);border-left:4px solid var(--cyan);padding:1rem 1.25rem;border-radius:0 .5rem .5rem 0;max-width:var(--txt)}
-.facts dl{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1rem;margin:0}
-.facts dt{font-weight:700;color:var(--glacier)}.facts dd{margin:0}
-figure{margin:1.75rem 0}
-figcaption{font-size:.9rem;color:var(--glacier);margin-top:.5rem}
-figure img{border-radius:.5rem}
-blockquote{margin:1.5rem 0;padding:.5rem 1.25rem;border-left:4px solid var(--cyan);color:var(--glacier);font-style:italic}
-.faq details{background:var(--nuit);border-radius:.5rem;padding:.8rem 1.1rem;margin-bottom:.7rem;max-width:var(--txt)}
-.faq summary{cursor:pointer;font-weight:700;color:#fff}
-.faq details p{margin:.7rem 0 .3rem}
-.meta{color:var(--glacier);font-size:.92rem}
-.note{font-size:.9rem;color:var(--glacier);border:1px dashed rgba(183,221,232,.4);padding:.8rem 1rem;border-radius:.5rem;max-width:var(--txt)}
-.team{list-style:none;padding:0}
-.toc{background:var(--nuit);padding:1rem 1.25rem;border-radius:.5rem;max-width:var(--txt)}
-.toc ol{margin:0}
-.site-foot{margin-top:4rem;border-top:1px solid var(--nuit);padding:2rem 0;font-size:.92rem;color:var(--glacier)}
-.site-foot ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}
-.site-foot a{color:var(--glacier)}
-main{padding-bottom:1rem}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-@media (max-width:40rem){body{font-size:1rem}.brand span{letter-spacing:.12em}}</style>
-<meta property="og:type" content="article">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Flexarion">
-<meta property="og:title" content="Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion">
-<meta property="og:description" content="Comment l&#x27;équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.">
-<meta property="og:url" content="https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/">
-<meta property="og:image" content="https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp">
-<meta property="og:image:alt" content="Deux plans superposés de la même ville, l&#x27;un à l&#x27;encre sépia, l&#x27;autre en hologramme cyan, sur la table de travail de Flexarion">
-<meta property="article:published_time" content="2026-11-17">
-<meta property="article:modified_time" content="2026-11-17">
-<meta property="article:author" content="Margaux Delorme">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion">
-<meta name="twitter:description" content="Comment l&#x27;équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.">
-<meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp">
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@graph": [
-  {
-   "@type": [
-    "Organization",
-    "LocalBusiness"
-   ],
-   "@id": "https://flexarion-officiel.github.io/#organization",
-   "name": "Flexarion",
-   "alternateName": "Studio Flexarion",
-   "description": "Flexarion est un studio indépendant (fictif) de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence, fondé en 2022, auteur du jeu Below Zero.",
-   "url": "https://flexarion-officiel.github.io/",
-   "logo": {
-    "@type": "ImageObject",
-    "url": "https://flexarion-officiel.github.io/icon-512.png",
-    "width": 512,
-    "height": 512
-   },
-   "image": "https://flexarion-officiel.github.io/assets/img/flexarion-og-1200x630.jpg",
-   "foundingDate": "2022",
-   "foundingLocation": {
-    "@type": "Place",
-    "name": "Aix-en-Provence"
-   },
-   "numberOfEmployees": {
-    "@type": "QuantitativeValue",
-    "value": 8
-   },
-   "knowsAbout": [
-    "jeu vidéo narratif",
-    "science-fiction",
-    "game design",
-    "énigmes temporelles",
-    "sound design"
-   ],
-   "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Aix-en-Provence",
-    "postalCode": "13100",
-    "addressRegion": "Provence-Alpes-Côte d'Azur",
-    "addressCountry": "FR"
-   },
-   "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 43.5297,
-    "longitude": 5.4474
-   },
-   "areaServed": "FR",
-   "email": "contact@flexarion-officiel.github.io",
-   "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "presse",
-    "email": "contact@flexarion-officiel.github.io",
-    "availableLanguage": "fr",
-    "areaServed": "FR"
-   },
-   "sameAs": [
-    "https://github.com/flexarion-officiel"
-   ]
-  },
-  {
-   "@type": "WebSite",
-   "@id": "https://flexarion-officiel.github.io/#website",
-   "url": "https://flexarion-officiel.github.io/",
-   "name": "Flexarion",
-   "inLanguage": "fr-FR",
-   "publisher": {
-    "@id": "https://flexarion-officiel.github.io/#organization"
-   }
-  },
-  {
-   "@type": "BreadcrumbList",
-   "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#breadcrumb",
-   "itemListElement": [
-    {
-     "@type": "ListItem",
-     "position": 1,
-     "name": "Accueil",
-     "item": "https://flexarion-officiel.github.io/"
-    },
-    {
-     "@type": "ListItem",
-     "position": 2,
-     "name": "Devlogs",
-     "item": "https://flexarion-officiel.github.io/devlogs/"
-    },
-    {
-     "@type": "ListItem",
-     "position": 3,
-     "name": "Concevoir deux villes jumelles",
-     "item": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/"
-    }
-   ]
-  },
-  {
-   "@type": "WebPage",
-   "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#webpage",
-   "url": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/",
-   "name": "Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion",
-   "description": "Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.",
-   "isPartOf": {
-    "@id": "https://flexarion-officiel.github.io/#website"
-   },
-   "about": {
-    "@id": "https://flexarion-officiel.github.io/#organization"
-   },
-   "inLanguage": "fr-FR",
-   "dateModified": "2026-11-17",
-   "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp"
-   },
-   "breadcrumb": {
-    "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#breadcrumb"
-   }
-  },
-  {
-   "@type": "BlogPosting",
-   "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#article",
-   "headline": "Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306",
-   "description": "Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.",
-   "image": {
-    "@type": "ImageObject",
-    "url": "https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp",
-    "width": 1280,
-    "height": 720
-   },
-   "datePublished": "2026-11-17",
-   "dateModified": "2026-11-17",
-   "inLanguage": "fr-FR",
-   "wordCount": 1289,
-   "author": {
-    "@type": "Person",
-    "name": "Margaux Delorme",
-    "jobTitle": "Artiste 3D environnements",
-    "worksFor": {
-     "@id": "https://flexarion-officiel.github.io/#organization"
-    }
-   },
-   "publisher": {
-    "@id": "https://flexarion-officiel.github.io/#organization"
-   },
-   "mainEntityOfPage": {
-    "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#webpage"
-   },
-   "isPartOf": {
-    "@id": "https://flexarion-officiel.github.io/devlogs/#blog"
-   },
-   "about": {
-    "@id": "https://flexarion-officiel.github.io/below-zero/#videogame"
-   },
-   "articleSection": "Devlog"
-  }
- ]
-}
-</script>
-</head>
-<body>
-<a class="skip" href="#contenu">Aller au contenu</a>
-<header class="site-head">
-<div class="wrap">
-<a class="brand" href="/" aria-label="Flexarion, retour à l’accueil"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="12" fill="#071421"/><path d="M9 29 32 7l23 22" fill="none" stroke="#19B9D4" stroke-width="3.5" stroke-linejoin="round"/><path d="M9 35l23 22 23-22" fill="none" stroke="#B7DDE8" stroke-width="3.5" stroke-linejoin="round"/><path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/><path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/><path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg><span>Flexarion</span></a>
-<nav class="nav" aria-label="Navigation principale"><ul><li><a href="/">Accueil</a></li><li><a href="/studio/">Le studio</a></li><li><a href="/below-zero/">Below Zero</a></li><li><a href="/devlogs/" aria-current="page">Devlogs</a></li><li><a href="/contact/">Contact &amp; presse</a></li></ul></nav>
-</div>
-</header>
-<nav class="crumbs wrap" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/devlogs/">Devlogs</a></li><li aria-current="page">Concevoir deux villes jumelles</li></ol></nav>
-<main id="contenu">
-<article class="wrap">
-<header>
-<p class="kicker">Devlog n°1 · Below Zero</p>
-<h1>Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306</h1>
-<p class="meta">Par Margaux Delorme, artiste 3d environnements chez Flexarion · Publié le <time datetime="2026-11-17">17 novembre 2026</time></p>
-</header>
-<figure>
-<img src="/assets/img/devlog-deux-villes-1280.webp" srcset="/assets/img/devlog-deux-villes-480.webp 480w, /assets/img/devlog-deux-villes-960.webp 960w, /assets/img/devlog-deux-villes-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Deux plans superposés de la même ville, l&#x27;un à l&#x27;encre sépia, l&#x27;autre en hologramme cyan, sur la table de travail de Flexarion" fetchpriority="high" decoding="async">
-</figure>
-<div class="prose">
-
-<p class="lead">Chez Flexarion, nous avons une contrainte de départ un peu folle : construire deux fois la même ville. Une fois en 2156, à la surface d'Aix-en-Provence. Une seconde fois en 2306, à plusieurs dizaines de mètres sous nos pieds. Dans <a href="/below-zero/">Below Zero</a>, ces deux villes doivent se ressembler au point de troubler le joueur, tout en restant immédiatement distinguables. Voici comment nous nous y prenons.</p>
-
-<nav class="toc" aria-label="Sommaire de l'article"><strong>Au sommaire</strong><ol>
-<li><a href="#un-seul-plan">Un seul plan pour deux villes</a></li>
-<li><a href="#aix-2156">Aix 2156 : une ville familière, mais fatiguée</a></li>
-<li><a href="#sextia-2306">Sextia 2306 : la même ville, deux siècles plus tard</a></li>
-<li><a href="#regles">Nos cinq règles de symétrie</a></li>
-<li><a href="#lisibilite">Le piège de la lisibilité</a></li>
-<li><a href="#suite">Et maintenant ?</a></li>
-</ol></nav>
-
-<h2 id="un-seul-plan">Un seul plan pour deux villes</h2>
-<p>La première décision a été la plus structurante : les deux villes partagent un seul et même plan. Nous ne dessinons pas une Aix-en-Provence puis une copie futuriste ; nous dessinons un squelette commun, une sorte de « carte maîtresse », à partir de laquelle chaque époque est habillée. Ce squelette contient les rues, les places, les fontaines, les volumes des bâtiments et, surtout, les points d'ancrage : les endroits précis où le joueur pourra plus tard constater qu'une action dans le présent a modifié le futur.</p>
-<p>Concrètement, dans notre moteur, chaque bâtiment existe sous la forme d'un « gabarit » neutre. Un gabarit, c'est un volume, une emprise au sol, des ouvertures et une hauteur. Sur ce gabarit, nous posons deux habillages : l'habillage 2156, en pierre de Bibémus, volets écaillés et câbles apparents, puis l'habillage 2306, en verre minéral, structures porteuses lumineuses et végétation contrôlée. Si un gabarit change, les deux villes changent en même temps. C'est la garantie technique que la ressemblance ne se dégradera pas au fil des mois de production.</p>
-<p>Cette méthode a un coût. Elle nous interdit certaines libertés : impossible d'ajouter une tour spectaculaire dans Sextia si elle n'a pas d'équivalent à la surface. Mais c'est précisément cette contrainte qui rend le jeu dérangeant. Quand le joueur reconnaît la forme d'une place qu'il vient de traverser, avec deux siècles d'écart, quelque chose se fige dans son esprit. C'est l'émotion que nous cherchons.</p>
-
-<h2 id="aix-2156">Aix 2156 : une ville familière, mais fatiguée</h2>
-<p>Pour la ville de surface, nous sommes partis de ce que nous voyons tous les jours depuis nos bureaux aixois : les façades ocre, les platanes du cours Mirabeau, les fontaines moussues, la silhouette de la cathédrale Saint-Sauveur, la Sainte-Victoire à l'horizon. Nous ne voulions pas d'une reconstitution touristique. L'Aix de 2156 est une ville qui a traversé les canicules et les restrictions d'eau du XXIIe siècle. Les platanes sont soutenus par des tuteurs métalliques, les fontaines sont souvent à sec, et les réseaux techniques ont été ajoutés en surface, faute de pouvoir creuser davantage.</p>
-<p>Ce dernier détail n'est pas anodin. Sacha Morel, le personnage que l'on incarne, est technicien de maintenance des réseaux souterrains. Son métier justifie qu'il connaisse chaque regard d'égout, chaque canalisation, chaque vieille galerie. Le level design de la surface est donc pensé « à hauteur de technicien » : on lit la ville par ses tuyaux, ses armoires électriques et ses plaques de fonte autant que par ses monuments.</p>
-<p>Nous avons aussi choisi une lumière précise : une fin de journée d'été, chaude, légèrement voilée par la poussière. Cette palette chaude est importante, car elle s'oppose frontalement à celle de la ville souterraine.</p>
-
-<h2 id="sextia-2306">Sextia 2306 : la même ville, deux siècles plus tard</h2>
-<p>La ville souterraine porte un nom que les habitants emploient sans l'expliquer : Sextia, en écho à Aquae Sextiae, le nom antique d'Aix. Elle occupe une cavité immense, creusée autour des sources thermales qui ont fait la réputation de la ville depuis l'Antiquité. Le plafond de la cavité imite un ciel, grâce à des panneaux de lumière bleu glacier, et les bâtiments reprennent exactement les gabarits de la surface, mais avec des matériaux qui n'existent pas encore en 2156.</p>
-<p>Notre règle était simple à énoncer et difficile à tenir : rien dans Sextia ne doit être gratuitement futuriste. Chaque élément doit pouvoir s'expliquer comme l'évolution logique de son équivalent de surface. La fontaine de la Rotonde n'est plus en pierre, mais elle est toujours une fontaine, au même endroit, avec le même nombre de vasques. Les platanes sont devenus des colonnes végétales qui filtrent l'air, mais ils sont alignés exactement comme sur le cours. Le joueur doit pouvoir se dire : « je connais cet endroit », avant de se demander : « mais comment est-ce possible ? »</p>
-<p>La palette, elle, bascule vers le froid : bleu nuit, cyan électrique, reflets glacier. Ce n'est pas qu'une question d'esthétique. La température des couleurs est notre premier outil pour que le joueur sache en une fraction de seconde dans quelle époque il se trouve, même sur une capture d'écran.</p>
-
-<figure>
-<img src="/assets/img/below-zero-concept-place-2306-1280.webp" srcset="/assets/img/below-zero-concept-place-2306-480.webp 480w, /assets/img/below-zero-concept-place-2306-960.webp 960w, /assets/img/below-zero-concept-place-2306-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Concept art de Flexarion : grande place souterraine de Sextia en 2306, sous un ciel artificiel de panneaux lumineux" loading="lazy" decoding="async">
-<figcaption>Concept art de la grande place de Sextia. Les terrasses reprennent les gabarits des immeubles de surface (visuel généré par IA, retravail prévu).</figcaption>
-</figure>
-
-<h2 id="regles">Nos cinq règles de symétrie</h2>
-<p>Au bout de quelques semaines de prototypage, nous avons formalisé cinq règles, affichées au mur du studio. Elles guident toutes les décisions d'environnement.</p>
-<ol>
-<li><strong>Même squelette, deux peaux.</strong> Aucune rue, aucun volume ne peut exister dans une seule époque, sauf exception scénarisée et validée par la direction créative.</li>
-<li><strong>La chaleur en haut, le froid en bas.</strong> Les teintes chaudes appartiennent à 2156, les teintes froides à 2306. Les rares exceptions sont des indices.</li>
-<li><strong>Chaque monument a une descendance.</strong> Quand un lieu de surface est important pour l'histoire, nous écrivons en une phrase ce qu'il est devenu en 2306 et pourquoi.</li>
-<li><strong>Les ancrages se voient de loin.</strong> Un point d'ancrage causal doit être visible depuis au moins deux rues dans chaque ville, pour que le joueur puisse le repérer avant de s'en approcher.</li>
-<li><strong>Le joueur ne doit jamais se perdre deux fois.</strong> S'il apprend à s'orienter à la surface, ce savoir doit lui servir sous terre. La symétrie est une aide à la navigation, pas seulement un effet de style.</li>
-</ol>
-
-<h2 id="lisibilite">Le piège de la lisibilité</h2>
-<p>Nos premiers tests ont révélé un problème que nous n'avions pas anticipé. À force de rendre les deux villes semblables, certains testeurs ne savaient plus s'ils étaient à la surface ou dans Sextia, surtout dans les ruelles étroites où le ciel est peu visible. Le trouble était là, mais il devenait de la confusion, et la confusion n'est pas une émotion intéressante.</p>
-<p>Nous avons corrigé cela avec trois signaux redondants : la température de couleur déjà évoquée, une signature sonore propre à chaque époque (notre sound designer en parle dans le <a href="/devlogs/sound-design-ville-souterraine/">devlog consacré au son de la ville souterraine</a>) et un petit détail d'interface, la date affichée sur l'outil de Sacha. Un joueur attentif n'a besoin que d'un seul de ces signaux ; un joueur distrait en a toujours au moins un sous les yeux.</p>
-<p>Ce travail sur la lisibilité nous a aussi appris à doser le mystère. Le jeu doit poser des questions, mais jamais sur des choses que le joueur devrait savoir pour avancer. On peut s'interroger sur l'origine de Sextia ; on ne doit pas s'interroger sur l'endroit où l'on se trouve.</p>
-
-<h2 id="suite">Et maintenant ?</h2>
-<p>Le squelette commun couvre aujourd'hui le centre historique, du cours Mirabeau au quartier de la cathédrale. La prochaine étape concerne les galeries qui relient les deux villes : un espace intermédiaire où les époques se mélangent et où nos règles de symétrie seront volontairement bousculées. C'est aussi là que se cachent les énigmes les plus retorses, dont le principe est expliqué dans le <a href="/devlogs/enigmes-causalite-temporelle/">devlog sur nos énigmes de causalité temporelle</a>.</p>
-<p>Si vous découvrez Flexarion avec cet article, la page <a href="/below-zero/">consacrée à Below Zero</a> présente l'univers et les mécaniques du jeu, et la page <a href="/studio/">Le studio</a> vous dit qui se cache derrière ces deux villes.</p>
-
-<aside class="note" aria-label="Précision">Flexarion et Below Zero sont des créations fictives réalisées dans le cadre d'un projet pédagogique (BUT Informatique, IUT d'Aix-Marseille). Ce devlog a été rédigé avec l'assistance d'une IA. Détails dans les <a href="/mentions-legales/">mentions légales</a>.</aside>
-<h2>Les autres devlogs de Flexarion</h2>
-<ul><li><a href="/devlogs/enigmes-causalite-temporelle/">Les énigmes de causalité temporelle</a></li><li><a href="/devlogs/sound-design-ville-souterraine/">Le sound design de la ville souterraine</a></li><li><a href="/devlogs/character-design-habitants-futur/">Le character design des habitants de 2306</a></li></ul>
-<p><a class="btn ghost" href="/devlogs/">Tous les devlogs</a> <a class="btn" href="/below-zero/">Découvrir Below Zero</a></p>
-</div>
-</article>
-</main>
-<footer class="site-foot">
-<div class="wrap">
-<p><strong>Flexarion</strong> — studio indépendant de jeux vidéo de science-fiction, Aix-en-Provence (Bouches-du-Rhône, Provence-Alpes-Côte d’Azur, France). Créateur de <a href="/below-zero/">Below Zero</a>.</p>
-<ul>
-<li><a href="/studio/">Le studio</a></li>
-<li><a href="/below-zero/">Below Zero</a></li>
-<li><a href="/devlogs/">Devlogs</a></li>
-<li><a href="/contact/">Contact &amp; presse</a></li>
-<li><a href="/mentions-legales/">Mentions légales</a></li>
-</ul>
-<p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA. <a href="/mentions-legales/">En savoir plus</a>.</p>
-</div>
-</footer>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion</title>
+    <meta name="description" content="Comment l&#x27;équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/">
+    <meta name="author" content="Flexarion">
+    <meta name="theme-color" content="#071421">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Flexarion">
+    <meta property="og:title" content="Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion">
+    <meta property="og:description" content="Comment l&#x27;équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.">
+    <meta property="og:url" content="https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/">
+    <meta property="og:image" content="https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp">
+    <meta property="og:image:alt" content="Deux plans superposés de la même ville, l&#x27;un à l&#x27;encre sépia, l&#x27;autre en hologramme cyan, sur la table de travail de Flexarion">
+    <meta property="article:published_time" content="2026-11-17">
+    <meta property="article:modified_time" content="2026-11-18">
+    <meta property="article:author" content="Margaux Delorme">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion">
+    <meta name="twitter:description" content="Comment l&#x27;équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.">
+    <meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://flexarion-officiel.github.io/#organization",
+            "name": "Flexarion",
+            "alternateName": [
+              "Flexarion Studio",
+              "Studio Flexarion"
+            ],
+            "description": "Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs, fondé en 2022 à Aix-en-Provence et créateur du jeu Below Zero.",
+            "url": "https://flexarion-officiel.github.io/",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://flexarion-officiel.github.io/#logo",
+              "url": "https://flexarion-officiel.github.io/icon-512.png",
+              "contentUrl": "https://flexarion-officiel.github.io/icon-512.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Logo Flexarion"
+            },
+            "image": {
+              "@id": "https://flexarion-officiel.github.io/#logo"
+            },
+            "foundingDate": "2022",
+            "knowsAbout": [
+              "jeu vidéo narratif",
+              "science-fiction",
+              "game design",
+              "énigmes temporelles",
+              "sound design"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "presse",
+              "url": "https://flexarion-officiel.github.io/contact/",
+              "availableLanguage": "fr"
+            },
+            "sameAs": [
+              "https://github.com/flexarion-officiel",
+              "https://www.linkedin.com/in/flexarion-officiel/",
+              "https://flexarionofficiel.itch.io/",
+              "https://x.com/flexarion_off",
+              "https://www.instagram.com/flexarion.off/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://flexarion-officiel.github.io/#website",
+            "url": "https://flexarion-officiel.github.io/",
+            "name": "Flexarion",
+            "alternateName": "Studio Flexarion",
+            "inLanguage": "fr-FR",
+            "publisher": {
+              "@id": "https://flexarion-officiel.github.io/#organization"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Accueil",
+                "item": "https://flexarion-officiel.github.io/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Devlogs",
+                "item": "https://flexarion-officiel.github.io/devlogs/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Concevoir deux villes jumelles",
+                "item": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/"
+              }
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#webpage",
+            "url": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/",
+            "name": "Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion",
+            "description": "Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.",
+            "isPartOf": {
+              "@id": "https://flexarion-officiel.github.io/#website"
+            },
+            "about": {
+              "@id": "https://flexarion-officiel.github.io/#organization"
+            },
+            "inLanguage": "fr-FR",
+            "dateModified": "2026-11-18",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp"
+            },
+            "breadcrumb": {
+              "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#breadcrumb"
+            }
+          },
+          {
+            "@type": "BlogPosting",
+            "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#article",
+            "headline": "Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306",
+            "description": "Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp",
+              "width": 1280,
+              "height": 720
+            },
+            "datePublished": "2026-11-17",
+            "dateModified": "2026-11-18",
+            "inLanguage": "fr-FR",
+            "wordCount": 1289,
+            "author": {
+              "@type": "Person",
+              "name": "Margaux Delorme",
+              "jobTitle": "Artiste 3D environnements",
+              "worksFor": {
+                "@id": "https://flexarion-officiel.github.io/#organization"
+              }
+            },
+            "publisher": {
+              "@id": "https://flexarion-officiel.github.io/#organization"
+            },
+            "mainEntityOfPage": {
+              "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#webpage"
+            },
+            "isPartOf": {
+              "@id": "https://flexarion-officiel.github.io/devlogs/#blog"
+            },
+            "about": {
+              "@id": "https://flexarion-officiel.github.io/below-zero/#videogame"
+            },
+            "articleSection": "Devlog"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body id="haut">
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <header class="site-head">
+      <div class="wrap head-in">
+        <a class="brand" href="/" aria-label="Flexarion, retour à l’accueil"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="12" fill="#071421"/><path d="M9 29 32 7l23 22" fill="none" stroke="#19B9D4" stroke-width="3.5" stroke-linejoin="round"/><path d="M9 35l23 22 23-22" fill="none" stroke="#B7DDE8" stroke-width="3.5" stroke-linejoin="round"/><path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/><path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/><path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg><span>Flexarion</span></a>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu"><span class="burger-bar"></span></button>
+        <nav class="nav" id="menu-principal" aria-label="Navigation principale">
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/studio/">Le studio</a></li>
+            <li><a href="/below-zero/">Below Zero</a></li>
+            <li><a href="/devlogs/" aria-current="page">Devlogs</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <nav class="crumbs wrap" aria-label="Fil d’Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/devlogs/">Devlogs</a></li>
+        <li aria-current="page">Concevoir deux villes jumelles</li>
+      </ol>
+    </nav>
+    <main id="contenu">
+      <article class="wrap">
+        <header>
+          <p class="kicker">Devlog n°1 · Below Zero</p>
+          <h1>Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306</h1>
+          <p class="meta">Par Margaux Delorme, artiste 3d environnements chez Flexarion · Publié le <time datetime="2026-11-17">17 novembre 2026</time> · Mis à jour le <time datetime="2026-11-18">18 novembre 2026</time></p>
+        </header>
+        <figure> <img src="/assets/img/devlog-deux-villes-1280.webp" srcset="/assets/img/devlog-deux-villes-480.webp 480w, /assets/img/devlog-deux-villes-960.webp 960w, /assets/img/devlog-deux-villes-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Deux plans superposés de la même ville, l&#x27;un à l&#x27;encre sépia, l&#x27;autre en hologramme cyan, sur la table de travail de Flexarion" fetchpriority="high" decoding="async"> </figure>
+        <div class="prose">
+          <p class="lead">Chez Flexarion, nous avons une contrainte de départ un peu folle : construire deux fois la même ville. Une fois en 2156, à la surface d'Aix-en-Provence. Une seconde fois en 2306, à plusieurs dizaines de mètres sous nos pieds. Dans <a href="/below-zero/">Below Zero</a>, ces deux villes doivent se ressembler au point de troubler le joueur, tout en restant immédiatement distinguables. Voici comment nous nous y prenons.</p>
+          <nav class="toc" aria-label="Sommaire de l'article">
+            <strong>Au sommaire</strong>
+            <ol>
+              <li><a href="#un-seul-plan">Un seul plan pour deux villes</a></li>
+              <li><a href="#aix-2156">Aix 2156 : une ville familière, mais fatiguée</a></li>
+              <li><a href="#sextia-2306">Sextia 2306 : la même ville, deux siècles plus tard</a></li>
+              <li><a href="#regles">Nos cinq règles de symétrie</a></li>
+              <li><a href="#lisibilite">Le piège de la lisibilité</a></li>
+              <li><a href="#suite">Et maintenant ?</a></li>
+            </ol>
+          </nav>
+          <h2 id="un-seul-plan">Un seul plan pour deux villes</h2>
+          <p>La première décision a été la plus structurante : les deux villes partagent un seul et même plan. Nous ne dessinons pas une Aix-en-Provence puis une copie futuriste ; nous dessinons un squelette commun, une sorte de « carte maîtresse », à partir de laquelle chaque époque est habillée. Ce squelette contient les rues, les places, les fontaines, les volumes des bâtiments et, surtout, les points d'ancrage : les endroits précis où le joueur pourra plus tard constater qu'une action dans le présent a modifié le futur.</p>
+          <p>Concrètement, dans notre moteur, chaque bâtiment existe sous la forme d'un « gabarit » neutre. Un gabarit, c'est un volume, une emprise au sol, des ouvertures et une hauteur. Sur ce gabarit, nous posons deux habillages : l'habillage 2156, en pierre de Bibémus, volets écaillés et câbles apparents, puis l'habillage 2306, en verre minéral, structures porteuses lumineuses et végétation contrôlée. Si un gabarit change, les deux villes changent en même temps. C'est la garantie technique que la ressemblance ne se dégradera pas au fil des mois de production.</p>
+          <p>Cette méthode a un coût. Elle nous interdit certaines libertés : impossible d'ajouter une tour spectaculaire dans Sextia si elle n'a pas d'équivalent à la surface. Mais c'est précisément cette contrainte qui rend le jeu dérangeant. Quand le joueur reconnaît la forme d'une place qu'il vient de traverser, avec deux siècles d'écart, quelque chose se fige dans son esprit. C'est l'émotion que nous cherchons.</p>
+          <h2 id="aix-2156">Aix 2156 : une ville familière, mais fatiguée</h2>
+          <p>Pour la ville de surface, nous sommes partis de ce que nous voyons tous les jours depuis nos bureaux aixois : les façades ocre, les platanes du cours Mirabeau, les fontaines moussues, la silhouette de la cathédrale Saint-Sauveur, la Sainte-Victoire à l'horizon. Nous ne voulions pas d'une reconstitution touristique. L'Aix de 2156 est une ville qui a traversé les canicules et les restrictions d'eau du XXIIe siècle. Les platanes sont soutenus par des tuteurs métalliques, les fontaines sont souvent à sec, et les réseaux techniques ont été ajoutés en surface, faute de pouvoir creuser davantage.</p>
+          <p>Ce dernier détail n'est pas anodin. Sacha Morel, le personnage que l'on incarne, est technicien de maintenance des réseaux souterrains. Son métier justifie qu'il connaisse chaque regard d'égout, chaque canalisation, chaque vieille galerie. Le level design de la surface est donc pensé « à hauteur de technicien » : on lit la ville par ses tuyaux, ses armoires électriques et ses plaques de fonte autant que par ses monuments.</p>
+          <p>Nous avons aussi choisi une lumière précise : une fin de journée d'été, chaude, légèrement voilée par la poussière. Cette palette chaude est importante, car elle s'oppose frontalement à celle de la ville souterraine.</p>
+          <h2 id="sextia-2306">Sextia 2306 : la même ville, deux siècles plus tard</h2>
+          <p>La ville souterraine porte un nom que les habitants emploient sans l'expliquer : Sextia, en écho à Aquae Sextiae, le nom antique d'Aix. Elle occupe une cavité immense, creusée autour des sources thermales qui ont fait la réputation de la ville depuis l'Antiquité. Le plafond de la cavité imite un ciel, grâce à des panneaux de lumière bleu glacier, et les bâtiments reprennent exactement les gabarits de la surface, mais avec des matériaux qui n'existent pas encore en 2156.</p>
+          <p>Notre règle était simple à énoncer et difficile à tenir : rien dans Sextia ne doit être gratuitement futuriste. Chaque élément doit pouvoir s'expliquer comme l'évolution logique de son équivalent de surface. La fontaine de la Rotonde n'est plus en pierre, mais elle est toujours une fontaine, au même endroit, avec le même nombre de vasques. Les platanes sont devenus des colonnes végétales qui filtrent l'air, mais ils sont alignés exactement comme sur le cours. Le joueur doit pouvoir se dire : « je connais cet endroit », avant de se demander : « mais comment est-ce possible ? »</p>
+          <p>La palette, elle, bascule vers le froid : bleu nuit, cyan électrique, reflets glacier. Ce n'est pas qu'une question d'esthétique. La température des couleurs est notre premier outil pour que le joueur sache en une fraction de seconde dans quelle époque il se trouve, même sur une capture d'écran.</p>
+          <figure>
+            <img src="/assets/img/below-zero-concept-place-2306-1280.webp" srcset="/assets/img/below-zero-concept-place-2306-480.webp 480w, /assets/img/below-zero-concept-place-2306-960.webp 960w, /assets/img/below-zero-concept-place-2306-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Concept art de Flexarion : grande place souterraine de Sextia en 2306, sous un ciel artificiel de panneaux lumineux" loading="lazy" decoding="async">
+            <figcaption>Concept art de la grande place de Sextia. Les terrasses reprennent les gabarits des immeubles de surface (visuel généré par IA, retravail prévu).</figcaption>
+          </figure>
+          <h2 id="regles">Nos cinq règles de symétrie</h2>
+          <p>Au bout de quelques semaines de prototypage, nous avons formalisé cinq règles, affichées au mur du studio. Elles guident toutes les décisions d'environnement.</p>
+          <ol>
+            <li><strong>Même squelette, deux peaux.</strong> Aucune rue, aucun volume ne peut exister dans une seule époque, sauf exception scénarisée et validée par la direction créative.</li>
+            <li><strong>La chaleur en haut, le froid en bas.</strong> Les teintes chaudes appartiennent à 2156, les teintes froides à 2306. Les rares exceptions sont des indices.</li>
+            <li><strong>Chaque monument a une descendance.</strong> Quand un lieu de surface est important pour l'histoire, nous écrivons en une phrase ce qu'il est devenu en 2306 et pourquoi.</li>
+            <li><strong>Les ancrages se voient de loin.</strong> Un point d'ancrage causal doit être visible depuis au moins deux rues dans chaque ville, pour que le joueur puisse le repérer avant de s'en approcher.</li>
+            <li><strong>Le joueur ne doit jamais se perdre deux fois.</strong> S'il apprend à s'orienter à la surface, ce savoir doit lui servir sous terre. La symétrie est une aide à la navigation, pas seulement un effet de style.</li>
+          </ol>
+          <h2 id="lisibilite">Le piège de la lisibilité</h2>
+          <p>Nos premiers tests ont révélé un problème que nous n'avions pas anticipé. À force de rendre les deux villes semblables, certains testeurs ne savaient plus s'ils étaient à la surface ou dans Sextia, surtout dans les ruelles étroites où le ciel est peu visible. Le trouble était là, mais il devenait de la confusion, et la confusion n'est pas une émotion intéressante.</p>
+          <p>Nous avons corrigé cela avec trois signaux redondants : la température de couleur déjà évoquée, une signature sonore propre à chaque époque (notre sound designer en parle dans le <a href="/devlogs/sound-design-ville-souterraine/">devlog consacré au son de la ville souterraine</a>) et un petit détail d'interface, la date affichée sur l'outil de Sacha. Un joueur attentif n'a besoin que d'un seul de ces signaux ; un joueur distrait en a toujours au moins un sous les yeux.</p>
+          <p>Ce travail sur la lisibilité nous a aussi appris à doser le mystère. Le jeu doit poser des questions, mais jamais sur des choses que le joueur devrait savoir pour avancer. On peut s'interroger sur l'origine de Sextia ; on ne doit pas s'interroger sur l'endroit où l'on se trouve.</p>
+          <h2 id="suite">Et maintenant ?</h2>
+          <p>Le squelette commun couvre aujourd'hui le centre historique, du cours Mirabeau au quartier de la cathédrale. La prochaine étape concerne les galeries qui relient les deux villes : un espace intermédiaire où les époques se mélangent et où nos règles de symétrie seront volontairement bousculées. C'est aussi là que se cachent les énigmes les plus retorses, dont le principe est expliqué dans le <a href="/devlogs/enigmes-causalite-temporelle/">devlog sur nos énigmes de causalité temporelle</a>.</p>
+          <p>Si vous découvrez Flexarion avec cet article, la page <a href="/below-zero/">consacrée à Below Zero</a> présente l'univers et les mécaniques du jeu, et la page <a href="/studio/">Le studio</a> vous dit qui se cache derrière ces deux villes.</p>
+          <aside class="note" aria-label="Précision">Ce devlog a été rédigé avec l'assistance d'une IA puis intégré par l'équipe. Détails dans les <a href="/mentions-legales/">mentions légales</a>.</aside>
+          <h2>Les autres devlogs de Flexarion</h2>
+          <ul>
+            <li><a href="/devlogs/enigmes-causalite-temporelle/">Les énigmes de causalité temporelle</a></li>
+            <li><a href="/devlogs/sound-design-ville-souterraine/">Le sound design de la ville souterraine</a></li>
+            <li><a href="/devlogs/character-design-habitants-futur/">Le character design des habitants de 2306</a></li>
+          </ul>
+          <p><a class="btn ghost" href="/devlogs/">Tous les devlogs</a> <a class="btn" href="/below-zero/">Découvrir Below Zero</a></p>
+        </div>
+      </article>
+    </main>
+    <footer class="site-foot">
+      <div class="wrap">
+        <p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/favicon.svg" width="56" height="56" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
+        <p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence. Créateur de <a href="/below-zero/">Below Zero</a>.</p>
+        <nav aria-label="Plan du site">
+          <ul class="foot-links">
+            <li><a href="/studio/">Le studio</a></li>
+            <li><a href="/below-zero/">Below Zero</a></li>
+            <li><a href="/devlogs/">Devlogs</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+          </ul>
+        </nav>
+        <ul class="foot-links socials" aria-label="Flexarion sur les réseaux sociaux">
+          <li><a href="https://github.com/flexarion-officiel" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/flexarion-officiel/" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://flexarionofficiel.itch.io/" rel="me noopener" target="_blank">itch.io</a></li>
+          <li><a href="https://x.com/flexarion_off" rel="me noopener" target="_blank">X</a></li>
+          <li><a href="https://www.instagram.com/flexarion.off/" rel="me noopener" target="_blank">Instagram</a></li>
+        </ul>
+        <ul class="foot-links foot-ext">
+          <li><a href="https://github.com/flexarion-officiel" rel="noopener" target="_blank">Organisation GitHub Flexarion</a></li>
+          <li><a href="https://iut.univ-amu.fr/fr" rel="noopener" target="_blank">IUT d’Aix-Marseille (amU)</a></li>
+        </ul>
+        <p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA.</p>
+      </div>
+    </footer>
+    <a class="to-top" href="#haut" aria-label="Retour en haut de la page"><span aria-hidden="true">↑</span></a>
+    <script src="/assets/js/main.js" defer></script>
+  </body>
 </html>
