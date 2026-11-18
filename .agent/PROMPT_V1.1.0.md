@@ -14,8 +14,11 @@
 - Remplacer le logo par celui du fichier /icon-512.png
 - Retire « Créateur de Below Zero. »
 
+## Page Le Studio
+Pour la séction de présentation de l'équipe nous voudrions qu'elle soit plus vivante. Pour cela crée des avatars dans le style de bitmoji correspondant au profile de l'utilisateur que tu as crée.
+
 ## Page Below Zero
-- Changer l'image par une image de gameplay ou concept art (tu peux la générer)
+- Changer l'image par une image de gameplay ou concept art (tu peux la générer), pour que le visiteur du site ce face une image mentale de "à quoi peut resembler le jeu quand on y joue"
 
 ## Page Contact & Presse
 - Faire en sorte que sur PC les liens vers les réseaux soient présentés sous forme de liste verticale
