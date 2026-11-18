@@ -35,6 +35,10 @@
 ### Page Mentions légales
 - Supprimer cette page de l'indexation (donc du sitemap.xml et autres)
 
+### Code source 
+- Indentation du code : respecter une indentation propre et cohérente dans tous les fichiers.
+- Un seul fichier CSS pour tout le site : tous les styles de toutes les pages doivent être regroupés dans un unique fichier CSS global. 
+
 ## Appréciation globale
 
 Mentionner que le projet est fictif ne te pénalise pas en soi : Google ne baisse pas le classement d'une page parce qu'elle contient « fictif ». Ce qui compte, c'est l'endroit où tu le dis. Garde-le dans les mentions légales et en pied de page, et sors-le du titre, de la meta description et du début du balisage Organization, là où ces mots prennent la place de tes mots-clés. En ce moment, la description de ton balisage commence par « studio indépendant (fictif) ». Mets la mention à la fin de la phrase, ou retire-la du JSON-LD (les données structurées que lisent les moteurs) et garde-la dans le texte visible du pied de page.
