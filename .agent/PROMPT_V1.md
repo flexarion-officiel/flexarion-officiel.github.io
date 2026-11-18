@@ -4,6 +4,7 @@
 
 ### Commun à toutes les pages
 - Lorsque le scroll n'est pas tout en haut de la page, proposer un bouton pour retourner tout en haut, de manière smooth
+- Remplacer l'email de contact par flexarion.officiel@gmail.com (en gardant l'obfuscation js)
 
 ### Header
 - (Mobile) : Ajouter un menu burger pour afficher les différentes sections du menu
