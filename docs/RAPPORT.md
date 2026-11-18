@@ -16,6 +16,8 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 | 17/11/2026 | FlexaBot (agent IA) | Rédaction des pages, des 4 devlogs, du code HTML/CSS/JSON-LD | À relire par l'équipe |
 | 17/11/2026 | Lighthouse 12 (Google, non IA générative) | Audit performance / accessibilité / SEO | — |
 | 17/11/2026 | Validateur W3C Nu (non IA) | Validation HTML | — |
+| 18/11/2026 | FlexaBot (agent IA) | Application de la revue V1 de l'équipe (forme, code, données structurées) | Revue rédigée par l'équipe ; résultat à vérifier en ligne |
+| 18/11/2026 | Validateur Nu local (vnu.jar), Lighthouse 12, Chrome headless (non IA) | Validation HTML/CSS, audits, captures d'écran | — |
 
 **Prompt de mission initial** (donné par l'équipe à l'agent) : « Mission : Développement agentique du site Flexarion (Concours SEO) » — rôle d'agent de développement principal, objectifs (position Google sur « Flexarion », GEO, site techniquement irréprochable, backlinks white hat, documentation de l'IA), périmètre technique, contenu minimum, mentions légales, brand guidelines (identité, palette, positionnement, personas Léo / Chloé / Mehdi), modèle de reporting et stratégie en 4 phases. Le texte complet est conservé dans l'historique de conversation de l'équipe.
 
@@ -115,6 +117,50 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 - Prompts / outils IA utilisés : Consigne à l'agent : « blog de devlogs, 4 articles de 800+ mots, sujets riches et variés : conception des deux villes 2156/2306, mécaniques d'énigmes de causalité temporelle, sound design de la ville souterraine, character design des habitants du futur » ; ton de marque et personas du prompt de mission.
 - Décisions prises : Un métier = un article (montre l'expertise de chaque rôle, critère E-E-A-T) ; mention des erreurs et corrections dans chaque devlog pour un ton « vécu » ; dates de publication réelles (17/11/2026) plutôt qu'antidatées.
 - Suite prévue : Relecture et enrichissement par l'équipe (anecdotes personnelles) ; échelonner les prochains devlogs (TD2, TD3) pour montrer un site vivant.
+
+### Tâche : Corrections suite à la revue V1
+- Objectif : Appliquer l'intégralité du compte rendu de la première version du site rédigé par l'équipe (forme, code source, données structurées, SEO).
+- Critères de validation : Chaque point de la revue traité ; HTML et CSS valides ; JSON-LD valide et sans `LocalBusiness` ; aucun lien interne cassé ; mentions légales non indexées ; Lighthouse ≥ 98 sur mobile et ordinateur ; captures d'écran vérifiées.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails :
+  - **Commun** : bouton « retour en haut » (`.to-top`), visible seulement après 300 px de défilement, défilement doux en CSS (`scroll-behavior: smooth`), désactivé si `prefers-reduced-motion: reduce`, libellé accessible « Retour en haut de la page ».
+  - **E-mail** : `flexarion.officiel@gmail.com`, toujours masqué (attributs `data-u` / `data-d` reconstitués en JS, repli « [arobase] / [point] ») ; l'adresse a aussi été retirée du JSON-LD pour qu'elle n'apparaisse jamais en clair dans le HTML (`contactPoint` pointe désormais vers la page contact).
+  - **CSS** : une seule feuille globale `assets/css/style.css` (lisible, commentée, ~11 Ko non minifiée) liée par `<link rel="stylesheet">` sur toutes les pages ; plus aucun `<style>` ni attribut `style` (contrôle automatique ajouté dans `check.py`).
+  - **JS** : `assets/js/contact.js` remplacé par un script unique `assets/js/main.js` (`defer`) : burger, retour en haut, e-mail.
+  - **Indentation** : nouveau module `tools/generateur/fmt.py` qui indente tout le HTML produit (2 espaces, imbrication respectée, JSON-LD indenté à 2 espaces) ; CSS et JS réécrits avec une indentation homogène.
+  - **Réseaux sociaux** : GitHub, LinkedIn, itch.io, X et Instagram dans le pied de page de chaque page et dans une section « Suivre le studio sur les réseaux » de la page contact (`rel="me noopener"`, nouvel onglet) ; les 5 URL sont dans `sameAs` de l'Organization et dans `llms.txt`.
+  - **En-tête** : menu burger sur mobile (< 48 rem) : bouton `aria-expanded` / `aria-controls="menu-principal"`, libellé « Ouvrir / Fermer le menu », fermeture avec Échap. Sans JS, les liens restent accessibles dans le pied de page.
+  - **Pied de page** : texte centré, logo Flexarion ajouté, lien « En savoir plus » supprimé, liens externes « Organisation GitHub Flexarion » et « IUT d'Aix-Marseille (amU) » ajoutés, mention courte du projet fictif conservée, lien vers les mentions légales conservé, tailles et retours à la ligne adaptés au mobile (marge basse pour ne pas être masqué par le bouton « retour en haut »).
+  - **Accueil** : hero compact, texte posé sur l'image avec un dégradé sombre (contraste conservé) ; H1, introduction et boutons visibles sans défiler sur ordinateur (1366×768) et sur mobile (390×844). Recadrage spécifique au mobile (`<picture>`, 540×608, 53 Ko) pour garder un LCP rapide.
+  - **Studio** : mention « Flexarion est un studio fictif… » supprimée du corps de page.
+  - **Below Zero** : nouvelle section `#origine-sextia` « D'où vient le nom « Sextia » ? », placée juste après l'univers (là où le nom apparaît pour la première fois) : fondation d'Aquae Sextiae en 122 av. J.-C. par le consul Caius Sextius Calvinus, victoire sur les Salyens (oppidum d'Entremont), étymologie « les eaux de Sextius » → « Aix », sources thermales et thermes Sextius. Chaque mention de « Sextia » dans le texte de la page (hors section et titres) renvoie vers cette ancre ; les textes alternatifs des images ne peuvent pas contenir de lien.
+  - **Contact & presse** : suppression de « Cette adresse fait partie de la fiction… », de « (fictif) » pour le responsable communication et de la section charte graphique.
+  - **Mentions légales** : `noindex, follow`, retirées du `sitemap.xml` (9 URL) et de `llms.txt` ; toujours liées dans le pied de page ; avertissement complet et 4 étudiants conservés. Phrase sur l'e-mail mise à jour (adresse gérée par les étudiants).
+  - **Données structurées** : `LocalBusiness`, adresse, coordonnées GPS et `numberOfEmployees` supprimés ; `Organization` simple avec `alternateName` [« Flexarion Studio », « Studio Flexarion »], `logo` (ImageObject, `icon-512.png` en URL absolue), `foundingDate` 2022, `sameAs` (5 réseaux), description sans le mot « fictif ». `WebSite`, `VideoGame`, `Blog` et `BlogPosting` référencent toujours `#organization`. Balises meta `geo.*` / `ICBM` supprimées pour rester cohérent.
+  - **Mot « fictif »** : retiré des titres, meta descriptions, JSON-LD, FAQ (question « Flexarion est-il un vrai studio ? » supprimée), encadré « en bref », page studio, encadrés des devlogs et `llms.txt` ; conservé uniquement dans le pied de page et les mentions légales.
+  - **Fraîcheur** : `lastmod` et `dateModified` passés au 2026-11-18 ; mention visible « Mis à jour le 18 novembre 2026 » sur chaque devlog ; `lastBuildDate` du flux RSS mis à jour.
+  - **Validation** : validateur Nu (vnu.jar, version locale, le service en ligne du W3C renvoyant une erreur 429 / défi Cloudflare) : **11 pages, 0 erreur, 0 avertissement** ; CSS valide ; `check.py` : JSON-LD valide, 0 lien interne cassé, aucun CSS en ligne, aucune adresse e-mail en clair, aucun « fictif » dans title / description / JSON-LD, mentions légales absentes du sitemap et de `llms.txt`.
+  - **Lighthouse 12** (serveur local sans gzip) :
+
+| Page | Mode | Performance | Accessibilité | Bonnes pratiques | SEO |
+|---|---|---|---|---|---|
+| Accueil | mobile | 99-100 (selon les passages) | 100 | 100 | 100 |
+| Accueil | ordinateur | 100 | 100 | 100 | 100 |
+| Below Zero | mobile | 100 | 100 | 100 | 100 |
+| Below Zero | ordinateur | 100 | 100 | 100 | 100 |
+| Devlog #2 | mobile | 100 | 100 | 100 | 100 |
+| Devlog #2 | ordinateur | 100 | 100 | 100 | 100 |
+
+- Prompts / outils IA utilisés : Compte rendu de la V1 rédigé par l'équipe, transmis tel quel à l'agent (« Appréciation sur la forme » : commun, header, footer, pages accueil / studio / Below Zero / contact / mentions légales, code source ; « Appréciation globale » : place de la mention « fictif », suppression du LocalBusiness, alternateName et logo, fraîcheur ; « Informations additionnelles » : URL des réseaux). Outils : FlexaBot (modification du générateur Python, du CSS et du JS), vnu.jar, Lighthouse, Chrome headless / Puppeteer pour les captures.
+- Décisions prises :
+  - CSS externe malgré le léger coût « ressource bloquante » signalé par Lighthouse, conformément à la demande ; compensé par un recadrage mobile plus léger de l'image du hero (le score mobile de l'accueil revient à 99-100).
+  - CSS non minifié pour rester lisible (gain possible de ~3 Ko seulement).
+  - Burger sans script en ligne : le menu mobile dépend du script différé, et les liens restent disponibles dans le pied de page si JS est désactivé.
+  - Suppression des balises `geo.*` en plus du `LocalBusiness`, pour ne déclarer aucune localisation physique dans les métadonnées ; Aix-en-Provence reste présent dans le texte visible.
+  - Adresse e-mail retirée du JSON-LD pour respecter l'obfuscation.
+  - Mention « fictif » retirée de `llms.txt` (fichier lu par les moteurs génératifs), par cohérence avec la consigne de la garder uniquement dans le pied de page et les mentions légales.
+- Suite prévue : Après déploiement, refaire PageSpeed Insights sur l'URL publique, vérifier les données structurées avec le test des résultats enrichis de Google, soumettre à nouveau le sitemap dans Search Console et demander l'indexation des pages modifiées ; supprimer `assets/js/contact.js` du dépôt (`git rm`, avec accord).
 
 ---
 

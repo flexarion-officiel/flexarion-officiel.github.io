@@ -13,7 +13,7 @@ Textes prêts à coller pour créer des profils cohérents autour de **Flexarion
   - Jeu : https://flexarion-officiel.github.io/below-zero/
   - Devlogs : https://flexarion-officiel.github.io/devlogs/
   - Presse : https://flexarion-officiel.github.io/contact/
-- Après création de chaque profil : ajouter son URL dans le tableau `sameAs` de l'organisation (JSON-LD, `tools/generateur/build.py`, variable `ORG_NODE`) puis régénérer le site. C'est un signal fort pour Google et les moteurs génératifs.
+- Après création de chaque profil : ajouter son URL dans la liste `SOCIALS` de `tools/generateur/build.py` (elle alimente `sameAs`, le pied de page et `llms.txt`) ; la section réseaux de la page contact est dans `c_main.py`. Puis régénérer le site. C'est un signal fort pour Google et les moteurs génératifs.
 - Vérifier pour chaque lien s'il est `nofollow` (clic droit → Inspecter). Les liens `nofollow` restent utiles pour la découverte et la notoriété, même s'ils ne transmettent pas d'autorité (CM2).
 
 ## Choix des plateformes selon les personas (CM3)
@@ -80,7 +80,7 @@ Ordre recommandé de création : **GitHub (déjà fait) → itch.io → IndieDB 
 
 **Display name** : Flexarion
 **Description (160 caractères max.)** :
-> Studio indépendant (fictif) de jeux vidéo SF à Aix-en-Provence. Code source du site officiel — projet étudiant BUT Informatique, IUT d'Aix-Marseille.
+> Studio indépendant de jeux vidéo SF à Aix-en-Provence (projet étudiant). Code source du site officiel — projet étudiant BUT Informatique, IUT d'Aix-Marseille.
 
 **Website** : https://flexarion-officiel.github.io/
 **Location** : Aix-en-Provence, France
@@ -143,7 +143,7 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 
 ## 6. X (Twitter)
 
-**Nom** : Flexarion · **@** : @FlexarionStudio (selon disponibilité)
+**Nom** : Flexarion · **@** : @flexarion_off
 **Bio (160 car.)** :
 > Studio indé de jeux vidéo SF à Aix-en-Provence 🛰️ Below Zero : sous la ville, 2306 vous attend. Projet étudiant fictif.
 
@@ -186,7 +186,7 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 
 ## 9. Instagram
 
-**Nom** : Flexarion · **@** : @flexarion.studio (selon disponibilité)
+**Nom** : Flexarion · **@** : @flexarion.off
 **Bio (150 car.)** :
 > 🎮 Studio indé de jeux vidéo SF · Aix-en-Provence
 > Below Zero : 2156 en haut, 2306 en dessous
@@ -208,13 +208,13 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 
 | Plateforme | Créé le | URL du profil | Lien vers le site | Ajouté au `sameAs` |
 |---|---|---|---|---|
-| GitHub | 11/2026 | https://github.com/flexarion-officiel | à renseigner (champ Website) | ✅ |
-| itch.io | | | | |
+| GitHub | 11/2026 | https://github.com/flexarion-officiel | à vérifier (champ Website) | ✅ |
+| LinkedIn | 11/2026 | https://www.linkedin.com/in/flexarion-officiel/ | à vérifier | ✅ |
+| itch.io | 11/2026 | https://flexarionofficiel.itch.io/ | à vérifier | ✅ |
+| X | 11/2026 | https://x.com/flexarion_off | à vérifier | ✅ |
+| Instagram | 11/2026 | https://www.instagram.com/flexarion.off/ | à vérifier | ✅ |
 | IndieDB | | | | |
 | Dev.to | | | | |
 | Medium | | | | |
-| X | | | | |
 | Discord | | | | |
-| Instagram | | | | |
 | YouTube | | | | |
-| LinkedIn | | | | |
