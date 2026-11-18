@@ -16,13 +16,14 @@ LOGO_SVG = ('<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect
 
 NAV = [("/", "Accueil"), ("/studio/", "Le studio"), ("/below-zero/", "Below Zero"), ("/devlogs/", "Devlogs"), ("/contact/", "Contact &amp; presse")]
 
-SOCIALS = [
-    ("GitHub", "https://github.com/flexarion-officiel"),
-    ("LinkedIn", "https://www.linkedin.com/in/flexarion-officiel/"),
-    ("itch.io", "https://flexarionofficiel.itch.io/"),
-    ("X", "https://x.com/flexarion_off"),
-    ("Instagram", "https://www.instagram.com/flexarion.off/"),
+# (réseau, URL, pseudo, icône Simple Icons CC0 dans /assets/icons/)
+SOCIAL_DATA = [
+    ("GitHub", "https://github.com/flexarion-officiel", "flexarion-officiel", "github"),
+    ("itch.io", "https://flexarionofficiel.itch.io/", "flexarionofficiel", "itchio"),
+    ("X", "https://x.com/flexarion_off", "@flexarion_off", "x"),
+    ("Instagram", "https://www.instagram.com/flexarion.off/", "@flexarion.off", "instagram"),
 ]
+SOCIALS = [(n, u) for n, u, _, _ in SOCIAL_DATA]
 
 ORG_NODE = {
     "@type": "Organization",
@@ -40,9 +41,18 @@ ORG_NODE = {
 }
 SITE_NODE = {"@type": "WebSite", "@id": SITE, "url": BASE + "/", "name": "Flexarion", "alternateName": "Studio Flexarion", "inLanguage": "fr-FR", "publisher": {"@id": ORG}}
 
-def social_list(cls="socials"):
-    lis = "".join(f'<li><a href="{u}" rel="me noopener" target="_blank">{n}</a></li>' for n, u in SOCIALS)
-    return f'<ul class="foot-links {cls}" aria-label="Flexarion sur les réseaux sociaux">{lis}</ul>'
+def icon(slug, size=20):
+    return f'<img class="ico" src="/assets/icons/{slug}.svg" width="{size}" height="{size}" alt="" aria-hidden="true" loading="lazy" decoding="async">'
+
+def social_list():
+    """Pied de page : icônes seules, nom accessible via aria-label."""
+    lis = "".join(f'<li><a href="{u}" rel="me noopener" target="_blank" aria-label="Flexarion sur {n} ({h})" title="{n}">{icon(i, 24)}</a></li>' for n, u, h, i in SOCIAL_DATA)
+    return f'<ul class="socials" aria-label="Flexarion sur les réseaux sociaux">{lis}</ul>'
+
+def social_rows():
+    """Page contact : icône • pseudo, liste verticale."""
+    lis = "".join(f'<li><a href="{u}" rel="me noopener" target="_blank" aria-label="{n} : {h}">{icon(i)}<span class="sep" aria-hidden="true">•</span><span>{h}</span></a></li>' for n, u, h, i in SOCIAL_DATA)
+    return f'<ul class="social-rows">{lis}</ul>'
 
 
 def esc(s): return html.escape(s, quote=True)
@@ -124,21 +134,15 @@ def render(p):
 </main>
 <footer class="site-foot">
 <div class="wrap">
-<p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/favicon.svg" width="56" height="56" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
-<p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence. Créateur de <a href="/below-zero/">Below Zero</a>.</p>
+<p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/icon-512.png" srcset="/icon-192.png 192w, /icon-512.png 512w" sizes="72px" width="72" height="72" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
+<p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence.</p>
 <nav aria-label="Plan du site"><ul class="foot-links">
-<li><a href="/studio/">Le studio</a></li>
-<li><a href="/below-zero/">Below Zero</a></li>
-<li><a href="/devlogs/">Devlogs</a></li>
+<li><a href="/">Accueil</a></li>
 <li><a href="/contact/">Contact &amp; presse</a></li>
 <li><a href="/mentions-legales/">Mentions légales</a></li>
 </ul></nav>
 {social_list()}
-<ul class="foot-links foot-ext">
-<li><a href="https://github.com/flexarion-officiel" rel="noopener" target="_blank">Organisation GitHub Flexarion</a></li>
-<li><a href="https://iut.univ-amu.fr/fr" rel="noopener" target="_blank">IUT d’Aix-Marseille (amU)</a></li>
-</ul>
-<p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA.</p>
+<p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille.</p>
 </div>
 </footer>
 <a class="to-top" href="#haut" aria-label="Retour en haut de la page"><span aria-hidden="true">↑</span></a>
