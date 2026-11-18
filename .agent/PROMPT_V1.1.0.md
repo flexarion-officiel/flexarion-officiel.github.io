@@ -29,6 +29,7 @@
 
 ### Page Below Zero
 - Créer une section pour expliquer l'origine du nom Sextia, et faire un lien vers cette section dès que le mot Sextia est mentionné dans la page. Bien choisir l'emplacement de la section
+- Ajouter une présentation plus détaillée du personnage principal : identité, âge, métier, personnalité, motivations et objectifs.
 
 ### Page Contact & Presse
 - Supprimer la mention « Cette adresse fait partie de la fiction... »
