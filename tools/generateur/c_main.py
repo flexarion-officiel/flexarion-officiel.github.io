@@ -1,4 +1,4 @@
-from build import pic, BASE, ORG, LASTMOD, esc
+from build import pic, BASE, ORG, LASTMOD, esc, social_rows
 from c_devlogs import ARTICLES, AUTHORS, url as aurl, DATE, DATE_FR
 import json
 
@@ -18,7 +18,7 @@ def article_cards(lst):
         out += f'''<article class="card">
 {pic(a["img"], a["alt"], sizes="(max-width: 40rem) 92vw, 24rem")}
 <h3><a href="{aurl(a)}">{a["short"]}</a></h3>
-<p class="meta">Devlog n°{a["num"]} · {n}, {role.lower()}</p>
+<p class="meta">Devlog n°{a["num"]} · <time datetime="{a["date"]}">{a["date_fr"]}</time> · {n}, {role.lower()}</p>
 <p>{a["desc"]}</p>
 </article>'''
     return out + '</div>'
@@ -94,16 +94,29 @@ PAGES.append(dict(path="/", title="Flexarion | Studio de jeux vidéo SF indépen
 
 # ---------------- STUDIO ----------------
 team = [
- ("Inès Valcourt", "Directrice créative", "Elle définit l'univers et l'histoire de Below Zero. Ancienne scénariste de théâtre, elle a imaginé la ville souterraine en observant les fontaines d'Aix."),
- ("Théo Marchetti", "Développeur gameplay", "Il programme les mécaniques de jeu et l'éditeur de causalité qui vérifie que chaque énigme a une solution."),
- ("Samira Benali", "Développeuse moteur et outils", "Elle s'occupe du moteur, des performances et du système qui synchronise les deux villes à partir d'un plan unique."),
- ("Lucas Arnaud", "Game designer", "Il imagine les énigmes, les interactions et la boucle « observer, supposer, agir, vérifier »."),
- ("Margaux Delorme", "Artiste 3D environnements", "Elle crée les environnements et les bâtiments d'Aix en 2156 et de Sextia en 2306."),
- ("Yanis Okafor", "Character designer", "Il dessine les personnages, de Sacha Morel aux habitants du futur qui le reconnaissent."),
- ("Élise Fabre", "Sound designer", "Elle compose la musique et crée les effets sonores, de l'eau thermale aux échos de la cavité."),
- ("Raphaël Costa", "Responsable communication", "Il s'occupe de la promotion du studio, des réseaux sociaux et des relations presse."),
+ ("ines", "Inès Valcourt", "Directrice créative", "Elle définit l'univers et l'histoire de Below Zero. Ancienne scénariste de théâtre, elle a imaginé la ville souterraine en observant les fontaines d'Aix.",
+  "Avatar illustré d'Inès Valcourt, directrice créative de Flexarion : cheveux bruns ondulés, lunettes rondes, col roulé bleu nuit et pendentif cyan"),
+ ("theo", "Théo Marchetti", "Développeur gameplay", "Il programme les mécaniques de jeu et l'éditeur de causalité qui vérifie que chaque énigme a une solution.",
+  "Avatar illustré de Théo Marchetti, développeur gameplay de Flexarion : cheveux châtains en bataille, barbe courte, sweat à capuche gris"),
+ ("samira", "Samira Benali", "Développeuse moteur et outils", "Elle s'occupe du moteur, des performances et du système qui synchronise les deux villes à partir d'un plan unique.",
+  "Avatar illustré de Samira Benali, développeuse moteur de Flexarion : longue queue de cheval brune, lunettes noires, blouson vert à écusson de puce électronique"),
+ ("lucas", "Lucas Arnaud", "Game designer", "Il imagine les énigmes, les interactions et la boucle « observer, supposer, agir, vérifier ».",
+  "Avatar illustré de Lucas Arnaud, game designer de Flexarion : cheveux roux bouclés, barbe, gilet moutarde et crayon glissé derrière l'oreille"),
+ ("margaux", "Margaux Delorme", "Artiste 3D environnements", "Elle crée les environnements et les bâtiments d'Aix en 2156 et de Sextia en 2306.",
+  "Avatar illustré de Margaux Delorme, artiste 3D de Flexarion : carré blond à frange, surchemise beige tachée de peinture"),
+ ("yanis", "Yanis Okafor", "Character designer", "Il dessine les personnages, de Sacha Morel aux habitants du futur qui le reconnaissent.",
+  "Avatar illustré de Yanis Okafor, character designer de Flexarion : dreadlocks courtes, barbe, pull bordeaux et stylo accroché au col"),
+ ("elise", "Élise Fabre", "Sound designer", "Elle compose la musique et crée les effets sonores, de l'eau thermale aux échos de la cavité.",
+  "Avatar illustré d'Élise Fabre, sound designer de Flexarion : chignon roux, taches de rousseur, casque audio autour du cou"),
+ ("raphael", "Raphaël Costa", "Responsable communication", "Il s'occupe de la promotion du studio, des réseaux sociaux et des relations presse.",
+  "Avatar illustré de Raphaël Costa, responsable communication de Flexarion : cheveux bruns coiffés, blazer bleu marine, smartphone à la main"),
 ]
-team_html = "".join(f'<div class="card"><h3>{n}</h3><p class="meta">{r}</p><p>{d}</p></div>' for n, r, d in team)
+team_html = "".join(f'''<article class="card member">
+<img class="avatar" src="/assets/img/equipe-{k}-320.webp" srcset="/assets/img/equipe-{k}-160.webp 160w, /assets/img/equipe-{k}-320.webp 320w" sizes="8rem" width="160" height="160" alt="{esc(alt)}" loading="lazy" decoding="async">
+<h3>{n}</h3>
+<p class="role">{r}</p>
+<p>{d}</p>
+</article>''' for k, n, r, d, alt in team)
 studio = f'''
 <div class="wrap">
 <p class="kicker">Le studio</p>
@@ -132,7 +145,8 @@ studio = f'''
 <section aria-labelledby="equipe">
 <h2 id="equipe">L'équipe</h2>
 <p class="prose">Huit métiers, une seule obsession : que chaque détail serve le mystère.</p>
-<div class="grid">{team_html}</div>
+<div class="grid team">{team_html}</div>
+<p class="prose meta">Les avatars de l'équipe sont des illustrations générées par IA.</p>
 </section>
 <section class="prose" aria-labelledby="aix">
 <h2 id="aix">Pourquoi Aix-en-Provence ?</h2>
@@ -160,9 +174,12 @@ bz = f'''
 <div class="wrap">
 <p class="kicker">Le jeu phare de Flexarion</p>
 <h1>Below Zero : la ville d'en dessous vous attendait</h1>
-<figure>
-{pic("below-zero-key-art", "Key art de Below Zero par Flexarion : Sacha, technicien à la lampe frontale, découvre la ville souterraine de 2306 dont les habitants l'observent", lcp=True)}
-<figcaption>Key art de Below Zero (visuel généré par IA, retravail prévu).</figcaption>
+<figure class="gameplay">
+<picture>
+<source media="(max-width: 47.99rem)" srcset="/assets/img/below-zero-gameplay-sextia-mobile.webp 540w" sizes="100vw" width="540" height="608">
+{pic("below-zero-gameplay-sextia", "Capture de jeu de Below Zero : vue à la troisième personne de Sacha, technicien à la lampe frontale et au Diapason, sur la grande place de Sextia en 2306, près d'une fontaine thermale, sous le regard d'habitants aux marques cyan", lcp=True)}
+</picture>
+<figcaption>Aperçu de jeu : Sacha explore Sextia en 2306, à la recherche d'objets qui résonnent entre les époques (visuel généré par IA, retravail prévu).</figcaption>
 </figure>
 <div class="prose">
 <p class="lead">Below Zero est le premier jeu de Flexarion : une aventure narrative de science-fiction où l'on explore deux versions d'Aix-en-Provence, séparées par cent cinquante ans et quelques dizaines de mètres de roche. Ici, il n'y a pas d'ennemis à abattre. Seulement une question : pourquoi le futur vous connaît-il déjà ?</p>
@@ -228,7 +245,7 @@ bz = f'''
 '''
 vg = {"@type": "VideoGame", "@id": GAME, "name": "Below Zero", "url": BASE + "/below-zero/",
   "description": "Aventure narrative de science-fiction : en 2156, une ville identique à Aix-en-Provence mais datant de 2306 est découverte sous la surface. Le joueur incarne un jeune technicien que les habitants du futur connaissent déjà ; chaque action dans le présent modifie le futur.",
-  "image": [BASE + "/assets/img/below-zero-key-art-1280.webp", BASE + "/assets/img/below-zero-capture-causalite-1280.webp", BASE + "/assets/img/below-zero-concept-place-2306-1280.webp"],
+  "image": [BASE + "/assets/img/below-zero-gameplay-sextia-1280.webp", BASE + "/assets/img/below-zero-key-art-1280.webp", BASE + "/assets/img/below-zero-capture-causalite-1280.webp", BASE + "/assets/img/below-zero-concept-place-2306-1280.webp"],
   "genre": ["Science-fiction", "Aventure narrative", "Énigmes"], "gamePlatform": "PC", "applicationCategory": "Game",
   "playMode": "SinglePlayer", "inLanguage": "fr", "creativeWorkStatus": "En développement",
   "author": {"@id": ORG}, "publisher": {"@id": ORG}, "creator": {"@id": ORG},
@@ -290,19 +307,14 @@ ct = f'''
 <li><a href="/assets/img/flexarion-logo-512.webp">Logo Flexarion (512 × 512, WebP)</a> · <a href="/favicon.svg">version vectorielle (SVG)</a></li>
 <li><a href="/assets/img/below-zero-key-art-1280.webp">Key art de Below Zero (1280 × 720)</a></li>
 <li><a href="/assets/img/flexarion-hero-deux-villes-aix-1280.webp">Les deux villes, vue en coupe (1280 × 720)</a></li>
+<li><a href="/assets/img/below-zero-gameplay-sextia-1280.webp">Aperçu de jeu : Sacha dans Sextia (1280 × 720)</a></li>
 <li><a href="/assets/img/below-zero-capture-causalite-1280.webp">Capture de travail : la fontaine des deux époques (1280 × 720)</a></li>
 <li><a href="/assets/img/below-zero-concept-place-2306-1280.webp">Concept art : la grande place de Sextia (1280 × 720)</a></li>
 <li><a href="/assets/img/below-zero-habitants-2306-1280.webp">Concept art : habitants de 2306 (1280 × 720)</a></li>
 </ul>
 <h2 id="suivre">Suivre le studio sur les réseaux</h2>
 <p>Retrouvez Flexarion sur ses réseaux sociaux et plateformes officielles :</p>
-<ul class="links-list">
-<li><a href="https://github.com/flexarion-officiel" rel="me noopener" target="_blank">GitHub : flexarion-officiel</a></li>
-<li><a href="https://www.linkedin.com/in/flexarion-officiel/" rel="me noopener" target="_blank">LinkedIn : flexarion-officiel</a></li>
-<li><a href="https://flexarionofficiel.itch.io/" rel="me noopener" target="_blank">itch.io : flexarionofficiel</a></li>
-<li><a href="https://x.com/flexarion_off" rel="me noopener" target="_blank">X : @flexarion_off</a></li>
-<li><a href="https://www.instagram.com/flexarion.off/" rel="me noopener" target="_blank">Instagram : @flexarion.off</a></li>
-</ul>
+{social_rows()}
 <p>Pour les coulisses du jeu, lisez nos <a href="/devlogs/">devlogs</a>.</p>
 </div>
 </div>
@@ -338,10 +350,12 @@ ml = '''
 <h2>Usage de l'intelligence artificielle</h2>
 <p>Conformément aux consignes du projet, l'usage de l'IA est documenté :</p>
 <ul>
-<li>Les <strong>visuels</strong> du site (logo, illustrations, concept arts, captures de travail) ont été <strong>générés par intelligence artificielle</strong> et pourront être retravaillés par les étudiants.</li>
+<li>Les <strong>visuels</strong> du site (logo, illustrations, concept arts, aperçus de jeu, avatars de l'équipe) ont été <strong>générés par intelligence artificielle</strong> et pourront être retravaillés par les étudiants.</li>
 <li>Les textes et le code du site ont été produits avec l'assistance d'un agent IA, à partir de l'identité de marque définie par les étudiants.</li>
 <li>Le détail des outils et des consignes utilisés est tenu dans le journal d'usage de l'IA du projet (fichier <code>docs/RAPPORT.md</code> du dépôt).</li>
 </ul>
+<h2>Crédits des icônes</h2>
+<p>Les icônes des réseaux sociaux (GitHub, itch.io, X, Instagram) proviennent de <a href="https://simpleicons.org/">Simple Icons</a>, distribuées sous licence CC0 1.0 (domaine public). Elles sont affichées sans modification de forme, en version monochrome. Les noms et logos de ces services sont des marques appartenant à leurs propriétaires respectifs et ne sont utilisés que pour renvoyer vers les comptes officiels de Flexarion.</p>
 <h2>Données personnelles et cookies</h2>
 <p>Ce site ne dépose aucun cookie, n'utilise aucun outil de mesure d'audience ni de publicité, et ne collecte aucune donnée personnelle via un formulaire. L'hébergeur GitHub peut enregistrer des journaux techniques (adresse IP notamment) pour des raisons de sécurité, selon sa propre politique de confidentialité.</p>
 <h2>Propriété intellectuelle</h2>

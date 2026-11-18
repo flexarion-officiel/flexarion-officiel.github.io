@@ -483,6 +483,153 @@ blockquote {
   text-decoration: none;
 }
 
+/* Réseaux sur la page contact : icône • pseudo, en liste verticale */
+.social-rows {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.social-rows a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.45rem 1.1rem 0.45rem 0.9rem;
+  border: 1px solid rgba(25, 185, 212, 0.55);
+  border-radius: 2rem;
+  background: var(--nuit);
+  color: var(--blanc);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.social-rows a:hover,
+.social-rows a:focus-visible {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.social-rows .sep {
+  color: var(--cyan);
+}
+
+/* Équipe du studio */
+.team .member {
+  position: relative;
+  text-align: center;
+  padding-top: 1.5rem;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.team .member:hover {
+  transform: translateY(-4px);
+  border-color: rgba(25, 185, 212, 0.6);
+  box-shadow: 0 10px 28px rgba(25, 185, 212, 0.15);
+}
+
+.team .avatar {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto 0.8rem;
+  border-radius: 50%;
+  border: 3px solid var(--cyan);
+  box-shadow: 0 0 0 6px rgba(25, 185, 212, 0.12);
+  background: var(--noir);
+}
+
+.team .member h3 {
+  margin-bottom: 0.3rem;
+}
+
+.role {
+  display: inline-block;
+  margin: 0 0 0.6rem;
+  padding: 0.15rem 0.7rem;
+  border-radius: 1rem;
+  background: var(--noir);
+  border: 1px solid rgba(25, 185, 212, 0.45);
+  color: var(--cyan);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.team .member p:last-child {
+  text-align: left;
+}
+
+/* Visuel de jeu en tête de la page Below Zero */
+.gameplay picture,
+.gameplay img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gameplay img {
+  box-shadow: 0 0 0 1px rgba(25, 185, 212, 0.35), 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Navigation entre devlogs */
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: var(--txt);
+  margin: 2.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--nuit);
+}
+
+.pn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1 1 15rem;
+  max-width: 20.5rem;
+  padding: 0.85rem 1.1rem;
+  border: 2px solid var(--cyan);
+  border-radius: 0.5rem;
+  background: var(--nuit);
+  color: var(--blanc);
+  text-decoration: none;
+}
+
+.pn.next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.pn-dir {
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pn-title {
+  font-weight: 600;
+}
+
+.pn:hover,
+.pn:focus-visible {
+  background: var(--glacier);
+  border-color: var(--glacier);
+  color: var(--noir);
+}
+
+.pn:hover .pn-dir,
+.pn:focus-visible .pn-dir {
+  color: var(--noir);
+}
+
 /* ---------- Pied de page ---------- */
 .site-foot {
   margin-top: 4rem;
@@ -517,9 +664,37 @@ blockquote {
   color: var(--glacier);
 }
 
+/* Icônes des réseaux (Simple Icons, CC0) */
+.ico {
+  display: block;
+  flex: none;
+}
+
+.socials {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
 .socials a {
-  color: var(--cyan);
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(183, 221, 232, 0.35);
+  border-radius: 50%;
+  background: var(--nuit);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.socials a:hover,
+.socials a:focus-visible {
+  border-color: var(--cyan);
+  background: #0d2c44;
 }
 
 /* ---------- Bouton retour en haut ---------- */
@@ -630,6 +805,12 @@ blockquote {
   .foot-links {
     gap: 0.5rem 1rem;
   }
+
+  .pn,
+  .pn.next {
+    max-width: none;
+    margin-left: 0;
+  }
 }
 
 /* ---------- Préférences de mouvement réduit ---------- */
@@ -639,9 +820,15 @@ blockquote {
   }
 
   .to-top,
+  .team .member,
+  .socials a,
   .burger-bar,
   .burger-bar::before,
   .burger-bar::after {
     transition: none;
+  }
+
+  .team .member:hover {
+    transform: none;
   }
 }
