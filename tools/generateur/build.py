@@ -1,8 +1,9 @@
 import json, os, html, importlib, sys
 sys.path.insert(0, os.path.dirname(__file__))
+from fmt import pretty
 BASE = "https://flexarion-officiel.github.io"
 OUT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
-LASTMOD = "2026-11-17"
+LASTMOD = "2026-11-18"
 ORG = BASE + "/#organization"
 SITE = BASE + "/#website"
 
@@ -15,29 +16,34 @@ LOGO_SVG = ('<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect
 
 NAV = [("/", "Accueil"), ("/studio/", "Le studio"), ("/below-zero/", "Below Zero"), ("/devlogs/", "Devlogs"), ("/contact/", "Contact &amp; presse")]
 
-ORG_NODE = {
-  "@type": ["Organization", "LocalBusiness"],
-  "@id": ORG,
-  "name": "Flexarion",
-  "alternateName": "Studio Flexarion",
-  "description": "Flexarion est un studio indépendant (fictif) de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence, fondé en 2022, auteur du jeu Below Zero.",
-  "url": BASE + "/",
-  "logo": {"@type": "ImageObject", "url": BASE + "/icon-512.png", "width": 512, "height": 512},
-  "image": BASE + "/assets/img/flexarion-og-1200x630.jpg",
-  "foundingDate": "2022",
-  "foundingLocation": {"@type": "Place", "name": "Aix-en-Provence"},
-  "numberOfEmployees": {"@type": "QuantitativeValue", "value": 8},
-  "knowsAbout": ["jeu vidéo narratif", "science-fiction", "game design", "énigmes temporelles", "sound design"],
-  "address": {"@type": "PostalAddress", "addressLocality": "Aix-en-Provence", "postalCode": "13100", "addressRegion": "Provence-Alpes-Côte d'Azur", "addressCountry": "FR"},
-  "geo": {"@type": "GeoCoordinates", "latitude": 43.5297, "longitude": 5.4474},
-  "areaServed": "FR",
-  "email": "contact@flexarion-officiel.github.io",
-  "contactPoint": {"@type": "ContactPoint", "contactType": "presse", "email": "contact@flexarion-officiel.github.io", "availableLanguage": "fr", "areaServed": "FR"},
-  "sameAs": ["https://github.com/flexarion-officiel"]
-}
-SITE_NODE = {"@type": "WebSite", "@id": SITE, "url": BASE + "/", "name": "Flexarion", "inLanguage": "fr-FR", "publisher": {"@id": ORG}}
+SOCIALS = [
+    ("GitHub", "https://github.com/flexarion-officiel"),
+    ("LinkedIn", "https://www.linkedin.com/in/flexarion-officiel/"),
+    ("itch.io", "https://flexarionofficiel.itch.io/"),
+    ("X", "https://x.com/flexarion_off"),
+    ("Instagram", "https://www.instagram.com/flexarion.off/"),
+]
 
-CSS = open(os.path.join(OUT, "assets/css/style.css"), encoding="utf-8").read().split("*/", 1)[1].strip()
+ORG_NODE = {
+    "@type": "Organization",
+    "@id": ORG,
+    "name": "Flexarion",
+    "alternateName": ["Flexarion Studio", "Studio Flexarion"],
+    "description": "Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs, fondé en 2022 à Aix-en-Provence et créateur du jeu Below Zero.",
+    "url": BASE + "/",
+    "logo": {"@type": "ImageObject", "@id": BASE + "/#logo", "url": BASE + "/icon-512.png", "contentUrl": BASE + "/icon-512.png", "width": 512, "height": 512, "caption": "Logo Flexarion"},
+    "image": {"@id": BASE + "/#logo"},
+    "foundingDate": "2022",
+    "knowsAbout": ["jeu vidéo narratif", "science-fiction", "game design", "énigmes temporelles", "sound design"],
+    "contactPoint": {"@type": "ContactPoint", "contactType": "presse", "url": BASE + "/contact/", "availableLanguage": "fr"},
+    "sameAs": [u for _, u in SOCIALS],
+}
+SITE_NODE = {"@type": "WebSite", "@id": SITE, "url": BASE + "/", "name": "Flexarion", "alternateName": "Studio Flexarion", "inLanguage": "fr-FR", "publisher": {"@id": ORG}}
+
+def social_list(cls="socials"):
+    lis = "".join(f'<li><a href="{u}" rel="me noopener" target="_blank">{n}</a></li>' for n, u in SOCIALS)
+    return f'<ul class="foot-links {cls}" aria-label="Flexarion sur les réseaux sociaux">{lis}</ul>'
+
 
 def esc(s): return html.escape(s, quote=True)
 
@@ -57,7 +63,7 @@ def render(p):
             {"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + u} for i, (u, n) in enumerate(items)]})
     graph.append(webpage)
     graph += p.get("jsonld", [])
-    ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=1)
+    ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     nav = "".join(f'<li><a href="{u}"' + (' aria-current="page"' if (u == path or (u != "/" and path.startswith(u))) else "") + f'>{n}</a></li>' for u, n in NAV)
     bc = ""
     if crumbs:
@@ -81,16 +87,12 @@ def render(p):
 <meta name="robots" content="{robots}">
 {canon}<meta name="author" content="Flexarion">
 <meta name="theme-color" content="#071421">
-<meta name="geo.region" content="FR-13">
-<meta name="geo.placename" content="Aix-en-Provence">
-<meta name="geo.position" content="43.5297;5.4474">
-<meta name="ICBM" content="43.5297, 5.4474">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
-<style>{CSS}</style>
+<link rel="stylesheet" href="/assets/css/style.css">
 {extra_head}<meta property="og:type" content="{ogtype}">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Flexarion">
@@ -107,12 +109,13 @@ def render(p):
 {ld}
 </script>
 </head>
-<body>
+<body id="haut">
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="site-head">
-<div class="wrap">
+<div class="wrap head-in">
 <a class="brand" href="/" aria-label="Flexarion, retour à l’accueil">{LOGO_SVG}<span>Flexarion</span></a>
-<nav class="nav" aria-label="Navigation principale"><ul>{nav}</ul></nav>
+<button class="burger" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu"><span class="burger-bar"></span></button>
+<nav class="nav" id="menu-principal" aria-label="Navigation principale"><ul>{nav}</ul></nav>
 </div>
 </header>
 {bc}
@@ -121,18 +124,26 @@ def render(p):
 </main>
 <footer class="site-foot">
 <div class="wrap">
-<p><strong>Flexarion</strong> — studio indépendant de jeux vidéo de science-fiction, Aix-en-Provence (Bouches-du-Rhône, Provence-Alpes-Côte d’Azur, France). Créateur de <a href="/below-zero/">Below Zero</a>.</p>
-<ul>
+<p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/favicon.svg" width="56" height="56" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
+<p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence. Créateur de <a href="/below-zero/">Below Zero</a>.</p>
+<nav aria-label="Plan du site"><ul class="foot-links">
 <li><a href="/studio/">Le studio</a></li>
 <li><a href="/below-zero/">Below Zero</a></li>
 <li><a href="/devlogs/">Devlogs</a></li>
 <li><a href="/contact/">Contact &amp; presse</a></li>
 <li><a href="/mentions-legales/">Mentions légales</a></li>
+</ul></nav>
+{social_list()}
+<ul class="foot-links foot-ext">
+<li><a href="https://github.com/flexarion-officiel" rel="noopener" target="_blank">Organisation GitHub Flexarion</a></li>
+<li><a href="https://iut.univ-amu.fr/fr" rel="noopener" target="_blank">IUT d’Aix-Marseille (amU)</a></li>
 </ul>
-<p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA. <a href="/mentions-legales/">En savoir plus</a>.</p>
+<p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA.</p>
 </div>
 </footer>
-{p.get("scripts", "")}</body>
+<a class="to-top" href="#haut" aria-label="Retour en haut de la page"><span aria-hidden="true">↑</span></a>
+<script src="/assets/js/main.js" defer></script>
+</body>
 </html>
 '''
     if path.endswith(".html"):
@@ -140,7 +151,7 @@ def render(p):
     else:
         fp = OUT + path + "index.html"
     os.makedirs(os.path.dirname(fp), exist_ok=True)
-    open(fp, "w", encoding="utf-8").write(doc)
+    open(fp, "w", encoding="utf-8").write(pretty(doc))
     return fp
 
 def pic(name, alt, w=1280, h=720, lcp=False, sizes="(max-width: 72rem) 100vw, 72rem", cls=""):

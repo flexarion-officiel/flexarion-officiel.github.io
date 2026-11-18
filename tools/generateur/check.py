@@ -6,6 +6,10 @@ for f in glob.glob(R+"/**/*.html", recursive=True):
     for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S):
         try: json.loads(b)
         except Exception as e: print("JSON-LD KO", f, e); errs+=1
+    if re.search(r"<style|\sstyle=", s): print("CSS INLINE", f); errs+=1
+    if "flexarion.officiel@gmail.com" in s: print("EMAIL EN CLAIR", f); errs+=1
+    if re.search(r"fictif|fictive", re.search(r"<title>.*?</title>", s).group(0) + re.search(r'name="description" content="[^"]*"', s).group(0) + "".join(re.findall(r'<script type="application/ld\+json">.*?</script>', s, re.S))): print("FICTIF dans title/desc/JSON-LD", f); errs+=1
+    if "LocalBusiness" in s or "GeoCoordinates" in s: print("LocalBusiness/geo", f); errs+=1
     t=re.search(r"<title>(.*?)</title>",s).group(1); titles.setdefault(t,[]).append(f)
     d=re.search(r'name="description" content="(.*?)"',s).group(1); descs.setdefault(d,[]).append(f)
     if len(d)>160 or len(d)<70: print("desc len",len(d),f)
@@ -28,5 +32,7 @@ for k,v in descs.items():
     if len(v)>1: print("dup desc",k)
 json.load(open(R+"/site.webmanifest"))
 import xml.dom.minidom as X
+sm=open(R+"/sitemap.xml").read()
+if "mentions-legales" in sm or "mentions-legales" in open(R+"/llms.txt").read(): print("mentions-legales encore indexée"); errs+=1
 X.parse(R+"/sitemap.xml"); X.parse(R+"/devlogs/feed.xml")
 print("pages", len(titles), "errors", errs)

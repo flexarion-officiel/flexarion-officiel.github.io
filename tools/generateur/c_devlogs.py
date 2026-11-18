@@ -35,6 +35,8 @@ ARTICLES = [
 ]
 DATE = "2026-11-17"
 DATE_FR = "17 novembre 2026"
+MOD = "2026-11-18"
+MOD_FR = "18 novembre 2026"
 
 def url(a): return f"/devlogs/{a['slug']}/"
 
@@ -239,14 +241,14 @@ for a in ARTICLES:
 <header>
 <p class="kicker">Devlog n°{a['num']} · Below Zero</p>
 <h1>{a['h1']}</h1>
-<p class="meta">Par {n}, {role.lower()} chez Flexarion · Publié le <time datetime="{DATE}">{DATE_FR}</time></p>
+<p class="meta">Par {n}, {role.lower()} chez Flexarion · Publié le <time datetime="{DATE}">{DATE_FR}</time> · Mis à jour le <time datetime="{MOD}">{MOD_FR}</time></p>
 </header>
 <figure>
 {pic(a['img'], a['alt'], lcp=True)}
 </figure>
 <div class="prose">
 {BODIES[a['num']]}
-<aside class="note" aria-label="Précision">Flexarion et Below Zero sont des créations fictives réalisées dans le cadre d'un projet pédagogique (BUT Informatique, IUT d'Aix-Marseille). Ce devlog a été rédigé avec l'assistance d'une IA. Détails dans les <a href="/mentions-legales/">mentions légales</a>.</aside>
+<aside class="note" aria-label="Précision">Ce devlog a été rédigé avec l'assistance d'une IA puis intégré par l'équipe. Détails dans les <a href="/mentions-legales/">mentions légales</a>.</aside>
 <h2>Les autres devlogs de Flexarion</h2>
 <ul>{rel}</ul>
 <p><a class="btn ghost" href="/devlogs/">Tous les devlogs</a> <a class="btn" href="/below-zero/">Découvrir Below Zero</a></p>
