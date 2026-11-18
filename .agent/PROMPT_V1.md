@@ -5,6 +5,9 @@
 ### Commun à toutes les pages
 - Lorsque le scroll n'est pas tout en haut de la page, proposer un bouton pour retourner tout en haut, de manière smooth
 - Remplacer l'email de contact par flexarion.officiel@gmail.com (en gardant l'obfuscation js)
+- Proposer une meilleure indentation du code HTML
+- J'ai remarqué que pas mal de CSS se trouve directement dans les page, si c'est possible, n'hésite pas à créer les fichiers CSS puis mettre la balise pour les utiliser (sauf si cela provoque un moins bon score SEO ou performances)
+- Mettre des liens vers les différents réseaux sociaux
 
 ### Header
 - (Mobile) : Ajouter un menu burger pour afficher les différentes sections du menu
@@ -47,3 +50,11 @@ Ton balisage déclare un LocalBusiness avec une adresse, des coordonnées GPS et
 
 La page d'accueil centrée sur le nom. Ton titre commence déjà par « Flexarion », c'est parfait. Ajoute alternateName (« Flexarion Studio », « Studio Flexarion ») dans le balisage Organization, et un logo déclaré dans logo.
 De la fraîcheur.
+
+## Informations additionnelles
+- Réseaux :
+    - Organisation GitHub : https://github.com/flexarion-officiel
+    - LinkedIn : https://www.linkedin.com/in/flexarion-officiel/
+    - Itch.io : https://flexarionofficiel.itch.io/
+    - X : https://x.com/flexarion_off
+    - Instagram : https://www.instagram.com/flexarion.off/
