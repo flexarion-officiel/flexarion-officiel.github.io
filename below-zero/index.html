@@ -69,7 +69,6 @@
             },
             "sameAs": [
               "https://github.com/flexarion-officiel",
-              "https://www.linkedin.com/in/flexarion-officiel/",
               "https://flexarionofficiel.itch.io/",
               "https://x.com/flexarion_off",
               "https://www.instagram.com/flexarion.off/"
@@ -133,6 +132,7 @@
             "url": "https://flexarion-officiel.github.io/below-zero/",
             "description": "Aventure narrative de science-fiction : en 2156, une ville identique à Aix-en-Provence mais datant de 2306 est découverte sous la surface. Le joueur incarne un jeune technicien que les habitants du futur connaissent déjà ; chaque action dans le présent modifie le futur.",
             "image": [
+              "https://flexarion-officiel.github.io/assets/img/below-zero-gameplay-sextia-1280.webp",
               "https://flexarion-officiel.github.io/assets/img/below-zero-key-art-1280.webp",
               "https://flexarion-officiel.github.io/assets/img/below-zero-capture-causalite-1280.webp",
               "https://flexarion-officiel.github.io/assets/img/below-zero-concept-place-2306-1280.webp"
@@ -251,9 +251,12 @@
       <div class="wrap">
         <p class="kicker">Le jeu phare de Flexarion</p>
         <h1>Below Zero : la ville d'en dessous vous attendait</h1>
-        <figure>
-          <img src="/assets/img/below-zero-key-art-1280.webp" srcset="/assets/img/below-zero-key-art-480.webp 480w, /assets/img/below-zero-key-art-960.webp 960w, /assets/img/below-zero-key-art-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Key art de Below Zero par Flexarion : Sacha, technicien à la lampe frontale, découvre la ville souterraine de 2306 dont les habitants l&#x27;observent" fetchpriority="high" decoding="async">
-          <figcaption>Key art de Below Zero (visuel généré par IA, retravail prévu).</figcaption>
+        <figure class="gameplay">
+          <picture>
+            <source media="(max-width: 47.99rem)" srcset="/assets/img/below-zero-gameplay-sextia-mobile.webp 540w" sizes="100vw" width="540" height="608">
+            <img src="/assets/img/below-zero-gameplay-sextia-1280.webp" srcset="/assets/img/below-zero-gameplay-sextia-480.webp 480w, /assets/img/below-zero-gameplay-sextia-960.webp 960w, /assets/img/below-zero-gameplay-sextia-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Capture de jeu de Below Zero : vue à la troisième personne de Sacha, technicien à la lampe frontale et au Diapason, sur la grande place de Sextia en 2306, près d&#x27;une fontaine thermale, sous le regard d&#x27;habitants aux marques cyan" fetchpriority="high" decoding="async">
+          </picture>
+          <figcaption>Aperçu de jeu : Sacha explore Sextia en 2306, à la recherche d'objets qui résonnent entre les époques (visuel généré par IA, retravail prévu).</figcaption>
         </figure>
         <div class="prose">
           <p class="lead">Below Zero est le premier jeu de Flexarion : une aventure narrative de science-fiction où l'on explore deux versions d'Aix-en-Provence, séparées par cent cinquante ans et quelques dizaines de mètres de roche. Ici, il n'y a pas d'ennemis à abattre. Seulement une question : pourquoi le futur vous connaît-il déjà ?</p>
@@ -373,29 +376,22 @@
     </main>
     <footer class="site-foot">
       <div class="wrap">
-        <p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/favicon.svg" width="56" height="56" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
-        <p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence. Créateur de <a href="/below-zero/">Below Zero</a>.</p>
+        <p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/icon-512.png" srcset="/icon-192.png 192w, /icon-512.png 512w" sizes="72px" width="72" height="72" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
+        <p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence.</p>
         <nav aria-label="Plan du site">
           <ul class="foot-links">
-            <li><a href="/studio/">Le studio</a></li>
-            <li><a href="/below-zero/">Below Zero</a></li>
-            <li><a href="/devlogs/">Devlogs</a></li>
+            <li><a href="/">Accueil</a></li>
             <li><a href="/contact/">Contact &amp; presse</a></li>
             <li><a href="/mentions-legales/">Mentions légales</a></li>
           </ul>
         </nav>
-        <ul class="foot-links socials" aria-label="Flexarion sur les réseaux sociaux">
-          <li><a href="https://github.com/flexarion-officiel" rel="me noopener" target="_blank">GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/flexarion-officiel/" rel="me noopener" target="_blank">LinkedIn</a></li>
-          <li><a href="https://flexarionofficiel.itch.io/" rel="me noopener" target="_blank">itch.io</a></li>
-          <li><a href="https://x.com/flexarion_off" rel="me noopener" target="_blank">X</a></li>
-          <li><a href="https://www.instagram.com/flexarion.off/" rel="me noopener" target="_blank">Instagram</a></li>
+        <ul class="socials" aria-label="Flexarion sur les réseaux sociaux">
+          <li><a href="https://github.com/flexarion-officiel" rel="me noopener" target="_blank" aria-label="Flexarion sur GitHub (flexarion-officiel)" title="GitHub"><img class="ico" src="/assets/icons/github.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://flexarionofficiel.itch.io/" rel="me noopener" target="_blank" aria-label="Flexarion sur itch.io (flexarionofficiel)" title="itch.io"><img class="ico" src="/assets/icons/itchio.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://x.com/flexarion_off" rel="me noopener" target="_blank" aria-label="Flexarion sur X (@flexarion_off)" title="X"><img class="ico" src="/assets/icons/x.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://www.instagram.com/flexarion.off/" rel="me noopener" target="_blank" aria-label="Flexarion sur Instagram (@flexarion.off)" title="Instagram"><img class="ico" src="/assets/icons/instagram.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
         </ul>
-        <ul class="foot-links foot-ext">
-          <li><a href="https://github.com/flexarion-officiel" rel="noopener" target="_blank">Organisation GitHub Flexarion</a></li>
-          <li><a href="https://iut.univ-amu.fr/fr" rel="noopener" target="_blank">IUT d’Aix-Marseille (amU)</a></li>
-        </ul>
-        <p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille. Visuels générés par IA.</p>
+        <p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille.</p>
       </div>
     </footer>
     <a class="to-top" href="#haut" aria-label="Retour en haut de la page"><span aria-hidden="true">↑</span></a>
