@@ -1,5 +1,9 @@
 # Compte rendu de la v1.1.0 du site
 
+## Informations de dernière minute
+
+Comme on en a discuté à l'instant, le LinkedIn est pour l'instant hs. Supprime donc toutes ses références partout.
+
 ## Appréciation sur la forme
 
 ## Commun à toutes les pages
