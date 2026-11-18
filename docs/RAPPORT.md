@@ -18,6 +18,10 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 | 17/11/2026 | Validateur W3C Nu (non IA) | Validation HTML | — |
 | 18/11/2026 | FlexaBot (agent IA) | Application de la revue V1 de l'équipe (forme, code, données structurées) | Revue rédigée par l'équipe ; résultat à vérifier en ligne |
 | 18/11/2026 | Validateur Nu local (vnu.jar), Lighthouse 12, Chrome headless (non IA) | Validation HTML/CSS, audits, captures d'écran | — |
+| 18/11/2026 | FlexaBot (agent IA) | Rédaction du profil itch.io (HTML ≤ 5 000 caractères) et du README de l'organisation GitHub | À relire et coller par l'équipe |
+| 18/11/2026 | FlexaBot (agent IA) | Application de la revue V1.1 (v1.2 du site) : réseaux, icônes, pied de page, équipe, Below Zero, devlogs, README | Revue rédigée par l'équipe ; résultat à vérifier en ligne |
+| 18/11/2026 | FlexaBot — génération d'images | 8 avatars illustrés de l'équipe + 1 aperçu de jeu de Below Zero | À retravailler par l'équipe |
+| 18/11/2026 | html-validate, Lighthouse 12, Chrome headless / Puppeteer (non IA) | Validation HTML, audits, captures d'écran | — |
 
 **Prompt de mission initial** (donné par l'équipe à l'agent) : « Mission : Développement agentique du site Flexarion (Concours SEO) » — rôle d'agent de développement principal, objectifs (position Google sur « Flexarion », GEO, site techniquement irréprochable, backlinks white hat, documentation de l'IA), périmètre technique, contenu minimum, mentions légales, brand guidelines (identité, palette, positionnement, personas Léo / Chloé / Mehdi), modèle de reporting et stratégie en 4 phases. Le texte complet est conservé dans l'historique de conversation de l'équipe.
 
@@ -129,7 +133,7 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - **CSS** : une seule feuille globale `assets/css/style.css` (lisible, commentée, ~11 Ko non minifiée) liée par `<link rel="stylesheet">` sur toutes les pages ; plus aucun `<style>` ni attribut `style` (contrôle automatique ajouté dans `check.py`).
   - **JS** : `assets/js/contact.js` remplacé par un script unique `assets/js/main.js` (`defer`) : burger, retour en haut, e-mail.
   - **Indentation** : nouveau module `tools/generateur/fmt.py` qui indente tout le HTML produit (2 espaces, imbrication respectée, JSON-LD indenté à 2 espaces) ; CSS et JS réécrits avec une indentation homogène.
-  - **Réseaux sociaux** : GitHub, LinkedIn, itch.io, X et Instagram dans le pied de page de chaque page et dans une section « Suivre le studio sur les réseaux » de la page contact (`rel="me noopener"`, nouvel onglet) ; les 5 URL sont dans `sameAs` de l'Organization et dans `llms.txt`.
+  - **Réseaux sociaux** : GitHub, itch.io, X et Instagram dans le pied de page de chaque page et dans une section « Suivre le studio sur les réseaux » de la page contact (`rel="me noopener"`, nouvel onglet) ; les URL sont dans `sameAs` de l'Organization et dans `llms.txt`.
   - **En-tête** : menu burger sur mobile (< 48 rem) : bouton `aria-expanded` / `aria-controls="menu-principal"`, libellé « Ouvrir / Fermer le menu », fermeture avec Échap. Sans JS, les liens restent accessibles dans le pied de page.
   - **Pied de page** : texte centré, logo Flexarion ajouté, lien « En savoir plus » supprimé, liens externes « Organisation GitHub Flexarion » et « IUT d'Aix-Marseille (amU) » ajoutés, mention courte du projet fictif conservée, lien vers les mentions légales conservé, tailles et retours à la ligne adaptés au mobile (marge basse pour ne pas être masqué par le bouton « retour en haut »).
   - **Accueil** : hero compact, texte posé sur l'image avec un dégradé sombre (contraste conservé) ; H1, introduction et boutons visibles sans défiler sur ordinateur (1366×768) et sur mobile (390×844). Recadrage spécifique au mobile (`<picture>`, 540×608, 53 Ko) pour garder un LCP rapide.
@@ -161,6 +165,63 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - Adresse e-mail retirée du JSON-LD pour respecter l'obfuscation.
   - Mention « fictif » retirée de `llms.txt` (fichier lu par les moteurs génératifs), par cohérence avec la consigne de la garder uniquement dans le pied de page et les mentions légales.
 - Suite prévue : Après déploiement, refaire PageSpeed Insights sur l'URL publique, vérifier les données structurées avec le test des résultats enrichis de Google, soumettre à nouveau le sitemap dans Search Console et demander l'indexation des pages modifiées ; supprimer `assets/js/contact.js` du dépôt (`git rm`, avec accord).
+
+### Tâche : Profil itch.io du studio
+- Objectif : Fournir une présentation HTML du studio prête à coller dans le profil itch.io (`flexarionofficiel.itch.io`), limitée à 5 000 caractères.
+- Critères de validation : ≤ 5 000 caractères ; balises acceptées par itch.io ; mot-clé « Flexarion » et ancrage Aix-en-Provence présents ; liens vers le site officiel et ses pages clés ; ton mystérieux de la marque.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails : Fichier HTML d'environ 3 300 caractères (titre, accroche, présentation du studio et de Below Zero, citation, liens vers l'accueil, Below Zero, les devlogs et le contact). L'équipe a ensuite demandé une version enrichie de styles. Le texte est collé manuellement par l'équipe dans itch.io (l'agent n'a pas accès au compte).
+- Prompts / outils IA utilisés : « Est-ce que tu peux me faire un html pour le profil itch io ? Sachant que c'est max 5000 caractères, optimise bien. » puis « Est-ce que ce serait possible d'y ajouter des styles ».
+- Décisions prises : Liens absolus vers le site (backlink White Hat depuis une plateforme pertinente pour un studio de jeu) ; pas de bourrage de mots-clés.
+- Suite prévue : Créer la page du jeu Below Zero sur itch.io avec un lien vers `/below-zero/`.
+
+### Tâche : README de l'organisation GitHub
+- Objectif : Rédiger le README de présentation de l'organisation GitHub `flexarion-officiel` (affiché sur la page de l'organisation).
+- Critères de validation : Markdown compatible GitHub ; image de marque, présentation du studio et de Below Zero, liens vers le site ; aucun lien vers un autre groupe.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails : Fichier `profile/README.md` (≈ 3 300 caractères) : bannière Open Graph liée au site, slogan, liens Site officiel / Below Zero / Devlogs / Presse, accroche, présentation. Il doit être placé dans un dépôt public `flexarion-officiel/.github` ; ce dépôt est hors du périmètre autorisé de l'agent, sa création est donc laissée à l'équipe (ou à un accord explicite).
+- Prompts / outils IA utilisés : « Est-ce que pour l'organisation github https://github.com/flexarion-officiel tu peux faire un README ? »
+- Décisions prises : Contenu cohérent avec le site (mêmes faits, même ton) pour renforcer l'entité « Flexarion » ; liens absolus vers le site.
+- Suite prévue : Création du dépôt `.github` par l'équipe ; renseigner le champ *Website* de l'organisation.
+
+### Tâche : Corrections suite à la revue V1.1 (version 1.2 du site)
+- Objectif : Appliquer le compte rendu de la v1.1.0 rédigé par l'équipe (réseaux, icônes, pied de page, pages studio / Below Zero / contact / devlogs, README).
+- Critères de validation : Plus aucune référence au réseau supprimé dans le site, la doc et les profils ; icônes issues d'une source libre et conformes aux chartes ; chaque point de la revue traité ; `check.py` sans erreur ; HTML valide ; Lighthouse ≥ 98 ; captures d'écran vérifiées.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails :
+  - **Réseau professionnel retiré** : le compte ayant été suspendu, toutes ses références sont supprimées (pied de page, page contact, `sameAs` du JSON-LD, `llms.txt`, README, `docs/PHASE4-NETLINKING.md`, ce rapport). Réseaux conservés : GitHub, itch.io, X, Instagram.
+  - **Icônes des réseaux** : SVG officiels de [Simple Icons](https://simpleicons.org) v16 (licence CC0 1.0, domaine public), rangés dans le nouveau dossier `assets/icons/` (`github.svg`, `itchio.svg`, `x.svg`, `instagram.svg` + `LISEZMOI.md` de provenance). Tracés non modifiés, proportions conservées, version monochrome blanche, autorisée par les chartes des quatre marques. Icônes décoratives (`alt=""`, `aria-hidden`) et nom accessible porté par le lien (`aria-label`). Crédit et rappel des marques ajoutés dans les mentions légales (section « Crédits des icônes »).
+  - **Pied de page** : liens Le studio / Below Zero / Devlogs retirés, lien « Accueil » placé en premier (Accueil · Contact & presse · Mentions légales) ; logo remplacé par `/icon-512.png` (72 × 72, `srcset` 192/512 pour ne charger que la taille utile, `loading="lazy"`) ; « Créateur de Below Zero » retiré ; liens « Organisation GitHub Flexarion » et « IUT d'Aix-Marseille » retirés ; mention « Visuels générés par IA » retirée du pied de page (conservée dans les mentions légales, section « Usage de l'intelligence artificielle », complétée avec les aperçus de jeu et les avatars) ; réseaux sous forme d'icônes rondes.
+  - **Le studio** : cartes de l'équipe plus vivantes : 8 avatars illustrés (style cartoon, même fond bleu nuit #123A58 / #071421 et même liseré cyan pour tous), médaillon cerclé de cyan, rôle en pastille, léger soulèvement au survol (désactivé si `prefers-reduced-motion`). WebP 160 et 320 px (2 à 9 Ko), `width`/`height`, `loading="lazy"`, textes alternatifs descriptifs. Mention « avatars générés par IA » sous la grille.
+  - **Below Zero** : seule l'image principale est remplacée par un aperçu de jeu (vue à la troisième personne de Sacha sur la grande place de Sextia, fontaine thermale, habitants aux marques cyan, interface holographique discrète, sans combat). WebP 480 / 960 / 1280 + recadrage mobile 540 × 608 via `<picture>`, `fetchpriority="high"` (image LCP). L'image est ajoutée en tête du tableau `image` du `VideoGame` et au kit presse. L'image Open Graph de la page reste le key art (visuel partagé avec la page studio).
+  - **Contact & presse** : réseaux en liste verticale (ordinateur et mobile), chaque ligne = logo • pseudo (`flexarion-officiel`, `flexarionofficiel`, `@flexarion_off`, `@flexarion.off`) ; nom accessible « Réseau : pseudo ».
+  - **Devlogs** : liste triée du plus récent au plus ancien (index, accueil, flux RSS, `llms.txt`, `blogPost`). Les 4 articles ayant été publiés le même jour, l'heure de publication (17/11/2026, de 9 h à 12 h) les départage dans `datePublished`, `article:published_time` et `pubDate`, sans antidater. Sur chaque article, boutons « Devlog précédent » (`rel="prev"`, article plus ancien, absent sur le n°1) et « Devlog suivant » (`rel="next"`, article plus récent, absent sur le n°4), regroupés dans un `<nav aria-label="Navigation entre les devlogs">`.
+  - **README** : encadré « Projet fictif » supprimé (les créateurs réels restent cités), sections « Modifier le site » et « Règles du concours respectées » supprimées, choix techniques et arborescence mis à jour (icônes, avatars, navigation des devlogs).
+  - **Fraîcheur** : `lastmod` 2026-11-18 dans le sitemap, `dateModified` 2026-11-18.
+  - **Validation** : `check.py` : 11 pages, 0 erreur (JSON-LD valide, 0 lien interne cassé, aucun CSS en ligne, aucune adresse e-mail en clair) ; html-validate : 0 erreur hors règle SRI (non pertinente pour des fichiers servis par le même domaine) ; recherche automatique : 0 occurrence du réseau supprimé dans le dépôt et les profils.
+  - **Lighthouse 12** (serveur local sans gzip) :
+
+| Page | Mode | Performance | Accessibilité | Bonnes pratiques | SEO |
+|---|---|---|---|---|---|
+| Accueil | mobile | 100 | 100 | 100 | 100 |
+| Le studio | mobile | 100 | 100 | 100 | 100 |
+| Le studio | ordinateur | 100 | 100 | 100 | 100 |
+| Below Zero | mobile | 100 | 100 | 100 | 100 |
+| Below Zero | ordinateur | 100 | 100 | 100 | 100 |
+| Contact | mobile | 100 | 100 | 100 | 100 |
+| Devlog #3 | mobile | 100 | 100 | 100 | 100 |
+
+- Prompts / outils IA utilisés : Compte rendu de la v1.1.0 rédigé par l'équipe, transmis tel quel à l'agent, et réponses de cadrage (mention IA conservée dans les mentions légales ; seule l'image principale de Below Zero remplacée ; pseudo après le séparateur ; avatars sur le même fond). Génération d'images (FlexaBot) : un premier avatar décrit précisément (« avatar cartoon stylisé, buste, fond uni bleu #123A58 dans un carré #071421, liseré cyan #19B9D4 », puis le profil du membre), réutilisé comme image de référence pour les 7 autres afin de garder le même style ; aperçu de jeu : « capture d'un jeu d'aventure narratif de SF, caméra à la troisième personne, jeune technicien à la lampe frontale dans une ville souterraine de 2306 sous Aix-en-Provence, fontaine thermale, interface holographique cyan discrète, aucune arme ni combat, palette de la charte ». Outils non IA : Simple Icons (npm / jsDelivr), Pillow (conversion WebP), html-validate, Lighthouse, Puppeteer.
+- Décisions prises :
+  - Simple Icons plutôt que des logos copiés sur chaque site : licence CC0 explicite, tracés identiques aux logos officiels, un seul format SVG léger.
+  - Icônes en blanc monochrome (couleur autorisée par toutes les chartes) plutôt que les couleurs de marque, pour l'harmonie avec la palette sombre du site.
+  - Pastille du rôle sur fond #071421 : le cyan sur fond translucide n'atteignait que 3,9:1 de contraste (Lighthouse) ; corrigé à plus de 7:1.
+  - Dates des devlogs non antidatées (cohérent avec la décision prise lors de la rédaction) : départage par l'heure de publication.
+  - Sans JavaScript, la navigation reste possible via le fil d'Ariane et les liens du contenu (le pied de page ne contient plus les pages principales, à la demande de l'équipe).
+- Suite prévue : Déployer, vérifier en ligne (PageSpeed Insights, test des résultats enrichis), soumettre de nouveau le sitemap ; mettre à jour les profils externes si un lien vers le réseau supprimé y figurait ; retravail éventuel des avatars et de l'aperçu de jeu par l'équipe.
 
 ---
 

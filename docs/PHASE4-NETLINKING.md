@@ -23,9 +23,9 @@ Textes prêts à coller pour créer des profils cohérents autour de **Flexarion
 | Léo, 13 ans | YouTube (Shorts), TikTok | Formats courts, « avant / après » d'une action dans le présent et sa conséquence en 2306 |
 | Chloé, 16 ans | Discord, Instagram | Lore, fan-arts, théories, artworks de Sextia, sondages de choix narratifs |
 | Mehdi, 21 ans | Reddit, X, itch.io / IndieDB, Twitch | Devlogs techniques, systèmes de causalité, discussions de game design |
-| Presse / pros | LinkedIn, X, GitHub, Medium / Dev.to | Coulisses du studio, articles d'expertise, code |
+| Presse / pros | X, GitHub, Medium / Dev.to | Coulisses du studio, articles d'expertise, code |
 
-Ordre recommandé de création : **GitHub (déjà fait) → itch.io → IndieDB → Dev.to → X → Discord → Instagram → YouTube → LinkedIn → Medium**.
+Ordre recommandé de création : **GitHub (déjà fait) → itch.io → IndieDB → Dev.to → X → Discord → Instagram → YouTube → Medium**.
 
 ---
 
@@ -103,29 +103,7 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 
 ---
 
-## 4. LinkedIn — page entreprise
-
-**Nom** : Flexarion
-**Slogan (120 car.)** : Studio indépendant de jeux vidéo de science-fiction narratifs, à Aix-en-Provence.
-**Secteur** : Développement de jeux vidéo · **Taille** : 2-10 employés · **Siège** : Aix-en-Provence, France · **Fondée en** : 2022
-**Site web** : https://flexarion-officiel.github.io/
-
-**À propos** :
-> Flexarion est un studio indépendant de jeux vidéo de science-fiction fondé en 2022 à Aix-en-Provence. Pour les amateurs de jeux narratifs, nous créons des expériences immersives où les décisions du joueur influencent directement l'univers du jeu.
->
-> Notre premier titre, Below Zero, explore deux versions d'Aix-en-Provence séparées par 150 ans. Game design, level design, sound design, character design : nous partageons nos méthodes dans nos devlogs.
->
-> ℹ️ Flexarion est un studio fictif, créé par des étudiants du BUT Informatique de l'IUT d'Aix-Marseille dans le cadre d'un projet de communication digitale.
-
-**Premier post (ton posé, storytelling pro — CM3)** :
-> Comment construire deux fois la même ville sans qu'elle devienne un copier-coller ? 🏙️
-> Chez Flexarion, nous partons d'un « squelette » unique pour l'Aix de 2156 et la Sextia de 2306, puis chaque époque reçoit son habillage. Résultat : la symétrie devient un outil de navigation, pas seulement un effet de style.
-> Nos 5 règles de symétrie sont détaillées dans notre dernier devlog 👉 https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/
-> #gamedev #leveldesign #AixEnProvence #jeuvideo
-
----
-
-## 5. YouTube — chaîne
+## 4. YouTube — chaîne
 
 **Nom** : Flexarion · **Identifiant** : @flexarion-officiel (ou @flexarionstudio)
 **Description de la chaîne** :
@@ -141,7 +119,7 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 
 ---
 
-## 6. X (Twitter)
+## 5. X (Twitter)
 
 **Nom** : Flexarion · **@** : @flexarion_off
 **Bio (160 car.)** :
@@ -158,7 +136,7 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 
 ---
 
-## 7. Medium et Dev.to
+## 6. Medium et Dev.to
 
 **Bio (les deux)** :
 > Flexarion — studio indépendant (fictif) de jeux vidéo SF à Aix-en-Provence. Nous écrivons sur le game design narratif, le level design et le développement web du site du studio.
@@ -170,7 +148,7 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 
 ---
 
-## 8. Discord — serveur communautaire
+## 7. Discord — serveur communautaire
 
 **Nom du serveur** : Flexarion · Below Zero
 **Description** :
@@ -184,7 +162,7 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 
 ---
 
-## 9. Instagram
+## 8. Instagram
 
 **Nom** : Flexarion · **@** : @flexarion.off
 **Bio (150 car.)** :
@@ -209,7 +187,6 @@ Nous créons des aventures narratives où chaque choix modifie l'univers du jeu.
 | Plateforme | Créé le | URL du profil | Lien vers le site | Ajouté au `sameAs` |
 |---|---|---|---|---|
 | GitHub | 11/2026 | https://github.com/flexarion-officiel | à vérifier (champ Website) | ✅ |
-| LinkedIn | 11/2026 | https://www.linkedin.com/in/flexarion-officiel/ | à vérifier | ✅ |
 | itch.io | 11/2026 | https://flexarionofficiel.itch.io/ | à vérifier | ✅ |
 | X | 11/2026 | https://x.com/flexarion_off | à vérifier | ✅ |
 | Instagram | 11/2026 | https://www.instagram.com/flexarion.off/ | à vérifier | ✅ |
