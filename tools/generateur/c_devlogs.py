@@ -9,28 +9,28 @@ AUTHORS = {
 
 ARTICLES = [
  dict(slug="concevoir-deux-villes-aix-2156-2306", num=1, date="2026-11-17T09:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 09:00:00 +0100", img="devlog-deux-villes", author="margaux",
-  title="Devlog #1 : concevoir deux villes jumelles (2156 / 2306) | Flexarion",
+  title="Devlog #1 : concevoir deux villes jumelles | Flexarion",
   h1="Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306",
   short="Concevoir deux villes jumelles",
-  desc="Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.",
+  desc="Flexarion dévoile comment son équipe bâtit l'Aix de 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés et règles de symétrie.",
   alt="Deux plans superposés de la même ville, l'un à l'encre sépia, l'autre en hologramme cyan, sur la table de travail de Flexarion"),
  dict(slug="enigmes-causalite-temporelle", num=2, date="2026-11-17T10:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 10:00:00 +0100", img="devlog-causalite", author="lucas",
-  title="Devlog #2 : les énigmes de causalité de Below Zero | Flexarion",
+  title="Devlog #2 : énigmes de causalité de Below Zero | Flexarion",
   h1="Devlog #2 : le présent modifie le futur, nos énigmes de causalité",
   short="Les énigmes de causalité temporelle",
-  desc="Le game designer de Flexarion explique comment une action dans l'Aix de 2156 transforme la ville de 2306 dans Below Zero, et comment on évite le chaos.",
+  desc="Chez Flexarion, le game designer explique comment une action dans l'Aix de 2156 transforme la ville de 2306 de Below Zero, sans chaos.",
   alt="Graphe lumineux reliant une clé, une graine, une lanterne et une porte entre deux lignes temporelles"),
  dict(slug="sound-design-ville-souterraine", num=3, date="2026-11-17T11:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 11:00:00 +0100", img="devlog-son", author="elise",
-  title="Devlog #3 : le sound design de la ville souterraine | Flexarion",
+  title="Devlog #3 : le sound design de Sextia | Flexarion",
   h1="Devlog #3 : écouter sous la ville, le sound design de Sextia",
   short="Le sound design de la ville souterraine",
-  desc="Réverbérations, eau thermale et cigales mutées : la sound designer de Flexarion raconte comment elle fait sonner la ville souterraine de Below Zero.",
+  desc="Chez Flexarion, la sound designer raconte comment l'eau thermale, l'écho et des cigales mutées font sonner la ville souterraine de Below Zero.",
   alt="Micro et casque posés dans un tunnel de pierre où des ondes sonores cyan se propagent vers une ville lointaine"),
  dict(slug="character-design-habitants-futur", num=4, date="2026-11-17T12:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 12:00:00 +0100", img="devlog-personnages", author="yanis",
-  title="Devlog #4 : le character design des habitants de 2306 | Flexarion",
+  title="Devlog #4 : dessiner les habitants de 2306 | Flexarion",
   h1="Devlog #4 : ils vous connaissent déjà, dessiner les habitants de 2306",
   short="Le character design des habitants de 2306",
-  desc="Du croquis au personnage final : le character designer de Flexarion dévoile comment il dessine des habitants du futur qui reconnaissent le joueur.",
+  desc="Chez Flexarion, le character designer dévoile comment il dessine, du croquis au modèle 3D, des habitants du futur qui reconnaissent le joueur.",
   alt="Carnet de croquis ouvert montrant l'évolution d'un visage futuriste jusqu'à un portrait aux marques cyan"),
 ]
 # Les 4 devlogs ont été publiés le 17/11/2026 : l'heure de publication (réelle, échelonnée)
@@ -38,8 +38,8 @@ ARTICLES = [
 ARTICLES.sort(key=lambda a: a["date"], reverse=True)
 DATE = ARTICLES[0]["date"]  # date du devlog le plus récent
 DATE_FR = ARTICLES[0]["date_fr"]
-MOD = "2026-11-18"
-MOD_FR = "18 novembre 2026"
+MOD = "2026-11-19"
+MOD_FR = "19 novembre 2026"
 
 def url(a): return f"/devlogs/{a['slug']}/"
 

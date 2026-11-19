@@ -87,7 +87,7 @@ home = f'''
 {fh}
 </div>
 '''
-PAGES.append(dict(path="/", title="Flexarion | Studio de jeux vidéo SF indépendant à Aix-en-Provence",
+PAGES.append(dict(path="/", title="Flexarion | Studio de jeux vidéo SF à Aix-en-Provence",
   ogtitle="Flexarion, studio de jeux vidéo de science-fiction à Aix-en-Provence",
   desc="Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs basé à Aix-en-Provence depuis 2022, créateur de Below Zero.",
   body=home, jsonld=[fld]))
@@ -253,7 +253,7 @@ vg = {"@type": "VideoGame", "@id": GAME, "name": "Below Zero", "url": BASE + "/b
   "character": [{"@type": "Person", "name": "Sacha Morel", "description": "Jeune technicien des réseaux souterrains, personnage joueur"}],
   "keywords": "Below Zero, Flexarion, jeu narratif, science-fiction, Aix-en-Provence, causalité temporelle"}
 PAGES.append(dict(path="/below-zero/", title="Below Zero, le jeu de SF narratif du studio Flexarion",
-  desc="Below Zero, jeu vidéo de Flexarion : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, mécaniques de causalité et visuels.",
+  desc="Flexarion présente Below Zero : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, énigmes et visuels du jeu.",
   body=bz, jsonld=[vg, gfld], crumbs=[("/below-zero/", "Below Zero")], image="/assets/img/below-zero-key-art-1280.webp",
   imgalt="Key art de Below Zero, jeu du studio Flexarion"))
 
@@ -273,7 +273,7 @@ dv = f'''
 blog = {"@type": "Blog", "@id": BASE + "/devlogs/#blog", "name": "Devlogs Flexarion", "url": BASE + "/devlogs/", "inLanguage": "fr-FR",
   "publisher": {"@id": ORG}, "about": {"@id": GAME},
   "blogPost": [{"@id": BASE + aurl(a) + "#article"} for a in ARTICLES]}
-PAGES.append(dict(path="/devlogs/", pagetype="CollectionPage", title="Devlogs Flexarion : le journal de développement de Below Zero",
+PAGES.append(dict(path="/devlogs/", pagetype="CollectionPage", title="Devlogs Flexarion : journal de développement de Below Zero",
   desc="Les devlogs du studio Flexarion : conception des deux villes, énigmes de causalité, sound design et character design du jeu Below Zero.",
   body=dv, jsonld=[blog], crumbs=[("/devlogs/", "Devlogs")], image="/assets/img/devlog-deux-villes-1280.webp"))
 
@@ -325,9 +325,11 @@ PAGES.append(dict(path="/contact/", pagetype="ContactPage", title="Contact et ki
   body=ct, crumbs=[("/contact/", "Contact & presse")], ))
 
 # ---------------- MENTIONS ----------------
-ml = '''
+ML_MAJ, ML_MAJ_FR = "2026-11-19", "19 novembre 2026"  # à mettre à jour à chaque modification des mentions
+ml = f'''
 <div class="wrap prose">
 <h1>Mentions légales du site Flexarion</h1>
+<p class="meta">Dernière mise à jour : <time datetime="{ML_MAJ}">{ML_MAJ_FR}</time></p>
 <p class="lead">Flexarion est un projet fictif. Ce site a été créé dans le cadre d'un concours de référencement entre groupes d'étudiants du BUT Informatique de l'IUT d'Aix-Marseille.</p>
 <h2>Nature fictive du projet</h2>
 <ul>
@@ -356,6 +358,8 @@ ml = '''
 </ul>
 <h2>Crédits des icônes</h2>
 <p>Les icônes des réseaux sociaux (GitHub, itch.io, X, Instagram) proviennent de <a href="https://simpleicons.org/">Simple Icons</a>, distribuées sous licence CC0 1.0 (domaine public). Elles sont affichées sans modification de forme, en version monochrome. Les noms et logos de ces services sont des marques appartenant à leurs propriétaires respectifs et ne sont utilisés que pour renvoyer vers les comptes officiels de Flexarion.</p>
+<h2>Typographie</h2>
+<p>Le site utilise la police <a href="https://github.com/googlefonts/Exo-2.0">Exo 2</a> (Copyright 2013 The Exo 2 Project Authors), distribuée sous licence <a href="https://openfontlicense.org/">SIL Open Font License 1.1</a>. Elle est hébergée directement sur ce site, sous forme de sous-ensembles WOFF2 (texte de la licence : <a href="/assets/fonts/OFL.txt">OFL.txt</a>) ; aucune requête n'est envoyée à un service de polices tiers.</p>
 <h2>Données personnelles et cookies</h2>
 <p>Ce site ne dépose aucun cookie, n'utilise aucun outil de mesure d'audience ni de publicité, et ne collecte aucune donnée personnelle via un formulaire. L'hébergeur GitHub peut enregistrer des journaux techniques (adresse IP notamment) pour des raisons de sécurité, selon sa propre politique de confidentialité.</p>
 <h2>Propriété intellectuelle</h2>
@@ -363,10 +367,12 @@ ml = '''
 <h2>Liens</h2>
 <p>Conformément au règlement du concours, ce site ne contient aucun lien vers les sites des autres groupes participants.</p>
 <p><a href="/">Retour à l'accueil de Flexarion</a></p>
+<h2>Droit applicable</h2>
+<p>Les présentes mentions légales sont régies par le droit français. En cas de litige relatif au site ou à son contenu, et à défaut de résolution amiable, les tribunaux français compétents seront seuls compétents.</p>
 </div>
 '''
 PAGES.append(dict(path="/mentions-legales/", title="Mentions légales | Flexarion",
-  desc="Mentions légales du site Flexarion : projet pédagogique du BUT Informatique (IUT d'Aix-Marseille), étudiants éditeurs, hébergement et usage de l'IA.", robots="noindex, follow",
+  desc="Mentions légales de Flexarion : projet pédagogique de l'IUT d'Aix-Marseille, étudiants éditeurs, hébergement, usage de l'IA et droit applicable.", robots="noindex, follow",
   body=ml, crumbs=[("/mentions-legales/", "Mentions légales")]))
 
 # ---------------- 404 ----------------
