@@ -1,4 +1,4 @@
-# Compte rendu de la v1.2.0 du site
+# Compte rendu de la v1.3.0 du site
 
 ## Appréciacion globale
 Le site commence à avoir une très bonne apparence. L'effet « plat » et fade qui pouvait apparaitre dans les premières versions commence à s'effacer. On va faire ici un travail plus en détail sur les animations.
