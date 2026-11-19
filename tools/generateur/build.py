@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from fmt import pretty
 BASE = "https://flexarion-officiel.github.io"
 OUT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
-LASTMOD = "2026-11-18"
+LASTMOD = "2026-11-19"
 ORG = BASE + "/#organization"
 SITE = BASE + "/#website"
 
@@ -13,6 +13,26 @@ LOGO_SVG = ('<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect
  '<path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/>'
  '<path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/>'
  '<path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg>')
+
+# ASCII art inséré en commentaire juste après le doctype de chaque page
+ASCII = r"""
+         /\
+        /  \       ___ _    _____  __   _   ___ ___ ___  _  _
+       / /\ \     | __| |  | __\ \/ /  /_\ | _ \_ _/ _ \| \| |
+    ==<======>==  | _|| |__| _| >  <  / _ \|   /| | (_) | .` |
+       \ \/ /     |_| |____|___/_/\_\/_/ \_\_|_\___\___/|_|\_|
+        \  /
+         \/       Studio de jeux vidéo de science-fiction · Aix-en-Provence
+
+    2156 à la surface. 2306 en dessous.
+    Tu lis le code source ? Tu es donc déjà descendu d'un niveau.
+    Ouvre la console : quelqu'un t'y attend.
+"""
+
+# Versions minifiées servies par le site (générées depuis les sources par minify.py)
+CSS_HREF = "/assets/css/style.min.css"
+JS_SRC = "/assets/js/main.min.js"
+FONT_PRELOAD = "/assets/fonts/exo2-latin.woff2"
 
 NAV = [("/", "Accueil"), ("/studio/", "Le studio"), ("/below-zero/", "Below Zero"), ("/devlogs/", "Devlogs"), ("/contact/", "Contact &amp; presse")]
 
@@ -88,6 +108,7 @@ def render(p):
     if ogtype == "article":
         art = f'<meta property="article:published_time" content="{p["date"]}">\n<meta property="article:modified_time" content="{LASTMOD}">\n<meta property="article:author" content="{esc(p["author"])}">\n'
     doc = f'''<!doctype html>
+<!--{ASCII}-->
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -97,12 +118,15 @@ def render(p):
 <meta name="robots" content="{robots}">
 {canon}<meta name="author" content="Flexarion">
 <meta name="theme-color" content="#071421">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preload" href="{FONT_PRELOAD}" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{CSS_HREF}">
 {extra_head}<meta property="og:type" content="{ogtype}">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Flexarion">
@@ -146,7 +170,7 @@ def render(p):
 </div>
 </footer>
 <a class="to-top" href="#haut" aria-label="Retour en haut de la page"><span aria-hidden="true">↑</span></a>
-<script src="/assets/js/main.js" defer></script>
+<script src="{JS_SRC}" defer></script>
 </body>
 </html>
 '''
@@ -170,3 +194,4 @@ if __name__ == "__main__":
     for p in pages:
         print(render(p))
     import extras; extras.run(pages)
+    import minify; minify.run()

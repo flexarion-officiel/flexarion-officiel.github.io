@@ -12,8 +12,11 @@ for f in glob.glob(R+"/**/*.html", recursive=True):
     if "LocalBusiness" in s or "GeoCoordinates" in s: print("LocalBusiness/geo", f); errs+=1
     t=re.search(r"<title>(.*?)</title>",s).group(1); titles.setdefault(t,[]).append(f)
     d=re.search(r'name="description" content="(.*?)"',s).group(1); descs.setdefault(d,[]).append(f)
-    if len(d)>160 or len(d)<70: print("desc len",len(d),f)
-    if len(t)>70: print("title len",len(t),f)
+    import html as H
+    if len(H.unescape(d))>155 or len(d)<70: print("desc len",len(H.unescape(d)),f); errs+=1
+    if len(H.unescape(t))>60: print("title len",len(H.unescape(t)),f); errs+=1
+    if "/assets/css/style.min.css" not in s or "/assets/js/main.min.js" not in s or "style.css\"" in s or "main.js\"" in s: print("CSS/JS non minifiés", f); errs+=1
+    if not s.startswith("<!doctype html>\n<!--"): print("ASCII art absent", f); errs+=1
     h1=len(re.findall(r"<h1",s))
     if h1!=1: print("H1 count",h1,f)
     for img in re.findall(r"<img[^>]*>",s):
