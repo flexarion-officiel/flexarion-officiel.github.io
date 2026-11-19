@@ -24,8 +24,8 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 | 18/11/2026 | html-validate, Lighthouse 12, Chrome headless / Puppeteer (non IA) | Validation HTML, audits, captures d'écran | — |
 | 19/11/2026 | FlexaBot (agent IA) | Application de la revue V1.2 (v1.3 du site) : ASCII art, message console, police, mentions légales, méta descriptions, relief, impression, minification, favicons | Revue rédigée par l'équipe ; résultat à vérifier en ligne |
 | 19/11/2026 | fontTools / pyftsubset, Pillow, html-validate, Lighthouse 12, Puppeteer, pyfiglet (non IA) | Sous-ensembles de police, favicons, validation, audits, captures, lettrage ASCII | — |
-| 19/11/2026 | FlexaBot (agent IA) | Retouches v1.3.1 / v1.3.2 (flèche « retour en haut » en SVG) et v1.4 (survol des cartes) demandées par l'équipe | Choix visuels validés par l'équipe sur captures |
-| 19/11/2026 | FlexaBot (agent IA) | Application de la revue V1.3 (v1.5 du site) : animations du menu, du burger, des FAQ et des boutons | Revue rédigée par l'équipe ; ressenti à vérifier sur appareils réels |
+| 19/11/2026 | FlexaBot (agent IA) | Retouches v1.3.1 (flèche « retour en haut » en SVG) et v1.3.2 (survol des cartes) demandées par l'équipe | Choix visuels validés par l'équipe sur captures |
+| 19/11/2026 | FlexaBot (agent IA) | Application de la revue V1.3 (v1.4.0 du site) : animations du menu, du burger, des FAQ et des boutons | Revue rédigée par l'équipe ; ressenti à vérifier sur appareils réels |
 | 19/11/2026 | html-validate, Lighthouse 12, Puppeteer / Chrome sous Xvfb (non IA) | Validation, audits, captures de survol et mesures des transitions | — |
 
 **Prompt de mission initial** (donné par l'équipe à l'agent) : « Mission : Développement agentique du site Flexarion (Concours SEO) » — rôle d'agent de développement principal, objectifs (position Google sur « Flexarion », GEO, site techniquement irréprochable, backlinks white hat, documentation de l'IA), périmètre technique, contenu minimum, mentions légales, brand guidelines (identité, palette, positionnement, personas Léo / Chloé / Mehdi), modèle de reporting et stratégie en 4 phases. Le texte complet est conservé dans l'historique de conversation de l'équipe.
@@ -282,19 +282,19 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - Le score Performance mobile de l'accueil et du studio passe de 100 à 99 (LCP 1,9 s → 2,0 s en simulation) : écart de mesure jugé acceptable au regard du gain visuel ; CLS reste à 0.
 - Suite prévue : Après déploiement, vérifier le favicon dans les résultats Google (délai de plusieurs jours), PageSpeed Insights sur l'URL publique, et redemander l'indexation des pages dont le titre ou la description a changé.
 
-### Tâche : Flèche du bouton « retour en haut » (versions 1.3.1 et 1.3.2)
-- Objectif : Rendre au bouton « retour en haut » une flèche aux bords arrondis : depuis le passage à la police Exo 2 (v1.3), le caractère « ↑ » s'affichait avec un dessin jugé étrange par l'équipe.
+### Tâche : Flèche du bouton « retour en haut » (version 1.3.1)
+- Objectif : Rendre au bouton « retour en haut » une flèche aux bords arrondis : depuis le passage à la police Exo 2 (v1.3.0), le caractère « ↑ » s'affichait avec un dessin jugé étrange par l'équipe.
 - Critères de validation : Flèche nette et arrondie, identique sur tous les navigateurs et indépendante de la police ; bouton toujours accessible (nom accessible, focus visible) ; aucun impact sur la performance.
 - Réalisé par : FlexaBot (agent IA)
 - Résultat : PASS
 - Détails :
-  - v1.3.1 : premier essai en forçant une police système pour le seul caractère « ↑ » ; deux variantes proposées en captures. L'équipe a préféré la seconde, tout en trouvant la flèche d'avant le changement de police plus réussie (« elle avait des bords arrondis »).
-  - v1.3.2 : caractère remplacé par une petite icône SVG en ligne (tracé de 24 × 24, trait de 2,3 px, extrémités et angles arrondis, couleur `currentColor`), déclarée `aria-hidden="true"` et `focusable="false"` ; le nom accessible du bouton est inchangé. Rendu identique quelle que soit la police chargée, aucune requête supplémentaire.
+  - Premier essai en forçant une police système pour le seul caractère « ↑ » ; deux variantes proposées en captures. L'équipe a préféré la seconde, tout en trouvant la flèche d'avant le changement de police plus réussie (« elle avait des bords arrondis »).
+  - Version retenue : caractère remplacé par une petite icône SVG en ligne (tracé de 24 × 24, trait de 2,3 px, extrémités et angles arrondis, couleur `currentColor`), déclarée `aria-hidden="true"` et `focusable="false"` ; le nom accessible du bouton est inchangé. Rendu identique quelle que soit la police chargée, aucune requête supplémentaire.
 - Prompts / outils IA utilisés : Demandes de l'équipe transmises à l'agent (« remettre la flèche de retour en haut de page comme elle était avant » ; « la flèche avant le changement de police était bien mieux, elle avait des bords arrondis »). Outils non IA : Puppeteer (captures comparatives).
 - Décisions prises : Une icône SVG plutôt qu'un caractère : le dessin ne dépend plus de la police ni du système d'exploitation.
 - Suite prévue : Aucune.
 
-### Tâche : Effet de survol des cartes (version 1.4 du site)
+### Tâche : Effet de survol des cartes (version 1.3.2 du site)
 - Objectif : Étendre à toutes les cartes du site le léger effet de survol déjà présent sur les cartes de l'équipe (page studio), à la demande de l'équipe : FAQ, derniers devlogs de l'accueil, etc.
 - Critères de validation : Effet discret et homogène ; uniquement sur les appareils à souris (pas d'effet « collant » au toucher) ; équivalent au clavier ; respect de `prefers-reduced-motion` ; propriétés peu coûteuses (pas de recalcul de mise en page) ; Lighthouse et CLS inchangés.
 - Réalisé par : FlexaBot (agent IA)
@@ -305,9 +305,9 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - Contrôle par captures avec un vrai pointeur (Chrome sous Xvfb, car Chrome sans interface ne déclare pas de souris).
 - Prompts / outils IA utilisés : Demande de l'équipe transmise à l'agent (« lorsqu'on passe la souris sur les cartes de l'équipe […] il y a un léger effet. J'aimerais bien que les autres cartes des autres pages […] aient une petite animation hover »). Outils non IA : Puppeteer, Xvfb.
 - Décisions prises : Seuls `transform` et `box-shadow` sont animés (pas de changement de taille ni de marge) : aucun décalage de mise en page.
-- Suite prévue : Ajustements éventuels après revue (faits en v1.5 pour les encadrés « en bref »).
+- Suite prévue : Ajustements éventuels après revue (faits en v1.4.0 pour les encadrés « en bref »).
 
-### Tâche : Animations d'interface suite à la revue V1.3 (version 1.5 du site)
+### Tâche : Animations d'interface suite à la revue V1.3 (version 1.4.0 du site)
 - Objectif : Appliquer la partie « Animations » du compte rendu de la v1.3.0 : survol des liens du menu (ordinateur), ouverture / fermeture du menu burger (mobile), dépliage / repliage des FAQ, suppression du mouvement des encadrés « facts », changement de couleur animé des boutons. Consigne : animations courtes et sobres, sans perte de fluidité.
 - Critères de validation : Durées entre 0,2 et 0,25 s ; propriétés peu coûteuses ; `prefers-reduced-motion` respecté ; menu mobile toujours accessible (`aria-expanded` correct, liens non atteignables au clavier menu fermé) ; FAQ utilisables sans JavaScript et au clavier ; `check.py` sans erreur ; HTML valide ; Lighthouse inchangé ; CLS = 0.
 - Réalisé par : FlexaBot (agent IA)
@@ -315,7 +315,7 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 - Détails :
   - **Menu (ordinateur)** : soulignement cyan dessiné par un pseudo-élément qui se déploie depuis le centre (`transform: scaleX`, 0,2 s) et couleur du lien en transition (0,2 s) ; même trait que l'indicateur de page courante, qui reste affiché. Survol réservé aux appareils à souris ; même rendu au focus clavier (`:focus-visible`). Hauteur de l'en-tête inchangée.
   - **Menu burger (mobile)** : ouverture et fermeture en `ease-in-out` sur 0,25 s (rangée de grille `0fr` → `1fr` et fondu du contenu). Menu fermé : `visibility: hidden` appliquée à la fin de la transition, donc liens ni visibles ni focalisables. Le script existant est inchangé (`aria-expanded`, libellé du bouton, touche Échap). Bordure du bouton cyan quand le menu est ouvert ; icône « trois barres » → croix en 0,25 s.
-  - **FAQ (accueil et Below Zero)** : dépliage et repliage animés de la hauteur en `ease-in-out` sur 0,25 s (Web Animations API, quelques lignes dans `main.js`). Amélioration progressive : sans JavaScript ou avec « réduire les animations », les `<details>` natifs fonctionnent comme avant. Clavier (Entrée, Espace) et clics répétés pendant l'animation gérés ; effet de survol v1.4 conservé.
+  - **FAQ (accueil et Below Zero)** : dépliage et repliage animés de la hauteur en `ease-in-out` sur 0,25 s (Web Animations API, quelques lignes dans `main.js`). Amélioration progressive : sans JavaScript ou avec « réduire les animations », les `<details>` natifs fonctionnent comme avant. Clavier (Entrée, Espace) et clics répétés pendant l'animation gérés ; effet de survol v1.3.2 conservé.
   - **Encadrés « facts »** : élévation de 4 px supprimée ; seul un léger halo (ombre) apparaît au survol, sans mouvement.
   - **Boutons** : transition de 0,2 s (`ease`) sur le fond, la bordure et la couleur du texte pour les boutons d'appel à l'action, le bouton « retour en haut », les boutons « précédent / suivant » des devlogs, les liens vers les réseaux et le bouton burger.
   - **Mouvement réduit** : toutes les transitions et animations deviennent quasi instantanées et le script des FAQ ne s'active pas.
