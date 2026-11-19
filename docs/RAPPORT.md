@@ -27,6 +27,8 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 | 19/11/2026 | FlexaBot (agent IA) | Retouches v1.3.1 (flèche « retour en haut » en SVG) et v1.3.2 (survol des cartes) demandées par l'équipe | Choix visuels validés par l'équipe sur captures |
 | 19/11/2026 | FlexaBot (agent IA) | Application de la revue V1.3 (v1.4.0 du site) : animations du menu, du burger, des FAQ et des boutons | Revue rédigée par l'équipe ; ressenti à vérifier sur appareils réels |
 | 19/11/2026 | html-validate, Lighthouse 12, Puppeteer / Chrome sous Xvfb (non IA) | Validation, audits, captures de survol et mesures des transitions | — |
+| 20/11/2026 | FlexaBot (agent IA) | v1.4.1 : reflet d'attente et fondu à l'apparition des images, à la demande de l'équipe | Rendu validé par l'équipe sur captures |
+| 20/11/2026 | html-validate, Lighthouse 12, Puppeteer (non IA) | Validation, audits, captures avec images volontairement retenues | — |
 
 **Prompt de mission initial** (donné par l'équipe à l'agent) : « Mission : Développement agentique du site Flexarion (Concours SEO) » — rôle d'agent de développement principal, objectifs (position Google sur « Flexarion », GEO, site techniquement irréprochable, backlinks white hat, documentation de l'IA), périmètre technique, contenu minimum, mentions légales, brand guidelines (identité, palette, positionnement, personas Léo / Chloé / Mehdi), modèle de reporting et stratégie en 4 phases. Le texte complet est conservé dans l'historique de conversation de l'équipe.
 
@@ -327,6 +329,28 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - Seuls `transform`, `opacity` et les couleurs sont animés, sauf la hauteur du menu mobile et des FAQ, qui ne concerne qu'un élément à la fois, sur 0,25 s, au clic.
   - Pas d'animation d'entrée au chargement ni au défilement : elles retarderaient l'affichage et coûteraient en performance.
 - Suite prévue : Tester le ressenti sur un téléphone réel et sur Safari (iOS / macOS) après déploiement.
+
+### Tâche : Chargement progressif des images (version 1.4.1 du site)
+- Objectif : Éviter l'effet « vide puis image d'un coup » signalé par l'équipe : afficher un emplacement animé discret pendant le chargement des images, puis les faire apparaître en fondu.
+- Critères de validation : Emplacement aux couleurs du site dans le cadre déjà réservé (CLS = 0) ; reflet lent et peu contrasté ; fondu court ; aucune image principale (LCP) masquée ; sans JavaScript, images affichées normalement ; images déjà en cache ou en erreur jamais bloquées invisibles ; `prefers-reduced-motion` respecté ; aucune requête supplémentaire ; Lighthouse inchangé ; `check.py` sans erreur ; HTML valide.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails :
+  - **Images concernées** : images différées (`loading="lazy"`) du contenu principal : avatars de l'équipe (studio), vignettes des devlogs (accueil, page Devlogs), visuels de la page Below Zero et illustrations insérées dans les devlogs.
+  - **Images exclues** : visuels principaux chargés en priorité (`fetchpriority="high"` : hero de l'accueil, visuel de jeu de Below Zero, key art du studio, image de tête de chaque devlog) : ce sont les éléments LCP, un fondu retarderait leur affichage et dégraderait le score ; ils reçoivent seulement un fond uni bleu nuit pendant leur chargement. Exclus aussi : logo de l'en-tête et du pied de page, favicons, icônes des réseaux sociaux.
+  - **Pendant le chargement** : fond dégradé `#0d2a42` → `#1a4769` → `#0d2a42` (tons de la palette) parcouru par un reflet en 1,5 s, en boucle, dans le cadre déjà réservé par `width` / `height` (forme ronde conservée pour les avatars).
+  - **Une fois chargée** : l'image apparaît en fondu (opacité 0 → 1 en 0,3 s, `ease`) et le reflet s'arrête.
+  - **Amélioration progressive** : les classes sont ajoutées par `main.js` uniquement sur les images pas encore chargées à l'exécution du script ; sans JavaScript, ou pour une image déjà en cache, rien ne change. En cas d'erreur de chargement, fond uni fixe, sans animation.
+  - **Mouvement réduit** : fond fixe, ni reflet ni fondu.
+  - **Poids** : environ 0,4 Ko de CSS et 0,4 Ko de JavaScript minifiés, aucune requête ajoutée.
+  - **Tests** (Puppeteer, requêtes d'images retenues volontairement) : reflet visible tant que l'image est retenue, fondu mesuré à mi-parcours (opacité ≈ 0,47), état final opaque ; hero de l'accueil et visuel de Below Zero jamais masqués ; image en erreur : fond fixe ; rechargement depuis le cache : aucune image masquée.
+  - **Validation** : `check.py` : 11 pages, 0 erreur ; html-validate : 0 erreur hors règle SRI ; Lighthouse mobile : accueil 99 / 100 / 100 / 100 (LCP 2,0 s), studio 99 / 100 / 100 / 100 (LCP 2,0 s), Below Zero 100 / 100 / 100 / 100 (LCP 1,8 s), CLS = 0 partout.
+- Prompts / outils IA utilisés : Demande de l'équipe transmise à l'agent (« Serait-il possible de faire des animations pour les images qui n'ont pas encore chargé ? Car avoir un vide puis les voir apparaître d'un coup, je trouve que cela fait un peu bizarre »). Outils non IA : Puppeteer (requêtes retenues, captures), Pillow (planche de captures), html-validate, Lighthouse 12.
+- Décisions prises :
+  - Le reflet est dessiné en fond de l'image elle-même : aucun élément ajouté au HTML, aucune modification du générateur.
+  - Les images LCP ne sont jamais masquées : la performance passe avant l'effet.
+  - Lighthouse signale le reflet comme « animation non composée » (diagnostic sans effet sur le score) : il ne tourne que sur les images en attente et s'arrête dès leur chargement.
+- Suite prévue : Vérifier le rendu sur une connexion mobile réelle après déploiement.
 
 ---
 
