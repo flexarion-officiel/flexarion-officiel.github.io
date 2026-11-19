@@ -29,6 +29,8 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 | 19/11/2026 | html-validate, Lighthouse 12, Puppeteer / Chrome sous Xvfb (non IA) | Validation, audits, captures de survol et mesures des transitions | — |
 | 20/11/2026 | FlexaBot (agent IA) | v1.4.1 : reflet d'attente et fondu à l'apparition des images, à la demande de l'équipe | Rendu validé par l'équipe sur captures |
 | 20/11/2026 | html-validate, Lighthouse 12, Puppeteer (non IA) | Validation, audits, captures avec images volontairement retenues | — |
+| 20/11/2026 | FlexaBot (agent IA) | v1.4.2 : correction des fondus d'images, invisibles sur une connexion normale en v1.4.1 (signalé par l'équipe) | Testé par l'équipe sur son PC après déploiement |
+| 20/11/2026 | Puppeteer, Lighthouse 12, html-validate (non IA) | Mesure de l'opacité image par image (cache vide et cache chaud), LCP observé, audits | — |
 
 **Prompt de mission initial** (donné par l'équipe à l'agent) : « Mission : Développement agentique du site Flexarion (Concours SEO) » — rôle d'agent de développement principal, objectifs (position Google sur « Flexarion », GEO, site techniquement irréprochable, backlinks white hat, documentation de l'IA), périmètre technique, contenu minimum, mentions légales, brand guidelines (identité, palette, positionnement, personas Léo / Chloé / Mehdi), modèle de reporting et stratégie en 4 phases. Le texte complet est conservé dans l'historique de conversation de l'équipe.
 
@@ -351,6 +353,27 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - Les images LCP ne sont jamais masquées : la performance passe avant l'effet.
   - Lighthouse signale le reflet comme « animation non composée » (diagnostic sans effet sur le score) : il ne tourne que sur les images en attente et s'arrête dès leur chargement.
 - Suite prévue : Vérifier le rendu sur une connexion mobile réelle après déploiement.
+
+### Tâche : Correction des fondus d'images (version 1.4.2 du site)
+- Objectif : Corriger la v1.4.1 : sur le PC de l'équipe, aucun fondu n'apparaissait.
+- Critères de validation : Fondu réellement visible sans ralentissement réseau, avec cache vide comme avec cache chaud, sur l'accueil, le studio, Below Zero et un devlog ; aucune image bloquée invisible (sans JavaScript, script en échec, image en erreur ou trop lente) ; logos et icônes non concernés ; `prefers-reduced-motion` respecté ; CLS = 0 ; Lighthouse mobile ≈ 99-100 ; `check.py` sans erreur ; HTML valide.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails :
+  - **Cause** : en v1.4.1, `main.js` (chargé en `defer`) n'animait que les images encore en cours de chargement au moment où il s'exécutait. Sur une connexion normale, les images WebP (légères, en cache 10 minutes) sont déjà chargées à ce moment-là : aucune n'était animée. Les visuels principaux étaient en plus exclus d'office. Les tests de la v1.4.1 retenaient volontairement les images, ce qui masquait le problème.
+  - **Principe retenu** : un script d'une ligne dans le `<head>` de chaque page (via `build.py`) ajoute la classe `js` à `<html>` avant le premier affichage. Avec cette classe, les images du contenu partent à l'opacité 0. `main.js` les fait apparaître en fondu dès qu'elles sont à la fois chargées et visibles à l'écran (`IntersectionObserver`), y compris si elles étaient déjà en cache : le fondu se voit donc aussi en faisant défiler la page.
+  - **Durées** : 0,3 s (`ease`) pour les images du contenu, 0,2 s pour les visuels principaux (LCP : hero de l'accueil, visuel de Below Zero, key art du studio, image de tête des devlogs), lancés sans attendre l'observateur.
+  - **Attente** : fond uni bleu nuit (`#0d2a42`) dès le premier affichage, même sans JavaScript ; reflet lent (1,5 s) réservé aux images différées dont le chargement dure plus de 120 ms (pas de clignotement si l'image arrive vite).
+  - **Sécurités** : sans JavaScript, la classe `js` n'existe pas et les images s'affichent normalement ; si `main.js` ne se charge pas, une animation CSS rend les images visibles après 3 s ; une image en erreur est affichée sur fond uni ; une image visible encore en chargement après 3 s est affichée telle quelle ; à l'impression, toutes les images sont visibles. Mouvement réduit : images visibles immédiatement, sans fondu ni reflet. Logos (en-tête, pied de page), favicons et icônes ne sont pas concernés.
+  - **Mesures** (Puppeteer, sans ralentissement réseau, opacité relevée à chaque image affichée) : sur les 4 pages, en ordinateur et en mobile, avec cache vide et cache chaud, l'image principale passe par 0,07 → 0,22 → 0,41 → 0,58 puis 1, en environ 0,18 s ; avatars du studio au défilement : 0 → 0,11 → 0,47 → 0,74 → 1 en 0,3 s.
+  - **Validation** : `check.py` : 11 pages, 0 erreur ; html-validate : 0 erreur hors règle SRI ; Lighthouse mobile : accueil 99 / 100 / 100 / 100 (LCP 2,0 s), studio 99 / 100 / 100 / 100 (LCP 2,0 s), Below Zero 100 / 100 / 100 / 100 (LCP 1,8 s), CLS = 0 : scores identiques à la v1.4.1.
+  - **Impact réel sur le LCP** : Lighthouse simule le chargement et ne voit pas de différence, mais un relevé dans Chrome (processeur ralenti 4×, réseau mobile émulé, médiane de 5 chargements) montre que l'image principale de l'accueil s'affiche environ 0,2 s plus tard qu'en v1.4.1 (≈ 0,48 s → ≈ 0,67 s), car elle attend `main.js` ; studio inchangé ; Below Zero variable (0,47 à 0,69 s). C'est le coût assumé du fondu sur les visuels principaux.
+- Prompts / outils IA utilisés : Retour de l'équipe transmis à l'agent (« Personnellement j'ai testé sur mon pc et les fondus ne fonctionnent pas »). Outils non IA : Puppeteer (opacité image par image, cache vide / chaud, LCP observé, images retenues ou en erreur, script bloqué), Pillow (planche du fondu), html-validate, Lighthouse 12.
+- Décisions prises :
+  - Fondu déclenché quand l'image est chargée et visible, et non au seul chargement : sur une bonne connexion, les images plus bas dans la page sont chargées avant d'être vues, et leur fondu serait passé inaperçu.
+  - Visuels principaux inclus, avec un fondu plus court (0,2 s) et lancé sans délai, pour limiter l'effet sur le LCP.
+  - Script en ligne limité à une instruction, sans dépendance ni donnée.
+- Suite prévue : Vérifier le rendu sur le PC de l'équipe et PageSpeed Insights (données réelles) après déploiement ; si le LCP de l'accueil se dégrade nettement, retirer le fondu du seul hero de l'accueil.
 
 ---
 
