@@ -22,6 +22,8 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 | 18/11/2026 | FlexaBot (agent IA) | Application de la revue V1.1 (v1.2 du site) : réseaux, icônes, pied de page, équipe, Below Zero, devlogs, README | Revue rédigée par l'équipe ; résultat à vérifier en ligne |
 | 18/11/2026 | FlexaBot — génération d'images | 8 avatars illustrés de l'équipe + 1 aperçu de jeu de Below Zero | À retravailler par l'équipe |
 | 18/11/2026 | html-validate, Lighthouse 12, Chrome headless / Puppeteer (non IA) | Validation HTML, audits, captures d'écran | — |
+| 19/11/2026 | FlexaBot (agent IA) | Application de la revue V1.2 (v1.3 du site) : ASCII art, message console, police, mentions légales, méta descriptions, relief, impression, minification, favicons | Revue rédigée par l'équipe ; résultat à vérifier en ligne |
+| 19/11/2026 | fontTools / pyftsubset, Pillow, html-validate, Lighthouse 12, Puppeteer, pyfiglet (non IA) | Sous-ensembles de police, favicons, validation, audits, captures, lettrage ASCII | — |
 
 **Prompt de mission initial** (donné par l'équipe à l'agent) : « Mission : Développement agentique du site Flexarion (Concours SEO) » — rôle d'agent de développement principal, objectifs (position Google sur « Flexarion », GEO, site techniquement irréprochable, backlinks white hat, documentation de l'IA), périmètre technique, contenu minimum, mentions légales, brand guidelines (identité, palette, positionnement, personas Léo / Chloé / Mehdi), modèle de reporting et stratégie en 4 phases. Le texte complet est conservé dans l'historique de conversation de l'équipe.
 
@@ -222,6 +224,60 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - Dates des devlogs non antidatées (cohérent avec la décision prise lors de la rédaction) : départage par l'heure de publication.
   - Sans JavaScript, la navigation reste possible via le fil d'Ariane et les liens du contenu (le pied de page ne contient plus les pages principales, à la demande de l'équipe).
 - Suite prévue : Déployer, vérifier en ligne (PageSpeed Insights, test des résultats enrichis), soumettre de nouveau le sitemap ; mettre à jour les profils externes si un lien vers le réseau supprimé y figurait ; retravail éventuel des avatars et de l'aperçu de jeu par l'équipe.
+
+### Tâche : Corrections suite à la revue V1.2 (version 1.3 du site)
+- Objectif : Appliquer le compte rendu de la v1.2.0 rédigé par l'équipe (ASCII art, message console, police personnalisée sans perte de performance, mentions légales, méta descriptions, visuels moins plats, CSS d'impression, CSS/JS minifiés), plus la correction du favicon pour Google.
+- Critères de validation : Chaque point traité ; titres ≤ 60 caractères et descriptions ≤ 155 caractères (≈ 920 px) commençant près du mot-clé « Flexarion » ; aucun décalage de mise en page (CLS = 0) ; Lighthouse ≥ 98 ; contraste AA conservé ; `check.py` sans erreur ; HTML valide.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails :
+  - **ASCII art** : logo losange + « FLEXARION » en commentaire HTML juste après le `<!doctype html>` de chaque page (≈ 700 octets), avec un indice renvoyant vers la console. Le module `fmt.py` conserve désormais les commentaires.
+  - **Message console** : `console.log` stylé (cyan sur fond nuit) dans `main.js` : réplique d'un habitant de Sextia (« Te revoilà, Sacha… »), un indice sur le lien 2156 / 2306 et un lien vers la page Below Zero. Aucun suivi, aucune donnée collectée.
+  - **Police** : Exo 2 (SIL Open Font License 1.1, fichier `assets/fonts/OFL.txt`), police variable limitée aux graisses 400 à 800, auto-hébergée en deux sous-ensembles WOFF2 : latin (26,7 Ko, préchargé) et latin étendu (20,4 Ko, téléchargé seulement si un de ses caractères apparaît ; plages Unicode sans chevauchement pour ne jamais charger les deux sur une page française). `font-display: swap` et police de secours « Exo 2 Fallback » (Arial / Helvetica / Liberation Sans) avec `size-adjust: 101.22%`, `ascent-override: 98.69%`, `descent-override: 19.86%`, calculés depuis les métriques réelles des deux polices : CLS = 0. Pile de secours : `system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`. Crédit ajouté dans les mentions légales (section « Typographie »).
+  - **Mentions légales** : « Dernière mise à jour : 19 novembre 2026 » sous le titre ; nouvelle section finale « Droit applicable » (droit français, tribunaux français compétents) ; lien « Retour à l'accueil » placé juste avant.
+  - **Titres et méta descriptions** : mesure de chaque page en caractères et en pixels (Arial 20 px pour les titres, 14 px pour les descriptions). 6 descriptions et 6 titres raccourcis ; le mot « Flexarion » est placé en tête des descriptions modifiées. Contrôle automatique ajouté dans `check.py` (titre > 60 ou description > 155 caractères = erreur).
+
+| Page | Champ | Avant | Après |
+|---|---|---|---|
+| Accueil | title | Flexarion \| Studio de jeux vidéo SF indépendant à Aix-en-Provence (65 car.) | Flexarion \| Studio de jeux vidéo SF à Aix-en-Provence (53) |
+| Below Zero | description | Below Zero, jeu vidéo de Flexarion : … mécaniques de causalité et visuels. (145 car., 910 px) | Flexarion présente Below Zero : en 2156, une ville de 2306 est découverte sous Aix-en-Provence. Univers, énigmes et visuels du jeu. (131, 826 px) |
+| Devlogs | title | Devlogs Flexarion : le journal de développement de Below Zero (61) | Devlogs Flexarion : journal de développement de Below Zero (58) |
+| Devlog #1 | title | Devlog #1 : concevoir deux villes jumelles (2156 / 2306) \| Flexarion (68) | Devlog #1 : concevoir deux villes jumelles \| Flexarion (54) |
+| Devlog #1 | description | Comment l'équipe Flexarion construit … règles de symétrie et lisibilité. (155, 957 px) | Flexarion dévoile comment son équipe bâtit l'Aix de 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés et règles de symétrie. (139, 866 px) |
+| Devlog #2 | title | Devlog #2 : les énigmes de causalité de Below Zero \| Flexarion (62) | Devlog #2 : énigmes de causalité de Below Zero \| Flexarion (58) |
+| Devlog #2 | description | Le game designer de Flexarion explique … et comment on évite le chaos. (151, 967 px) | Chez Flexarion, le game designer explique comment une action dans l'Aix de 2156 transforme la ville de 2306 de Below Zero, sans chaos. (134, 858 px) |
+| Devlog #3 | title | Devlog #3 : le sound design de la ville souterraine \| Flexarion (63) | Devlog #3 : le sound design de Sextia \| Flexarion (49) |
+| Devlog #3 | description | Réverbérations, eau thermale et cigales mutées : la sound designer de Flexarion … (148, 922 px) | Chez Flexarion, la sound designer raconte comment l'eau thermale, l'écho et des cigales mutées font sonner la ville souterraine de Below Zero. (142, 887 px) |
+| Devlog #4 | title | Devlog #4 : le character design des habitants de 2306 \| Flexarion (65) | Devlog #4 : dessiner les habitants de 2306 \| Flexarion (54) |
+| Devlog #4 | description | Du croquis au personnage final : le character designer de Flexarion … (146, 902 px) | Chez Flexarion, le character designer dévoile comment il dessine, du croquis au modèle 3D, des habitants du futur qui reconnaissent le joueur. (142, 884 px) |
+| Mentions légales | description | Mentions légales du site Flexarion : … hébergement et usage de l'IA. (148, 918 px) | Mentions légales de Flexarion : projet pédagogique de l'IUT d'Aix-Marseille, étudiants éditeurs, hébergement, usage de l'IA et droit applicable. (144, 877 px) |
+
+  - **Relief des visuels** : variables `--carte` (dégradé bleu nuit en diagonale) et `--ombre` / `--ombre-haute` (ombres superposées + fin reflet intérieur) appliquées aux cartes, encadrés « en bref », FAQ, sommaires, section Sextia et boutons de navigation des devlogs ; lueur cyan très légère en haut de page et en bas à gauche du hero ; ombre douce sous les images et l'en-tête ; halo discret sur le H1. Pas d'animation ajoutée ; contraste du texte inchangé (≥ AA, vérifié par Lighthouse).
+  - **Impression** : `@media print` : fond blanc, texte noir, menu, burger, bouton retour en haut, fil d'Ariane, boutons, réseaux et navigation des devlogs masqués ; URL affichée après les liens externes ; pas de coupure dans les cartes, encadrés, figures et titres ; images limitées à la largeur de la page ; réponses des FAQ dépliées (navigateurs compatibles).
+  - **Minification** : nouveau module `tools/generateur/minify.py` (Python pur, sans dépendance) appelé à la fin de `build.py` : `style.css` 18,0 Ko → `style.min.css` 13,2 Ko (la v1.2 servait 13,5 Ko non minifiés, alors que la feuille gagne la police, le relief et l'impression), `main.js` 2,4 Ko → `main.min.js` 1,6 Ko. Toutes les pages pointent vers les fichiers minifiés (contrôle ajouté dans `check.py`). Sources lisibles conservées en local et ajoutées au `.gitignore`.
+  - **Favicon** : `favicon.ico` multi-tailles (16, 32, 48, 96 px) et `favicon-48.png` générés depuis `icon-512.png` ; `<link rel="icon" href="/favicon.ico" sizes="48x48">` et `favicon-48.png` ajoutés sur toutes les pages (Google demande un favicon d'au moins 48 px, multiple de 48) ; SVG et PNG 32 conservés ; manifeste vérifié (192, 512, SVG).
+  - **Fraîcheur** : `lastmod` 2026-11-19 dans le sitemap, `dateModified` et mention « Mis à jour le 19 novembre 2026 » des devlogs.
+  - **Validation** : `check.py` : 11 pages, 0 erreur ; html-validate : 0 erreur hors règle SRI (non pertinente pour des fichiers du même domaine) ; JSON-LD valide.
+  - **Lighthouse 12** (serveur local sans gzip) :
+
+| Page | Mode | Performance | Accessibilité | Bonnes pratiques | SEO |
+|---|---|---|---|---|---|
+| Accueil | mobile | 99 | 100 | 100 | 100 |
+| Accueil | ordinateur | 100 | 100 | 100 | 100 |
+| Le studio | mobile | 99 | 100 | 100 | 100 |
+| Le studio | ordinateur | 100 | 100 | 100 | 100 |
+| Below Zero | mobile | 100 | 100 | 100 | 100 |
+| Below Zero | ordinateur | 100 | 100 | 100 | 100 |
+| Devlog #2 | mobile | 100 | 100 | 100 | 100 |
+| Devlog #2 | ordinateur | 100 | 100 | 100 | 100 |
+| Mentions légales | mobile / ordinateur | 100 | 100 | 100 | 69 (attendu : page volontairement en `noindex`) |
+
+- Prompts / outils IA utilisés : Compte rendu de la v1.2.0 rédigé par l'équipe, transmis tel quel à l'agent (« Commun à toutes les pages » : ASCII art, message secret dans la console, police personnalisée sans baisse de performance avec polices de secours et génériques ; « Mentions légales » : date de mise à jour et section « Droit applicable » ; « Appréciation globale » : méta descriptions trop longues, visuels trop plats, CSS d'impression, CSS/JS minifiés avec sources non minifiées dans le `.gitignore`). Outils non IA : fontTools / pyftsubset (sous-ensembles et instance variable), Pillow (favicons), pyfiglet (lettrage du commentaire ASCII), html-validate, Lighthouse, Puppeteer (captures et PDF d'impression).
+- Décisions prises :
+  - Une seule famille (Exo 2, variable) pour les titres et le texte : style SF lisible, un seul fichier préchargé ; sans préchargement, le score mobile restait identique (99) : le préchargement est conservé pour afficher la bonne police plus tôt.
+  - Sources CSS/JS laissées à leur place (`assets/css/style.css`, `assets/js/main.js`) mais ignorées par Git : édition inchangée, fichiers servis = versions `.min`. Conséquence : ces deux fichiers doivent être retirés de l'index Git (`git rm --cached`, avec accord) ; un clone neuf du dépôt ne contient plus les sources lisibles.
+  - Le score Performance mobile de l'accueil et du studio passe de 100 à 99 (LCP 1,9 s → 2,0 s en simulation) : écart de mesure jugé acceptable au regard du gain visuel ; CLS reste à 0.
+- Suite prévue : Après déploiement, vérifier le favicon dans les résultats Google (délai de plusieurs jours), PageSpeed Insights sur l'URL publique, et redemander l'indexation des pages dont le titre ou la description a changé.
 
 ---
 
