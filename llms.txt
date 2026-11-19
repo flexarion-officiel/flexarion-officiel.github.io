@@ -23,10 +23,10 @@ En 2156, une deuxième ville est découverte sous Aix-en-Provence. Elle ressembl
 - [Contact et presse](https://flexarion-officiel.github.io/contact/) : kit presse, fiche d'identité, visuels
 
 ## Devlogs
-- [Devlog #4 : ils vous connaissent déjà, dessiner les habitants de 2306](https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/) : Du croquis au personnage final : le character designer de Flexarion dévoile comment il dessine des habitants du futur qui reconnaissent le joueur.
-- [Devlog #3 : écouter sous la ville, le sound design de Sextia](https://flexarion-officiel.github.io/devlogs/sound-design-ville-souterraine/) : Réverbérations, eau thermale et cigales mutées : la sound designer de Flexarion raconte comment elle fait sonner la ville souterraine de Below Zero.
-- [Devlog #2 : le présent modifie le futur, nos énigmes de causalité](https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/) : Le game designer de Flexarion explique comment une action dans l'Aix de 2156 transforme la ville de 2306 dans Below Zero, et comment on évite le chaos.
-- [Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306](https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/) : Comment l'équipe Flexarion construit Aix-en-Provence en 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés, règles de symétrie et lisibilité.
+- [Devlog #4 : ils vous connaissent déjà, dessiner les habitants de 2306](https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/) : Chez Flexarion, le character designer dévoile comment il dessine, du croquis au modèle 3D, des habitants du futur qui reconnaissent le joueur.
+- [Devlog #3 : écouter sous la ville, le sound design de Sextia](https://flexarion-officiel.github.io/devlogs/sound-design-ville-souterraine/) : Chez Flexarion, la sound designer raconte comment l'eau thermale, l'écho et des cigales mutées font sonner la ville souterraine de Below Zero.
+- [Devlog #2 : le présent modifie le futur, nos énigmes de causalité](https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/) : Chez Flexarion, le game designer explique comment une action dans l'Aix de 2156 transforme la ville de 2306 de Below Zero, sans chaos.
+- [Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306](https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/) : Flexarion dévoile comment son équipe bâtit l'Aix de 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés et règles de symétrie.
 
 ## Réseaux officiels
 - GitHub : https://github.com/flexarion-officiel
