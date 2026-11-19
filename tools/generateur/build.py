@@ -113,6 +113,7 @@ def render(p):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add("js")</script>
 <title>{esc(p["title"])}</title>
 <meta name="description" content="{esc(p["desc"])}">
 <meta name="robots" content="{robots}">
