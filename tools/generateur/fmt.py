@@ -15,6 +15,10 @@ BLOCK = {"html", "head", "body", "header", "nav", "main", "footer", "section", "
 RAW = {"script", "style"}
 
 
+class Comment(str):
+    """Commentaire HTML conservé tel quel (ex. : ASCII art)."""
+
+
 class Node:
     def __init__(self, tag, start="", parent=None):
         self.tag, self.start, self.parent, self.children = tag, start, parent, []
@@ -49,6 +53,9 @@ class Builder(HTMLParser):
     def handle_data(self, d):
         self.cur.children.append(d)
 
+    def handle_comment(self, d):
+        self.cur.children.append(Comment(d))
+
     def handle_entityref(self, name):
         self.cur.children.append(f"&{name};")
 
@@ -57,6 +64,8 @@ class Builder(HTMLParser):
 
 
 def inline(n):
+    if isinstance(n, Comment):
+        return f"<!--{n}-->"
     if isinstance(n, str):
         return re.sub(r"\s+", " ", n)
     if n.tag in VOID:
@@ -79,6 +88,9 @@ def is_container(n):
 
 def out(n, depth, lines):
     pad = "  " * depth
+    if isinstance(n, Comment):
+        lines.append(f"<!--{n}-->")
+        return
     if isinstance(n, str):
         if n.strip():
             lines.append(pad + re.sub(r"\s+", " ", n).strip())
