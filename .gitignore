@@ -7,4 +7,5 @@ __pycache__/
 
 # Sources CSS/JS non minifiées (éditées en local, minifiées par tools/generateur/minify.py)
 /assets/css/style.css
+/assets/css/print.css
 /assets/js/main.js

@@ -2,6 +2,7 @@
 
 Sources éditables (ignorées par Git, voir .gitignore) :
   assets/css/style.css  ->  assets/css/style.min.css  (fichier servi)
+  assets/css/print.css  ->  assets/css/print.min.css  (impression, chargée avec media="print")
   assets/js/main.js     ->  assets/js/main.min.js     (fichier servi)
 
 Lancé automatiquement à la fin de build.py, ou seul : python3 -B tools/generateur/minify.py
@@ -78,6 +79,7 @@ def minify_js(js):
 
 def run():
     pairs = [("assets/css/style.css", "assets/css/style.min.css", minify_css),
+             ("assets/css/print.css", "assets/css/print.min.css", minify_css),
              ("assets/js/main.js", "assets/js/main.min.js", minify_js)]
     for src, dst, fn in pairs:
         s = os.path.join(ROOT, src)
