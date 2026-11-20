@@ -32,6 +32,7 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 | 20/11/2026 | FlexaBot (agent IA) | v1.4.2 : correction des fondus d'images, invisibles sur une connexion normale en v1.4.1 (signalé par l'équipe) | Testé par l'équipe sur son PC après déploiement |
 | 20/11/2026 | Puppeteer, Lighthouse 12, html-validate (non IA) | Mesure de l'opacité image par image (cache vide et cache chaud), LCP observé, audits | — |
 | 20/11/2026 | FlexaBot (agent IA) | v1.4.3 : correction de l'animation du menu burger (liens qui bougeaient dans tous les sens sur mobile, signalé par l'équipe) | À vérifier par l'équipe sur téléphone |
+| 20/11/2026 | FlexaBot (agent IA) | v1.4.4 : recommandations GreenIT-Analysis (script en ligne et JSON-LD minifiés, feuille d'impression séparée) avec mesures avant / après | Accord de l'équipe sous condition d'absence d'impact sur la vitesse et le SEO |
 
 **Prompt de mission initial** (donné par l'équipe à l'agent) : « Mission : Développement agentique du site Flexarion (Concours SEO) » — rôle d'agent de développement principal, objectifs (position Google sur « Flexarion », GEO, site techniquement irréprochable, backlinks white hat, documentation de l'IA), périmètre technique, contenu minimum, mentions légales, brand guidelines (identité, palette, positionnement, personas Léo / Chloé / Mehdi), modèle de reporting et stratégie en 4 phases. Le texte complet est conservé dans l'historique de conversation de l'équipe.
 
@@ -390,6 +391,38 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 - Prompts / outils IA utilisés : Retour de l'équipe transmis à l'agent (sur mobile, les liens du menu burger bougent dans tous les sens à l'ouverture et à la fermeture) et accord de l'équipe pour la correction (« Oui fais le s'il te plait »). Outils non IA : Puppeteer (positions image par image, planches de l'animation), Pillow, html-validate, Lighthouse 12.
 - Décisions prises : Panneau superposé plutôt que menu qui pousse le contenu : aucune remise en page pendant l'animation, et seules des propriétés peu coûteuses sont animées.
 - Suite prévue : Vérifier sur un téléphone réel (Android et iOS) après déploiement.
+
+### Tâche : Recommandations GreenIT-Analysis (version 1.4.4 du site)
+- Objectif : Corriger les deux remarques de l'extension GreenIT-Analysis (EcoIndex) sur le site en ligne : « CSS ou JS non minifiés » et « pas de feuille de style d'impression », à la condition fixée par l'équipe : aucun impact sur la vitesse, les performances ou le SEO.
+- Critères de validation : Plus aucun script ou style en ligne non minifié ; feuille d'impression détectée ; contenu JSON-LD strictement identique ; impression identique ; feuille d'impression non bloquante et en priorité minimale ; Lighthouse mobile et LCP réel inchangés (au bruit de mesure près) ; `check.py` sans erreur ; HTML valide.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS (voir la réserve sur Lighthouse en local ci-dessous)
+- Détails :
+  - **Diagnostic** (règles lues dans le code source de GreenIT-Analysis) : l'extension regroupe le texte des scripts en ligne (hors JSON-LD) et le juge non minifié s'il contient au moins deux retours à la ligne ; le script d'une ligne du `<head>` (v1.4.2), indenté sur trois lignes par le générateur, suffisait à déclencher la remarque. Pour l'impression, elle cherche une balise `<link rel="stylesheet" media="print">` (ou `<style media="print">`) et ignore les règles `@media print` placées dans la feuille principale.
+  - **Scripts en ligne** : le générateur (`fmt.py`) conserve désormais sur une seule ligne, sans espaces ajoutés, tout script ou style en ligne d'une ligne ; le JSON-LD est sérialisé de façon compacte (`separators=(",", ":")`) sur une ligne. Contenu JSON-LD vérifié identique sur les 11 pages (comparaison des objets décodés). Pages HTML : environ 130 lignes et 1 à 2 Ko de moins chacune.
+  - **Feuille d'impression** : règles `@media print` déplacées de `style.css` vers une nouvelle source `assets/css/print.css` (ignorée par Git comme les autres sources), minifiée en `print.min.css` (1,2 Ko) par `minify.py` et chargée sur chaque page par `<link rel="stylesheet" href="/assets/css/print.min.css" media="print">` juste après la feuille principale. `style.min.css` passe de 16,1 à 14,9 Ko.
+  - **Contrôles ajoutés à `check.py`** : lien `print.min.css` avec `media="print"` sur chaque page, plus de `@media print` dans `style.min.css`, aucun script ou style en ligne sur plusieurs lignes ou entouré d'espaces.
+  - **Équivalent GreenIT** (mêmes règles, appliquées par Puppeteer sur 5 pages) : avant, 1 ressource non minifiée sur 3 (« inline js ») et 0 feuille d'impression ; après, 0 sur 4 et 1 feuille d'impression.
+  - **Chargement** : Chrome attribue à `print.min.css` la priorité « VeryLow » (la plus basse) et l'indique « non-blocking » ; `style.min.css` reste la seule ressource bloquante, comme avant.
+  - **Impression** : PDF A4 de l'accueil, du studio et d'un devlog générés avant et après : même nombre de pages et rendu identique au pixel près.
+  - **Mesures avant / après** (Lighthouse 12 mobile, médiane de 3 passages, serveur local HTTP/1.1) :
+
+| Page | Version | Performance | Accessibilité | Bonnes pratiques | SEO | LCP | CLS | TBT |
+|---|---|---|---|---|---|---|---|---|
+| Accueil | 1.4.3 | 99 | 100 | 100 | 100 | 2,03 s | 0 | 28 ms |
+| Accueil | 1.4.4 | 99 | 100 | 100 | 100 | 2,03 s | 0 | 28 ms |
+| Studio | 1.4.3 | 99 | 100 | 100 | 100 | 1,95 s | 0 | 30 ms |
+| Studio | 1.4.4 | 99 | 100 | 100 | 100 | 2,03 s | 0 | 29 ms |
+| Below Zero | 1.4.3 | 100 | 100 | 100 | 100 | 1,80 s | 0 | 31 ms |
+| Below Zero | 1.4.4 | 99 à 100 | 100 | 100 | 100 | 1,95 s | 0 | 35 ms |
+
+  - **LCP réel de l'accueil** (Chrome, processeur ralenti 4×, réseau mobile émulé, médiane de 5 chargements) : 668 ms avant, 672 ms après (écart dans le bruit).
+  - **Réserve** : en HTTP/1.1 local, la simulation de Lighthouse ajoute environ 0,15 s au LCP du studio et de Below Zero dans 2 passages sur 3 (Below Zero : 100 → 99) ; sans le lien d'impression, Below Zero revient à 100 et 1,80 s à chaque passage : l'écart vient de la requête supplémentaire, que la simulation place sur une nouvelle connexion. En HTTP/2 (protocole de GitHub Pages, testé en local avec certificat de test), aucun écart systématique : studio 1,43-1,59 s avant contre 1,54 s après, Below Zero 1,58-1,74 s avant contre 1,43-1,59 s après, score 100 dans 11 passages sur 12.
+- Prompts / outils IA utilisés : Demande de l'équipe transmise à l'agent (« Si cela n'a aucun impact sur la vitesse, les performances, le seo, etc, alors fais le »). Outils non IA : code source de GreenIT-Analysis (lecture des règles), Puppeteer (règles GreenIT, priorités réseau, PDF d'impression, LCP réel), poppler / Pillow (comparaison des PDF), html-validate, Lighthouse 12, serveur HTTP/2 de test (Node.js).
+- Décisions prises :
+  - Lien d'impression placé dans le `<head>` après la feuille principale : le placer en fin de page ne changeait rien aux mesures.
+  - Feuille d'impression conservée malgré la réserve en HTTP/1.1, car le site est servi en HTTP/2 et le LCP réel est inchangé ; retour arrière simple si PageSpeed Insights montre un écart sur le site en ligne (réintégrer `print.css` dans `style.min.css` et retirer le lien).
+- Suite prévue : Après déploiement, relancer GreenIT-Analysis et PageSpeed Insights (accueil, studio, Below Zero) et comparer avec les mesures de la v1.4.3.
 
 ---
 
