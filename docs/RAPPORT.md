@@ -31,6 +31,7 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 | 20/11/2026 | html-validate, Lighthouse 12, Puppeteer (non IA) | Validation, audits, captures avec images volontairement retenues | — |
 | 20/11/2026 | FlexaBot (agent IA) | v1.4.2 : correction des fondus d'images, invisibles sur une connexion normale en v1.4.1 (signalé par l'équipe) | Testé par l'équipe sur son PC après déploiement |
 | 20/11/2026 | Puppeteer, Lighthouse 12, html-validate (non IA) | Mesure de l'opacité image par image (cache vide et cache chaud), LCP observé, audits | — |
+| 20/11/2026 | FlexaBot (agent IA) | v1.4.3 : correction de l'animation du menu burger (liens qui bougeaient dans tous les sens sur mobile, signalé par l'équipe) | À vérifier par l'équipe sur téléphone |
 
 **Prompt de mission initial** (donné par l'équipe à l'agent) : « Mission : Développement agentique du site Flexarion (Concours SEO) » — rôle d'agent de développement principal, objectifs (position Google sur « Flexarion », GEO, site techniquement irréprochable, backlinks white hat, documentation de l'IA), périmètre technique, contenu minimum, mentions légales, brand guidelines (identité, palette, positionnement, personas Léo / Chloé / Mehdi), modèle de reporting et stratégie en 4 phases. Le texte complet est conservé dans l'historique de conversation de l'équipe.
 
@@ -374,6 +375,21 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - Visuels principaux inclus, avec un fondu plus court (0,2 s) et lancé sans délai, pour limiter l'effet sur le LCP.
   - Script en ligne limité à une instruction, sans dépendance ni donnée.
 - Suite prévue : Vérifier le rendu sur le PC de l'équipe et PageSpeed Insights (données réelles) après déploiement ; si le LCP de l'accueil se dégrade nettement, retirer le fondu du seul hero de l'accueil.
+
+### Tâche : Correction de l'animation du menu mobile (version 1.4.3 du site)
+- Objectif : Sur mobile, à l'ouverture et à la fermeture du menu burger, les liens se déplaçaient dans tous les sens : les stabiliser tout en gardant une animation douce.
+- Critères de validation : Liens à leur place définitive pendant toute l'animation ; seules la translation et l'opacité du panneau animées (0,25 s, `ease-in-out`, ouverture et fermeture) ; contenu de la page immobile ; accessibilité conservée (`aria-expanded`, touche Échap, liens non atteignables au clavier menu fermé, croix du bouton) ; mouvement réduit : instantané ; menu ordinateur inchangé ; Lighthouse et CLS inchangés ; `check.py` sans erreur ; HTML valide.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails :
+  - **Cause** : en v1.4.0, l'ouverture animait la hauteur du menu (`grid-template-rows` de `0fr` à `1fr`). La liste héritait de la règle ordinateur `flex-wrap: wrap` : tant que la hauteur était insuffisante, les liens passaient sur plusieurs colonnes puis se réorganisaient à chaque image de l'animation.
+  - **Correction** : le menu mobile devient un panneau superposé sous l'en-tête (`position: absolute`, fond plein `#071421`, bordure et ombre, au-dessus du contenu). Le contenu de la page ne bouge plus et les liens sont disposés une fois pour toutes en colonne (`flex-wrap: nowrap`). Seuls `opacity` (0 → 1) et `transform` (`translateY(-10px)` → 0) sont animés, en 0,25 s `ease-in-out`, dans les deux sens. Panneau défilable si plus haut que l'écran.
+  - **Accessibilité** : menu fermé en `visibility: hidden` à la fin de la transition (liens ni visibles ni focalisables) ; script inchangé (`aria-expanded`, libellé du bouton, Échap qui referme et rend le focus au bouton) ; morphose du bouton en croix conservée.
+  - **Mesures** (Puppeteer, largeurs 375 et 414 px, position de chaque lien relevée à chaque image) : une seule disposition des liens par rapport au panneau sur toute l'ouverture et toute la fermeture ; position du contenu de la page constante ; panneau de −10 px à 0 ; opacité progressive ; Tab n'entre pas dans le menu fermé. Mouvement réduit : menu visible immédiatement. Menu ordinateur inchangé.
+  - **Validation** : `check.py` : 11 pages, 0 erreur ; html-validate : 0 erreur hors règle SRI ; Lighthouse mobile (accueil) : 99 / 100 / 100 / 100, LCP 2,0 s, CLS 0.
+- Prompts / outils IA utilisés : Retour de l'équipe transmis à l'agent (sur mobile, les liens du menu burger bougent dans tous les sens à l'ouverture et à la fermeture) et accord de l'équipe pour la correction (« Oui fais le s'il te plait »). Outils non IA : Puppeteer (positions image par image, planches de l'animation), Pillow, html-validate, Lighthouse 12.
+- Décisions prises : Panneau superposé plutôt que menu qui pousse le contenu : aucune remise en page pendant l'animation, et seules des propriétés peu coûteuses sont animées.
+- Suite prévue : Vérifier sur un téléphone réel (Android et iOS) après déploiement.
 
 ---
 
