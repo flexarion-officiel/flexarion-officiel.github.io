@@ -1,6 +1,8 @@
 import re, json, os, glob, html.parser
 R=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),"..",".."))
 errs=0; titles={}; descs={}
+if "@media print" in open(R+"/assets/css/style.min.css").read(): print("@media print encore dans style.min.css"); errs+=1
+if not os.path.exists(R+"/assets/css/print.min.css"): print("print.min.css absent"); errs+=1
 for f in glob.glob(R+"/**/*.html", recursive=True):
     s=open(f).read()
     for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S):
@@ -17,6 +19,9 @@ for f in glob.glob(R+"/**/*.html", recursive=True):
     if len(H.unescape(t))>60: print("title len",len(H.unescape(t)),f); errs+=1
     if "/assets/css/style.min.css" not in s or "/assets/js/main.min.js" not in s or "style.css\"" in s or "main.js\"" in s: print("CSS/JS non minifiés", f); errs+=1
     if not s.startswith("<!doctype html>\n<!--"): print("ASCII art absent", f); errs+=1
+    if '<link rel="stylesheet" href="/assets/css/print.min.css" media="print">' not in s or 'print.css"' in s: print("CSS d'impression (print.min.css, media=print) absente", f); errs+=1
+    for b in re.findall(r"<(?:script|style)\b[^>]*>(.*?)</(?:script|style)>", s, re.S):
+        if "\n" in b or b != b.strip(): print("script/style en ligne non minifié", f); errs+=1
     h1=len(re.findall(r"<h1",s))
     if h1!=1: print("H1 count",h1,f)
     for img in re.findall(r"<img[^>]*>",s):
