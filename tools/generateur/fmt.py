@@ -100,6 +100,10 @@ def out(n, depth, lines):
         if not body.strip():
             lines.append(pad + f"{n.start}</{n.tag}>")
             return
+        if "\n" not in body.strip():
+            # Script / style en ligne déjà minifié : conservé sur une seule ligne, sans espaces ajoutés
+            lines.append(pad + f"{n.start}{body.strip()}</{n.tag}>")
+            return
         lines.append(pad + n.start)
         for l in body.splitlines():
             lines.append(pad + "  " + l if l.strip() else "")

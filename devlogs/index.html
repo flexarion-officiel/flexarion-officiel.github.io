@@ -16,9 +16,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-      document.documentElement.classList.add("js")
-    </script>
+    <script>document.documentElement.classList.add("js")</script>
     <title>Devlogs Flexarion : journal de développement de Below Zero</title>
     <meta name="description" content="Les devlogs du studio Flexarion : conception des deux villes, énigmes de causalité, sound design et character design du jeu Below Zero.">
     <meta name="robots" content="index, follow, max-image-preview:large">
@@ -34,6 +32,7 @@
     <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
     <link rel="preload" href="/assets/fonts/exo2-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/css/style.min.css">
+    <link rel="stylesheet" href="/assets/css/print.min.css" media="print">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Flexarion">
@@ -46,134 +45,7 @@
     <meta name="twitter:title" content="Devlogs Flexarion : journal de développement de Below Zero">
     <meta name="twitter:description" content="Les devlogs du studio Flexarion : conception des deux villes, énigmes de causalité, sound design et character design du jeu Below Zero.">
     <meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp">
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "https://flexarion-officiel.github.io/#organization",
-            "name": "Flexarion",
-            "alternateName": [
-              "Flexarion Studio",
-              "Studio Flexarion"
-            ],
-            "description": "Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs, fondé en 2022 à Aix-en-Provence et créateur du jeu Below Zero.",
-            "url": "https://flexarion-officiel.github.io/",
-            "logo": {
-              "@type": "ImageObject",
-              "@id": "https://flexarion-officiel.github.io/#logo",
-              "url": "https://flexarion-officiel.github.io/icon-512.png",
-              "contentUrl": "https://flexarion-officiel.github.io/icon-512.png",
-              "width": 512,
-              "height": 512,
-              "caption": "Logo Flexarion"
-            },
-            "image": {
-              "@id": "https://flexarion-officiel.github.io/#logo"
-            },
-            "foundingDate": "2022",
-            "knowsAbout": [
-              "jeu vidéo narratif",
-              "science-fiction",
-              "game design",
-              "énigmes temporelles",
-              "sound design"
-            ],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "contactType": "presse",
-              "url": "https://flexarion-officiel.github.io/contact/",
-              "availableLanguage": "fr"
-            },
-            "sameAs": [
-              "https://github.com/flexarion-officiel",
-              "https://flexarionofficiel.itch.io/",
-              "https://x.com/flexarion_off",
-              "https://www.instagram.com/flexarion.off/"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://flexarion-officiel.github.io/#website",
-            "url": "https://flexarion-officiel.github.io/",
-            "name": "Flexarion",
-            "alternateName": "Studio Flexarion",
-            "inLanguage": "fr-FR",
-            "publisher": {
-              "@id": "https://flexarion-officiel.github.io/#organization"
-            }
-          },
-          {
-            "@type": "BreadcrumbList",
-            "@id": "https://flexarion-officiel.github.io/devlogs/#breadcrumb",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Accueil",
-                "item": "https://flexarion-officiel.github.io/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Devlogs",
-                "item": "https://flexarion-officiel.github.io/devlogs/"
-              }
-            ]
-          },
-          {
-            "@type": "CollectionPage",
-            "@id": "https://flexarion-officiel.github.io/devlogs/#webpage",
-            "url": "https://flexarion-officiel.github.io/devlogs/",
-            "name": "Devlogs Flexarion : journal de développement de Below Zero",
-            "description": "Les devlogs du studio Flexarion : conception des deux villes, énigmes de causalité, sound design et character design du jeu Below Zero.",
-            "isPartOf": {
-              "@id": "https://flexarion-officiel.github.io/#website"
-            },
-            "about": {
-              "@id": "https://flexarion-officiel.github.io/#organization"
-            },
-            "inLanguage": "fr-FR",
-            "dateModified": "2026-11-19",
-            "primaryImageOfPage": {
-              "@type": "ImageObject",
-              "url": "https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp"
-            },
-            "breadcrumb": {
-              "@id": "https://flexarion-officiel.github.io/devlogs/#breadcrumb"
-            }
-          },
-          {
-            "@type": "Blog",
-            "@id": "https://flexarion-officiel.github.io/devlogs/#blog",
-            "name": "Devlogs Flexarion",
-            "url": "https://flexarion-officiel.github.io/devlogs/",
-            "inLanguage": "fr-FR",
-            "publisher": {
-              "@id": "https://flexarion-officiel.github.io/#organization"
-            },
-            "about": {
-              "@id": "https://flexarion-officiel.github.io/below-zero/#videogame"
-            },
-            "blogPost": [
-              {
-                "@id": "https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/#article"
-              },
-              {
-                "@id": "https://flexarion-officiel.github.io/devlogs/sound-design-ville-souterraine/#article"
-              },
-              {
-                "@id": "https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/#article"
-              },
-              {
-                "@id": "https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#article"
-              }
-            ]
-          }
-        ]
-      }
-    </script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://flexarion-officiel.github.io/#organization","name":"Flexarion","alternateName":["Flexarion Studio","Studio Flexarion"],"description":"Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs, fondé en 2022 à Aix-en-Provence et créateur du jeu Below Zero.","url":"https://flexarion-officiel.github.io/","logo":{"@type":"ImageObject","@id":"https://flexarion-officiel.github.io/#logo","url":"https://flexarion-officiel.github.io/icon-512.png","contentUrl":"https://flexarion-officiel.github.io/icon-512.png","width":512,"height":512,"caption":"Logo Flexarion"},"image":{"@id":"https://flexarion-officiel.github.io/#logo"},"foundingDate":"2022","knowsAbout":["jeu vidéo narratif","science-fiction","game design","énigmes temporelles","sound design"],"contactPoint":{"@type":"ContactPoint","contactType":"presse","url":"https://flexarion-officiel.github.io/contact/","availableLanguage":"fr"},"sameAs":["https://github.com/flexarion-officiel","https://flexarionofficiel.itch.io/","https://x.com/flexarion_off","https://www.instagram.com/flexarion.off/"]},{"@type":"WebSite","@id":"https://flexarion-officiel.github.io/#website","url":"https://flexarion-officiel.github.io/","name":"Flexarion","alternateName":"Studio Flexarion","inLanguage":"fr-FR","publisher":{"@id":"https://flexarion-officiel.github.io/#organization"}},{"@type":"BreadcrumbList","@id":"https://flexarion-officiel.github.io/devlogs/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://flexarion-officiel.github.io/"},{"@type":"ListItem","position":2,"name":"Devlogs","item":"https://flexarion-officiel.github.io/devlogs/"}]},{"@type":"CollectionPage","@id":"https://flexarion-officiel.github.io/devlogs/#webpage","url":"https://flexarion-officiel.github.io/devlogs/","name":"Devlogs Flexarion : journal de développement de Below Zero","description":"Les devlogs du studio Flexarion : conception des deux villes, énigmes de causalité, sound design et character design du jeu Below Zero.","isPartOf":{"@id":"https://flexarion-officiel.github.io/#website"},"about":{"@id":"https://flexarion-officiel.github.io/#organization"},"inLanguage":"fr-FR","dateModified":"2026-11-19","primaryImageOfPage":{"@type":"ImageObject","url":"https://flexarion-officiel.github.io/assets/img/devlog-deux-villes-1280.webp"},"breadcrumb":{"@id":"https://flexarion-officiel.github.io/devlogs/#breadcrumb"}},{"@type":"Blog","@id":"https://flexarion-officiel.github.io/devlogs/#blog","name":"Devlogs Flexarion","url":"https://flexarion-officiel.github.io/devlogs/","inLanguage":"fr-FR","publisher":{"@id":"https://flexarion-officiel.github.io/#organization"},"about":{"@id":"https://flexarion-officiel.github.io/below-zero/#videogame"},"blogPost":[{"@id":"https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/#article"},{"@id":"https://flexarion-officiel.github.io/devlogs/sound-design-ville-souterraine/#article"},{"@id":"https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/#article"},{"@id":"https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/#article"}]}]}</script>
   </head>
   <body id="haut">
     <a class="skip" href="#contenu">Aller au contenu</a>

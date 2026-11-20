@@ -31,6 +31,7 @@ ASCII = r"""
 
 # Versions minifiées servies par le site (générées depuis les sources par minify.py)
 CSS_HREF = "/assets/css/style.min.css"
+PRINT_HREF = "/assets/css/print.min.css"  # feuille d'impression séparée (priorité minimale, non bloquante)
 JS_SRC = "/assets/js/main.min.js"
 FONT_PRELOAD = "/assets/fonts/exo2-latin.woff2"
 
@@ -93,7 +94,7 @@ def render(p):
             {"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + u} for i, (u, n) in enumerate(items)]})
     graph.append(webpage)
     graph += p.get("jsonld", [])
-    ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
+    ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, separators=(",", ":"))
     nav = "".join(f'<li><a href="{u}"' + (' aria-current="page"' if (u == path or (u != "/" and path.startswith(u))) else "") + f'>{n}</a></li>' for u, n in NAV)
     bc = ""
     if crumbs:
@@ -128,6 +129,7 @@ def render(p):
 <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
 <link rel="preload" href="{FONT_PRELOAD}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{CSS_HREF}">
+<link rel="stylesheet" href="{PRINT_HREF}" media="print">
 {extra_head}<meta property="og:type" content="{ogtype}">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Flexarion">
@@ -140,9 +142,7 @@ def render(p):
 <meta name="twitter:title" content="{esc(p.get("ogtitle", p["title"]))}">
 <meta name="twitter:description" content="{esc(p["desc"])}">
 <meta name="twitter:image" content="{img_abs}">
-<script type="application/ld+json">
-{ld}
-</script>
+<script type="application/ld+json">{ld}</script>
 </head>
 <body id="haut">
 <a class="skip" href="#contenu">Aller au contenu</a>
