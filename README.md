@@ -33,7 +33,9 @@ Site réalisé dans le cadre du module « Plan de communication & webmarketing �
 │   ├── concevoir-deux-villes-aix-2156-2306/
 │   ├── enigmes-causalite-temporelle/
 │   ├── sound-design-ville-souterraine/
-│   └── character-design-habitants-futur/
+│   ├── character-design-habitants-futur/
+│   ├── concevoir-sextia-vrai-aix/
+│   └── accessibilite-rythme-jeu-sans-combat/
 ├── contact/                    Contact & kit presse
 ├── mentions-legales/           Mentions légales (noindex : nature du projet, éditeurs, hébergeur, IA, crédits)
 ├── 404.html
