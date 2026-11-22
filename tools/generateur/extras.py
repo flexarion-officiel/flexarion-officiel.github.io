@@ -27,7 +27,7 @@ def run(pages):
   <atom:link href="{BASE}/devlogs/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Le journal de développement de Below Zero par le studio Flexarion (Aix-en-Provence).</description>
   <language>fr-fr</language>
-  <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0100</lastBuildDate>
+  <lastBuildDate>Sun, 22 Nov 2026 19:00:00 +0100</lastBuildDate>
 {items}</channel>
 </rss>
 ''')

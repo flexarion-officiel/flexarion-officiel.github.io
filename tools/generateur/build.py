@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from fmt import pretty
 BASE = "https://flexarion-officiel.github.io"
 OUT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
-LASTMOD = "2026-11-19"
+LASTMOD = "2026-11-22"
 ORG = BASE + "/#organization"
 SITE = BASE + "/#website"
 

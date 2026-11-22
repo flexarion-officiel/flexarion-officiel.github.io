@@ -1,0 +1,177 @@
+<!doctype html>
+<!--
+         /\
+        /  \       ___ _    _____  __   _   ___ ___ ___  _  _
+       / /\ \     | __| |  | __\ \/ /  /_\ | _ \_ _/ _ \| \| |
+    ==<======>==  | _|| |__| _| >  <  / _ \|   /| | (_) | .` |
+       \ \/ /     |_| |____|___/_/\_\/_/ \_\_|_\___\___/|_|\_|
+        \  /
+         \/       Studio de jeux vidéo de science-fiction · Aix-en-Provence
+
+    2156 à la surface. 2306 en dessous.
+    Tu lis le code source ? Tu es donc déjà descendu d'un niveau.
+    Ouvre la console : quelqu'un t'y attend.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.documentElement.classList.add("js")</script>
+    <title>Devlog #5 : concevoir Sextia depuis Aix | Flexarion</title>
+    <meta name="description" content="Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/">
+    <meta name="author" content="Flexarion">
+    <meta name="theme-color" content="#071421">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
+    <link rel="preload" href="/assets/fonts/exo2-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+    <link rel="stylesheet" href="/assets/css/print.min.css" media="print">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Flexarion">
+    <meta property="og:title" content="Devlog #5 : concevoir Sextia depuis Aix | Flexarion">
+    <meta property="og:description" content="Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.">
+    <meta property="og:url" content="https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/">
+    <meta property="og:image" content="https://flexarion-officiel.github.io/assets/img/devlog-sextia-aix-1280.webp">
+    <meta property="og:image:alt" content="Vue en coupe entre Aix-en-Provence au crépuscule, avec la fontaine de la Rotonde et le cours Mirabeau, et sa jumelle souterraine Sextia de 2306 illuminée de cyan">
+    <meta property="article:published_time" content="2026-11-22T18:00:00+01:00">
+    <meta property="article:modified_time" content="2026-11-22">
+    <meta property="article:author" content="Élise Fabre">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Devlog #5 : concevoir Sextia depuis Aix | Flexarion">
+    <meta name="twitter:description" content="Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.">
+    <meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/devlog-sextia-aix-1280.webp">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://flexarion-officiel.github.io/#organization","name":"Flexarion","alternateName":["Flexarion Studio","Studio Flexarion"],"description":"Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs, fondé en 2022 à Aix-en-Provence et créateur du jeu Below Zero.","url":"https://flexarion-officiel.github.io/","logo":{"@type":"ImageObject","@id":"https://flexarion-officiel.github.io/#logo","url":"https://flexarion-officiel.github.io/icon-512.png","contentUrl":"https://flexarion-officiel.github.io/icon-512.png","width":512,"height":512,"caption":"Logo Flexarion"},"image":{"@id":"https://flexarion-officiel.github.io/#logo"},"foundingDate":"2022","knowsAbout":["jeu vidéo narratif","science-fiction","game design","énigmes temporelles","sound design"],"contactPoint":{"@type":"ContactPoint","contactType":"presse","url":"https://flexarion-officiel.github.io/contact/","availableLanguage":"fr"},"sameAs":["https://github.com/flexarion-officiel","https://flexarionofficiel.itch.io/","https://x.com/flexarion_off","https://www.instagram.com/flexarion.off/"]},{"@type":"WebSite","@id":"https://flexarion-officiel.github.io/#website","url":"https://flexarion-officiel.github.io/","name":"Flexarion","alternateName":"Studio Flexarion","inLanguage":"fr-FR","publisher":{"@id":"https://flexarion-officiel.github.io/#organization"}},{"@type":"BreadcrumbList","@id":"https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://flexarion-officiel.github.io/"},{"@type":"ListItem","position":2,"name":"Devlogs","item":"https://flexarion-officiel.github.io/devlogs/"},{"@type":"ListItem","position":3,"name":"Concevoir Sextia à partir du vrai Aix","item":"https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/"}]},{"@type":"WebPage","@id":"https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/#webpage","url":"https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/","name":"Devlog #5 : concevoir Sextia depuis Aix | Flexarion","description":"Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.","isPartOf":{"@id":"https://flexarion-officiel.github.io/#website"},"about":{"@id":"https://flexarion-officiel.github.io/#organization"},"inLanguage":"fr-FR","dateModified":"2026-11-22","primaryImageOfPage":{"@type":"ImageObject","url":"https://flexarion-officiel.github.io/assets/img/devlog-sextia-aix-1280.webp"},"breadcrumb":{"@id":"https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/#breadcrumb"}},{"@type":"BlogPosting","@id":"https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/#article","headline":"Devlog #5 : concevoir Sextia à partir du vrai Aix-en-Provence","description":"Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.","image":{"@type":"ImageObject","url":"https://flexarion-officiel.github.io/assets/img/devlog-sextia-aix-1280.webp","width":1280,"height":720},"datePublished":"2026-11-22T18:00:00+01:00","dateModified":"2026-11-22","inLanguage":"fr-FR","wordCount":1297,"author":{"@type":"Person","name":"Élise Fabre","jobTitle":"Sound designer","worksFor":{"@id":"https://flexarion-officiel.github.io/#organization"}},"publisher":{"@id":"https://flexarion-officiel.github.io/#organization"},"mainEntityOfPage":{"@id":"https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/#webpage"},"isPartOf":{"@id":"https://flexarion-officiel.github.io/devlogs/#blog"},"about":{"@id":"https://flexarion-officiel.github.io/below-zero/#videogame"},"articleSection":"Devlog"}]}</script>
+  </head>
+  <body id="haut">
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <header class="site-head">
+      <div class="wrap head-in">
+        <a class="brand" href="/" aria-label="Flexarion, retour à l’accueil"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="12" fill="#071421"/><path d="M9 29 32 7l23 22" fill="none" stroke="#19B9D4" stroke-width="3.5" stroke-linejoin="round"/><path d="M9 35l23 22 23-22" fill="none" stroke="#B7DDE8" stroke-width="3.5" stroke-linejoin="round"/><path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/><path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/><path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg><span>Flexarion</span></a>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu"><span class="burger-bar"></span></button>
+        <nav class="nav" id="menu-principal" aria-label="Navigation principale">
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/studio/">Le studio</a></li>
+            <li><a href="/below-zero/">Below Zero</a></li>
+            <li><a href="/devlogs/" aria-current="page">Devlogs</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <nav class="crumbs wrap" aria-label="Fil d’Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/devlogs/">Devlogs</a></li>
+        <li aria-current="page">Concevoir Sextia à partir du vrai Aix</li>
+      </ol>
+    </nav>
+    <main id="contenu">
+      <article class="wrap">
+        <header>
+          <p class="kicker">Devlog n°5 · Below Zero</p>
+          <h1>Devlog #5 : concevoir Sextia à partir du vrai Aix-en-Provence</h1>
+          <p class="meta">Par Élise Fabre, sound designer chez Flexarion · Publié le <time datetime="2026-11-22T18:00:00+01:00">22 novembre 2026</time> · Mis à jour le <time datetime="2026-11-22">22 novembre 2026</time></p>
+        </header>
+        <figure> <img src="/assets/img/devlog-sextia-aix-1280.webp" srcset="/assets/img/devlog-sextia-aix-480.webp 480w, /assets/img/devlog-sextia-aix-960.webp 960w, /assets/img/devlog-sextia-aix-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Vue en coupe entre Aix-en-Provence au crépuscule, avec la fontaine de la Rotonde et le cours Mirabeau, et sa jumelle souterraine Sextia de 2306 illuminée de cyan" fetchpriority="high" decoding="async"> </figure>
+        <div class="prose">
+          <p class="lead">Sextia, la ville souterraine de 2306 dans <a href="/below-zero/">Below Zero</a>, n'a pas été dessinée dans le vide : elle naît d'un relevé patient des rues, des places et de l'eau d'Aix-en-Provence. Si le studio Flexarion et l'intrigue de Below Zero sont entièrement fictifs, le décor qui nourrit nos deux époques s'appuie, lui, sur une géographie bien réelle — du cours Mirabeau aux thermes Sextius, jusqu'aux fondations antiques d'Aquae Sextiae.</p>
+          <div class="facts" aria-label="Repères clés de l'article">
+            <dl>
+              <dt>Thème</dt>
+              <dd>Transposition du vrai Aix-en-Provence vers Sextia (2306)</dd>
+              <dt>Lieux réels transposés</dt>
+              <dd>Cours Mirabeau, fontaine de la Rotonde, thermes Sextius, vieille ville, quartier Mazarin</dd>
+              <dt>Racines historiques</dt>
+              <dd>Aquae Sextiae (122 av. J.-C.), Caius Sextius Calvinus, sources thermales</dd>
+              <dt>Cadre</dt>
+              <dd>Lieux et histoire réels ; studio Flexarion et jeu Below Zero fictifs</dd>
+            </dl>
+          </div>
+          <nav class="toc" aria-label="Sommaire de l'article">
+            <strong>Au sommaire</strong>
+            <ol>
+              <li><a href="#reperages">Partir du terrain : nos repérages dans Aix-en-Provence</a></li>
+              <li><a href="#mirabeau-rotonde">Du cours Mirabeau à la Rotonde : transposer la colonne vertébrale</a></li>
+              <li><a href="#thermes-aquae">Des thermes Sextius à Aquae Sextiae : le rôle fondateur de l'eau</a></li>
+              <li><a href="#vieille-ville">La vieille ville et le quartier Mazarin : pierre, ombre et proportions</a></li>
+              <li><a href="#methode">Ce que l'on garde, ce que l'on transforme en 2306</a></li>
+              <li><a href="#equilibre">Rechercher le vrai Aix sans faire une carte postale</a></li>
+            </ol>
+          </nav>
+          <h2 id="reperages">Partir du terrain : nos repérages dans Aix-en-Provence</h2>
+          <p>Quand l'équipe de direction artistique et d'environnements a posé les bases de Sextia avec Inès Valcourt et Margaux Delorme, nous avons commencé par marcher dans Aix-en-Provence carnet et enregistreur en main. Mon rôle de sound designer m'amenait déjà à écouter la résonance des placettes et des passages couverts ; très vite, ce travail de terrain est devenu commun à toute la direction visuelle et sonore.</p>
+          <p>Nous cherchions ce qui rend Aix immédiatement reconnaissable sans afficher de panneau indicateur : la hauteur modérée des façades, le grain blond de la pierre de Bibémus, la façon dont une ruelle étroite débouche soudain sur une place claire, et surtout la présence constante de l'eau. En transposant la ville sous terre pour 2306, nous voulions qu'une personne qui connaît Aix-en-Provence ressente une familiarité physique — les distances entre deux carrefours, l'angle d'une perspective — avant même de comprendre ce qu'elle regarde.</p>
+          <h2 id="mirabeau-rotonde">Du cours Mirabeau à la Rotonde : transposer la colonne vertébrale</h2>
+          <p>Dans la réalité comme dans Below Zero, l'axe structurant de la ville reste la ligne qui relie la place de la Rotonde au cours Mirabeau. À la surface de 2156, cet axe a souffert des sécheresses répétées : la grande fontaine de la Rotonde tourne au ralenti et les platanes centenaires s'appuient sur des tuteurs métalliques. Sous terre, dans Sextia, cette même ligne devient l'artère lumineuse et hydraulique de la cité.</p>
+          <h3>La fontaine de la Rotonde</h3>
+          <p>Inaugurée en 1860 à l'entrée du cours Mirabeau, la fontaine de la Rotonde est un repère circulaire à trois vasques et douze mètres de haut. Dans Sextia, nous avons conservé sa silhouette étagée, son bassin circulaire et son rôle de point de convergence des avenues. Simplement, la fonte et la pierre cèdent la place à un verre minéral translucide où l'eau thermale circule à ciel ouvert, éclairée de cyan. Le joueur qui contourne la Rotonde à la surface retrouve exactement le même rayon de marche deux cents mètres plus bas.</p>
+          <h3>Le cours Mirabeau</h3>
+          <p>Sur le cours Mirabeau, la double rangée de platanes forme une voûte végétale qui coupe la chaleur d'été. En 2306, sous une cavité rocheuse privée de soleil, des platanes ordinaires ne survivraient pas : nous les avons transposés en colonnes végétales bioluminescentes, espacées au mètre près selon l'alignement réel des troncs. Côté façade sud et nord, la différence historique entre anciens hôtels particuliers et cafés devient une distinction fonctionnelle entre ateliers d'archives et lieux de passage.</p>
+          <h2 id="thermes-aquae">Des thermes Sextius à Aquae Sextiae : le rôle fondateur de l'eau</h2>
+          <p>L'histoire réelle d'Aix-en-Provence offre à Below Zero sa prémisse la plus solide. En 122 avant notre ère, le consul romain Caius Sextius Calvinus établit un poste fortifié près des sources chaudes de la région, après sa victoire sur la confédération salyenne d'Entremont. Le lieu prend le nom latin d'<em>Aquae Sextiae</em> — « les eaux de Sextius » — et c'est de ce mot <em>Aquae</em> que dérive le nom actuel d'Aix.</p>
+          <p>Aujourd'hui encore, les thermes Sextius rappellent la permanence de ces sources chaudes sous le tissu urbain. Pour Sextia en 2306, cette histoire n'est pas un simple clin d'œil : elle explique pourquoi une ville souterraine peut exister. L'eau thermale fournit la chaleur douce, l'énergie hydraulique des quartiers et la vapeur qui donne à la cavité son acoustique feutrée. Les habitants de 2306 ont gardé le nom de « Sextia » parce qu'ils vivent littéralement autour des mêmes veines d'eau que les fondateurs antiques.</p>
+          <p>Lorsque Sacha Morel inspecte une vanne ou un canal d'amenée près des thermes en 2156, il agit donc sur l'artère vitale de la ville future. Ce choix ancre la fiction dans une réalité géologique et historique que chacun peut vérifier en se promenant à Aix-en-Provence.</p>
+          <h2 id="vieille-ville">La vieille ville et le quartier Mazarin : pierre, ombre et proportions</h2>
+          <p>Aix ne se résume pas à son grand boulevard. Pour que Sextia sonne juste, il fallait capter le contraste entre le lacis médiéval de la vieille ville et la géométrie régulière du quartier Mazarin.</p>
+          <ul>
+            <li><strong>La vieille ville et les abords de la cathédrale Saint-Sauveur :</strong> rues serrées, passages voûtés, petites places irrégulières comme la place d'Albertas ou la place des Cardeurs. En 2306, ces ruelles deviennent des galeries resserrées dans la roche, aux plafonds bas, où les voix portent loin et où l'on découvre les ateliers des habitants.</li>
+            <li><strong>Le quartier Mazarin et la fontaine des Quatre-Dauphins :</strong> tracé au XVIIe siècle selon un plan orthogonal net. Dans Sextia, cette rigueur géométrique sert de repère calme : les carrefours à angle droit accueillent les conduits principaux d'eau claire et servent de zone de test pour nos énigmes de causalité temporelle.</li>
+            <li><strong>Les petites fontaines de quartier :</strong> moussues à la surface, cristallines sous terre, elles marquent autant de points d'ancrage entre 2156 et 2306, comme le détaille déjà notre <a href="/devlogs/enigmes-causalite-temporelle/">devlog sur les énigmes de causalité</a>.</li>
+          </ul>
+          <h2 id="methode">Ce que l'on garde, ce que l'on transforme en 2306</h2>
+          <p>Pour éviter que Sextia ne devienne une simple maquette peinte en bleu, la direction artistique applique une grille de transposition en trois temps pour chaque lieu retenu, en prolongement des règles décrites dans le <a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">devlog sur nos deux villes jumelles</a> :</p>
+          <ol>
+            <li><strong>Conserver l'empreinte et l'usage :</strong> une place reste un lieu de rencontre, un lavoir ou une fontaine reste un point d'eau, un passage couvert reste un raccourci piéton.</li>
+            <li><strong>Traduire la matière :</strong> la pierre calcaire ocre et les tuiles romaines deviennent des parements de basalte clair, du verre minéral et des nervures porteuses discrètement rétroéclairées.</li>
+            <li><strong>Justifier chaque détail par le quotidien de Sextia :</strong> si un ciel artificiel glacier remplace l'azur provençal, c'est pour réguler le rythme jour-nuit des habitants ; si des câbles disparaissent, c'est que l'eau et les réseaux souterrains portent l'énergie.</li>
+          </ol>
+          <h2 id="equilibre">Rechercher le vrai Aix sans faire une carte postale</h2>
+          <p>Le piège classique d'un décor inspiré d'une ville réelle est de multiplier les monuments connus au détriment de la crédibilité. Nous avons volontairement écarté l'idée d'une « visite guidée » : dans Below Zero, certains quartiers entiers sont des rues ordinaires d'habitation, des locaux techniques municipaux ou des cours intérieures fermées, car Sacha Morel connaît d'abord la ville par ses réseaux souterrains.</p>
+          <p>Il reste important de le rappeler clairement : si le cours Mirabeau, la Rotonde, la vieille ville et les thermes Sextius existent bel et bien à Aix-en-Provence, le studio Flexarion, l'Aix de 2156 et la cité souterraine de Sextia appartiennent à une œuvre de fiction. Ce va-et-vient entre patrimoine réel et projection futuriste est aussi ce qui donne sa couleur acoustique au jeu, explorée dans le <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design de Sextia</a>, et son rythme calme sans affrontement, détaillé dans notre <a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">devlog sur l'accessibilité et le rythme sans combat</a>.</p>
+          <aside class="note" aria-label="Précision">Ce devlog a été rédigé avec l'assistance d'une IA puis intégré par l'équipe. Détails dans les <a href="/mentions-legales/">mentions légales</a>.</aside>
+          <h2>Les autres devlogs de Flexarion</h2>
+          <ul>
+            <li><a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">Accessibilité et rythme d'un jeu sans combat</a></li>
+            <li><a href="/devlogs/character-design-habitants-futur/">Le character design des habitants de 2306</a></li>
+            <li><a href="/devlogs/sound-design-ville-souterraine/">Le sound design de la ville souterraine</a></li>
+            <li><a href="/devlogs/enigmes-causalite-temporelle/">Les énigmes de causalité temporelle</a></li>
+            <li><a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">Concevoir deux villes jumelles</a></li>
+          </ul>
+          <p><a class="btn ghost" href="/devlogs/">Tous les devlogs</a> <a class="btn" href="/below-zero/">Découvrir Below Zero</a></p>
+        </div>
+        <nav class="pager" aria-label="Navigation entre les devlogs"><a class="pn prev" href="/devlogs/character-design-habitants-futur/" rel="prev"><span class="pn-dir"><span aria-hidden="true">← </span>Devlog précédent</span><span class="pn-title">Le character design des habitants de 2306</span></a><a class="pn next" href="/devlogs/accessibilite-rythme-jeu-sans-combat/" rel="next"><span class="pn-dir">Devlog suivant<span aria-hidden="true"> →</span></span><span class="pn-title">Accessibilité et rythme d'un jeu sans combat</span></a></nav>
+      </article>
+    </main>
+    <footer class="site-foot">
+      <div class="wrap">
+        <p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/icon-512.png" srcset="/icon-192.png 192w, /icon-512.png 512w" sizes="72px" width="72" height="72" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
+        <p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence.</p>
+        <nav aria-label="Plan du site">
+          <ul class="foot-links">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+          </ul>
+        </nav>
+        <ul class="socials" aria-label="Flexarion sur les réseaux sociaux">
+          <li><a href="https://github.com/flexarion-officiel" rel="me noopener" target="_blank" aria-label="Flexarion sur GitHub (flexarion-officiel)" title="GitHub"><img class="ico" src="/assets/icons/github.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://flexarionofficiel.itch.io/" rel="me noopener" target="_blank" aria-label="Flexarion sur itch.io (flexarionofficiel)" title="itch.io"><img class="ico" src="/assets/icons/itchio.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://x.com/flexarion_off" rel="me noopener" target="_blank" aria-label="Flexarion sur X (@flexarion_off)" title="X"><img class="ico" src="/assets/icons/x.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://www.instagram.com/flexarion.off/" rel="me noopener" target="_blank" aria-label="Flexarion sur Instagram (@flexarion.off)" title="Instagram"><img class="ico" src="/assets/icons/instagram.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+        </ul>
+        <p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille.</p>
+      </div>
+    </footer>
+    <a class="to-top" href="#haut" aria-label="Retour en haut de la page"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 19V5.5M8.2 9.3 12 5.5l3.8 3.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <script src="/assets/js/main.min.js" defer></script>
+  </body>
+</html>

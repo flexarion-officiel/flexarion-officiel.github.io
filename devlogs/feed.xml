@@ -6,7 +6,21 @@
   <atom:link href="https://flexarion-officiel.github.io/devlogs/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Le journal de développement de Below Zero par le studio Flexarion (Aix-en-Provence).</description>
   <language>fr-fr</language>
-  <lastBuildDate>Wed, 18 Nov 2026 09:00:00 +0100</lastBuildDate>
+  <lastBuildDate>Sun, 22 Nov 2026 19:00:00 +0100</lastBuildDate>
+  <item>
+    <title>Devlog #6 : accessibilité et rythme d'un jeu sans combat</title>
+    <link>https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/</link>
+    <guid isPermaLink="true">https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/</guid>
+    <pubDate>Sun, 22 Nov 2026 19:00:00 +0100</pubDate>
+    <description>Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l'accessibilité tiennent le rythme.</description>
+  </item>
+  <item>
+    <title>Devlog #5 : concevoir Sextia à partir du vrai Aix-en-Provence</title>
+    <link>https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/</link>
+    <guid isPermaLink="true">https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/</guid>
+    <pubDate>Sun, 22 Nov 2026 18:00:00 +0100</pubDate>
+    <description>Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.</description>
+  </item>
   <item>
     <title>Devlog #4 : ils vous connaissent déjà, dessiner les habitants de 2306</title>
     <link>https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/</link>

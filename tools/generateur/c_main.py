@@ -152,7 +152,7 @@ studio = f'''
 <h2 id="aix">Pourquoi Aix-en-Provence ?</h2>
 <p>Aix-en-Provence n'est pas seulement l'adresse du studio, c'est notre première source d'inspiration. La ville est née autour de sources d'eau chaude, il y a plus de deux mille ans, sous le nom d'Aquae Sextiae. Ses fontaines, ses places, le cours Mirabeau et la silhouette de la montagne Sainte-Victoire nourrissent directement les décors de nos jeux.</p>
 <p>Travailler ici, c'est aussi profiter d'un écosystème vivant : universités, écoles du numérique et communauté régionale du jeu vidéo entre Aix et Marseille. C'est dans cette région que nous recrutons, testons nos prototypes et rencontrons nos premiers joueurs.</p>
-<p>Pour découvrir comment la ville se transforme en terrain de jeu, lisez notre <a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">devlog sur la conception des deux villes jumelles</a>, ou plongez dans l'univers de <a href="/below-zero/">Below Zero</a>.</p>
+<p>Pour découvrir comment la ville se transforme en terrain de jeu, lisez notre <a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">devlog sur la conception des deux villes jumelles</a> et notre <a href="/devlogs/concevoir-sextia-vrai-aix/">devlog sur la transposition du vrai Aix dans Sextia</a>, ou plongez dans l'univers de <a href="/below-zero/">Below Zero</a>.</p>
 </section>
 </div>
 '''
@@ -218,7 +218,7 @@ bz = f'''
 <div class="card"><h3>Carnet de causalité</h3><p>Notez les liens découverts entre les deux villes, testez vos hypothèses et remontez chaque conséquence jusqu'à sa cause.</p></div>
 </div>
 <div class="prose">
-<p>Toutes les énigmes suivent une même boucle : <strong>observer</strong> le futur, <strong>supposer</strong> un lien, <strong>agir</strong> dans le présent, puis <strong>vérifier</strong> la conséquence. Aucune erreur ne bloque la partie : elle rend seulement le chemin plus long, plus étrange ou plus triste. Les actions les plus importantes, dites « pivots », mènent à plusieurs fins. Notre game designer détaille ce système dans le <a href="/devlogs/enigmes-causalite-temporelle/">devlog sur les énigmes de causalité temporelle</a>.</p>
+<p>Toutes les énigmes suivent une même boucle : <strong>observer</strong> le futur, <strong>supposer</strong> un lien, <strong>agir</strong> dans le présent, puis <strong>vérifier</strong> la conséquence. Aucune erreur ne bloque la partie : elle rend seulement le chemin plus long, plus étrange ou plus triste. Les actions les plus importantes, dites « pivots », mènent à plusieurs fins. Notre game designer détaille ce système dans le <a href="/devlogs/enigmes-causalite-temporelle/">devlog sur les énigmes de causalité temporelle</a>, et notre développeur gameplay revient sur le <a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">rythme et l'accessibilité sans combat</a>.</p>
 </div>
 </section>
 <section aria-labelledby="visuels">
@@ -238,6 +238,8 @@ bz = f'''
 <li><a href="/devlogs/enigmes-causalite-temporelle/">Comment une action dans le présent modifie le futur</a></li>
 <li><a href="/devlogs/sound-design-ville-souterraine/">Comment sonne une ville creusée autour de sources chaudes</a></li>
 <li><a href="/devlogs/character-design-habitants-futur/">Comment dessiner des personnages qui vous connaissent déjà</a></li>
+<li><a href="/devlogs/concevoir-sextia-vrai-aix/">Comment Sextia transpose le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes)</a></li>
+<li><a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">Comment Below Zero tient son rythme et son accessibilité sans combat</a></li>
 </ul>
 </section>
 {gfh}
@@ -274,7 +276,7 @@ blog = {"@type": "Blog", "@id": BASE + "/devlogs/#blog", "name": "Devlogs Flexar
   "publisher": {"@id": ORG}, "about": {"@id": GAME},
   "blogPost": [{"@id": BASE + aurl(a) + "#article"} for a in ARTICLES]}
 PAGES.append(dict(path="/devlogs/", pagetype="CollectionPage", title="Devlogs Flexarion : journal de développement de Below Zero",
-  desc="Les devlogs du studio Flexarion : conception des deux villes, énigmes de causalité, sound design et character design du jeu Below Zero.",
+  desc="Les devlogs de Flexarion : Sextia inspirée du vrai Aix, accessibilité sans combat, énigmes de causalité, son et personnages de Below Zero.",
   body=dv, jsonld=[blog], crumbs=[("/devlogs/", "Devlogs")], image="/assets/img/devlog-deux-villes-1280.webp"))
 
 # ---------------- CONTACT ----------------
@@ -311,6 +313,8 @@ ct = f'''
 <li><a href="/assets/img/below-zero-capture-causalite-1280.webp">Capture de travail : la fontaine des deux époques (1280 × 720)</a></li>
 <li><a href="/assets/img/below-zero-concept-place-2306-1280.webp">Concept art : la grande place de Sextia (1280 × 720)</a></li>
 <li><a href="/assets/img/below-zero-habitants-2306-1280.webp">Concept art : habitants de 2306 (1280 × 720)</a></li>
+<li><a href="/assets/img/devlog-sextia-aix-1280.webp">Vue en coupe : vrai Aix-en-Provence et Sextia en 2306 (1280 × 720)</a></li>
+<li><a href="/assets/img/devlog-accessibilite-rythme-1280.webp">Illustration : Sacha Morel et le Diapason à Sextia (1280 × 720)</a></li>
 </ul>
 <h2 id="suivre">Suivre le studio sur les réseaux</h2>
 <p>Retrouvez Flexarion sur ses réseaux sociaux et plateformes officielles :</p>

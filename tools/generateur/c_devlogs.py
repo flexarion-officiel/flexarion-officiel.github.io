@@ -5,6 +5,7 @@ AUTHORS = {
  "lucas": ("Lucas Arnaud", "Game designer"),
  "elise": ("Élise Fabre", "Sound designer"),
  "yanis": ("Yanis Okafor", "Character designer"),
+ "theo": ("Théo Marchetti", "Développeur gameplay"),
 }
 
 ARTICLES = [
@@ -32,14 +33,26 @@ ARTICLES = [
   short="Le character design des habitants de 2306",
   desc="Chez Flexarion, le character designer dévoile comment il dessine, du croquis au modèle 3D, des habitants du futur qui reconnaissent le joueur.",
   alt="Carnet de croquis ouvert montrant l'évolution d'un visage futuriste jusqu'à un portrait aux marques cyan"),
+ dict(slug="concevoir-sextia-vrai-aix", num=5, date="2026-11-22T18:00:00+01:00", date_fr="22 novembre 2026", rss="Sun, 22 Nov 2026 18:00:00 +0100", img="devlog-sextia-aix", author="elise",
+  title="Devlog #5 : concevoir Sextia depuis Aix | Flexarion",
+  h1="Devlog #5 : concevoir Sextia à partir du vrai Aix-en-Provence",
+  short="Concevoir Sextia à partir du vrai Aix",
+  desc="Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.",
+  alt="Vue en coupe entre Aix-en-Provence au crépuscule, avec la fontaine de la Rotonde et le cours Mirabeau, et sa jumelle souterraine Sextia de 2306 illuminée de cyan"),
+ dict(slug="accessibilite-rythme-jeu-sans-combat", num=6, date="2026-11-22T19:00:00+01:00", date_fr="22 novembre 2026", rss="Sun, 22 Nov 2026 19:00:00 +0100", img="devlog-accessibilite-rythme", author="theo",
+  title="Devlog #6 : accessibilité et jeu sans combat | Flexarion",
+  h1="Devlog #6 : accessibilité et rythme d'un jeu sans combat",
+  short="Accessibilité et rythme d'un jeu sans combat",
+  desc="Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l'accessibilité tiennent le rythme.",
+  alt="Sacha Morel avec sa lampe frontale et son Diapason émettant des ondes cyan vers une fontaine thermale de Sextia, devant des habitants silencieux"),
 ]
 # Les 4 devlogs ont été publiés le 17/11/2026 : l'heure de publication (réelle, échelonnée)
 # départage l'ordre. Affichage : du plus récent au plus ancien
 ARTICLES.sort(key=lambda a: a["date"], reverse=True)
 DATE = ARTICLES[0]["date"]  # date du devlog le plus récent
 DATE_FR = ARTICLES[0]["date_fr"]
-MOD = "2026-11-19"
-MOD_FR = "19 novembre 2026"
+MOD = "2026-11-22"
+MOD_FR = "22 novembre 2026"
 
 def url(a): return f"/devlogs/{a['slug']}/"
 
@@ -233,6 +246,137 @@ BODIES[4] = """
 <p>Chaque personnage suit le même parcours au studio. Tout commence par une fiche d'une page rédigée avec la direction créative : qui est cette personne, que sait-elle de Sacha, que veut-elle ? Viennent ensuite des dizaines de silhouettes noires, sans détail, pour trouver une forme lisible de loin. Puis des croquis de visages et d'expressions, des planches de costumes, et enfin un modèle 3D réalisé avec notre artiste 3D.</p>
 <p>À chaque étape, nous testons les personnages dans le moteur, dans la vraie lumière de Sextia. Un costume superbe sur fond blanc peut devenir illisible sous les éclairages cyan de la ville souterraine. Cette vérification en contexte nous a fait abandonner plusieurs designs que nous aimions beaucoup, mais c'est le prix de la cohérence.</p>
 <p>Les visuels montrés dans cet article sont des recherches générées avec l'aide d'outils d'IA, qui servent de point de départ et seront retravaillés. Pour découvrir l'univers complet du jeu, rendez-vous sur la <a href="/below-zero/">page de Below Zero</a>, et pour savoir comment ces voix prennent vie, lisez le <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design de la ville souterraine</a>.</p>
+"""
+
+
+BODIES[5] = """
+<p class="lead">Sextia, la ville souterraine de 2306 dans <a href="/below-zero/">Below Zero</a>, n'a pas été dessinée dans le vide : elle naît d'un relevé patient des rues, des places et de l'eau d'Aix-en-Provence. Si le studio Flexarion et l'intrigue de Below Zero sont entièrement fictifs, le décor qui nourrit nos deux époques s'appuie, lui, sur une géographie bien réelle — du cours Mirabeau aux thermes Sextius, jusqu'aux fondations antiques d'Aquae Sextiae.</p>
+
+<div class="facts" aria-label="Repères clés de l'article"><dl>
+<dt>Thème</dt><dd>Transposition du vrai Aix-en-Provence vers Sextia (2306)</dd>
+<dt>Lieux réels transposés</dt><dd>Cours Mirabeau, fontaine de la Rotonde, thermes Sextius, vieille ville, quartier Mazarin</dd>
+<dt>Racines historiques</dt><dd>Aquae Sextiae (122 av. J.-C.), Caius Sextius Calvinus, sources thermales</dd>
+<dt>Cadre</dt><dd>Lieux et histoire réels ; studio Flexarion et jeu Below Zero fictifs</dd>
+</dl></div>
+
+<nav class="toc" aria-label="Sommaire de l'article"><strong>Au sommaire</strong><ol>
+<li><a href="#reperages">Partir du terrain : nos repérages dans Aix-en-Provence</a></li>
+<li><a href="#mirabeau-rotonde">Du cours Mirabeau à la Rotonde : transposer la colonne vertébrale</a></li>
+<li><a href="#thermes-aquae">Des thermes Sextius à Aquae Sextiae : le rôle fondateur de l'eau</a></li>
+<li><a href="#vieille-ville">La vieille ville et le quartier Mazarin : pierre, ombre et proportions</a></li>
+<li><a href="#methode">Ce que l'on garde, ce que l'on transforme en 2306</a></li>
+<li><a href="#equilibre">Rechercher le vrai Aix sans faire une carte postale</a></li>
+</ol></nav>
+
+<h2 id="reperages">Partir du terrain : nos repérages dans Aix-en-Provence</h2>
+<p>Quand l'équipe de direction artistique et d'environnements a posé les bases de Sextia avec Inès Valcourt et Margaux Delorme, nous avons commencé par marcher dans Aix-en-Provence carnet et enregistreur en main. Mon rôle de sound designer m'amenait déjà à écouter la résonance des placettes et des passages couverts ; très vite, ce travail de terrain est devenu commun à toute la direction visuelle et sonore.</p>
+<p>Nous cherchions ce qui rend Aix immédiatement reconnaissable sans afficher de panneau indicateur : la hauteur modérée des façades, le grain blond de la pierre de Bibémus, la façon dont une ruelle étroite débouche soudain sur une place claire, et surtout la présence constante de l'eau. En transposant la ville sous terre pour 2306, nous voulions qu'une personne qui connaît Aix-en-Provence ressente une familiarité physique — les distances entre deux carrefours, l'angle d'une perspective — avant même de comprendre ce qu'elle regarde.</p>
+
+<h2 id="mirabeau-rotonde">Du cours Mirabeau à la Rotonde : transposer la colonne vertébrale</h2>
+<p>Dans la réalité comme dans Below Zero, l'axe structurant de la ville reste la ligne qui relie la place de la Rotonde au cours Mirabeau. À la surface de 2156, cet axe a souffert des sécheresses répétées : la grande fontaine de la Rotonde tourne au ralenti et les platanes centenaires s'appuient sur des tuteurs métalliques. Sous terre, dans Sextia, cette même ligne devient l'artère lumineuse et hydraulique de la cité.</p>
+<h3>La fontaine de la Rotonde</h3>
+<p>Inaugurée en 1860 à l'entrée du cours Mirabeau, la fontaine de la Rotonde est un repère circulaire à trois vasques et douze mètres de haut. Dans Sextia, nous avons conservé sa silhouette étagée, son bassin circulaire et son rôle de point de convergence des avenues. Simplement, la fonte et la pierre cèdent la place à un verre minéral translucide où l'eau thermale circule à ciel ouvert, éclairée de cyan. Le joueur qui contourne la Rotonde à la surface retrouve exactement le même rayon de marche deux cents mètres plus bas.</p>
+<h3>Le cours Mirabeau</h3>
+<p>Sur le cours Mirabeau, la double rangée de platanes forme une voûte végétale qui coupe la chaleur d'été. En 2306, sous une cavité rocheuse privée de soleil, des platanes ordinaires ne survivraient pas : nous les avons transposés en colonnes végétales bioluminescentes, espacées au mètre près selon l'alignement réel des troncs. Côté façade sud et nord, la différence historique entre anciens hôtels particuliers et cafés devient une distinction fonctionnelle entre ateliers d'archives et lieux de passage.</p>
+
+<h2 id="thermes-aquae">Des thermes Sextius à Aquae Sextiae : le rôle fondateur de l'eau</h2>
+<p>L'histoire réelle d'Aix-en-Provence offre à Below Zero sa prémisse la plus solide. En 122 avant notre ère, le consul romain Caius Sextius Calvinus établit un poste fortifié près des sources chaudes de la région, après sa victoire sur la confédération salyenne d'Entremont. Le lieu prend le nom latin d'<em>Aquae Sextiae</em> — « les eaux de Sextius » — et c'est de ce mot <em>Aquae</em> que dérive le nom actuel d'Aix.</p>
+<p>Aujourd'hui encore, les thermes Sextius rappellent la permanence de ces sources chaudes sous le tissu urbain. Pour Sextia en 2306, cette histoire n'est pas un simple clin d'œil : elle explique pourquoi une ville souterraine peut exister. L'eau thermale fournit la chaleur douce, l'énergie hydraulique des quartiers et la vapeur qui donne à la cavité son acoustique feutrée. Les habitants de 2306 ont gardé le nom de « Sextia » parce qu'ils vivent littéralement autour des mêmes veines d'eau que les fondateurs antiques.</p>
+<p>Lorsque Sacha Morel inspecte une vanne ou un canal d'amenée près des thermes en 2156, il agit donc sur l'artère vitale de la ville future. Ce choix ancre la fiction dans une réalité géologique et historique que chacun peut vérifier en se promenant à Aix-en-Provence.</p>
+
+<h2 id="vieille-ville">La vieille ville et le quartier Mazarin : pierre, ombre et proportions</h2>
+<p>Aix ne se résume pas à son grand boulevard. Pour que Sextia sonne juste, il fallait capter le contraste entre le lacis médiéval de la vieille ville et la géométrie régulière du quartier Mazarin.</p>
+<ul>
+<li><strong>La vieille ville et les abords de la cathédrale Saint-Sauveur :</strong> rues serrées, passages voûtés, petites places irrégulières comme la place d'Albertas ou la place des Cardeurs. En 2306, ces ruelles deviennent des galeries resserrées dans la roche, aux plafonds bas, où les voix portent loin et où l'on découvre les ateliers des habitants.</li>
+<li><strong>Le quartier Mazarin et la fontaine des Quatre-Dauphins :</strong> tracé au XVIIe siècle selon un plan orthogonal net. Dans Sextia, cette rigueur géométrique sert de repère calme : les carrefours à angle droit accueillent les conduits principaux d'eau claire et servent de zone de test pour nos énigmes de causalité temporelle.</li>
+<li><strong>Les petites fontaines de quartier :</strong> moussues à la surface, cristallines sous terre, elles marquent autant de points d'ancrage entre 2156 et 2306, comme le détaille déjà notre <a href="/devlogs/enigmes-causalite-temporelle/">devlog sur les énigmes de causalité</a>.</li>
+</ul>
+
+<h2 id="methode">Ce que l'on garde, ce que l'on transforme en 2306</h2>
+<p>Pour éviter que Sextia ne devienne une simple maquette peinte en bleu, la direction artistique applique une grille de transposition en trois temps pour chaque lieu retenu, en prolongement des règles décrites dans le <a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">devlog sur nos deux villes jumelles</a> :</p>
+<ol>
+<li><strong>Conserver l'empreinte et l'usage :</strong> une place reste un lieu de rencontre, un lavoir ou une fontaine reste un point d'eau, un passage couvert reste un raccourci piéton.</li>
+<li><strong>Traduire la matière :</strong> la pierre calcaire ocre et les tuiles romaines deviennent des parements de basalte clair, du verre minéral et des nervures porteuses discrètement rétroéclairées.</li>
+<li><strong>Justifier chaque détail par le quotidien de Sextia :</strong> si un ciel artificiel glacier remplace l'azur provençal, c'est pour réguler le rythme jour-nuit des habitants ; si des câbles disparaissent, c'est que l'eau et les réseaux souterrains portent l'énergie.</li>
+</ol>
+
+<h2 id="equilibre">Rechercher le vrai Aix sans faire une carte postale</h2>
+<p>Le piège classique d'un décor inspiré d'une ville réelle est de multiplier les monuments connus au détriment de la crédibilité. Nous avons volontairement écarté l'idée d'une « visite guidée » : dans Below Zero, certains quartiers entiers sont des rues ordinaires d'habitation, des locaux techniques municipaux ou des cours intérieures fermées, car Sacha Morel connaît d'abord la ville par ses réseaux souterrains.</p>
+<p>Il reste important de le rappeler clairement : si le cours Mirabeau, la Rotonde, la vieille ville et les thermes Sextius existent bel et bien à Aix-en-Provence, le studio Flexarion, l'Aix de 2156 et la cité souterraine de Sextia appartiennent à une œuvre de fiction. Ce va-et-vient entre patrimoine réel et projection futuriste est aussi ce qui donne sa couleur acoustique au jeu, explorée dans le <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design de Sextia</a>, et son rythme calme sans affrontement, détaillé dans notre <a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">devlog sur l'accessibilité et le rythme sans combat</a>.</p>
+"""
+
+BODIES[6] = """
+<p class="lead"><a href="/below-zero/">Below Zero</a> ne comporte aucun combat, aucune barre de vie et aucun chronomètre mortel. Pourtant, explorer seul une ville souterraine qui vous connaît déjà doit rester prenant du début à la fin. En tant que développeur gameplay chez Flexarion, je travaille avec le game design de Lucas Arnaud sur une question centrale : comment tenir le rythme et ouvrir le jeu au plus grand nombre quand on retire toute violence ?</p>
+
+<div class="facts" aria-label="Repères clés de l'article"><dl>
+<dt>Thème</dt><dd>Rythme narratif et accessibilité dans un jeu d'aventure sans combat</dd>
+<dt>Protagoniste et outil</dt><dd>Sacha Morel, équipé du Diapason et du Carnet de causalité</dd>
+<dt>Plateforme</dt><dd>PC en priorité (consoles à l'étude), en développement, sortie non annoncée</dd>
+<dt>Principe clé</dt><dd>Zéro game over punitif, progression par observation et causalité (univers fictif)</dd>
+</dl></div>
+
+<nav class="toc" aria-label="Sommaire de l'article"><strong>Au sommaire</strong><ol>
+<li><a href="#tension">Tenir la tension sans ennemis ni barre de vie</a></li>
+<li><a href="#diapason">Le Diapason et Sacha Morel : un outil de lecture du monde</a></li>
+<li><a href="#rythme">Micro-rythme et respiration entre 2156 et 2306</a></li>
+<li><a href="#accessibilite">Des options d'accessibilité pensées dès le prototype</a></li>
+<li><a href="#erreurs-rythme">Ce que nos tests ont corrigé sur la courbe d'attention</a></li>
+<li><a href="#suite-dev">Ce qui reste à affiner sur PC</a></li>
+</ol></nav>
+
+<h2 id="tension">Tenir la tension sans ennemis ni barre de vie</h2>
+<p>Dans beaucoup de productions de science-fiction, la tension vient de l'urgence : esquiver une menace, gérer des munitions, recommencer un passage après un échec. Dès la création de Flexarion — studio fictif imaginé autour d'un projet narratif exigeant — nous avons voulu prouver que l'enquête et le trouble psychologique suffisent à maintenir l'attention.</p>
+<p>Dans Below Zero, la tension repose sur trois moteurs précis :</p>
+<ul>
+<li><strong>L'asymétrie de savoir :</strong> les habitants de Sextia en 2306 saluent Sacha Morel par son prénom et évoquent des gestes qu'il n'a pas encore accomplis. Chaque dialogue devient un suspense calme : qu'est-ce que mon double du présent va déclencher ?</li>
+<li><strong>Le poids irréversible des choix pivots :</strong> même si aucune erreur ne bloque l'aventure, certaines décisions marquent durablement la cité souterraine et ferment ou ouvrent des liens avec ses habitants.</li>
+<li><strong>La satisfaction du déclic :</strong> comprendre pourquoi une fontaine sèche en 2306 répond à une vanne grippée en 2156 procure une montée d'adrénaline intellectuelle qui remplace avantageusement un duel.</li>
+</ul>
+
+<h2 id="diapason">Le Diapason et Sacha Morel : un outil de lecture du monde</h2>
+<p>Pour que l'exploration reste fluide sans flèches géantes au-dessus des décors, Sacha Morel dispose d'un instrument de chantier détourné : le <strong>Diapason</strong>. Dans la fiction, il s'agit d'un appareil de diagnostic acoustique utilisé par les techniciens des réseaux souterrains pour détecter les fuites dans la roche.</p>
+<p>Manette ou souris en main, lever le Diapason sert de pont entre le joueur et le système de causalité. À l'approche d'un objet ou d'un mécanisme qui « résonne » entre 2156 et 2306, l'outil réagit simultanément sur trois canaux :</p>
+<ol>
+<li><strong>Visuel :</strong> des anneaux cyan concentriques se déploient autour des branches de l'outil, plus serrés à mesure que l'on vise la source, avec un contour discret sur l'élément actif.</li>
+<li><strong>Sonore :</strong> une note harmonique pure se superpose à l'ambiance, modulée selon la distance (en lien direct avec le travail décrit dans notre <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design</a>).</li>
+<li><strong>Tactile et textuel :</strong> légère vibration optionnelle sur manette, complétée par une ligne brève d'état lisible à l'écran pour les personnes jouant sans son ou sans retour haptique.</li>
+</ol>
+<p>Sacha n'est jamais pressé par un minuteur : il peut ranger le Diapason, ouvrir son <a href="/devlogs/enigmes-causalite-temporelle/">Carnet de causalité</a> et vérifier ses hypothèses à son propre rythme.</p>
+
+<h2 id="rythme">Micro-rythme et respiration entre 2156 et 2306</h2>
+<p>Un jeu sans combat court un danger précis : devenir monotone si toutes les scènes se ressemblent. Côté programmation gameplay, nous avons structuré la progression autour d'une alternance régulière entre quatre temps distincts :</p>
+<ul>
+<li><strong>L'observation en surface (2156) :</strong> rythme posé, lumière chaude, bruits urbains clairsemés, prise d'informations techniques.</li>
+<li><strong>La descente vers Sextia (2306) :</strong> SAS de transition de quelques secondes où la musique acoustique glisse vers les synthétiseurs et où l'on sent la bascule thermique.</li>
+<li><strong>L'enquête sociale sous terre :</strong> discussions avec Mémé Lune, Iléa ou Aurèle (voir le <a href="/devlogs/character-design-habitants-futur/">devlog sur les habitants du futur</a>), où les répliques changent selon ce que Sacha vient de modifier.</li>
+<li><strong>La vérification :</strong> courte scène cadrée montrant la conséquence concrète d'un geste dans le décor, avant de rendre la main au joueur.</li>
+</ul>
+<p>Cette respiration évite les longues traversées à vide. Chaque trajet entre Aix et Sextia doit durer moins d'une minute entre deux indices ou deux rencontres signifiantes.</p>
+
+<h2 id="accessibilite">Des options d'accessibilité pensées dès le prototype</h2>
+<p>Choisir un jeu sans combat permet d'abaisser d'emblée la barrière des réflexes rapides. Mais « sans combat » ne signifie pas automatiquement « accessible ». Nous intégrons dès le code de base — et non en fin de production — plusieurs leviers réglables indépendamment depuis le menu pause :</p>
+<h3>Accessibilité motrice</h3>
+<ul>
+<li>Réattribution complète du clavier et de la souris sur PC, avec possibilité de jouer entièrement à une main ou au clavier seul.</li>
+<li>Maintien des touches remplaçable par une simple pression (pour courir, activer le Diapason ou interagir).</li>
+<li>Zéro QTE chronométré : aucune énigme ne demande une manipulation rapide ou précise à la milliseconde.</li>
+</ul>
+<h3>Accessibilité visuelle et cognitive</h3>
+<ul>
+<li>Taille des sous-titres et des polices d'interface réglable sur quatre paliers, avec fond opaque derrière les dialogues.</li>
+<li>Mode « repères renforcés » qui augmente le contraste des points d'ancrage du Diapason et ajoute une icône claire pour ne pas dépendre uniquement de la distinction cyan / blanc.</li>
+<li>Possibilité de réduire ou couper les tremblements de caméra, les halos lumineux et les transitions rapides.</li>
+<li>Synthèse du Carnet de causalité : un résumé en langage simple rappelle à tout moment la dernière piste ouverte sans pénalité.</li>
+</ul>
+<h3>Accessibilité auditive</h3>
+<p>Comme nos énigmes utilisent l'eau et les résonances de Sextia, chaque signal sonore utile possède son double visuel : sous-titres indiquant le locuteur et l'ambiance, plus un indicateur directionnel discret autour du réticule quand le Diapason capte un écho causal.</p>
+
+<h2 id="erreurs-rythme">Ce que nos tests ont corrigé sur la courbe d'attention</h2>
+<p>Lors de nos premiers tests internes sur la tranche jouable du centre-ville d'Aix, nous avons observé un décrochage curieux : certains testeurs restaient bloqués vingt minutes à tourner autour d'une place sans oser agir, par peur de « gâcher » leur partie.</p>
+<p>Nous avons donc ajouté deux garde-fous techniques : d'une part, le Carnet de causalité distingue visuellement les actions réversibles à tout moment des rares actions pivots (annoncées par un dialogue clair avant validation) ; d'autre part, un système de remarques contextuelles de Sacha, désactivable dans les options, suggère une piste si le joueur inspecte trois fois le même secteur sans nouveau lien. Le rythme a immédiatement retrouvé son élan sans trahir le plaisir de chercher par soi-même.</p>
+
+<h2 id="suite-dev">Ce qui reste à affiner sur PC</h2>
+<p>Below Zero est en cours de développement prioritairement pour PC (les versions consoles restent à l'étude et aucune date de sortie n'est annoncée). Nos prochains chantiers gameplay portent sur la navigation au lecteur d'écran dans le Carnet de causalité et sur le réglage fin du tempo des dialogues pour les chapitres suivants. Pour découvrir le contexte complet du jeu, rendez-vous sur la <a href="/below-zero/">page Below Zero</a> ou faites connaissance avec l'équipe sur <a href="/studio/">Le studio</a>.</p>
 """
 
 PAGES = []

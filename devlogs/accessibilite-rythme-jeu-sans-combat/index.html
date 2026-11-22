@@ -1,0 +1,195 @@
+<!doctype html>
+<!--
+         /\
+        /  \       ___ _    _____  __   _   ___ ___ ___  _  _
+       / /\ \     | __| |  | __\ \/ /  /_\ | _ \_ _/ _ \| \| |
+    ==<======>==  | _|| |__| _| >  <  / _ \|   /| | (_) | .` |
+       \ \/ /     |_| |____|___/_/\_\/_/ \_\_|_\___\___/|_|\_|
+        \  /
+         \/       Studio de jeux vidéo de science-fiction · Aix-en-Provence
+
+    2156 à la surface. 2306 en dessous.
+    Tu lis le code source ? Tu es donc déjà descendu d'un niveau.
+    Ouvre la console : quelqu'un t'y attend.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.documentElement.classList.add("js")</script>
+    <title>Devlog #6 : accessibilité et jeu sans combat | Flexarion</title>
+    <meta name="description" content="Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l&#x27;accessibilité tiennent le rythme.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/">
+    <meta name="author" content="Flexarion">
+    <meta name="theme-color" content="#071421">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
+    <link rel="preload" href="/assets/fonts/exo2-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+    <link rel="stylesheet" href="/assets/css/print.min.css" media="print">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Flexarion">
+    <meta property="og:title" content="Devlog #6 : accessibilité et jeu sans combat | Flexarion">
+    <meta property="og:description" content="Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l&#x27;accessibilité tiennent le rythme.">
+    <meta property="og:url" content="https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/">
+    <meta property="og:image" content="https://flexarion-officiel.github.io/assets/img/devlog-accessibilite-rythme-1280.webp">
+    <meta property="og:image:alt" content="Sacha Morel avec sa lampe frontale et son Diapason émettant des ondes cyan vers une fontaine thermale de Sextia, devant des habitants silencieux">
+    <meta property="article:published_time" content="2026-11-22T19:00:00+01:00">
+    <meta property="article:modified_time" content="2026-11-22">
+    <meta property="article:author" content="Théo Marchetti">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Devlog #6 : accessibilité et jeu sans combat | Flexarion">
+    <meta name="twitter:description" content="Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l&#x27;accessibilité tiennent le rythme.">
+    <meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/devlog-accessibilite-rythme-1280.webp">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://flexarion-officiel.github.io/#organization","name":"Flexarion","alternateName":["Flexarion Studio","Studio Flexarion"],"description":"Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs, fondé en 2022 à Aix-en-Provence et créateur du jeu Below Zero.","url":"https://flexarion-officiel.github.io/","logo":{"@type":"ImageObject","@id":"https://flexarion-officiel.github.io/#logo","url":"https://flexarion-officiel.github.io/icon-512.png","contentUrl":"https://flexarion-officiel.github.io/icon-512.png","width":512,"height":512,"caption":"Logo Flexarion"},"image":{"@id":"https://flexarion-officiel.github.io/#logo"},"foundingDate":"2022","knowsAbout":["jeu vidéo narratif","science-fiction","game design","énigmes temporelles","sound design"],"contactPoint":{"@type":"ContactPoint","contactType":"presse","url":"https://flexarion-officiel.github.io/contact/","availableLanguage":"fr"},"sameAs":["https://github.com/flexarion-officiel","https://flexarionofficiel.itch.io/","https://x.com/flexarion_off","https://www.instagram.com/flexarion.off/"]},{"@type":"WebSite","@id":"https://flexarion-officiel.github.io/#website","url":"https://flexarion-officiel.github.io/","name":"Flexarion","alternateName":"Studio Flexarion","inLanguage":"fr-FR","publisher":{"@id":"https://flexarion-officiel.github.io/#organization"}},{"@type":"BreadcrumbList","@id":"https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://flexarion-officiel.github.io/"},{"@type":"ListItem","position":2,"name":"Devlogs","item":"https://flexarion-officiel.github.io/devlogs/"},{"@type":"ListItem","position":3,"name":"Accessibilité et rythme d'un jeu sans combat","item":"https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/"}]},{"@type":"WebPage","@id":"https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/#webpage","url":"https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/","name":"Devlog #6 : accessibilité et jeu sans combat | Flexarion","description":"Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l'accessibilité tiennent le rythme.","isPartOf":{"@id":"https://flexarion-officiel.github.io/#website"},"about":{"@id":"https://flexarion-officiel.github.io/#organization"},"inLanguage":"fr-FR","dateModified":"2026-11-22","primaryImageOfPage":{"@type":"ImageObject","url":"https://flexarion-officiel.github.io/assets/img/devlog-accessibilite-rythme-1280.webp"},"breadcrumb":{"@id":"https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/#breadcrumb"}},{"@type":"BlogPosting","@id":"https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/#article","headline":"Devlog #6 : accessibilité et rythme d'un jeu sans combat","description":"Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l'accessibilité tiennent le rythme.","image":{"@type":"ImageObject","url":"https://flexarion-officiel.github.io/assets/img/devlog-accessibilite-rythme-1280.webp","width":1280,"height":720},"datePublished":"2026-11-22T19:00:00+01:00","dateModified":"2026-11-22","inLanguage":"fr-FR","wordCount":1173,"author":{"@type":"Person","name":"Théo Marchetti","jobTitle":"Développeur gameplay","worksFor":{"@id":"https://flexarion-officiel.github.io/#organization"}},"publisher":{"@id":"https://flexarion-officiel.github.io/#organization"},"mainEntityOfPage":{"@id":"https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/#webpage"},"isPartOf":{"@id":"https://flexarion-officiel.github.io/devlogs/#blog"},"about":{"@id":"https://flexarion-officiel.github.io/below-zero/#videogame"},"articleSection":"Devlog"}]}</script>
+  </head>
+  <body id="haut">
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <header class="site-head">
+      <div class="wrap head-in">
+        <a class="brand" href="/" aria-label="Flexarion, retour à l’accueil"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="12" fill="#071421"/><path d="M9 29 32 7l23 22" fill="none" stroke="#19B9D4" stroke-width="3.5" stroke-linejoin="round"/><path d="M9 35l23 22 23-22" fill="none" stroke="#B7DDE8" stroke-width="3.5" stroke-linejoin="round"/><path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/><path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/><path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg><span>Flexarion</span></a>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu"><span class="burger-bar"></span></button>
+        <nav class="nav" id="menu-principal" aria-label="Navigation principale">
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/studio/">Le studio</a></li>
+            <li><a href="/below-zero/">Below Zero</a></li>
+            <li><a href="/devlogs/" aria-current="page">Devlogs</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <nav class="crumbs wrap" aria-label="Fil d’Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/devlogs/">Devlogs</a></li>
+        <li aria-current="page">Accessibilité et rythme d&#x27;un jeu sans combat</li>
+      </ol>
+    </nav>
+    <main id="contenu">
+      <article class="wrap">
+        <header>
+          <p class="kicker">Devlog n°6 · Below Zero</p>
+          <h1>Devlog #6 : accessibilité et rythme d'un jeu sans combat</h1>
+          <p class="meta">Par Théo Marchetti, développeur gameplay chez Flexarion · Publié le <time datetime="2026-11-22T19:00:00+01:00">22 novembre 2026</time> · Mis à jour le <time datetime="2026-11-22">22 novembre 2026</time></p>
+        </header>
+        <figure> <img src="/assets/img/devlog-accessibilite-rythme-1280.webp" srcset="/assets/img/devlog-accessibilite-rythme-480.webp 480w, /assets/img/devlog-accessibilite-rythme-960.webp 960w, /assets/img/devlog-accessibilite-rythme-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Sacha Morel avec sa lampe frontale et son Diapason émettant des ondes cyan vers une fontaine thermale de Sextia, devant des habitants silencieux" fetchpriority="high" decoding="async"> </figure>
+        <div class="prose">
+          <p class="lead"><a href="/below-zero/">Below Zero</a> ne comporte aucun combat, aucune barre de vie et aucun chronomètre mortel. Pourtant, explorer seul une ville souterraine qui vous connaît déjà doit rester prenant du début à la fin. En tant que développeur gameplay chez Flexarion, je travaille avec le game design de Lucas Arnaud sur une question centrale : comment tenir le rythme et ouvrir le jeu au plus grand nombre quand on retire toute violence ?</p>
+          <div class="facts" aria-label="Repères clés de l'article">
+            <dl>
+              <dt>Thème</dt>
+              <dd>Rythme narratif et accessibilité dans un jeu d'aventure sans combat</dd>
+              <dt>Protagoniste et outil</dt>
+              <dd>Sacha Morel, équipé du Diapason et du Carnet de causalité</dd>
+              <dt>Plateforme</dt>
+              <dd>PC en priorité (consoles à l'étude), en développement, sortie non annoncée</dd>
+              <dt>Principe clé</dt>
+              <dd>Zéro game over punitif, progression par observation et causalité (univers fictif)</dd>
+            </dl>
+          </div>
+          <nav class="toc" aria-label="Sommaire de l'article">
+            <strong>Au sommaire</strong>
+            <ol>
+              <li><a href="#tension">Tenir la tension sans ennemis ni barre de vie</a></li>
+              <li><a href="#diapason">Le Diapason et Sacha Morel : un outil de lecture du monde</a></li>
+              <li><a href="#rythme">Micro-rythme et respiration entre 2156 et 2306</a></li>
+              <li><a href="#accessibilite">Des options d'accessibilité pensées dès le prototype</a></li>
+              <li><a href="#erreurs-rythme">Ce que nos tests ont corrigé sur la courbe d'attention</a></li>
+              <li><a href="#suite-dev">Ce qui reste à affiner sur PC</a></li>
+            </ol>
+          </nav>
+          <h2 id="tension">Tenir la tension sans ennemis ni barre de vie</h2>
+          <p>Dans beaucoup de productions de science-fiction, la tension vient de l'urgence : esquiver une menace, gérer des munitions, recommencer un passage après un échec. Dès la création de Flexarion — studio fictif imaginé autour d'un projet narratif exigeant — nous avons voulu prouver que l'enquête et le trouble psychologique suffisent à maintenir l'attention.</p>
+          <p>Dans Below Zero, la tension repose sur trois moteurs précis :</p>
+          <ul>
+            <li><strong>L'asymétrie de savoir :</strong> les habitants de Sextia en 2306 saluent Sacha Morel par son prénom et évoquent des gestes qu'il n'a pas encore accomplis. Chaque dialogue devient un suspense calme : qu'est-ce que mon double du présent va déclencher ?</li>
+            <li><strong>Le poids irréversible des choix pivots :</strong> même si aucune erreur ne bloque l'aventure, certaines décisions marquent durablement la cité souterraine et ferment ou ouvrent des liens avec ses habitants.</li>
+            <li><strong>La satisfaction du déclic :</strong> comprendre pourquoi une fontaine sèche en 2306 répond à une vanne grippée en 2156 procure une montée d'adrénaline intellectuelle qui remplace avantageusement un duel.</li>
+          </ul>
+          <h2 id="diapason">Le Diapason et Sacha Morel : un outil de lecture du monde</h2>
+          <p>Pour que l'exploration reste fluide sans flèches géantes au-dessus des décors, Sacha Morel dispose d'un instrument de chantier détourné : le <strong>Diapason</strong>. Dans la fiction, il s'agit d'un appareil de diagnostic acoustique utilisé par les techniciens des réseaux souterrains pour détecter les fuites dans la roche.</p>
+          <p>Manette ou souris en main, lever le Diapason sert de pont entre le joueur et le système de causalité. À l'approche d'un objet ou d'un mécanisme qui « résonne » entre 2156 et 2306, l'outil réagit simultanément sur trois canaux :</p>
+          <ol>
+            <li><strong>Visuel :</strong> des anneaux cyan concentriques se déploient autour des branches de l'outil, plus serrés à mesure que l'on vise la source, avec un contour discret sur l'élément actif.</li>
+            <li><strong>Sonore :</strong> une note harmonique pure se superpose à l'ambiance, modulée selon la distance (en lien direct avec le travail décrit dans notre <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design</a>).</li>
+            <li><strong>Tactile et textuel :</strong> légère vibration optionnelle sur manette, complétée par une ligne brève d'état lisible à l'écran pour les personnes jouant sans son ou sans retour haptique.</li>
+          </ol>
+          <p>Sacha n'est jamais pressé par un minuteur : il peut ranger le Diapason, ouvrir son <a href="/devlogs/enigmes-causalite-temporelle/">Carnet de causalité</a> et vérifier ses hypothèses à son propre rythme.</p>
+          <h2 id="rythme">Micro-rythme et respiration entre 2156 et 2306</h2>
+          <p>Un jeu sans combat court un danger précis : devenir monotone si toutes les scènes se ressemblent. Côté programmation gameplay, nous avons structuré la progression autour d'une alternance régulière entre quatre temps distincts :</p>
+          <ul>
+            <li><strong>L'observation en surface (2156) :</strong> rythme posé, lumière chaude, bruits urbains clairsemés, prise d'informations techniques.</li>
+            <li><strong>La descente vers Sextia (2306) :</strong> SAS de transition de quelques secondes où la musique acoustique glisse vers les synthétiseurs et où l'on sent la bascule thermique.</li>
+            <li><strong>L'enquête sociale sous terre :</strong> discussions avec Mémé Lune, Iléa ou Aurèle (voir le <a href="/devlogs/character-design-habitants-futur/">devlog sur les habitants du futur</a>), où les répliques changent selon ce que Sacha vient de modifier.</li>
+            <li><strong>La vérification :</strong> courte scène cadrée montrant la conséquence concrète d'un geste dans le décor, avant de rendre la main au joueur.</li>
+          </ul>
+          <p>Cette respiration évite les longues traversées à vide. Chaque trajet entre Aix et Sextia doit durer moins d'une minute entre deux indices ou deux rencontres signifiantes.</p>
+          <h2 id="accessibilite">Des options d'accessibilité pensées dès le prototype</h2>
+          <p>Choisir un jeu sans combat permet d'abaisser d'emblée la barrière des réflexes rapides. Mais « sans combat » ne signifie pas automatiquement « accessible ». Nous intégrons dès le code de base — et non en fin de production — plusieurs leviers réglables indépendamment depuis le menu pause :</p>
+          <h3>Accessibilité motrice</h3>
+          <ul>
+            <li>Réattribution complète du clavier et de la souris sur PC, avec possibilité de jouer entièrement à une main ou au clavier seul.</li>
+            <li>Maintien des touches remplaçable par une simple pression (pour courir, activer le Diapason ou interagir).</li>
+            <li>Zéro QTE chronométré : aucune énigme ne demande une manipulation rapide ou précise à la milliseconde.</li>
+          </ul>
+          <h3>Accessibilité visuelle et cognitive</h3>
+          <ul>
+            <li>Taille des sous-titres et des polices d'interface réglable sur quatre paliers, avec fond opaque derrière les dialogues.</li>
+            <li>Mode « repères renforcés » qui augmente le contraste des points d'ancrage du Diapason et ajoute une icône claire pour ne pas dépendre uniquement de la distinction cyan / blanc.</li>
+            <li>Possibilité de réduire ou couper les tremblements de caméra, les halos lumineux et les transitions rapides.</li>
+            <li>Synthèse du Carnet de causalité : un résumé en langage simple rappelle à tout moment la dernière piste ouverte sans pénalité.</li>
+          </ul>
+          <h3>Accessibilité auditive</h3>
+          <p>Comme nos énigmes utilisent l'eau et les résonances de Sextia, chaque signal sonore utile possède son double visuel : sous-titres indiquant le locuteur et l'ambiance, plus un indicateur directionnel discret autour du réticule quand le Diapason capte un écho causal.</p>
+          <h2 id="erreurs-rythme">Ce que nos tests ont corrigé sur la courbe d'attention</h2>
+          <p>Lors de nos premiers tests internes sur la tranche jouable du centre-ville d'Aix, nous avons observé un décrochage curieux : certains testeurs restaient bloqués vingt minutes à tourner autour d'une place sans oser agir, par peur de « gâcher » leur partie.</p>
+          <p>Nous avons donc ajouté deux garde-fous techniques : d'une part, le Carnet de causalité distingue visuellement les actions réversibles à tout moment des rares actions pivots (annoncées par un dialogue clair avant validation) ; d'autre part, un système de remarques contextuelles de Sacha, désactivable dans les options, suggère une piste si le joueur inspecte trois fois le même secteur sans nouveau lien. Le rythme a immédiatement retrouvé son élan sans trahir le plaisir de chercher par soi-même.</p>
+          <h2 id="suite-dev">Ce qui reste à affiner sur PC</h2>
+          <p>Below Zero est en cours de développement prioritairement pour PC (les versions consoles restent à l'étude et aucune date de sortie n'est annoncée). Nos prochains chantiers gameplay portent sur la navigation au lecteur d'écran dans le Carnet de causalité et sur le réglage fin du tempo des dialogues pour les chapitres suivants. Pour découvrir le contexte complet du jeu, rendez-vous sur la <a href="/below-zero/">page Below Zero</a> ou faites connaissance avec l'équipe sur <a href="/studio/">Le studio</a>.</p>
+          <aside class="note" aria-label="Précision">Ce devlog a été rédigé avec l'assistance d'une IA puis intégré par l'équipe. Détails dans les <a href="/mentions-legales/">mentions légales</a>.</aside>
+          <h2>Les autres devlogs de Flexarion</h2>
+          <ul>
+            <li><a href="/devlogs/concevoir-sextia-vrai-aix/">Concevoir Sextia à partir du vrai Aix</a></li>
+            <li><a href="/devlogs/character-design-habitants-futur/">Le character design des habitants de 2306</a></li>
+            <li><a href="/devlogs/sound-design-ville-souterraine/">Le sound design de la ville souterraine</a></li>
+            <li><a href="/devlogs/enigmes-causalite-temporelle/">Les énigmes de causalité temporelle</a></li>
+            <li><a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">Concevoir deux villes jumelles</a></li>
+          </ul>
+          <p><a class="btn ghost" href="/devlogs/">Tous les devlogs</a> <a class="btn" href="/below-zero/">Découvrir Below Zero</a></p>
+        </div>
+        <nav class="pager" aria-label="Navigation entre les devlogs"><a class="pn prev" href="/devlogs/concevoir-sextia-vrai-aix/" rel="prev"><span class="pn-dir"><span aria-hidden="true">← </span>Devlog précédent</span><span class="pn-title">Concevoir Sextia à partir du vrai Aix</span></a></nav>
+      </article>
+    </main>
+    <footer class="site-foot">
+      <div class="wrap">
+        <p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/icon-512.png" srcset="/icon-192.png 192w, /icon-512.png 512w" sizes="72px" width="72" height="72" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
+        <p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence.</p>
+        <nav aria-label="Plan du site">
+          <ul class="foot-links">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+          </ul>
+        </nav>
+        <ul class="socials" aria-label="Flexarion sur les réseaux sociaux">
+          <li><a href="https://github.com/flexarion-officiel" rel="me noopener" target="_blank" aria-label="Flexarion sur GitHub (flexarion-officiel)" title="GitHub"><img class="ico" src="/assets/icons/github.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://flexarionofficiel.itch.io/" rel="me noopener" target="_blank" aria-label="Flexarion sur itch.io (flexarionofficiel)" title="itch.io"><img class="ico" src="/assets/icons/itchio.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://x.com/flexarion_off" rel="me noopener" target="_blank" aria-label="Flexarion sur X (@flexarion_off)" title="X"><img class="ico" src="/assets/icons/x.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://www.instagram.com/flexarion.off/" rel="me noopener" target="_blank" aria-label="Flexarion sur Instagram (@flexarion.off)" title="Instagram"><img class="ico" src="/assets/icons/instagram.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+        </ul>
+        <p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille.</p>
+      </div>
+    </footer>
+    <a class="to-top" href="#haut" aria-label="Retour en haut de la page"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 19V5.5M8.2 9.3 12 5.5l3.8 3.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <script src="/assets/js/main.min.js" defer></script>
+  </body>
+</html>
