@@ -431,7 +431,7 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 - Objectif : Rédiger et intégrer deux nouveaux articles de devlog (> 800 mots chacun, ton et structure alignés sur les 4 premiers, favorables au référencement local aixois et aux moteurs de réponse) avec chacun une illustration générée par IA, et mettre à jour l'ensemble des pages, flux et données structurées concernés.
 - Critères de validation : Plus de 800 mots par article ; faits et univers cohérents (Aix 2156 / Sextia 2306, Sacha Morel, Diapason, jeu sans combat sur PC sans date de sortie) ; nature fictive du studio et du jeu rappelée explicitement tout en s'appuyant sur des lieux réels d'Aix-en-Provence ; titres ≤ 60 caractères, méta descriptions ≤ 155 caractères et ≤ 920 px ; deux visuels WebP multi-tailles dans la palette du site ; maillage interne complet (`accueil`, `studio`, `below-zero`, `devlogs`, `contact`, navigation précédent / suivant) ; `sitemap.xml`, `devlogs/feed.xml`, `llms.txt` et JSON-LD à jour ; `check.py` sans erreur ; HTML valide ; Lighthouse mobile ≈ 99-100.
 - Réalisé par : FlexaBot (agent IA)
-- Résultat : PASS (en attente de relecture des deux textes par l'équipe avant publication)
+- Résultat : PASS (textes validés par l'équipe, publiés le 22/11/2026, commits `6ba6d3b` et `cf1ecfd`, tag `v1.5.0`)
 - Détails :
   - **Devlog #5 — « Concevoir Sextia à partir du vrai Aix-en-Provence »** (`/devlogs/concevoir-sextia-vrai-aix/`, 1 297 mots, par Élise Fabre) : explique la transposition du vrai Aix-en-Provence (cours Mirabeau, fontaine de la Rotonde, thermes Sextius, vieille ville, quartier Mazarin, fondation antique d'*Aquae Sextiae* en 122 av. J.-C. par Caius Sextius Calvinus) vers la cité souterraine Sextia de 2306, avec encadré « Repères clés » et rappel explicite que Flexarion et Below Zero sont fictifs.
   - **Devlog #6 — « Accessibilité et rythme d'un jeu sans combat »** (`/devlogs/accessibilite-rythme-jeu-sans-combat/`, 1 173 mots, par Théo Marchetti) : détaille comment Below Zero maintient la tension narrative sans combat ni barre de vie, le rôle du Diapason et de Sacha Morel, la respiration entre 2156 et 2306 et les options d'accessibilité motrice, visuelle, cognitive et auditive sur PC.
@@ -449,6 +449,16 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
   - Ajout d'un bloc `.facts` (« Repères clés ») en tête de chaque nouvel article pour renforcer la lisibilité et l'extraction factuelle par les moteurs de réponse (GEO), avec marge verticale dédiée (`.prose .facts`).
   - Travail préparé sur l'environnement de travail sans commit ni push avant relecture des deux textes par l'équipe.
 - Suite prévue : Relecture des deux textes par l'équipe, éventuels ajustements, puis transfert, commit et mise en ligne (et contrôle Search Console du sitemap mis à jour).
+
+### Tâche : Retrait de la mention IA en bas des devlogs (version 1.5.1 du site)
+- Objectif : Retirer l'encadré « Ce devlog a été rédigé avec l'assistance d'une IA… » affiché en bas de chaque devlog, la mention de l'usage de l'IA devant figurer uniquement dans les mentions légales, comme convenu avec l'équipe.
+- Critères de validation : Plus aucun encadré de ce type sur les 6 devlogs ; section « Usage de l'intelligence artificielle » des mentions légales inchangée ; `check.py` sans erreur ; aucune autre page modifiée.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails : Suppression de la ligne `<aside class="note">` dans le gabarit des articles (`tools/generateur/c_devlogs.py`), puis régénération du site. Seules les 6 pages de devlogs changent. Les légendes d'images « visuel généré par IA » n'ont pas été touchées.
+- Prompts / outils IA utilisés : Consigne de l'équipe : « retirer cette mention dans tous les devlogs, seule la mention des mentions légales doit rester ».
+- Décisions prises : Correction traitée comme un correctif (numéro de version 1.5.1).
+- Suite prévue : Mise en ligne après validation de l'équipe.
 
 ---
 
