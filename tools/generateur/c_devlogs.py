@@ -405,7 +405,6 @@ for a in ARTICLES:
 </figure>
 <div class="prose">
 {BODIES[a['num']]}
-<aside class="note" aria-label="Précision">Ce devlog a été rédigé avec l'assistance d'une IA puis intégré par l'équipe. Détails dans les <a href="/mentions-legales/">mentions légales</a>.</aside>
 <h2>Les autres devlogs de Flexarion</h2>
 <ul>{rel}</ul>
 <p><a class="btn ghost" href="/devlogs/">Tous les devlogs</a> <a class="btn" href="/below-zero/">Découvrir Below Zero</a></p>
