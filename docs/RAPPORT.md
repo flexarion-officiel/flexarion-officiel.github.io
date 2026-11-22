@@ -458,6 +458,16 @@ Le journal ci-dessous liste de façon factuelle les outils IA utilisés et les c
 - Détails : Suppression de la ligne `<aside class="note">` dans le gabarit des articles (`tools/generateur/c_devlogs.py`), puis régénération du site. Seules les 6 pages de devlogs changent. Les légendes d'images « visuel généré par IA » n'ont pas été touchées.
 - Prompts / outils IA utilisés : Consigne de l'équipe : « retirer cette mention dans tous les devlogs, seule la mention des mentions légales doit rester ».
 - Décisions prises : Correction traitée comme un correctif (numéro de version 1.5.1).
+- Suite prévue : Mise en ligne effectuée (commits e169974 et 7903e28, tag v1.5.1).
+
+### Tâche : Suppression de l'effet de survol des encadrés « fiche technique » (version 1.5.2 du site)
+- Objectif : Retirer le halo cyan qui apparaissait au survol des encadrés `.facts` (fiche technique de Below Zero, encadrés des devlogs), à la demande de l'équipe.
+- Critères de validation : Aucun effet visuel au survol des encadrés `.facts` ; style de base des encadrés inchangé ; effets des autres cartes inchangés ; `check.py` sans erreur.
+- Réalisé par : FlexaBot (agent IA)
+- Résultat : PASS
+- Détails : Suppression de la transition `.facts` et de la règle `.facts:hover` dans `assets/css/style.css`, puis régénération de `style.min.css`. Aucune page HTML n'est modifiée.
+- Prompts / outils IA utilisés : Consigne de l'équipe : « J'aimerais qu'il n'y ait aucun effet de survol ».
+- Décisions prises : Correction traitée comme un correctif (numéro de version 1.5.2).
 - Suite prévue : Mise en ligne après validation de l'équipe.
 
 ---
