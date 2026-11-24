@@ -1,6 +1,7 @@
 from build import pic, BASE, ORG, LASTMOD, esc
 
 AUTHORS = {
+ "ines": ("Inès Valcourt", "Directrice créative"),
  "margaux": ("Margaux Delorme", "Artiste 3D environnements"),
  "lucas": ("Lucas Arnaud", "Game designer"),
  "elise": ("Élise Fabre", "Sound designer"),
@@ -10,16 +11,16 @@ AUTHORS = {
 
 ARTICLES = [
  dict(slug="concevoir-deux-villes-aix-2156-2306", num=1, date="2026-11-17T09:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 09:00:00 +0100", img="devlog-deux-villes", author="margaux",
-  title="Devlog #1 : concevoir deux villes jumelles | Flexarion",
+  title="Devlog #1 : deux villes jumelles, 2156 et 2306 | Flexarion",
   h1="Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306",
   short="Concevoir deux villes jumelles",
   desc="Flexarion dévoile comment son équipe bâtit l'Aix de 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés et règles de symétrie.",
   alt="Deux plans superposés de la même ville, l'un à l'encre sépia, l'autre en hologramme cyan, sur la table de travail de Flexarion"),
  dict(slug="enigmes-causalite-temporelle", num=2, date="2026-11-17T10:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 10:00:00 +0100", img="devlog-causalite", author="lucas",
-  title="Devlog #2 : énigmes de causalité de Below Zero | Flexarion",
+  title="Devlog #2 : causalité temporelle en jeu vidéo | Flexarion",
   h1="Devlog #2 : le présent modifie le futur, nos énigmes de causalité",
   short="Les énigmes de causalité temporelle",
-  desc="Chez Flexarion, le game designer explique comment une action dans l'Aix de 2156 transforme la ville de 2306 de Below Zero, sans chaos.",
+  desc="Chez Flexarion, le game designer explique comment, dans le jeu vidéo Below Zero, une action dans l'Aix de 2156 transforme la ville de 2306.",
   alt="Graphe lumineux reliant une clé, une graine, une lanterne et une porte entre deux lignes temporelles"),
  dict(slug="sound-design-ville-souterraine", num=3, date="2026-11-17T11:00:00+01:00", date_fr="17 novembre 2026", rss="Tue, 17 Nov 2026 11:00:00 +0100", img="devlog-son", author="elise",
   title="Devlog #3 : le sound design de Sextia | Flexarion",
@@ -34,7 +35,7 @@ ARTICLES = [
   desc="Chez Flexarion, le character designer dévoile comment il dessine, du croquis au modèle 3D, des habitants du futur qui reconnaissent le joueur.",
   alt="Carnet de croquis ouvert montrant l'évolution d'un visage futuriste jusqu'à un portrait aux marques cyan"),
  dict(slug="concevoir-sextia-vrai-aix", num=5, date="2026-11-22T18:00:00+01:00", date_fr="22 novembre 2026", rss="Sun, 22 Nov 2026 18:00:00 +0100", img="devlog-sextia-aix", author="elise",
-  title="Devlog #5 : concevoir Sextia depuis Aix | Flexarion",
+  title="Devlog #5 : une ville de jeu vidéo née d'Aix | Flexarion",
   h1="Devlog #5 : concevoir Sextia à partir du vrai Aix-en-Provence",
   short="Concevoir Sextia à partir du vrai Aix",
   desc="Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.",
@@ -45,14 +46,20 @@ ARTICLES = [
   short="Accessibilité et rythme d'un jeu sans combat",
   desc="Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l'accessibilité tiennent le rythme.",
   alt="Sacha Morel avec sa lampe frontale et son Diapason émettant des ondes cyan vers une fontaine thermale de Sextia, devant des habitants silencieux"),
+ dict(slug="creer-studio-jeu-video-aix", num=7, date="2026-11-24T15:00:00+01:00", date_fr="24 novembre 2026", rss="Tue, 24 Nov 2026 15:00:00 +0100", img="devlog-studio-aix", author="ines",
+  title="Devlog #7 : créer un studio de jeu vidéo à Aix | Flexarion",
+  h1="Devlog #7 : créer un studio de jeu vidéo indépendant à Aix-en-Provence",
+  short="Créer un studio de jeu vidéo indépendant à Aix",
+  desc="Inès Valcourt, directrice créative de Flexarion, raconte la création du studio de jeu vidéo indépendant à Aix-en-Provence et son choix de la SF.",
+  alt="Le studio de jeu vidéo Flexarion à Aix-en-Provence à la tombée de la nuit : l'équipe travaille sur des écrans cyan montrant une ville souterraine, devant une fenêtre ouverte sur les toits d'Aix et la Sainte-Victoire"),
 ]
 # Les 4 devlogs ont été publiés le 17/11/2026 : l'heure de publication (réelle, échelonnée)
 # départage l'ordre. Affichage : du plus récent au plus ancien
 ARTICLES.sort(key=lambda a: a["date"], reverse=True)
 DATE = ARTICLES[0]["date"]  # date du devlog le plus récent
 DATE_FR = ARTICLES[0]["date_fr"]
-MOD = "2026-11-22"
-MOD_FR = "22 novembre 2026"
+MOD = "2026-11-24"
+MOD_FR = "24 novembre 2026"
 
 def url(a): return f"/devlogs/{a['slug']}/"
 
@@ -87,7 +94,7 @@ BODIES[1] = """
 
 <figure>
 """ + pic("below-zero-concept-place-2306", "Concept art de Flexarion : grande place souterraine de Sextia en 2306, sous un ciel artificiel de panneaux lumineux") + """
-<figcaption>Concept art de la grande place de Sextia. Les terrasses reprennent les gabarits des immeubles de surface (visuel généré par IA, retravail prévu).</figcaption>
+<figcaption>Concept art de la grande place de Sextia. Les terrasses reprennent les gabarits des immeubles de surface.</figcaption>
 </figure>
 
 <h2 id="regles">Nos cinq règles de symétrie</h2>
@@ -134,7 +141,7 @@ BODIES[2] = """
 
 <figure>
 """ + pic("below-zero-capture-causalite", "Capture de travail de Below Zero : la même fontaine en 2156 et en 2306, reliées par un fil de lumière") + """
-<figcaption>Capture de travail : la même fontaine dans les deux époques, reliée par un fil de causalité (visuel généré par IA).</figcaption>
+<figcaption>Capture de travail : la même fontaine dans les deux époques, reliée par un fil de causalité.</figcaption>
 </figure>
 
 <h2 id="graphe">Le graphe de causalité</h2>
@@ -184,7 +191,7 @@ BODIES[3] = """
 
 <figure>
 """ + pic("below-zero-key-art", "Key art de Below Zero : Sacha, technicien à la lampe frontale, face à la ville souterraine illuminée et à ses habitants") + """
-<figcaption>Dans cette scène, le silence relatif de l'escalier contraste avec la rumeur de la ville qui monte de la cavité (visuel généré par IA).</figcaption>
+<figcaption>Dans cette scène, le silence relatif de l'escalier contraste avec la rumeur de la ville qui monte de la cavité.</figcaption>
 </figure>
 
 <h2 id="voix">Les voix des habitants</h2>
@@ -222,7 +229,7 @@ BODIES[4] = """
 
 <figure>
 """ + pic("below-zero-habitants-2306", "Concept art Flexarion de trois habitants de Sextia en 2306 : une archiviste âgée aux tatouages cyan, une jeune coursière à visière et un conducteur de tram") + """
-<figcaption>Planche de recherche : Mémé Lune, Iléa et Aurèle, trois habitants de Sextia (visuel généré par IA, retravail prévu).</figcaption>
+<figcaption>Planche de recherche : Mémé Lune, Iléa et Aurèle, trois habitants de Sextia.</figcaption>
 </figure>
 
 <h2 id="marques">Les marques lumineuses</h2>
@@ -245,14 +252,14 @@ BODIES[4] = """
 <h2 id="methode">Notre méthode, du croquis au modèle 3D</h2>
 <p>Chaque personnage suit le même parcours au studio. Tout commence par une fiche d'une page rédigée avec la direction créative : qui est cette personne, que sait-elle de Sacha, que veut-elle ? Viennent ensuite des dizaines de silhouettes noires, sans détail, pour trouver une forme lisible de loin. Puis des croquis de visages et d'expressions, des planches de costumes, et enfin un modèle 3D réalisé avec notre artiste 3D.</p>
 <p>À chaque étape, nous testons les personnages dans le moteur, dans la vraie lumière de Sextia. Un costume superbe sur fond blanc peut devenir illisible sous les éclairages cyan de la ville souterraine. Cette vérification en contexte nous a fait abandonner plusieurs designs que nous aimions beaucoup, mais c'est le prix de la cohérence.</p>
-<p>Les visuels montrés dans cet article sont des recherches générées avec l'aide d'outils d'IA, qui servent de point de départ et seront retravaillés. Pour découvrir l'univers complet du jeu, rendez-vous sur la <a href="/below-zero/">page de Below Zero</a>, et pour savoir comment ces voix prennent vie, lisez le <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design de la ville souterraine</a>.</p>
+<p>Ces planches sont des recherches de travail : elles servent de point de départ et évolueront encore avant la version finale du jeu. Pour découvrir l'univers complet du jeu, rendez-vous sur la <a href="/below-zero/">page de Below Zero</a>, et pour savoir comment ces voix prennent vie, lisez le <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design de la ville souterraine</a>.</p>
 """
 
 
 BODIES[5] = """
 <p class="lead">Sextia, la ville souterraine de 2306 dans <a href="/below-zero/">Below Zero</a>, n'a pas été dessinée dans le vide : elle naît d'un relevé patient des rues, des places et de l'eau d'Aix-en-Provence. Si le studio Flexarion et l'intrigue de Below Zero sont entièrement fictifs, le décor qui nourrit nos deux époques s'appuie, lui, sur une géographie bien réelle — du cours Mirabeau aux thermes Sextius, jusqu'aux fondations antiques d'Aquae Sextiae.</p>
 
-<div class="facts" aria-label="Repères clés de l'article"><dl>
+<div class="facts" role="note" aria-label="Repères clés de l'article"><dl>
 <dt>Thème</dt><dd>Transposition du vrai Aix-en-Provence vers Sextia (2306)</dd>
 <dt>Lieux réels transposés</dt><dd>Cours Mirabeau, fontaine de la Rotonde, thermes Sextius, vieille ville, quartier Mazarin</dd>
 <dt>Racines historiques</dt><dd>Aquae Sextiae (122 av. J.-C.), Caius Sextius Calvinus, sources thermales</dd>
@@ -302,13 +309,13 @@ BODIES[5] = """
 
 <h2 id="equilibre">Rechercher le vrai Aix sans faire une carte postale</h2>
 <p>Le piège classique d'un décor inspiré d'une ville réelle est de multiplier les monuments connus au détriment de la crédibilité. Nous avons volontairement écarté l'idée d'une « visite guidée » : dans Below Zero, certains quartiers entiers sont des rues ordinaires d'habitation, des locaux techniques municipaux ou des cours intérieures fermées, car Sacha Morel connaît d'abord la ville par ses réseaux souterrains.</p>
-<p>Il reste important de le rappeler clairement : si le cours Mirabeau, la Rotonde, la vieille ville et les thermes Sextius existent bel et bien à Aix-en-Provence, le studio Flexarion, l'Aix de 2156 et la cité souterraine de Sextia appartiennent à une œuvre de fiction. Ce va-et-vient entre patrimoine réel et projection futuriste est aussi ce qui donne sa couleur acoustique au jeu, explorée dans le <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design de Sextia</a>, et son rythme calme sans affrontement, détaillé dans notre <a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">devlog sur l'accessibilité et le rythme sans combat</a>.</p>
+<p>Il reste important de le rappeler clairement : si le cours Mirabeau, la Rotonde, la vieille ville et les thermes Sextius existent bel et bien à Aix-en-Provence, le studio Flexarion, l'Aix de 2156 et la cité souterraine de Sextia appartiennent à une œuvre de fiction. Pour voir ce que deviennent six de ces lieux dans les deux époques du jeu, consultez notre <a href="/below-zero/carte-sextia/">carte commentée de Sextia sous Aix</a>. Ce va-et-vient entre patrimoine réel et projection futuriste est aussi ce qui donne sa couleur acoustique au jeu, explorée dans le <a href="/devlogs/sound-design-ville-souterraine/">devlog sur le sound design de Sextia</a>, et son rythme calme sans affrontement, détaillé dans notre <a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">devlog sur l'accessibilité et le rythme sans combat</a>.</p>
 """
 
 BODIES[6] = """
 <p class="lead"><a href="/below-zero/">Below Zero</a> ne comporte aucun combat, aucune barre de vie et aucun chronomètre mortel. Pourtant, explorer seul une ville souterraine qui vous connaît déjà doit rester prenant du début à la fin. En tant que développeur gameplay chez Flexarion, je travaille avec le game design de Lucas Arnaud sur une question centrale : comment tenir le rythme et ouvrir le jeu au plus grand nombre quand on retire toute violence ?</p>
 
-<div class="facts" aria-label="Repères clés de l'article"><dl>
+<div class="facts" role="note" aria-label="Repères clés de l'article"><dl>
 <dt>Thème</dt><dd>Rythme narratif et accessibilité dans un jeu d'aventure sans combat</dd>
 <dt>Protagoniste et outil</dt><dd>Sacha Morel, équipé du Diapason et du Carnet de causalité</dd>
 <dt>Plateforme</dt><dd>PC en priorité (consoles à l'étude), en développement, sortie non annoncée</dd>
@@ -379,6 +386,65 @@ BODIES[6] = """
 <p>Below Zero est en cours de développement prioritairement pour PC (les versions consoles restent à l'étude et aucune date de sortie n'est annoncée). Nos prochains chantiers gameplay portent sur la navigation au lecteur d'écran dans le Carnet de causalité et sur le réglage fin du tempo des dialogues pour les chapitres suivants. Pour découvrir le contexte complet du jeu, rendez-vous sur la <a href="/below-zero/">page Below Zero</a> ou faites connaissance avec l'équipe sur <a href="/studio/">Le studio</a>.</p>
 """
 
+BODIES[7] = """
+<p class="lead">On me demande souvent pourquoi un studio de jeu vidéo indépendant s'est installé à Aix-en-Provence plutôt qu'à Paris, Lyon ou Montréal, et pourquoi nous faisons de la science-fiction sans vaisseaux ni lasers. Pour ce septième devlog, je quitte un instant la fabrication de <a href="/below-zero/">Below Zero</a> pour raconter la nôtre : comment Flexarion est né en 2022, ce que nous avons appris en route et ce qu'Aix nous apporte chaque jour.</p>
+
+<div class="facts" role="note" aria-label="Repères clés de l'article"><dl>
+<dt>Fondation</dt><dd>2022, à Aix-en-Provence, quelques mois après une game jam</dd>
+<dt>Fondateurs</dt><dd>Inès Valcourt, Théo Marchetti et Samira Benali</dd>
+<dt>Équipe</dt><dd>8 personnes et 8 métiers depuis 2024</dd>
+<dt>Spécialité</dt><dd>Jeux vidéo de science-fiction narratifs, sans combat</dd>
+<dt>Cadre</dt><dd>Récit d'un studio fictif, ancré dans une ville réelle</dd>
+</dl></div>
+
+<nav class="toc" aria-label="Sommaire de l'article"><strong>Au sommaire</strong><ol>
+<li><a href="#game-jam">Une game jam au printemps 2022</a></li>
+<li><a href="#pourquoi-aix">Pourquoi créer un studio de jeu vidéo à Aix-en-Provence</a></li>
+<li><a href="#pourquoi-sf">Pourquoi la science-fiction narrative</a></li>
+<li><a href="#debuts">Les débuts : un prototype bancal et une table trop petite</a></li>
+<li><a href="#equipe">Grandir jusqu'à huit sans perdre l'esprit indépendant</a></li>
+<li><a href="#ecosysteme">Un écosystème du jeu vidéo entre Aix et Marseille</a></li>
+<li><a href="#conseils">Ce que nous dirions à qui veut fonder un studio indé</a></li>
+</ol></nav>
+
+<h2 id="game-jam">Une game jam au printemps 2022</h2>
+<p>Tout commence par un week-end de game jam à Aix-en-Provence, au printemps 2022. Je venais du théâtre, où j'écrivais et mettais en scène de petites pièces, et je n'avais jamais livré un jeu. Théo Marchetti et Samira Benali, eux, codaient depuis des années, mais cherchaient une histoire à raconter. Le thème imposé tenait en un mot que nous avons tous interprété différemment. Nous en avons tiré une idée simple : déplacer un objet dans le présent et voir, sur un second écran, ce qu'il devient cent ans plus tard.</p>
+<p>Le prototype de quarante-huit heures était bancal. La caméra tremblait, la moitié des objets ne réagissait pas et la fin plantait une fois sur deux. Pourtant, les personnes qui l'ont essayé restaient devant l'écran à tester des hypothèses, à revenir en arrière, à se demander « et si… ». Ce soir-là, en rentrant par le cours Mirabeau, nous avons compris que ce n'était pas le jeu qui comptait, mais cette envie de chercher. Quelques mois plus tard, nous fondions Flexarion.</p>
+
+<h2 id="pourquoi-aix">Pourquoi créer un studio de jeu vidéo à Aix-en-Provence</h2>
+<p>La réponse honnête commence par une évidence : nous y vivions déjà. Mais rester à Aix est vite devenu un choix assumé, pour trois raisons.</p>
+<p>La première est créative. Aix est une ville née de l'eau chaude, il y a plus de deux mille ans, sous le nom d'Aquae Sextiae. Ses fontaines, ses places et ses sources thermales racontent déjà une histoire de strates et de temps superposés. Pour un studio qui voulait faire de la science-fiction à hauteur humaine, c'était un décor tout trouvé : il suffisait de se demander ce qu'il y aurait sous nos pieds deux siècles plus tard. Cette intuition est devenue Sextia, la ville souterraine de 2306, dont vous pouvez parcourir les lieux sur notre <a href="/below-zero/carte-sextia/">carte commentée de Sextia sous Aix</a>.</p>
+<p>La deuxième est humaine. Une ville de taille moyenne permet de garder un rythme de travail raisonnable : on vient au studio à pied ou à vélo, on teste un prototype avec des amis le soir même, on croise des joueurs dans la rue. Pour un petit studio indépendant, cette proximité vaut beaucoup.</p>
+<p>La troisième est pratique. Entre Aix et Marseille, la région rassemble des universités, des écoles du numérique et une communauté du jeu vidéo active. Nous n'avions pas besoin de partir pour trouver des collègues de talent.</p>
+
+<h2 id="pourquoi-sf">Pourquoi la science-fiction narrative</h2>
+<p>Quand on annonce « studio de science-fiction », beaucoup imaginent des batailles spatiales. Ce n'est pas notre science-fiction. Celle qui nous intéresse pose une question sur le présent en déplaçant légèrement le décor : que devient une ville après des décennies de sécheresse ? Que retient un lieu des gestes de ceux qui l'ont traversé ? Que ressent-on face à des inconnus qui se souviennent de nous ?</p>
+<p>Ce choix a une conséquence directe sur nos jeux : pas de combat. Nous voulions que la tension vienne du mystère et des conséquences, pas des réflexes. C'est un pari exigeant, que Théo détaille dans le <a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">devlog sur le rythme d'un jeu sans combat</a>. Il nous permet aussi de toucher des joueurs qui ne se reconnaissent pas dans les jeux d'action, et c'est l'une des grandes forces d'un studio de jeu vidéo indépendant : choisir ses propres règles.</p>
+
+<h2 id="debuts">Les débuts : un prototype bancal et une table trop petite</h2>
+<p>La première année, Flexarion tenait autour d'une seule table, dans un local partagé du centre d'Aix. Samira a écrit les premières briques du moteur qui synchronise aujourd'hui les deux villes à partir d'un plan unique. Théo a reconstruit le prototype de la game jam pour qu'il ne plante plus. Moi, je remplissais des carnets de questions : pourquoi la ville du futur serait-elle sous terre ? Pourquoi ses habitants connaîtraient-ils le héros ? Qui est Sacha Morel, et pourquoi un technicien des réseaux souterrains plutôt qu'un explorateur ?</p>
+<p>Nous avons fait beaucoup d'erreurs. Nous avons d'abord imaginé un jeu bien trop grand, avec une ville entière à reproduire. Nous avons perdu des semaines sur un système de dialogues que personne n'utilisait. Nous avons aussi appris à jeter : une bonne idée qui ne sert pas le mystère n'a pas sa place dans le jeu. C'est à ce moment qu'est née la règle qui structure encore Below Zero, celle d'un seul plan pour deux époques, expliquée par Margaux dans le <a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">devlog sur nos deux villes jumelles</a>.</p>
+
+<h2 id="equipe">Grandir jusqu'à huit sans perdre l'esprit indépendant</h2>
+<p>L'ordre des recrutements dit beaucoup de nos priorités. En 2023, avant toute communication, nous avons accueilli Lucas Arnaud au game design et Margaux Delorme aux environnements 3D : il fallait d'abord des énigmes solides et une ville crédible. En 2024 sont arrivés Yanis Okafor pour les personnages, Élise Fabre pour le son et la musique, puis Raphaël Costa pour la communication. Nous sommes huit depuis, et chacun signe au moins un devlog : c'est notre façon de montrer qu'un jeu se fabrique à plusieurs voix.</p>
+<p>Rester indépendant, pour nous, ce n'est pas un slogan. C'est garder la main sur nos choix créatifs, avancer à un rythme soutenable et refuser les fonctionnalités ajoutées uniquement parce qu'elles sont à la mode. Cela veut aussi dire accepter d'aller moins vite : Below Zero n'a pas encore de date de sortie, et nous préférons l'annoncer quand le jeu sera prêt.</p>
+
+<h2 id="ecosysteme">Un écosystème du jeu vidéo entre Aix et Marseille</h2>
+<p>Un petit studio ne vit pas seul. Autour de nous, entre Aix et Marseille, il existe des game jams régulières, des rencontres entre développeurs, des formations au jeu vidéo et un public curieux. C'est dans ces rendez-vous que nous testons nos prototypes, que nous écoutons les critiques et que nous croisons parfois nos futurs collègues.</p>
+<p>La ville elle-même fait partie de cet écosystème. Nos repérages se font à pied, carnet en main, de la Rotonde à la cathédrale Saint-Sauveur. Élise enregistre l'eau des fontaines, Margaux photographie les façades, Yanis observe les gens sur les terrasses. Le <a href="/devlogs/concevoir-sextia-vrai-aix/">devlog sur la conception de Sextia à partir du vrai Aix</a> raconte en détail ce travail de terrain.</p>
+
+<h2 id="conseils">Ce que nous dirions à qui veut fonder un studio indé</h2>
+<p>Si vous rêvez de créer votre studio de jeu vidéo, à Aix ou ailleurs, voici ce que nos premières années nous ont appris :</p>
+<ol>
+<li><strong>Partez d'une sensation, pas d'un genre.</strong> Notre point de départ n'était pas « faire de la SF », mais l'envie de chercher que nous avions vue chez les joueurs de la game jam.</li>
+<li><strong>Ancrez votre univers dans un lieu que vous connaissez.</strong> Vous saurez le décrire avec une précision qu'aucune documentation ne remplace.</li>
+<li><strong>Recrutez dans l'ordre de vos besoins.</strong> Le jeu d'abord, la communication ensuite.</li>
+<li><strong>Montrez votre travail tôt.</strong> Un prototype bancal testé par dix personnes vaut mieux qu'un document parfait que personne ne lit.</li>
+<li><strong>Protégez votre rythme.</strong> Un studio indépendant qui s'épuise ne finit pas ses jeux.</li>
+</ol>
+<p>Quatre ans après cette game jam, Flexarion reste un petit studio de science-fiction narrative qui creuse sous la réalité, au sens propre comme au figuré. Pour découvrir toute l'équipe, rendez-vous sur la page <a href="/studio/">Le studio Flexarion</a> ; pour l'univers du jeu, sur la <a href="/below-zero/">page de Below Zero</a>.</p>
+"""
+
 PAGES = []
 for a in ARTICLES:
     n, role = AUTHORS[a["author"]]
@@ -419,7 +485,7 @@ for a in ARTICLES:
       "datePublished": a["date"], "dateModified": LASTMOD, "inLanguage": "fr-FR", "wordCount": words,
       "author": {"@type": "Person", "name": n, "jobTitle": role, "worksFor": {"@id": ORG}},
       "publisher": {"@id": ORG}, "mainEntityOfPage": {"@id": BASE + url(a) + "#webpage"},
-      "isPartOf": {"@id": BASE + "/devlogs/#blog"}, "about": {"@id": BASE + "/below-zero/#videogame"},
+      "isPartOf": {"@id": BASE + "/devlogs/#blog"}, "about": {"@id": ORG if a["num"] == 7 else BASE + "/below-zero/#videogame"},
       "articleSection": "Devlog"}]
     PAGES.append(dict(path=url(a), title=a["title"], desc=a["desc"], body=body, jsonld=ld, ogtype="article",
         date=a["date"], author=n, image=f"/assets/img/{a['img']}-1280.webp", imgalt=a["alt"],

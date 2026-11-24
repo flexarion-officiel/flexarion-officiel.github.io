@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from fmt import pretty
 BASE = "https://flexarion-officiel.github.io"
 OUT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
-LASTMOD = "2026-11-22"
+LASTMOD = "2026-11-24"
 ORG = BASE + "/#organization"
 SITE = BASE + "/#website"
 
@@ -37,12 +37,13 @@ FONT_PRELOAD = "/assets/fonts/exo2-latin.woff2"
 
 NAV = [("/", "Accueil"), ("/studio/", "Le studio"), ("/below-zero/", "Below Zero"), ("/devlogs/", "Devlogs"), ("/contact/", "Contact &amp; presse")]
 
-# (réseau, URL, pseudo, icône Simple Icons CC0 dans /assets/icons/)
+# (réseau, URL, pseudo, icône dans /assets/icons/ : Simple Icons CC0, sauf linkedin.svg dessinée pour le projet)
 SOCIAL_DATA = [
     ("GitHub", "https://github.com/flexarion-officiel", "flexarion-officiel", "github"),
     ("itch.io", "https://flexarionofficiel.itch.io/", "flexarionofficiel", "itchio"),
     ("X", "https://x.com/flexarion_off", "@flexarion_off", "x"),
     ("Instagram", "https://www.instagram.com/flexarion.off/", "@flexarion.off", "instagram"),
+    ("LinkedIn", "https://www.linkedin.com/company/flexarion-officiel", "flexarion-officiel", "linkedin"),
 ]
 SOCIALS = [(n, u) for n, u, _, _ in SOCIAL_DATA]
 
@@ -190,7 +191,7 @@ def pic(name, alt, w=1280, h=720, lcp=False, sizes="(max-width: 72rem) 100vw, 72
 
 if __name__ == "__main__":
     pages = []
-    for mod in ["c_main", "c_devlogs"]:
+    for mod in ["c_main", "c_carte", "c_devlogs"]:
         pages += importlib.import_module(mod).PAGES
     for p in pages:
         print(render(p))

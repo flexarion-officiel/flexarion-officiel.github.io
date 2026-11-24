@@ -6,7 +6,14 @@
   <atom:link href="https://flexarion-officiel.github.io/devlogs/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Le journal de développement de Below Zero par le studio Flexarion (Aix-en-Provence).</description>
   <language>fr-fr</language>
-  <lastBuildDate>Sun, 22 Nov 2026 19:00:00 +0100</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 15:00:00 +0100</lastBuildDate>
+  <item>
+    <title>Devlog #7 : créer un studio de jeu vidéo indépendant à Aix-en-Provence</title>
+    <link>https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/</link>
+    <guid isPermaLink="true">https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/</guid>
+    <pubDate>Tue, 24 Nov 2026 15:00:00 +0100</pubDate>
+    <description>Inès Valcourt, directrice créative de Flexarion, raconte la création du studio de jeu vidéo indépendant à Aix-en-Provence et son choix de la SF.</description>
+  </item>
   <item>
     <title>Devlog #6 : accessibilité et rythme d'un jeu sans combat</title>
     <link>https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/</link>
@@ -40,7 +47,7 @@
     <link>https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/</link>
     <guid isPermaLink="true">https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/</guid>
     <pubDate>Tue, 17 Nov 2026 10:00:00 +0100</pubDate>
-    <description>Chez Flexarion, le game designer explique comment une action dans l'Aix de 2156 transforme la ville de 2306 de Below Zero, sans chaos.</description>
+    <description>Chez Flexarion, le game designer explique comment, dans le jeu vidéo Below Zero, une action dans l'Aix de 2156 transforme la ville de 2306.</description>
   </item>
   <item>
     <title>Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306</title>

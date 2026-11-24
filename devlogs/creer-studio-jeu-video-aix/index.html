@@ -1,0 +1,181 @@
+<!doctype html>
+<!--
+         /\
+        /  \       ___ _    _____  __   _   ___ ___ ___  _  _
+       / /\ \     | __| |  | __\ \/ /  /_\ | _ \_ _/ _ \| \| |
+    ==<======>==  | _|| |__| _| >  <  / _ \|   /| | (_) | .` |
+       \ \/ /     |_| |____|___/_/\_\/_/ \_\_|_\___\___/|_|\_|
+        \  /
+         \/       Studio de jeux vidéo de science-fiction · Aix-en-Provence
+
+    2156 à la surface. 2306 en dessous.
+    Tu lis le code source ? Tu es donc déjà descendu d'un niveau.
+    Ouvre la console : quelqu'un t'y attend.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>document.documentElement.classList.add("js")</script>
+    <title>Devlog #7 : créer un studio de jeu vidéo à Aix | Flexarion</title>
+    <meta name="description" content="Inès Valcourt, directrice créative de Flexarion, raconte la création du studio de jeu vidéo indépendant à Aix-en-Provence et son choix de la SF.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/">
+    <meta name="author" content="Flexarion">
+    <meta name="theme-color" content="#071421">
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="Devlogs Flexarion" href="/devlogs/feed.xml">
+    <link rel="preload" href="/assets/fonts/exo2-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/css/style.min.css">
+    <link rel="stylesheet" href="/assets/css/print.min.css" media="print">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Flexarion">
+    <meta property="og:title" content="Devlog #7 : créer un studio de jeu vidéo à Aix | Flexarion">
+    <meta property="og:description" content="Inès Valcourt, directrice créative de Flexarion, raconte la création du studio de jeu vidéo indépendant à Aix-en-Provence et son choix de la SF.">
+    <meta property="og:url" content="https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/">
+    <meta property="og:image" content="https://flexarion-officiel.github.io/assets/img/devlog-studio-aix-1280.webp">
+    <meta property="og:image:alt" content="Le studio de jeu vidéo Flexarion à Aix-en-Provence à la tombée de la nuit : l&#x27;équipe travaille sur des écrans cyan montrant une ville souterraine, devant une fenêtre ouverte sur les toits d&#x27;Aix et la Sainte-Victoire">
+    <meta property="article:published_time" content="2026-11-24T15:00:00+01:00">
+    <meta property="article:modified_time" content="2026-11-24">
+    <meta property="article:author" content="Inès Valcourt">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Devlog #7 : créer un studio de jeu vidéo à Aix | Flexarion">
+    <meta name="twitter:description" content="Inès Valcourt, directrice créative de Flexarion, raconte la création du studio de jeu vidéo indépendant à Aix-en-Provence et son choix de la SF.">
+    <meta name="twitter:image" content="https://flexarion-officiel.github.io/assets/img/devlog-studio-aix-1280.webp">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://flexarion-officiel.github.io/#organization","name":"Flexarion","alternateName":["Flexarion Studio","Studio Flexarion"],"description":"Flexarion est un studio indépendant de jeux vidéo de science-fiction narratifs, fondé en 2022 à Aix-en-Provence et créateur du jeu Below Zero.","url":"https://flexarion-officiel.github.io/","logo":{"@type":"ImageObject","@id":"https://flexarion-officiel.github.io/#logo","url":"https://flexarion-officiel.github.io/icon-512.png","contentUrl":"https://flexarion-officiel.github.io/icon-512.png","width":512,"height":512,"caption":"Logo Flexarion"},"image":{"@id":"https://flexarion-officiel.github.io/#logo"},"foundingDate":"2022","knowsAbout":["jeu vidéo narratif","science-fiction","game design","énigmes temporelles","sound design"],"contactPoint":{"@type":"ContactPoint","contactType":"presse","url":"https://flexarion-officiel.github.io/contact/","availableLanguage":"fr"},"sameAs":["https://github.com/flexarion-officiel","https://flexarionofficiel.itch.io/","https://x.com/flexarion_off","https://www.instagram.com/flexarion.off/","https://www.linkedin.com/company/flexarion-officiel"]},{"@type":"WebSite","@id":"https://flexarion-officiel.github.io/#website","url":"https://flexarion-officiel.github.io/","name":"Flexarion","alternateName":"Studio Flexarion","inLanguage":"fr-FR","publisher":{"@id":"https://flexarion-officiel.github.io/#organization"}},{"@type":"BreadcrumbList","@id":"https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://flexarion-officiel.github.io/"},{"@type":"ListItem","position":2,"name":"Devlogs","item":"https://flexarion-officiel.github.io/devlogs/"},{"@type":"ListItem","position":3,"name":"Créer un studio de jeu vidéo indépendant à Aix","item":"https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/"}]},{"@type":"WebPage","@id":"https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/#webpage","url":"https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/","name":"Devlog #7 : créer un studio de jeu vidéo à Aix | Flexarion","description":"Inès Valcourt, directrice créative de Flexarion, raconte la création du studio de jeu vidéo indépendant à Aix-en-Provence et son choix de la SF.","isPartOf":{"@id":"https://flexarion-officiel.github.io/#website"},"about":{"@id":"https://flexarion-officiel.github.io/#organization"},"inLanguage":"fr-FR","dateModified":"2026-11-24","primaryImageOfPage":{"@type":"ImageObject","url":"https://flexarion-officiel.github.io/assets/img/devlog-studio-aix-1280.webp"},"breadcrumb":{"@id":"https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/#breadcrumb"}},{"@type":"BlogPosting","@id":"https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/#article","headline":"Devlog #7 : créer un studio de jeu vidéo indépendant à Aix-en-Provence","description":"Inès Valcourt, directrice créative de Flexarion, raconte la création du studio de jeu vidéo indépendant à Aix-en-Provence et son choix de la SF.","image":{"@type":"ImageObject","url":"https://flexarion-officiel.github.io/assets/img/devlog-studio-aix-1280.webp","width":1280,"height":720},"datePublished":"2026-11-24T15:00:00+01:00","dateModified":"2026-11-24","inLanguage":"fr-FR","wordCount":1368,"author":{"@type":"Person","name":"Inès Valcourt","jobTitle":"Directrice créative","worksFor":{"@id":"https://flexarion-officiel.github.io/#organization"}},"publisher":{"@id":"https://flexarion-officiel.github.io/#organization"},"mainEntityOfPage":{"@id":"https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/#webpage"},"isPartOf":{"@id":"https://flexarion-officiel.github.io/devlogs/#blog"},"about":{"@id":"https://flexarion-officiel.github.io/#organization"},"articleSection":"Devlog"}]}</script>
+  </head>
+  <body id="haut">
+    <a class="skip" href="#contenu">Aller au contenu</a>
+    <header class="site-head">
+      <div class="wrap head-in">
+        <a class="brand" href="/" aria-label="Flexarion, retour à l’accueil"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="12" fill="#071421"/><path d="M9 29 32 7l23 22" fill="none" stroke="#19B9D4" stroke-width="3.5" stroke-linejoin="round"/><path d="M9 35l23 22 23-22" fill="none" stroke="#B7DDE8" stroke-width="3.5" stroke-linejoin="round"/><path d="M5 32h54" stroke="#19B9D4" stroke-width="2"/><path d="M21 28v-6l4-4 4 4v6M35 28v-6l4-4 4 4v6" fill="none" stroke="#19B9D4" stroke-width="2.4"/><path d="M21 36v6l4 4 4-4v-6M35 36v6l4 4 4-4v-6" fill="none" stroke="#B7DDE8" stroke-width="2.4"/></svg><span>Flexarion</span></a>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu"><span class="burger-bar"></span></button>
+        <nav class="nav" id="menu-principal" aria-label="Navigation principale">
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/studio/">Le studio</a></li>
+            <li><a href="/below-zero/">Below Zero</a></li>
+            <li><a href="/devlogs/" aria-current="page">Devlogs</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <nav class="crumbs wrap" aria-label="Fil d’Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/devlogs/">Devlogs</a></li>
+        <li aria-current="page">Créer un studio de jeu vidéo indépendant à Aix</li>
+      </ol>
+    </nav>
+    <main id="contenu">
+      <article class="wrap">
+        <header>
+          <p class="kicker">Devlog n°7 · Below Zero</p>
+          <h1>Devlog #7 : créer un studio de jeu vidéo indépendant à Aix-en-Provence</h1>
+          <p class="meta">Par Inès Valcourt, directrice créative chez Flexarion · Publié le <time datetime="2026-11-24T15:00:00+01:00">24 novembre 2026</time> · Mis à jour le <time datetime="2026-11-24">24 novembre 2026</time></p>
+        </header>
+        <figure> <img src="/assets/img/devlog-studio-aix-1280.webp" srcset="/assets/img/devlog-studio-aix-480.webp 480w, /assets/img/devlog-studio-aix-960.webp 960w, /assets/img/devlog-studio-aix-1280.webp 1280w" sizes="(max-width: 72rem) 100vw, 72rem" width="1280" height="720" alt="Le studio de jeu vidéo Flexarion à Aix-en-Provence à la tombée de la nuit : l&#x27;équipe travaille sur des écrans cyan montrant une ville souterraine, devant une fenêtre ouverte sur les toits d&#x27;Aix et la Sainte-Victoire" fetchpriority="high" decoding="async"> </figure>
+        <div class="prose">
+          <p class="lead">On me demande souvent pourquoi un studio de jeu vidéo indépendant s'est installé à Aix-en-Provence plutôt qu'à Paris, Lyon ou Montréal, et pourquoi nous faisons de la science-fiction sans vaisseaux ni lasers. Pour ce septième devlog, je quitte un instant la fabrication de <a href="/below-zero/">Below Zero</a> pour raconter la nôtre : comment Flexarion est né en 2022, ce que nous avons appris en route et ce qu'Aix nous apporte chaque jour.</p>
+          <div class="facts" role="note" aria-label="Repères clés de l'article">
+            <dl>
+              <dt>Fondation</dt>
+              <dd>2022, à Aix-en-Provence, quelques mois après une game jam</dd>
+              <dt>Fondateurs</dt>
+              <dd>Inès Valcourt, Théo Marchetti et Samira Benali</dd>
+              <dt>Équipe</dt>
+              <dd>8 personnes et 8 métiers depuis 2024</dd>
+              <dt>Spécialité</dt>
+              <dd>Jeux vidéo de science-fiction narratifs, sans combat</dd>
+              <dt>Cadre</dt>
+              <dd>Récit d'un studio fictif, ancré dans une ville réelle</dd>
+            </dl>
+          </div>
+          <nav class="toc" aria-label="Sommaire de l'article">
+            <strong>Au sommaire</strong>
+            <ol>
+              <li><a href="#game-jam">Une game jam au printemps 2022</a></li>
+              <li><a href="#pourquoi-aix">Pourquoi créer un studio de jeu vidéo à Aix-en-Provence</a></li>
+              <li><a href="#pourquoi-sf">Pourquoi la science-fiction narrative</a></li>
+              <li><a href="#debuts">Les débuts : un prototype bancal et une table trop petite</a></li>
+              <li><a href="#equipe">Grandir jusqu'à huit sans perdre l'esprit indépendant</a></li>
+              <li><a href="#ecosysteme">Un écosystème du jeu vidéo entre Aix et Marseille</a></li>
+              <li><a href="#conseils">Ce que nous dirions à qui veut fonder un studio indé</a></li>
+            </ol>
+          </nav>
+          <h2 id="game-jam">Une game jam au printemps 2022</h2>
+          <p>Tout commence par un week-end de game jam à Aix-en-Provence, au printemps 2022. Je venais du théâtre, où j'écrivais et mettais en scène de petites pièces, et je n'avais jamais livré un jeu. Théo Marchetti et Samira Benali, eux, codaient depuis des années, mais cherchaient une histoire à raconter. Le thème imposé tenait en un mot que nous avons tous interprété différemment. Nous en avons tiré une idée simple : déplacer un objet dans le présent et voir, sur un second écran, ce qu'il devient cent ans plus tard.</p>
+          <p>Le prototype de quarante-huit heures était bancal. La caméra tremblait, la moitié des objets ne réagissait pas et la fin plantait une fois sur deux. Pourtant, les personnes qui l'ont essayé restaient devant l'écran à tester des hypothèses, à revenir en arrière, à se demander « et si… ». Ce soir-là, en rentrant par le cours Mirabeau, nous avons compris que ce n'était pas le jeu qui comptait, mais cette envie de chercher. Quelques mois plus tard, nous fondions Flexarion.</p>
+          <h2 id="pourquoi-aix">Pourquoi créer un studio de jeu vidéo à Aix-en-Provence</h2>
+          <p>La réponse honnête commence par une évidence : nous y vivions déjà. Mais rester à Aix est vite devenu un choix assumé, pour trois raisons.</p>
+          <p>La première est créative. Aix est une ville née de l'eau chaude, il y a plus de deux mille ans, sous le nom d'Aquae Sextiae. Ses fontaines, ses places et ses sources thermales racontent déjà une histoire de strates et de temps superposés. Pour un studio qui voulait faire de la science-fiction à hauteur humaine, c'était un décor tout trouvé : il suffisait de se demander ce qu'il y aurait sous nos pieds deux siècles plus tard. Cette intuition est devenue Sextia, la ville souterraine de 2306, dont vous pouvez parcourir les lieux sur notre <a href="/below-zero/carte-sextia/">carte commentée de Sextia sous Aix</a>.</p>
+          <p>La deuxième est humaine. Une ville de taille moyenne permet de garder un rythme de travail raisonnable : on vient au studio à pied ou à vélo, on teste un prototype avec des amis le soir même, on croise des joueurs dans la rue. Pour un petit studio indépendant, cette proximité vaut beaucoup.</p>
+          <p>La troisième est pratique. Entre Aix et Marseille, la région rassemble des universités, des écoles du numérique et une communauté du jeu vidéo active. Nous n'avions pas besoin de partir pour trouver des collègues de talent.</p>
+          <h2 id="pourquoi-sf">Pourquoi la science-fiction narrative</h2>
+          <p>Quand on annonce « studio de science-fiction », beaucoup imaginent des batailles spatiales. Ce n'est pas notre science-fiction. Celle qui nous intéresse pose une question sur le présent en déplaçant légèrement le décor : que devient une ville après des décennies de sécheresse ? Que retient un lieu des gestes de ceux qui l'ont traversé ? Que ressent-on face à des inconnus qui se souviennent de nous ?</p>
+          <p>Ce choix a une conséquence directe sur nos jeux : pas de combat. Nous voulions que la tension vienne du mystère et des conséquences, pas des réflexes. C'est un pari exigeant, que Théo détaille dans le <a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">devlog sur le rythme d'un jeu sans combat</a>. Il nous permet aussi de toucher des joueurs qui ne se reconnaissent pas dans les jeux d'action, et c'est l'une des grandes forces d'un studio de jeu vidéo indépendant : choisir ses propres règles.</p>
+          <h2 id="debuts">Les débuts : un prototype bancal et une table trop petite</h2>
+          <p>La première année, Flexarion tenait autour d'une seule table, dans un local partagé du centre d'Aix. Samira a écrit les premières briques du moteur qui synchronise aujourd'hui les deux villes à partir d'un plan unique. Théo a reconstruit le prototype de la game jam pour qu'il ne plante plus. Moi, je remplissais des carnets de questions : pourquoi la ville du futur serait-elle sous terre ? Pourquoi ses habitants connaîtraient-ils le héros ? Qui est Sacha Morel, et pourquoi un technicien des réseaux souterrains plutôt qu'un explorateur ?</p>
+          <p>Nous avons fait beaucoup d'erreurs. Nous avons d'abord imaginé un jeu bien trop grand, avec une ville entière à reproduire. Nous avons perdu des semaines sur un système de dialogues que personne n'utilisait. Nous avons aussi appris à jeter : une bonne idée qui ne sert pas le mystère n'a pas sa place dans le jeu. C'est à ce moment qu'est née la règle qui structure encore Below Zero, celle d'un seul plan pour deux époques, expliquée par Margaux dans le <a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">devlog sur nos deux villes jumelles</a>.</p>
+          <h2 id="equipe">Grandir jusqu'à huit sans perdre l'esprit indépendant</h2>
+          <p>L'ordre des recrutements dit beaucoup de nos priorités. En 2023, avant toute communication, nous avons accueilli Lucas Arnaud au game design et Margaux Delorme aux environnements 3D : il fallait d'abord des énigmes solides et une ville crédible. En 2024 sont arrivés Yanis Okafor pour les personnages, Élise Fabre pour le son et la musique, puis Raphaël Costa pour la communication. Nous sommes huit depuis, et chacun signe au moins un devlog : c'est notre façon de montrer qu'un jeu se fabrique à plusieurs voix.</p>
+          <p>Rester indépendant, pour nous, ce n'est pas un slogan. C'est garder la main sur nos choix créatifs, avancer à un rythme soutenable et refuser les fonctionnalités ajoutées uniquement parce qu'elles sont à la mode. Cela veut aussi dire accepter d'aller moins vite : Below Zero n'a pas encore de date de sortie, et nous préférons l'annoncer quand le jeu sera prêt.</p>
+          <h2 id="ecosysteme">Un écosystème du jeu vidéo entre Aix et Marseille</h2>
+          <p>Un petit studio ne vit pas seul. Autour de nous, entre Aix et Marseille, il existe des game jams régulières, des rencontres entre développeurs, des formations au jeu vidéo et un public curieux. C'est dans ces rendez-vous que nous testons nos prototypes, que nous écoutons les critiques et que nous croisons parfois nos futurs collègues.</p>
+          <p>La ville elle-même fait partie de cet écosystème. Nos repérages se font à pied, carnet en main, de la Rotonde à la cathédrale Saint-Sauveur. Élise enregistre l'eau des fontaines, Margaux photographie les façades, Yanis observe les gens sur les terrasses. Le <a href="/devlogs/concevoir-sextia-vrai-aix/">devlog sur la conception de Sextia à partir du vrai Aix</a> raconte en détail ce travail de terrain.</p>
+          <h2 id="conseils">Ce que nous dirions à qui veut fonder un studio indé</h2>
+          <p>Si vous rêvez de créer votre studio de jeu vidéo, à Aix ou ailleurs, voici ce que nos premières années nous ont appris :</p>
+          <ol>
+            <li><strong>Partez d'une sensation, pas d'un genre.</strong> Notre point de départ n'était pas « faire de la SF », mais l'envie de chercher que nous avions vue chez les joueurs de la game jam.</li>
+            <li><strong>Ancrez votre univers dans un lieu que vous connaissez.</strong> Vous saurez le décrire avec une précision qu'aucune documentation ne remplace.</li>
+            <li><strong>Recrutez dans l'ordre de vos besoins.</strong> Le jeu d'abord, la communication ensuite.</li>
+            <li><strong>Montrez votre travail tôt.</strong> Un prototype bancal testé par dix personnes vaut mieux qu'un document parfait que personne ne lit.</li>
+            <li><strong>Protégez votre rythme.</strong> Un studio indépendant qui s'épuise ne finit pas ses jeux.</li>
+          </ol>
+          <p>Quatre ans après cette game jam, Flexarion reste un petit studio de science-fiction narrative qui creuse sous la réalité, au sens propre comme au figuré. Pour découvrir toute l'équipe, rendez-vous sur la page <a href="/studio/">Le studio Flexarion</a> ; pour l'univers du jeu, sur la <a href="/below-zero/">page de Below Zero</a>.</p>
+          <h2>Les autres devlogs de Flexarion</h2>
+          <ul>
+            <li><a href="/devlogs/accessibilite-rythme-jeu-sans-combat/">Accessibilité et rythme d'un jeu sans combat</a></li>
+            <li><a href="/devlogs/concevoir-sextia-vrai-aix/">Concevoir Sextia à partir du vrai Aix</a></li>
+            <li><a href="/devlogs/character-design-habitants-futur/">Le character design des habitants de 2306</a></li>
+            <li><a href="/devlogs/sound-design-ville-souterraine/">Le sound design de la ville souterraine</a></li>
+            <li><a href="/devlogs/enigmes-causalite-temporelle/">Les énigmes de causalité temporelle</a></li>
+            <li><a href="/devlogs/concevoir-deux-villes-aix-2156-2306/">Concevoir deux villes jumelles</a></li>
+          </ul>
+          <p><a class="btn ghost" href="/devlogs/">Tous les devlogs</a> <a class="btn" href="/below-zero/">Découvrir Below Zero</a></p>
+        </div>
+        <nav class="pager" aria-label="Navigation entre les devlogs"><a class="pn prev" href="/devlogs/accessibilite-rythme-jeu-sans-combat/" rel="prev"><span class="pn-dir"><span aria-hidden="true">← </span>Devlog précédent</span><span class="pn-title">Accessibilité et rythme d'un jeu sans combat</span></a></nav>
+      </article>
+    </main>
+    <footer class="site-foot">
+      <div class="wrap">
+        <p class="foot-logo"><a href="/" aria-label="Flexarion, accueil"><img src="/icon-512.png" srcset="/icon-192.png 192w, /icon-512.png 512w" sizes="72px" width="72" height="72" alt="Logo Flexarion" loading="lazy" decoding="async"></a></p>
+        <p><strong>Flexarion</strong>, studio indépendant de jeux vidéo de science-fiction à Aix-en-Provence.</p>
+        <nav aria-label="Plan du site">
+          <ul class="foot-links">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/contact/">Contact &amp; presse</a></li>
+            <li><a href="/mentions-legales/">Mentions légales</a></li>
+          </ul>
+        </nav>
+        <ul class="socials" aria-label="Flexarion sur les réseaux sociaux">
+          <li><a href="https://github.com/flexarion-officiel" rel="me noopener" target="_blank" aria-label="Flexarion sur GitHub (flexarion-officiel)" title="GitHub"><img class="ico" src="/assets/icons/github.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://flexarionofficiel.itch.io/" rel="me noopener" target="_blank" aria-label="Flexarion sur itch.io (flexarionofficiel)" title="itch.io"><img class="ico" src="/assets/icons/itchio.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://x.com/flexarion_off" rel="me noopener" target="_blank" aria-label="Flexarion sur X (@flexarion_off)" title="X"><img class="ico" src="/assets/icons/x.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://www.instagram.com/flexarion.off/" rel="me noopener" target="_blank" aria-label="Flexarion sur Instagram (@flexarion.off)" title="Instagram"><img class="ico" src="/assets/icons/instagram.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://www.linkedin.com/company/flexarion-officiel" rel="me noopener" target="_blank" aria-label="Flexarion sur LinkedIn (flexarion-officiel)" title="LinkedIn"><img class="ico" src="/assets/icons/linkedin.svg" width="24" height="24" alt="" aria-hidden="true" loading="lazy" decoding="async"></a></li>
+        </ul>
+        <p class="meta">Flexarion est un studio fictif imaginé pour un projet pédagogique du BUT Informatique de l’IUT d’Aix-Marseille.</p>
+      </div>
+    </footer>
+    <a class="to-top" href="#haut" aria-label="Retour en haut de la page"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 19V5.5M8.2 9.3 12 5.5l3.8 3.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <script src="/assets/js/main.min.js" defer></script>
+  </body>
+</html>

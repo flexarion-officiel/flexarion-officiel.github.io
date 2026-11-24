@@ -27,7 +27,7 @@ def run(pages):
   <atom:link href="{BASE}/devlogs/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Le journal de développement de Below Zero par le studio Flexarion (Aix-en-Provence).</description>
   <language>fr-fr</language>
-  <lastBuildDate>Sun, 22 Nov 2026 19:00:00 +0100</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 15:00:00 +0100</lastBuildDate>
 {items}</channel>
 </rss>
 ''')
@@ -63,6 +63,7 @@ En 2156, une deuxième ville est découverte sous Aix-en-Provence. Elle ressembl
 - [Accueil]({BASE}/) : présentation du studio Flexarion et de son positionnement, FAQ
 - [Le studio]({BASE}/studio/) : histoire depuis 2022, équipe, ancrage à Aix-en-Provence
 - [Below Zero]({BASE}/below-zero/) : univers, mécaniques, visuels, FAQ du jeu
+- [Carte de Sextia]({BASE}/below-zero/carte-sextia/) : carte commentée de six lieux réels d'Aix-en-Provence (pavillon Vendôme, thermes de Sextius, cathédrale Saint-Sauveur, place des Prêcheurs, cours Mirabeau, Rotonde) et de leur transposition en 2156 et dans Sextia en 2306
 - [Devlogs]({BASE}/devlogs/) : journal de développement
 - [Contact et presse]({BASE}/contact/) : kit presse, fiche d'identité, visuels
 

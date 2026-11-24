@@ -19,15 +19,17 @@ En 2156, une deuxième ville est découverte sous Aix-en-Provence. Elle ressembl
 - [Accueil](https://flexarion-officiel.github.io/) : présentation du studio Flexarion et de son positionnement, FAQ
 - [Le studio](https://flexarion-officiel.github.io/studio/) : histoire depuis 2022, équipe, ancrage à Aix-en-Provence
 - [Below Zero](https://flexarion-officiel.github.io/below-zero/) : univers, mécaniques, visuels, FAQ du jeu
+- [Carte de Sextia](https://flexarion-officiel.github.io/below-zero/carte-sextia/) : carte commentée de six lieux réels d'Aix-en-Provence (pavillon Vendôme, thermes de Sextius, cathédrale Saint-Sauveur, place des Prêcheurs, cours Mirabeau, Rotonde) et de leur transposition en 2156 et dans Sextia en 2306
 - [Devlogs](https://flexarion-officiel.github.io/devlogs/) : journal de développement
 - [Contact et presse](https://flexarion-officiel.github.io/contact/) : kit presse, fiche d'identité, visuels
 
 ## Devlogs
+- [Devlog #7 : créer un studio de jeu vidéo indépendant à Aix-en-Provence](https://flexarion-officiel.github.io/devlogs/creer-studio-jeu-video-aix/) : Inès Valcourt, directrice créative de Flexarion, raconte la création du studio de jeu vidéo indépendant à Aix-en-Provence et son choix de la SF.
 - [Devlog #6 : accessibilité et rythme d'un jeu sans combat](https://flexarion-officiel.github.io/devlogs/accessibilite-rythme-jeu-sans-combat/) : Dans Below Zero de Flexarion, sans combat, Théo Marchetti explique comment le Diapason, Sacha Morel et l'accessibilité tiennent le rythme.
 - [Devlog #5 : concevoir Sextia à partir du vrai Aix-en-Provence](https://flexarion-officiel.github.io/devlogs/concevoir-sextia-vrai-aix/) : Chez Flexarion, voyez comment le vrai Aix-en-Provence (cours Mirabeau, Rotonde, thermes Sextius) inspire Sextia en 2306 dans Below Zero.
 - [Devlog #4 : ils vous connaissent déjà, dessiner les habitants de 2306](https://flexarion-officiel.github.io/devlogs/character-design-habitants-futur/) : Chez Flexarion, le character designer dévoile comment il dessine, du croquis au modèle 3D, des habitants du futur qui reconnaissent le joueur.
 - [Devlog #3 : écouter sous la ville, le sound design de Sextia](https://flexarion-officiel.github.io/devlogs/sound-design-ville-souterraine/) : Chez Flexarion, la sound designer raconte comment l'eau thermale, l'écho et des cigales mutées font sonner la ville souterraine de Below Zero.
-- [Devlog #2 : le présent modifie le futur, nos énigmes de causalité](https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/) : Chez Flexarion, le game designer explique comment une action dans l'Aix de 2156 transforme la ville de 2306 de Below Zero, sans chaos.
+- [Devlog #2 : le présent modifie le futur, nos énigmes de causalité](https://flexarion-officiel.github.io/devlogs/enigmes-causalite-temporelle/) : Chez Flexarion, le game designer explique comment, dans le jeu vidéo Below Zero, une action dans l'Aix de 2156 transforme la ville de 2306.
 - [Devlog #1 : concevoir deux villes jumelles, Aix 2156 et Sextia 2306](https://flexarion-officiel.github.io/devlogs/concevoir-deux-villes-aix-2156-2306/) : Flexarion dévoile comment son équipe bâtit l'Aix de 2156 et sa jumelle souterraine Sextia en 2306 : plans superposés et règles de symétrie.
 
 ## Réseaux officiels
@@ -35,3 +37,4 @@ En 2156, une deuxième ville est découverte sous Aix-en-Provence. Elle ressembl
 - itch.io : https://flexarionofficiel.itch.io/
 - X : https://x.com/flexarion_off
 - Instagram : https://www.instagram.com/flexarion.off/
+- LinkedIn : https://www.linkedin.com/company/flexarion-officiel
